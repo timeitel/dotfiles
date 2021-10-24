@@ -9,12 +9,17 @@
   {
     "key": "alt+k",
     "command": "cursorUp",
-    "when": "textInputFocus"
+    "when": "textInputFocus && !listFocus"
   },
   {
     "key": "alt+j",
     "command": "cursorDown",
     "when": "textInputFocus"
+  },
+  {
+    "key": "alt+j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
   },
   {
     "key": "alt+h",
@@ -181,16 +186,6 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "shift+alt+down",
-    "command": "-notebook.cell.copyDown",
-    "when": "notebookEditorFocused && !inputFocus"
-  },
-  {
-    "key": "shift+alt+up",
-    "command": "-notebook.cell.copyUp",
-    "when": "notebookEditorFocused && !inputFocus"
-  },
-  {
     "key": "shift+alt+j",
     "command": "workbench.action.toggleMaximizedPanel"
   },
@@ -198,30 +193,6 @@
     "key": "ctrl+shift+j",
     "command": "-workbench.action.search.toggleQueryDetails",
     "when": "inSearchEditor || searchViewletFocus"
-  },
-  {
-    "key": "ctrl+alt+d",
-    "command": "workbench.debug.action.toggleRepl",
-    "when": "debuggersAvailable"
-  },
-  {
-    "key": "ctrl+shift+y",
-    "command": "-workbench.debug.action.toggleRepl",
-    "when": "debuggersAvailable"
-  },
-  {
-    "key": "ctrl+k ctrl+e",
-    "command": "editor.action.marker.next",
-    "when": "editorFocus"
-  },
-  {
-    "key": "alt+f8",
-    "command": "-editor.action.marker.next",
-    "when": "editorFocus"
-  },
-  {
-    "key": "ctrl+k ctrl+m",
-    "command": "workbench.scm.focus"
   },
   {
     "key": "shift+f9",
@@ -323,7 +294,7 @@
     "command": "-workbench.action.showAllSymbols"
   },
   {
-    "key": "ctrl+shift+w",
+    "key": "ctrl+shift+t",
     "command": "workbench.action.reopenClosedEditor"
   },
   {
@@ -379,5 +350,93 @@
   {
     "key": "shift+alt+down",
     "command": "workbench.action.decreaseViewSize"
+  },
+  {
+    "key": "ctrl+k ctrl+e",
+    "command": "editor.action.marker.next",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+f8",
+    "command": "-editor.action.marker.next",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+k ctrl+shift+e",
+    "command": "editor.action.marker.prev",
+    "when": "editorFocus"
+  },
+  {
+    "key": "shift+alt+f8",
+    "command": "-editor.action.marker.prev",
+    "when": "editorFocus"
+  },
+  {
+    "key": "alt+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+up",
+    "command": "-selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "alt+k",
+    "command": "workbench.action.quickOpenNavigatePreviousInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+  },
+  {
+    "key": "ctrl+shift+e",
+    "command": "-workbench.action.quickOpenNavigatePreviousInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+  },
+  {
+    "key": "ctrl+shift+p",
+    "command": "-workbench.action.quickOpenNavigatePreviousInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+  },
+  {
+    "key": "alt+j",
+    "command": "workbench.action.quickOpenNavigateNextInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+  },
+  {
+    "key": "alt+j",
+    "command": "workbench.action.quickOpenNavigateNextInRecentFilesPicker",
+    "when": "inQuickOpen && inRecentFilesPicker"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "-workbench.action.quickOpenNavigateNextInRecentFilesPicker",
+    "when": "inQuickOpen && inRecentFilesPicker"
+  },
+  {
+    "key": "alt+k",
+    "command": "workbench.action.quickOpenNavigatePreviousInViewPicker",
+    "when": "inQuickOpen && inViewsPicker"
+  },
+  {
+    "key": "ctrl+shift+q",
+    "command": "-workbench.action.quickOpenNavigatePreviousInViewPicker",
+    "when": "inQuickOpen && inViewsPicker"
+  },
+  {
+    "key": "ctrl+k ctrl+shift+r",
+    "command": "git.clean"
+  },
+  {
+    "key": "ctrl+,",
+    "command": "workbench.action.openSettingsJson"
   }
 ]

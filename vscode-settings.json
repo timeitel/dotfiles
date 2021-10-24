@@ -23,37 +23,17 @@
   /*
    * Color settings
    */
-  "workbench.colorTheme": "Ocean Dark Extended",
+  "workbench.colorTheme": "Gruvbox Material Dark",
   "terminal.integrated.fontWeightBold": "500",
   "workbench.colorCustomizations": {
-    "list.focusBackground": "#1D2027",
-    "editor.background": "#1D2027",
-    "editorGroupHeader.tabsBackground": "#1D2027",
-    "tab.activeBorder": "#c0c5ce",
-    "terminal.background": "#2B303B",
-    "terminal.foreground": "#C0C5CE",
-    "terminalCursor.background": "#C0C5CE",
-    "terminalCursor.foreground": "#C0C5CE",
-    "terminal.ansiBlack": "#2B303B",
-    "terminal.ansiBlue": "#8FA1B3",
-    "terminal.ansiBrightBlack": "#65737E",
-    "terminal.ansiBrightBlue": "#8FA1B3",
-    "terminal.ansiBrightCyan": "#96B5B4",
-    "terminal.ansiBrightGreen": "#A3BE8C",
-    "terminal.ansiBrightMagenta": "#B48EAD",
-    "terminal.ansiBrightRed": "#BF616A",
-    "terminal.ansiBrightWhite": "#EFF1F5",
-    "terminal.ansiBrightYellow": "#EBCB8B",
-    "terminal.ansiCyan": "#96B5B4",
-    "terminal.ansiGreen": "#A3BE8C",
-    "terminal.ansiMagenta": "#B48EAD",
-    "terminal.ansiRed": "#BF616A",
-    "terminal.ansiWhite": "#C0C5CE",
-    "terminal.ansiYellow": "#EBCB8B"
+    "editor.background": "#1f1f1f",
+    "statusBar.background": "#1f1f1f",
+    "editorGroupHeader.tabsBackground": "#1f1f1f",
+    "tab.inactiveBackground": "#1f1f1f",
+    "titleBar.activeBackground": "#1f1f1f"
   },
-  "bracket-pair-colorizer-2.colors": ["#ebcb8b", "#b48ead", "#8fa1b3"],
   /*
-   * Vsvim bindings
+   * VsCodeVim settings
    */
   "vim.surround": true,
   "vim.sneak": true,
@@ -126,11 +106,6 @@
         "r",
         "t",
         " ",
-        "c",
-        "o",
-        "n",
-        "s",
-        "t",
         "<enter>",
         "w",
         "w",
@@ -175,6 +150,11 @@
     {
       "before": ["<leader>", "d", "a"],
       "after": ["v", "i", "<", "o", "W", "h", "d", "<esc>", "<leader>", "h"]
+    },
+    // add space then insert before
+    {
+      "before": ["<leader>", "i"],
+      "after": ["i", " ", "<esc>", "i"]
     },
     // add comma to eol
     {
@@ -241,15 +221,6 @@
       "before": ["<leader>", "]"],
       "after": ["f", "]", "c", "i", "]"]
     },
-    // paste 0 buffer - last yank
-    {
-      "before": ["<leader>", "'", "p"],
-      "after": ["\"", "0", "p"]
-    },
-    {
-      "before": ["<leader>", "'", "P"],
-      "after": ["\"", "0", "P"]
-    },
     // paste line break and then buffer
     {
       "before": ["<leader>", "p", "l"],
@@ -305,12 +276,16 @@
     "gcloud",
     "googleapis",
     "gserviceaccount",
+    "Komo",
+    "leaderboard",
     "Microservices",
     "nowrap",
     "Parens",
     "Pathing",
     "rebass",
     "receiptuploader",
+    "scratchandwins",
+    "Scratchie",
     "scroller",
     "secretcodes",
     "SENDGRID",
@@ -321,6 +296,7 @@
     "Treeview",
     "Unticked",
     "unvalidated",
+    "wordsorless",
     "Xunit"
   ],
   "zenMode.hideLineNumbers": false,
@@ -358,14 +334,12 @@
   "editor.formatOnSave": true,
   "files.eol": "\n",
   "settingsSync.ignoredExtensions": ["dbaeumer.vscode-eslint"],
-  "diffEditor.renderSideBySide": false,
   "redhat.telemetry.enabled": false,
   "workbench.editor.wrapTabs": true,
   "editor.tabSize": 8,
   "editor.cursorStyle": "line",
   "editor.insertSpaces": false,
   "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-  "editor.wordWrap": "off",
   "debug.javascript.terminalOptions": {
     "skipFiles": ["<node_internals>/**", "**.js"]
   },
@@ -374,5 +348,11 @@
   "gitlens.hovers.enabled": false,
   "debug.javascript.suggestPrettyPrinting": false,
   "editor.renderWhitespace": "none",
-  "workbench.activityBar.visible": false
+  "workbench.activityBar.visible": false,
+  "explorer.confirmDelete": false,
+  "editor.bracketPairColorization.enabled": true,
+  "explorer.confirmDragAndDrop": false,
+  "git.allowForcePush": true,
+  "editor.wordWrap": "bounded",
+  "security.workspace.trust.untrustedFiles": "open"
 }

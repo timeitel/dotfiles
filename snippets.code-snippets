@@ -1,18 +1,15 @@
 {
   "React Function Component": {
-    "prefix": "rc",
+    "prefix": "fc",
     "body": [
-      "import React from 'react'",
+      "import { FC } from 'react'",
       "",
-      "interface ${TM_FILENAME_BASE}Props {",
-      "$1",
+      "interface Props {}",
+      "",
+      "export const $TM_FILENAME_BASE: FC<Props> = ({$1}) => {",
+      "\t\treturn (${2:<></>});",
       "}",
-      "",
-      "const $TM_FILENAME_BASE: React.FC<${TM_FILENAME_BASE}Props> = ({$2}) => {",
-      "\t\treturn ($3);",
-      "}",
-      "",
-      "export default $TM_FILENAME_BASE;"
+      ""
     ],
     "description": "React Function Component"
   },
@@ -45,7 +42,37 @@
   },
   "Destructured Object": {
     "prefix": "dob",
-    "body": ["const {${1:prop}} = ${2:obj}"],
+    "body": ["const {${2:}} = ${1:obj}"],
     "description": "Destructured Object"
+  },
+  "Array Method": {
+    "prefix": "ary",
+    "body": ["${1:array}.${2:forEach}(${3:item} => {${4:}})"],
+    "description": "Array Method"
+  },
+  "Styled Component": {
+    "prefix": "stc",
+    "body": ["${4:}const Styled${1:name} = styled${2:}`", "  ${3:};", "`;"],
+    "description": "Styled Component"
+  },
+  "Ternary": {
+    "prefix": "ter",
+    "body": ["${1:condition} ? ${2:true} : ${3:false};"],
+    "description": "Ternary"
+  },
+  "Import": {
+    "prefix": "imp",
+    "body": ["import ${2:function} from '${1:package}'"],
+    "description": "Ternary"
+  },
+  "Debugger": {
+    "prefix": "db",
+    "body": ["debugger;"],
+    "description": "Debugger statement"
+  },
+  "Console Dir": {
+    "prefix": "cdi",
+    "body": ["console.dir(${1:});"],
+    "description": "console dir"
   }
 }

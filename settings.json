@@ -2,12 +2,13 @@
 // For documentation on these settings, see: https://aka.ms/terminal-documentation
 {
   "$schema": "https://aka.ms/terminal-profiles-schema",
-  "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+  "defaultProfile": "{14ad203f-52cc-4110-90d6-d96e0f41b64d}",
   "profiles": {
     "defaults": {
-      "colorScheme": "Nord",
+      "colorScheme": "Gruvbox Dark",
       "fontFace": "CascadiaCode Nerd Font",
-      "useAcrylic": false
+      "useAcrylic": false,
+      "tabColor": "#1D2027"
     },
     "list": [
       {
@@ -20,8 +21,7 @@
         "tabTitle": "WSL",
         "suppressApplicationTitle": true,
         "closeOnExit": true,
-        // "startingDirectory": "//wsl$/Ubuntu/home/tmtl"
-        "startingDirectory": "C:/Users/timot/source"
+        "startingDirectory": "C:/Users/timot/code"
       },
       {
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
@@ -40,6 +40,20 @@
         "hidden": false,
         "name": "Azure Cloud Shell",
         "source": "Windows.Terminal.Azure"
+      },
+      {
+        "tabTitle": "Git Bash",
+        "startingDirectory": "C:/Users/timot/code",
+        "closeOnExit": true,
+        "commandline": "C:/Program Files/Git/bin/bash.exe --login",
+        "cursorColor": "#FFFFFF",
+        "cursorShape": "bar",
+        "fontSize": 12,
+        "guid": "{14ad203f-52cc-4110-90d6-d96e0f41b64d}",
+        "icon": "ms-appdata:///roaming/git-bash_32px.ioc",
+        "name": "Git Bash",
+        "padding": "0, 0, 0, 0",
+        "snapOnInput": true
       }
     ]
   },
@@ -73,8 +87,8 @@
       // "background": "#2E3440",
       "black": "#3B4252",
       "red": "#BF616A",
-      // "green": "#A3BE8C",
-      "green": "#2E3440",
+      "green": "#A3BE8C",
+      // "green": "#2E3440",
       "yellow": "#EBCB8B",
       "blue": "#81A1C1",
       "purple": "#B48EAD",
@@ -88,6 +102,27 @@
       "brightPurple": "#B48EAD",
       "brightCyan": "#88C0D0",
       "brightWhite": "#E5E9F0"
+    },
+    {
+      "background": "#282828",
+      "black": "#282828",
+      "blue": "#458588",
+      "brightBlack": "#928374",
+      "brightBlue": "#83A598",
+      "brightCyan": "#8EC07C",
+      "brightGreen": "#B8BB26",
+      "brightPurple": "#D3869B",
+      "brightRed": "#FB4934",
+      "brightWhite": "#EBDBB2",
+      "brightYellow": "#FABD2F",
+      "cyan": "#689D6A",
+      "foreground": "#EBDBB2",
+      "green": "#98971A",
+      "name": "Gruvbox Dark",
+      "purple": "#B16286",
+      "red": "#CC241D",
+      "white": "#A89984",
+      "yellow": "#D79921"
     }
   ],
   // Add any keybinding overrides to this array.
