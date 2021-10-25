@@ -3,7 +3,7 @@
    * General bindings
    */
   {
-    "key": "ctrl+k ctrl+k",
+    "key": "ctrl+k ctrl+s",
     "command": "workbench.action.openGlobalKeybindings"
   },
   {
@@ -40,10 +40,10 @@
     "command": "explorer.newFolder"
   },
   /*
-   * Add ctrl+k mapping for git actions and error/change jumping
+   * Add ctrl+g mapping for git actions and error/change jumping
    */
   {
-    "key": "ctrl+k ctrl+d",
+    "key": "ctrl+g ctrl+d",
     "command": "git.openChange"
   },
   {
@@ -52,16 +52,36 @@
     "when": "isInDiffEditor"
   },
   {
-    "key": "ctrl+k ctrl+r",
+    "key": "ctrl+g r",
     "command": "git.cleanAll"
   },
   {
-    "key": "ctrl+k ctrl+c",
+    "key": "ctrl+g ctrl+r",
+    "command": "git.clean"
+  },
+  {
+    "key": "ctrl+g c",
     "command": "git.commitAll"
   },
   {
-    "key": "ctrl+k ctrl+p",
+    "key": "ctrl+g p",
     "command": "git.push"
+  },
+  {
+    "key": "ctrl+g s",
+    "command": "git.stage"
+  },
+  {
+    "key": "ctrl+g u",
+    "command": "git.unstage"
+  },
+  {
+    "key": "ctrl+g h",
+    "command": "git-graph.view"
+  },
+  {
+    "key": "ctrl+g a",
+    "command": "git.commitAllAmend"
   },
   /*
    * Add alt mapping for resizing & focusing windows
@@ -76,10 +96,6 @@
   },
   {
     "key": "alt+g",
-    "command": "workbench.view.scm"
-  },
-  {
-    "key": "ctrl+g",
     "command": "workbench.view.scm"
   },
   /*
@@ -199,26 +215,6 @@
     "command": "workbench.debug.viewlet.action.removeAllBreakpoints"
   },
   {
-    "key": "ctrl+k n",
-    "command": "workbench.action.editor.nextChange",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+f5",
-    "command": "-workbench.action.editor.nextChange",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+k ctrl+n",
-    "command": "workbench.action.compareEditor.nextChange",
-    "when": "textCompareEditorVisible"
-  },
-  {
-    "key": "alt+f5",
-    "command": "-workbench.action.compareEditor.nextChange",
-    "when": "textCompareEditorVisible"
-  },
-  {
     "key": "ctrl+alt+r",
     "command": "-extension.convertToRGBA",
     "when": "editorTextFocus"
@@ -233,14 +229,6 @@
     "when": "isDevelopment"
   },
   {
-    "key": "ctrl+k ctrl+v",
-    "command": "toggleVim"
-  },
-  {
-    "key": "ctrl+k ctrl+a",
-    "command": "workbench.action.toggleActivityBarVisibility"
-  },
-  {
     "key": "ctrl+h",
     "command": "workbench.action.focusFirstEditorGroup"
   },
@@ -249,36 +237,8 @@
     "command": "workbench.action.focusSideBar"
   },
   {
-    "key": "ctrl+k ctrl+h",
-    "command": "git-graph.view"
-  },
-  {
-    "key": "ctrl+alt+i",
-    "command": "bookmarks.jumpToPrevious",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+alt+j",
-    "command": "-bookmarks.jumpToPrevious",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+alt+o",
-    "command": "bookmarks.jumpToNext",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+alt+l",
-    "command": "-bookmarks.jumpToNext",
-    "when": "editorTextFocus"
-  },
-  {
     "key": "ctrl+alt+j",
     "command": "extension.js-debug.createDebuggerTerminal"
-  },
-  {
-    "key": "ctrl+k ctrl+t",
-    "command": "-workbench.action.selectTheme"
   },
   {
     "key": "ctrl+shift+t",
@@ -334,27 +294,12 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+k ctrl+u",
-    "command": "git.revertSelectedRanges",
-    "when": "isInDiffEditor"
-  },
-  {
-    "key": "ctrl+k ctrl+r",
-    "command": "-git.revertSelectedRanges",
-    "when": "isInDiffEditor"
-  },
-  {
     "key": "shift+alt+up",
     "command": "workbench.action.increaseViewSize"
   },
   {
     "key": "shift+alt+down",
     "command": "workbench.action.decreaseViewSize"
-  },
-  {
-    "key": "ctrl+k ctrl+e",
-    "command": "editor.action.marker.next",
-    "when": "editorFocus"
   },
   {
     "key": "alt+f8",
@@ -430,10 +375,6 @@
     "key": "ctrl+shift+q",
     "command": "-workbench.action.quickOpenNavigatePreviousInViewPicker",
     "when": "inQuickOpen && inViewsPicker"
-  },
-  {
-    "key": "ctrl+k ctrl+shift+r",
-    "command": "git.clean"
   },
   {
     "key": "ctrl+,",
