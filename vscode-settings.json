@@ -87,14 +87,24 @@
     }
   ],
   "vim.normalModeKeyBindings": [
-    // jump to function signature
+    // <leader> g, go to helpers
+    // go to next error and show quick fix list
     {
-      "before": ["<leader>", "s"],
+      "before": ["<leader>", "g", "e"],
+      "commands": [
+        "editor.action.marker.next",
+        "extension.vim_escape",
+        "editor.action.quickFix"
+      ]
+    },
+    // go to function signature
+    {
+      "before": ["<leader>", "g", "s"],
       "after": ["[", "{", "[", "{", "[", "{", "[", "{", "[", "{"]
     },
-    // jump to function signature and show references
+    // go to function signature and show references
     {
-      "before": ["<leader>", "r"],
+      "before": ["<leader>", "g", "r"],
       "after": [
         "g",
         "g",
@@ -110,14 +120,14 @@
         "w",
         "w",
         "<leader>",
-        "g",
+        "s",
         "r"
       ]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", "g", "r"],
+      "before": ["<leader>", "s", "r"],
       "commands": [
         { "command": ":nohl" },
         { "command": "editor.action.goToReferences" }
@@ -353,6 +363,5 @@
   "editor.bracketPairColorization.enabled": true,
   "explorer.confirmDragAndDrop": false,
   "git.allowForcePush": true,
-  "editor.wordWrap": "bounded",
   "security.workspace.trust.untrustedFiles": "open"
 }

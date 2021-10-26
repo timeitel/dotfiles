@@ -379,5 +379,14 @@
   {
     "key": "ctrl+,",
     "command": "workbench.action.openSettingsJson"
+  },
+  {
+    "key": "f8",
+    "command": "-editor.action.marker.nextInFiles",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+k ctrl+e",
+    "command": "editor.action.marker.next"
   }
 ]
