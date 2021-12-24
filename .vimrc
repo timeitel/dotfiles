@@ -1,5 +1,7 @@
 let mapleader = " "
 inoremap kj <Esc>
+nnoremap H ^
+nnoremap L $
 
 set number relativenumber "hybrid line numbers
 set history=500
