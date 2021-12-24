@@ -1,5 +1,15 @@
 [user]
-	name = Tim Eitel
-	email = timeitel@outlook.com
+  name = Tim Eitel
+  email = timeitel@outlook.com
 [init]
-	defaultBranch = main
+  defaultBranch = main
+[core]
+  editor = code --wait
+[diff]
+  tool = vscode
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+  tool = vscode
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
