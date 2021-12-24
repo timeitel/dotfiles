@@ -39,9 +39,8 @@ alias grb='git rebase'
 alias gb='git branch'
 alias gco='git checkout'
 alias gmos='gf && git merge origin staging'
-
-# dotfiles bare repo
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+# dotfiles / config repo
+alias config='git -C ~/.dotfiles'
 
 # Spaceship prompt
 SPACESHIP_GIT_SYMBOL=''
