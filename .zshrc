@@ -35,6 +35,7 @@ alias gl='git log --all --decorate --oneline --graph'
 alias grb='git rebase'
 alias gb='git branch'
 alias gco='git checkout'
+alias gm='git merge'
 alias gmos='gf && git merge origin staging'
 # dotfiles / config repo
 alias config='git -C ~/.dotfiles'
