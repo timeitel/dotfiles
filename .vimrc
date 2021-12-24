@@ -6,7 +6,6 @@ set history=500
 set autoread "auto read when a file is changed from the outside
 set cmdheight=1 "height of the command bar
 set nohlsearch
-" configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 set ignorecase
