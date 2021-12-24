@@ -1,12 +1,10 @@
+export NVM_DIR="$HOME/.nvm"
+    [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh" # This loads nvm
+
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-fpath=($fpath "/home/timeitel/.zfunctions")
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -22,48 +20,28 @@ alias l.='ls -d .* --color=auto'
 alias left='ls -t -1'
 alias zs='source ~/.zshrc'
 alias c='code '
-alias v='vim '
-alias e='explorer.exe'
 alias cls='clear'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias copy='clip.exe'
-alias cwd='pwd | clip.exe'
 
 alias g='git'
-alias cg='cd `git rev-parse --show-toplevel`'
+alias gcd='cd `git rev-parse --show-toplevel`'
 alias gs='git status'
 alias gpl='git pull'
+alias gf='git fetch'
 alias gps='git push'
 alias ga='git add'
 alias gaa='git add -A'
 alias gu='git reset --mixed'
 alias gc='git commit -m'
 alias gl='git log --all --decorate --oneline --graph'
-alias gr='git rebase'
+alias grb='git rebase'
 alias gb='git branch'
-alias gba='git branch -a'
-alias gbd='git branch -d'
 alias gco='git checkout'
+alias gmos='gf && git merge origin staging'
 
-# Operate by word in terminal
-bindkey -e
-# Control + backspace / delete
-bindkey '5~' kill-word
-bindkey '^H' backward-kill-word
-# Control + arrows
-bindkey ';5C' forward-word
-bindkey ';5D' backward-word
-# Delete current line
-bindkey '^[w' kill-whole-line
-# Accept zsh-suggestion with ctrl+space
-bindkey '^ ' autosuggest-accept
-# Accept & execute zsh-suggestion with ctrl+enter
-bindkey '^J' autosuggest-execute
-
-# Scroll bindings to be set in windows terminal
-bindkey -r '^e'
-bindkey -r '^y'
+# dotfiles bare repo
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Spaceship prompt
 SPACESHIP_GIT_SYMBOL=''
@@ -102,10 +80,4 @@ SPACESHIP_VI_MODE_SHOW=false
 SPACESHIP_JOBS_SHOW=false
 SPACESHIP_EXEC_TIME_SHOW=false
 
-# Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
-
-# Plugins
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-you-should-use/you-should-use.plugin.zsh
+eval "$(starship init zsh)"
