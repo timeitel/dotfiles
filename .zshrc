@@ -13,33 +13,10 @@ zle_highlight=('paste:none')
 # basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
-# Auto complete with case insenstivity
+# auto complete with case insenstivity
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-# aliases
-alias sz='source ~/.zshrc'
-alias ..='cd ..'
-alias ...='cd ../..'
-
-alias g='git'
-alias gcd='cd `git rev-parse --show-toplevel`'
-alias gs='git status'
-alias gpl='git pull'
-alias gf='git fetch'
-alias gps='git push'
-alias ga='git add'
-alias gaa='git add -A'
-alias gu='git reset --mixed'
-alias gc='git commit -m'
-alias gl='git log --all --decorate --oneline --graph'
-alias grb='git rebase'
-alias gb='git branch'
-alias gco='git checkout'
-alias gm='git merge'
-alias gmos='gf && git merge origin staging'
-# dotfiles / config repo
-alias config='git -C ~/.dotfiles'
-
+source ~/.aliases
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
