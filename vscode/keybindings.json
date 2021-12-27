@@ -238,11 +238,6 @@
     "when": "editorFocus"
   },
   {
-    "key": "cmd+n shift+cmd+e",
-    "command": "editor.action.marker.prev",
-    "when": "editorFocus"
-  },
-  {
     "key": "shift+alt+f8",
     "command": "-editor.action.marker.prev",
     "when": "editorFocus"
@@ -315,10 +310,6 @@
     "key": "f8",
     "command": "-editor.action.marker.nextInFiles",
     "when": "editorFocus"
-  },
-  {
-    "key": "cmd+n cmd+e",
-    "command": "editor.action.marker.next"
   },
   {
     "key": "cmd+h",

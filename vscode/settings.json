@@ -86,20 +86,12 @@
   ],
   "vim.normalModeKeyBindings": [
     {
-      "before": ["<leader>", "g", "e"],
-      "commands": [
-        "editor.action.marker.next",
-        "extension.vim_escape",
-        "editor.action.quickFix"
-      ]
+      "before": ["<leader>", "e"],
+      "commands": ["editor.action.marker.next"]
     },
     {
-      "before": ["<leader>", "g", "E"],
-      "commands": [
-        "editor.action.marker.nextInFiles",
-        "extension.vim_escape",
-        "editor.action.quickFix"
-      ]
+      "before": ["<leader>", "E"],
+      "commands": ["editor.action.marker.prev"]
     },
     {
       "before": ["<leader>", "g", "s"],
