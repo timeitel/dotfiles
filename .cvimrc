@@ -1,0 +1,12 @@
+let mapleader = " "
+let scrollstep = 120
+
+map <Leader>d :tabdettach<CR>
+map <Leader>a :tabattach<Space>1
+map <Leader>u lastClosedTab
+
+map l nextTab
+map h previousTab
+map Y yankDocumentUrl
+
+set smoothscroll
