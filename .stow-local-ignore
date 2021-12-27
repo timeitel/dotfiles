@@ -1,3 +1,5 @@
 /vscode
+/rider
 .git
+.gitignore
 .DS_Store
