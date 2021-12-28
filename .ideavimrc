@@ -2,9 +2,10 @@ source ~/.vimrc
 
 map <leader>e <Action>(GotoNextError)
 map <leader>h <Action>(QuickJavaDoc)
-map <leader>r <Action>(ReformatCode)
+map <leader>f <Action>(ReformatCode)
 
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
+

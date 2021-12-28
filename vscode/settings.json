@@ -94,10 +94,6 @@
       "commands": ["editor.action.marker.prev"]
     },
     {
-      "before": ["<leader>", "g", "s"],
-      "after": ["[", "{", "[", "{", "[", "{", "[", "{", "[", "{"]
-    },
-    {
       "before": ["<leader>", "g", "r"],
       "after": [
         "g",
@@ -227,14 +223,6 @@
     {
       "before": ["<leader>", "p", "p"],
       "after": ["A", ",", "<esc>", "p"]
-    },
-    {
-      "before": ["<leader>", "f"],
-      "after": ["/"]
-    },
-    {
-      "before": ["<leader>", "F"],
-      "after": ["?"]
     },
     {
       "before": ["<leader>", "h"],
