@@ -1,4 +1,4 @@
-let mapleader = " "
+let mapleader = "\\"
 let scrollstep = 120
 
 map <Leader>d :tabdettach<CR>
