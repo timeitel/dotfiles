@@ -1,8 +1,9 @@
 source ~/.vimrc
 
 map <leader>e <Action>(GotoNextError)
-map <leader>h <Action>(QuickJavaDoc)
-map <leader>f <Action>(ReformatCode)
+
+map gf <Action>(ReformatCode)
+map gh <Action>(QuickJavaDoc)
 
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/ReplaceWithRegister'

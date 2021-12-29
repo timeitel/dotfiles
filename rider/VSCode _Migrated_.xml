@@ -65,6 +65,9 @@
     <keyboard-shortcut first-keystroke="escape" />
   </action>
   <action id="NextTab" />
+  <action id="ParameterInfo">
+    <keyboard-shortcut first-keystroke="shift ctrl space" />
+  </action>
   <action id="PopupMenu-cancel">
     <keyboard-shortcut first-keystroke="escape" />
     <keyboard-shortcut first-keystroke="shift space" />
@@ -90,6 +93,7 @@
   <action id="SelectAllOccurrences">
     <keyboard-shortcut first-keystroke="shift meta l" />
   </action>
+  <action id="SmartTypeCompletion" />
   <action id="SwitcherIterateItems" />
   <action id="SwitcherRecentEditedChangedToggleCheckBox" />
   <action id="Terminal.ClearBuffer">
