@@ -1,5 +1,6 @@
 let mapleader = " "
 map <leader>to :tabonly<cr>
+map <leader>ta :qa<cr>
 map <leader>f /
 map <leader>F ? 
 
