@@ -5,6 +5,7 @@
   defaultBranch = main
 [core]
   editor = code --wait
+	excludesfile = ~/.gitignore_global
 [diff]
   tool = vscode
 [difftool "vscode"]
