@@ -193,10 +193,6 @@
     "when": "isDevelopment"
   },
   {
-    "key": "cmd+l",
-    "command": "workbench.action.focusSideBar"
-  },
-  {
     "key": "ctrl+shift+t",
     "command": "workbench.action.reopenClosedEditor"
   },
@@ -320,10 +316,6 @@
     "key": "cmd+l",
     "command": "-expandLineSelection",
     "when": "textInputFocus"
-  },
-  {
-    "key": "cmd+h",
-    "command": "workbench.action.focusLeftGroup"
   },
   {
     "key": "cmd+k cmd+left",
