@@ -62,7 +62,7 @@
   },
   "Import": {
     "prefix": "imp",
-    "body": ["import ${2:function} from '${1:package}'"],
+    "body": ["import {${2:}} from '${1:package}'"],
     "description": "Ternary"
   },
   "Debugger": {

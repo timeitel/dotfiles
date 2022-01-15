@@ -237,6 +237,10 @@
       "commands": [":nohl"]
     },
     {
+      "before": ["<leader>", "t", "a"],
+      "after": [":", "w", "q", "a", "<enter>"]
+    },
+    {
       "before": ["<leader>", "t", "o"],
       "commands": [":tabonly"]
     },
@@ -297,7 +301,9 @@
   "scm.alwaysShowRepositories": true,
   "window.title": "",
   "files.exclude": {
+    ".next": true,
     "bin": true,
+    "node_modules": true,
     "obj": true,
     "out": true
   },
@@ -347,6 +353,5 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "extensions.ignoreRecommendations": true,
-  "window.zoomLevel": 1
+  "extensions.ignoreRecommendations": true
 }

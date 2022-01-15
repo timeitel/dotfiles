@@ -39,7 +39,7 @@
    * Add ctrl+g mapping for git actions and error/change jumping
    */
   {
-    "key": "ctrl+g ctrl+d",
+    "key": "ctrl+g d",
     "command": "git.openChange"
   },
   {
@@ -397,5 +397,13 @@
     "key": "cmd+g",
     "command": "-editor.action.nextMatchFindAction",
     "when": "editorFocus"
+  },
+  {
+    "key": "cmd+\\",
+    "command": "-workbench.action.splitEditor"
+  },
+  {
+    "key": "cmd+\\",
+    "command": "workbench.action.moveEditorToRightGroup"
   }
 ]
