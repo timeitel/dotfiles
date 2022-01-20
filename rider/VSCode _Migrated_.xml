@@ -3,6 +3,7 @@
     <keyboard-shortcut first-keystroke="shift meta d" />
     <keyboard-shortcut first-keystroke="alt d" />
   </action>
+  <action id="ActivateFindToolWindow" />
   <action id="ActivateProjectToolWindow">
     <keyboard-shortcut first-keystroke="meta e" />
   </action>
@@ -36,6 +37,7 @@
     <keyboard-shortcut first-keystroke="escape" />
     <keyboard-shortcut first-keystroke="shift space" />
   </action>
+  <action id="EditorScrollToCenter" />
   <action id="EditorUp">
     <keyboard-shortcut first-keystroke="up" />
     <keyboard-shortcut first-keystroke="ctrl p" />
@@ -43,6 +45,8 @@
   </action>
   <action id="ExpandAllRegions" />
   <action id="ExpandRegionRecursively" />
+  <action id="FileChooser.GotoHome" />
+  <action id="FileChooser.GotoProject" />
   <action id="GotoAction">
     <keyboard-shortcut first-keystroke="f1" />
     <keyboard-shortcut first-keystroke="shift meta p" />
@@ -61,8 +65,15 @@
     <keyboard-shortcut first-keystroke="ctrl p" />
     <keyboard-shortcut first-keystroke="meta k" />
   </action>
+  <action id="MoveTabRight">
+    <keyboard-shortcut first-keystroke="meta back_slash" />
+  </action>
   <action id="NavBar-cancel">
     <keyboard-shortcut first-keystroke="escape" />
+  </action>
+  <action id="NextEditorTab">
+    <keyboard-shortcut first-keystroke="shift ctrl right" />
+    <keyboard-shortcut first-keystroke="ctrl l" />
   </action>
   <action id="NextTab" />
   <action id="ParameterInfo">
@@ -77,6 +88,10 @@
     <keyboard-shortcut first-keystroke="ctrl n" />
     <keyboard-shortcut first-keystroke="meta j" />
   </action>
+  <action id="PreviousEditorTab">
+    <keyboard-shortcut first-keystroke="shift ctrl left" />
+    <keyboard-shortcut first-keystroke="ctrl h" />
+  </action>
   <action id="PreviousTab">
     <keyboard-shortcut first-keystroke="meta alt left" />
   </action>
@@ -90,17 +105,23 @@
     <keyboard-shortcut first-keystroke="f8" />
   </action>
   <action id="RevealIn" />
+  <action id="Rider.Plugins.FSharp.SendToFsi" />
+  <action id="RiderTypeHierarchy.BaseOnThisType" />
   <action id="SelectAllOccurrences">
     <keyboard-shortcut first-keystroke="shift meta l" />
   </action>
   <action id="SmartTypeCompletion" />
+  <action id="SplitVertically" />
   <action id="SwitcherIterateItems" />
   <action id="SwitcherRecentEditedChangedToggleCheckBox" />
   <action id="Terminal.ClearBuffer">
     <keyboard-shortcut first-keystroke="meta l" />
   </action>
   <action id="ToggleZenMode" />
+  <action id="TypeHierarchy" />
+  <action id="TypeHierarchyBase.BaseOnThisType" />
   <action id="Vcs.ShowMessageHistory">
     <keyboard-shortcut first-keystroke="ctrl m" />
   </action>
+  <action id="com.jetbrains.rider.interactive.csi.SendToCSharpInteractive" />
 </keymap>

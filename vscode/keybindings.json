@@ -405,5 +405,13 @@
   {
     "key": "cmd+\\",
     "command": "workbench.action.moveEditorToRightGroup"
+  },
+  {
+    "key": "cmd+n",
+    "command": "-workbench.action.files.newUntitledFile"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "-workbench.action.openRecent"
   }
 ]
