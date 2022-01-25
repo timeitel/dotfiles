@@ -52,7 +52,11 @@
   },
   "Styled Component": {
     "prefix": "stc",
-    "body": ["${4:}const Styled${1:name} = styled${2:}`", "  ${3:};", "`;"],
+    "body": [
+      "export ${4:}const Styled${1:name} = styled${2:}`",
+      "  ${3:};",
+      "`;"
+    ],
     "description": "Styled Component"
   },
   "Ternary": {
