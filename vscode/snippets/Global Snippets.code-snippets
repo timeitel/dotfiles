@@ -78,5 +78,10 @@
     "prefix": "cdi",
     "body": ["console.dir(${1:});"],
     "description": "console dir"
+  },
+  "Styled component prop theme": {
+    "prefix": "pth",
+    "body": ["${(p) => p.theme.color.${1:}}"],
+    "description": "Styled component prop theme"
   }
 }

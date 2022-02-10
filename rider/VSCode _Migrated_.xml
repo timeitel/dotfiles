@@ -71,8 +71,8 @@
   <action id="NavBar-cancel">
     <keyboard-shortcut first-keystroke="escape" />
   </action>
-  <action id="NextEditorTab">
-    <keyboard-shortcut first-keystroke="shift ctrl right" />
+  <action id="NextSplitter">
+    <keyboard-shortcut first-keystroke="alt tab" />
     <keyboard-shortcut first-keystroke="ctrl l" />
   </action>
   <action id="NextTab" />

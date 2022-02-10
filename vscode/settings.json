@@ -36,6 +36,7 @@
    */
   "vim.surround": true,
   "vim.sneak": true,
+  "vim.timeout": 350,
   "vim.leader": "space",
   "vim.visualstar": true,
   "vim.camelCaseMotion.enable": true,
@@ -340,7 +341,6 @@
   "debug.javascript.terminalOptions": {
     "skipFiles": ["<node_internals>/**", "**.js"]
   },
-  "gitlens.currentLine.enabled": false,
   "gitlens.codeLens.enabled": false,
   "gitlens.hovers.enabled": false,
   "debug.javascript.suggestPrettyPrinting": false,
@@ -353,6 +353,7 @@
   "security.workspace.trust.untrustedFiles": "open",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.preferences.importModuleSpecifier": "non-relative",
-  "extensions.ignoreRecommendations": true
+  "extensions.ignoreRecommendations": true,
+  "gitlens.currentLine.enabled": false,
+  "window.zoomLevel": 2
 }

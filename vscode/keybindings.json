@@ -425,14 +425,6 @@
     "when": "notebookEditorFocused"
   },
   {
-    "key": "ctrl+l",
-    "command": "workbench.action.focusRightGroup"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.focusLeftGroup"
-  },
-  {
     "key": "ctrl+h",
     "command": "-deleteLeft",
     "when": "textInputFocus"
@@ -513,5 +505,22 @@
   {
     "key": "ctrl+5",
     "command": "-workbench.action.openEditorAtIndex5"
+  },
+  {
+    "key": "alt+tab",
+    "command": "workbench.action.focusNextGroup"
+  },
+  {
+    "key": "cmd+k cmd+up",
+    "command": "-workbench.action.focusAboveGroup"
+  },
+  {
+    "key": "cmd+k cmd+down",
+    "command": "-workbench.action.focusBelowGroup"
+  },
+  {
+    "key": "cmd+w",
+    "command": "-workbench.action.closeWindow",
+    "when": "!editorIsOpen && !multipleEditorGroups"
   }
 ]
