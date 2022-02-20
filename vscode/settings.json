@@ -273,6 +273,7 @@
     "googleapis",
     "gserviceaccount",
     "initialising",
+    "jank",
     "Komo",
     "leaderboard",
     "Microservices",
@@ -355,5 +356,5 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "extensions.ignoreRecommendations": true,
   "gitlens.currentLine.enabled": false,
-  "window.zoomLevel": 2
+  "window.zoomLevel": 1
 }
