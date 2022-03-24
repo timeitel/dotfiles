@@ -4,12 +4,13 @@ map <leader>ta :qa<cr>
 map <leader>f /
 map <leader>F ? 
 
+noremap H ^
+noremap L $
+noremap n nzz
+noremap N Nzz
 inoremap kj <Esc>
-nnoremap H ^
-nnoremap L $
+vnoremap kj <Esc>
 nnoremap K i<Enter><Esc> 
-nnoremap n nzz
-nnoremap N Nzz
 
 set number relativenumber "hybrid line numbers
 set history=500
