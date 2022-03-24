@@ -9,7 +9,6 @@ noremap L $
 noremap n nzz
 noremap N Nzz
 inoremap kj <Esc>
-vnoremap kj <Esc>
 nnoremap K i<Enter><Esc> 
 
 set number relativenumber "hybrid line numbers
