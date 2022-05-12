@@ -266,6 +266,9 @@
     "Errored",
     "favourite",
     "firestore",
+    "flexi",
+    "Flexis",
+    "fullscreen",
     "gameplay",
     "gameplays",
     "gcloud",
@@ -273,7 +276,10 @@
     "googleapis",
     "gserviceaccount",
     "gsutil",
+    "Guids",
+    "hubspot",
     "initialising",
+    "Insta",
     "jank",
     "Komo",
     "leaderboard",
@@ -295,8 +301,11 @@
     "Spotify",
     "Subsea",
     "Treeview",
+    "Unpublish",
+    "Unpublishing",
     "Unticked",
     "unvalidated",
+    "userflow",
     "wordsorless",
     "Xunit"
   ],
@@ -358,7 +367,6 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "extensions.ignoreRecommendations": true,
   "gitlens.currentLine.enabled": false,
-  "window.zoomLevel": 1,
   "[dart]": {
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
@@ -376,5 +384,13 @@
   "dart.debugSdkLibraries": false,
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "dart.openDevTools": "flutter"
+  "dart.openDevTools": "flutter",
+  "gitlens.fileAnnotations.command": "blame",
+  "window.zoomLevel": 1,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "package.json": "package-lock.json, yarn.lock",
+    "pubspec.yaml": ".packages, .metadata, pubspec.lock, analysis_options.yaml"
+  }
 }
