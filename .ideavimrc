@@ -1,3 +1,5 @@
+set NERDTree
+
 source ~/.vimrc
 
 map <leader>e <Action>(GotoNextError)

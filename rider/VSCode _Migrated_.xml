@@ -15,6 +15,10 @@
   <action id="CloseProject" />
   <action id="CollapseAllRegions" />
   <action id="CollapseRegionRecursively" />
+  <action id="CollapseTreeNode">
+    <keyboard-shortcut first-keystroke="subtract" />
+    <keyboard-shortcut first-keystroke="shift h" />
+  </action>
   <action id="CommentByLineComment">
     <keyboard-shortcut first-keystroke="meta slash" />
   </action>
@@ -45,6 +49,10 @@
   </action>
   <action id="ExpandAllRegions" />
   <action id="ExpandRegionRecursively" />
+  <action id="ExpandTreeNode">
+    <keyboard-shortcut first-keystroke="add" />
+    <keyboard-shortcut first-keystroke="l" />
+  </action>
   <action id="FileChooser.GotoHome" />
   <action id="FileChooser.GotoProject" />
   <action id="GotoAction">
@@ -71,6 +79,9 @@
   <action id="NavBar-cancel">
     <keyboard-shortcut first-keystroke="escape" />
   </action>
+  <action id="NewElementSamePlace">
+    <keyboard-shortcut first-keystroke="shift ctrl n" />
+  </action>
   <action id="NextSplitter">
     <keyboard-shortcut first-keystroke="alt tab" />
     <keyboard-shortcut first-keystroke="ctrl l" />
@@ -96,6 +107,7 @@
     <keyboard-shortcut first-keystroke="meta alt left" />
   </action>
   <action id="QuickChangeScheme" />
+  <action id="ReSharperNavigateTo" />
   <action id="RemoteServers.EditServerConfig" />
   <action id="ReopenClosedTab">
     <keyboard-shortcut first-keystroke="shift meta t" />
@@ -118,6 +130,9 @@
     <keyboard-shortcut first-keystroke="meta l" />
   </action>
   <action id="ToggleZenMode" />
+  <action id="Tree-selectParentNoCollapse">
+    <keyboard-shortcut first-keystroke="h" />
+  </action>
   <action id="TypeHierarchy" />
   <action id="TypeHierarchyBase.BaseOnThisType" />
   <action id="Vcs.ShowMessageHistory">

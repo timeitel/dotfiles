@@ -83,5 +83,42 @@
     "prefix": "pth",
     "body": ["${(p) => p.${1:}}"],
     "description": "Styled component prop theme"
+  },
+  "Stateless flutter widget": {
+    "prefix": "stl",
+    "body": [
+      "import 'package:flutter/material.dart';",
+      "",
+      "class ${3:${TM_FILENAME_BASE/([a-z]*)-*([a-z]*)/${1:/capitalize}${2:/capitalize}/g}} extends StatelessWidget {",
+      "const ${3:${TM_FILENAME_BASE/([a-z]*)-*([a-z]*)/${1:/capitalize}${2:/capitalize}/g}} ({Key? key}) : super(key: key);",
+      "",
+      "@override",
+      "Widget build(BuildContext context) {",
+      "return Container();",
+      "}",
+      "}"
+    ],
+    "description": "Stateless flutter widget"
+  },
+  "Stateful flutter widget": {
+    "prefix": "stf",
+    "body": [
+      "import 'package:flutter/material.dart';",
+      "",
+      "class ${3:${TM_FILENAME_BASE/([a-z]*)-*([a-z]*)/${1:/capitalize}${2:/capitalize}/g}} extends StatefulWidget {",
+      "const ${3:${TM_FILENAME_BASE/([a-z]*)-*([a-z]*)/${1:/capitalize}${2:/capitalize}/g}} ({Key? key}) : super(key: key);",
+      "",
+      "@override",
+      "State<${3:${TM_FILENAME_BASE/([a-z]*)-*([a-z]*)/${1:/capitalize}${2:/capitalize}/g}}> createState() => _${3:${TM_FILENAME_BASE/([a-z]*)-*([a-z]*)/${1:/capitalize}${2:/capitalize}/g}}State();",
+      "}",
+      "",
+      "class _${3:${TM_FILENAME_BASE/([a-z]*)-*([a-z]*)/${1:/capitalize}${2:/capitalize}/g}}State extends State<${3:${TM_FILENAME_BASE/([a-z]*)-*([a-z]*)/${1:/capitalize}${2:/capitalize}/g}}> {",
+      "@override",
+      "Widget build(BuildContext context) {",
+      "return Container();",
+      "}",
+      "}"
+    ],
+    "description": "Stateful flutter widget"
   }
 }

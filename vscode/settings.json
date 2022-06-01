@@ -287,6 +287,7 @@
     "nowrap",
     "Parens",
     "Pathing",
+    "prefs",
     "rebass",
     "receiptuploader",
     "sanitised",
@@ -306,6 +307,7 @@
     "Unticked",
     "unvalidated",
     "userflow",
+    "vsync",
     "wordsorless",
     "Xunit"
   ],
@@ -315,11 +317,23 @@
   "scm.alwaysShowRepositories": true,
   "window.title": "",
   "files.exclude": {
+    ".dart_tool": true,
+    ".flutter-plugins": true,
+    ".flutter-plugins-dependencies": true,
+    ".idea": true,
     ".next": true,
+    "android": true,
     "bin": true,
+    "build": true,
+    "ios": true,
+    "linux": true,
+    "macos": true,
+    "mobile_ui.iml": true,
     "node_modules": true,
     "obj": true,
-    "out": true
+    "out": true,
+    "web": true,
+    "windows": true
   },
   "git.autofetch": true,
   "editor.cursorBlinking": "solid",
@@ -386,11 +400,15 @@
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "dart.openDevTools": "flutter",
   "gitlens.fileAnnotations.command": "blame",
-  "window.zoomLevel": 1,
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
     "package.json": "package-lock.json, yarn.lock",
     "pubspec.yaml": ".packages, .metadata, pubspec.lock, analysis_options.yaml"
-  }
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "git.autoRepositoryDetection": false,
+  "window.zoomLevel": 2
 }
