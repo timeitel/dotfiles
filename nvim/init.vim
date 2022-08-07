@@ -84,4 +84,8 @@ Plug 'tommcdo/vim-exchange'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'tpope/vim-surround'
+Plug 'morhetz/gruvbox'
 call plug#end()
+
+set bg=dark
+colorscheme gruvbox
