@@ -78,3 +78,10 @@ augroup highlight_yank
   autocmd!
   au TextYankPost * silent! lua vim.highlight.on_yank{higroup='IncSearch', timeout=200}
 augroup END
+
+call plug#begin()
+Plug 'tommcdo/vim-exchange'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'inkarkat/vim-ReplaceWithRegister'
+Plug 'tpope/vim-surround'
+call plug#end()
