@@ -522,5 +522,18 @@
     "key": "cmd+w",
     "command": "-workbench.action.closeWindow",
     "when": "!editorIsOpen && !multipleEditorGroups"
+  },
+  {
+    "key": "shift+cmd+n",
+    "command": "-workbench.action.newWindow"
+  },
+  {
+    "key": "shift+cmd+n",
+    "command": "workbench.action.duplicateWorkspaceInNewWindow"
+  },
+  {
+    "key": "shift+cmd+t",
+    "command": "-extension.toggleHEX",
+    "when": "editorTextFocus"
   }
 ]

@@ -1,6 +1,7 @@
 /vscode
 /rider
 /mac
+/nvim
 .git
 .gitignore
 .DS_Store

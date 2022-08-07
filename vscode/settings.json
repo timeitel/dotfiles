@@ -29,7 +29,8 @@
     "statusBar.background": "#1f1f1f",
     "editorGroupHeader.tabsBackground": "#1f1f1f",
     "tab.inactiveBackground": "#1f1f1f",
-    "titleBar.activeBackground": "#1f1f1f"
+    "titleBar.activeBackground": "#1f1f1f",
+    "sideBar.foreground": "#D4BE98"
   },
   /*
    * VsCodeVim settings
@@ -256,10 +257,12 @@
   ],
   "cSpell.userWords": [
     "aboutme",
+    "behaviour",
     "collapsable",
     "COMMS",
     "containerregistry",
     "datacapture",
+    "draftail",
     "ECHAL",
     "EEFGR",
     "Eitel",
@@ -282,9 +285,11 @@
     "Insta",
     "jank",
     "Komo",
+    "Konva",
     "leaderboard",
     "Microservices",
     "nowrap",
+    "nvim",
     "Parens",
     "Pathing",
     "prefs",
@@ -410,5 +415,7 @@
     "editor.defaultFormatter": "ms-python.python"
   },
   "git.autoRepositoryDetection": false,
-  "window.zoomLevel": 2
+  "git.mergeEditor": true,
+  "window.zoomLevel": 1,
+  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim"
 }
