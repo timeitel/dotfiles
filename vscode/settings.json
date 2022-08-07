@@ -32,229 +32,6 @@
     "titleBar.activeBackground": "#1f1f1f",
     "sideBar.foreground": "#D4BE98"
   },
-  /*
-   * VsCodeVim settings
-   */
-  "vim.surround": true,
-  "vim.sneak": true,
-  "vim.timeout": 350,
-  "vim.leader": "space",
-  "vim.visualstar": true,
-  "vim.camelCaseMotion.enable": true,
-  "vim.replaceWithRegister": true,
-  "vim.useCtrlKeys": true,
-  "vim.highlightedyank.enable": true,
-  "vim.insertModeKeyBindingsNonRecursive": [
-    {
-      "before": ["k", "j"],
-      "commands": [
-        "extension.vim_escape",
-        "editor.action.formatDocument",
-        "workbench.action.files.save"
-      ]
-    }
-  ],
-  "vim.visualModeKeyBindingsNonRecursive": [
-    {
-      "before": ["H"],
-      "after": ["^"]
-    },
-    {
-      "before": ["L"],
-      "after": ["$"]
-    },
-    {
-      "before": ["p"],
-      "after": ["p", "g", "v", "y"]
-    },
-    {
-      "before": [">"],
-      "commands": ["editor.action.indentLines"]
-    },
-    {
-      "before": ["<"],
-      "commands": ["editor.action.outdentLines"]
-    }
-  ],
-  "vim.operatorPendingModeKeyBindings": [
-    {
-      "before": ["L"],
-      "after": ["$"]
-    },
-    {
-      "before": ["H"],
-      "after": ["^"]
-    }
-  ],
-  "vim.normalModeKeyBindings": [
-    {
-      "before": ["<leader>", "e"],
-      "commands": ["editor.action.marker.next"]
-    },
-    {
-      "before": ["<leader>", "E"],
-      "commands": ["editor.action.marker.prev"]
-    },
-    {
-      "before": ["<leader>", "g", "r"],
-      "after": [
-        "g",
-        "g",
-        "/",
-        "e",
-        "x",
-        "p",
-        "o",
-        "r",
-        "t",
-        " ",
-        "<enter>",
-        "w",
-        "w",
-        "<leader>",
-        "s",
-        "r"
-      ]
-    }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<leader>", "s", "r"],
-      "commands": [
-        {
-          "command": "editor.action.goToReferences"
-        }
-      ]
-    },
-    {
-      "before": ["H"],
-      "after": ["^"]
-    },
-    {
-      "before": ["L"],
-      "after": ["$"]
-    },
-    {
-      "before": ["K"],
-      "after": ["i", "<enter>", "<esc>"]
-    },
-    {
-      "before": ["n"],
-      "after": ["n", "z", "z", "z", "o"]
-    },
-    {
-      "before": ["N"],
-      "after": ["N", "z", "z", "z", "o"]
-    },
-    {
-      "before": ["<leader>", "d", "a"],
-      "after": ["v", "i", "<", "o", "W", "h", "d", "<esc>", "<leader>", "h"]
-    },
-    {
-      "before": ["<leader>", "i"],
-      "after": ["i", " ", "<esc>", "i"]
-    },
-    {
-      "before": ["<leader>", "a", "c"],
-      "after": ["A", ",", "<esc>", "j", "^"]
-    },
-    {
-      "before": ["<leader>", "a", "p"],
-      "after": ["A", ",", "<enter>"]
-    },
-    {
-      "before": ["<leader>", "d", "p"],
-      "after": ["V", "$", "%", "d"]
-    },
-    {
-      "before": ["<leader>", "a", "s"],
-      "after": ["a", " ", "<esc>"]
-    },
-    {
-      "before": ["<leader>", "%"],
-      "commands": [
-        {
-          "command": "editor.emmet.action.matchTag"
-        }
-      ]
-    },
-    {
-      "before": ["<leader>", "`"],
-      "after": ["f", "`", "c", "i", "`"]
-    },
-    {
-      "before": ["<leader>", "\""],
-      "after": ["f", "\"", "c", "i", "\""]
-    },
-    {
-      "before": ["<leader>", "'"],
-      "after": ["f", "'", "c", "i", "'"]
-    },
-    {
-      "before": ["<leader>", ")"],
-      "after": ["f", ")", "c", "i", ")"]
-    },
-    {
-      "before": ["<leader>", "("],
-      "after": ["f", "(", "c", "i", "("]
-    },
-    {
-      "before": ["<leader>", "{"],
-      "after": ["f", "{", "c", "i", "{"]
-    },
-    {
-      "before": ["<leader>", "}"],
-      "after": ["f", "}", "c", "i", "}"]
-    },
-    {
-      "before": ["<leader>", "["],
-      "after": ["f", "[", "c", "i", "["]
-    },
-    {
-      "before": ["<leader>", "]"],
-      "after": ["f", "]", "c", "i", "]"]
-    },
-    {
-      "before": ["<leader>", "p", "l"],
-      "after": ["o", "<esc>", "p"]
-    },
-    {
-      "before": ["<leader>", "p", "e"],
-      "after": ["E", "a", " ", "<esc>", "v", "p"]
-    },
-    {
-      "before": ["<leader>", "p", "p"],
-      "after": ["A", ",", "<esc>", "p"]
-    },
-    {
-      "before": ["<leader>", "f"],
-      "after": ["/"]
-    },
-    {
-      "before": ["<leader>", "F"],
-      "after": ["?"]
-    },
-    {
-      "before": ["<leader>", "h"],
-      "commands": [":nohl"]
-    },
-    {
-      "before": ["<leader>", "t", "a"],
-      "after": [":", "w", "q", "a", "<enter>"]
-    },
-    {
-      "before": ["<leader>", "t", "o"],
-      "commands": [":tabonly"]
-    },
-    {
-      "before": ["<C-u>"],
-      "after": ["H", "z", "z"]
-    },
-    {
-      "before": ["<C-d>"],
-      "after": ["L", "z", "z"]
-    }
-  ],
   "cSpell.userWords": [
     "aboutme",
     "behaviour",
@@ -282,12 +59,15 @@
     "Guids",
     "hubspot",
     "initialising",
+    "inoremap",
     "Insta",
     "jank",
     "Komo",
     "Konva",
     "leaderboard",
     "Microservices",
+    "nnoremap",
+    "noremap",
     "nowrap",
     "nvim",
     "Parens",
@@ -374,7 +154,6 @@
   },
   "gitlens.codeLens.enabled": false,
   "gitlens.hovers.enabled": false,
-  "debug.javascript.suggestPrettyPrinting": false,
   "editor.renderWhitespace": "none",
   "workbench.activityBar.visible": false,
   "explorer.confirmDelete": false,
