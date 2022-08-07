@@ -10,6 +10,7 @@ noremap n nzz
 noremap N Nzz
 inoremap kj <Esc>
 nnoremap K i<Enter><Esc> 
+nnoremap Y yy
 
 set number relativenumber "hybrid line numbers
 set history=500
@@ -72,3 +73,8 @@ endif
 
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+augroup highlight_yank
+  autocmd!
+  au TextYankPost * silent! lua vim.highlight.on_yank{higroup='IncSearch', timeout=200}
+augroup END
