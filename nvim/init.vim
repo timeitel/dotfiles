@@ -12,6 +12,12 @@ inoremap kj <Esc>
 nnoremap K i<Enter><Esc> 
 nnoremap Y yy
 
+" vscode integration :3
+nnoremap <leader>m <Cmd>call VSCodeNotify('bookmarks.toggle')<CR>
+nnoremap <leader>l <Cmd>call VSCodeNotify('bookmarks.listFromAllFiles')<CR>
+nnoremap <leader>n <Cmd>call VSCodeNotify('bookmarks.jumpToNext')<CR>
+nnoremap <leader>p <Cmd>call VSCodeNotify('bookmarks.jumpToPrevious')<CR>
+
 set number relativenumber "hybrid line numbers
 set history=500
 set autoread "auto read when a file is changed from the outside
@@ -43,19 +49,6 @@ set si "Smart indent
 set laststatus=2
 set colorcolumn=80
 
-" Delete trailing white space on save, useful for some filetypes
-fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    silent! %s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfun
-
-if has("autocmd")
-    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
-endif
-
 au FocusGained,BufEnter * checktime
 syntax on
 " Ignore compiled files
@@ -85,7 +78,10 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'inkarkat/vim-ReplaceWithRegister'
 Plug 'tpope/vim-surround'
 Plug 'morhetz/gruvbox'
+Plug 'bkad/CamelCaseMotion'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 set bg=dark
 colorscheme gruvbox
+let g:camelcasemotion_key = '<leader>'

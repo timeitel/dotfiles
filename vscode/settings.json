@@ -122,7 +122,6 @@
   },
   "git.autofetch": true,
   "editor.cursorBlinking": "solid",
-  "editor.cursorSurroundingLines": 8,
   "workbench.statusBar.visible": true,
   "editor.renderControlCharacters": true,
   "workbench.editor.decorations.badges": true,
@@ -196,5 +195,8 @@
   "git.autoRepositoryDetection": false,
   "git.mergeEditor": true,
   "window.zoomLevel": 1,
-  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim"
+  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  }
 }
