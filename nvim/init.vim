@@ -18,6 +18,9 @@ nnoremap <leader>l <Cmd>call VSCodeNotify('bookmarks.listFromAllFiles')<CR>
 nnoremap <leader>n <Cmd>call VSCodeNotify('bookmarks.jumpToNext')<CR>
 nnoremap <leader>p <Cmd>call VSCodeNotify('bookmarks.jumpToPrevious')<CR>
 
+nnoremap <leader>fe <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
+nnoremap <leader>fs 5[{^WW
+
 set number relativenumber "hybrid line numbers
 set history=500
 set autoread "auto read when a file is changed from the outside

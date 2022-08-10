@@ -166,11 +166,6 @@
    * // Remove VSCode or VSCodeVim mappings
    */
   {
-    "key": "shift+space",
-    "command": "extension.vim_escape",
-    "when": "editorTextFocus && vim.active && !inDebugRepl"
-  },
-  {
     "key": "shift+f9",
     "command": "workbench.debug.viewlet.action.removeAllBreakpoints"
   },
@@ -633,5 +628,10 @@
     "key": "alt+cmd+k",
     "command": "-bookmarks.toggle",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+space",
+    "command": "vscode-neovim.escape",
+    "when": "editorTextFocus && neovim.init"
   }
 ]
