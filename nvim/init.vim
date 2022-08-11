@@ -1,14 +1,14 @@
 let mapleader = " "
 map <leader>to :tabonly<cr>
 map <leader>ta :qa<cr>
-map <leader>f /
-map <leader>F ? 
 
-noremap H ^
-noremap L $
-noremap n nzz
-noremap N Nzz
 inoremap kj <Esc>
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L $
+nnoremap n nzz
+nnoremap N Nzz
 nnoremap K i<Enter><Esc> 
 nnoremap Y yy
 
@@ -17,9 +17,15 @@ nnoremap <leader>m <Cmd>call VSCodeNotify('bookmarks.toggle')<CR>
 nnoremap <leader>l <Cmd>call VSCodeNotify('bookmarks.listFromAllFiles')<CR>
 nnoremap <leader>n <Cmd>call VSCodeNotify('bookmarks.jumpToNext')<CR>
 nnoremap <leader>p <Cmd>call VSCodeNotify('bookmarks.jumpToPrevious')<CR>
+nnoremap <leader>gc <Cmd>call VSCodeNotify('git.commitAll')<CR>
 
-nnoremap <leader>fe <Cmd>call VSCodeNotify('editor.action.marker.nextInFiles')<CR>
+nnoremap <leader>fe <Cmd>call VSCodeNotify('editor.action.marker.next')<CR>
+" try find fn signature 
 nnoremap <leader>fs 5[{^WW
+
+nnoremap <leader>i i <Esc>i
+
+nnoremap <leader>oi :e ~/.dotfiles/nvim/init.vim
 
 set number relativenumber "hybrid line numbers
 set history=500
@@ -76,13 +82,13 @@ augroup highlight_yank
 augroup END
 
 call plug#begin()
-Plug 'tommcdo/vim-exchange'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'inkarkat/vim-ReplaceWithRegister'
-Plug 'tpope/vim-surround'
-Plug 'morhetz/gruvbox'
 Plug 'bkad/CamelCaseMotion'
+Plug 'inkarkat/vim-ReplaceWithRegister'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'morhetz/gruvbox'
+Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 set bg=dark

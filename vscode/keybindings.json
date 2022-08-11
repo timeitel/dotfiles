@@ -175,7 +175,7 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+alt+r",
+    "key": "shift+cmd+r",
     "command": "workbench.action.reloadWindow"
   },
   {
