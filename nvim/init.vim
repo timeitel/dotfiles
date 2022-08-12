@@ -17,7 +17,12 @@ nnoremap <leader>m <Cmd>call VSCodeNotify('bookmarks.toggle')<CR>
 nnoremap <leader>l <Cmd>call VSCodeNotify('bookmarks.listFromAllFiles')<CR>
 nnoremap <leader>n <Cmd>call VSCodeNotify('bookmarks.jumpToNext')<CR>
 nnoremap <leader>p <Cmd>call VSCodeNotify('bookmarks.jumpToPrevious')<CR>
-nnoremap <leader>gc <Cmd>call VSCodeNotify('git.commitAll')<CR>
+nnoremap <leader>gr <Cmd>call VSCodeNotify('git.undoCommit')<CR>
+nnoremap <leader>gu <Cmd>call VSCodeNotify('git.unstage')<CR>
+nnoremap <leader>gU <Cmd>call VSCodeNotify('git.unstageAll')<CR>
+nnoremap <leader>ga <Cmd>call VSCodeNotify('git.stage')<CR>
+nnoremap <leader>gA <Cmd>call VSCodeNotify('git.stageAll')<CR>
+nnoremap <leader>gg <Cmd>call VSCodeNotify('git.commitAll')<CR>
 
 nnoremap <leader>fe <Cmd>call VSCodeNotify('editor.action.marker.next')<CR>
 " try find fn signature 
