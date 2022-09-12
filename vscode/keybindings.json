@@ -630,8 +630,19 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "shift+space",
-    "command": "vscode-neovim.escape",
-    "when": "editorTextFocus && neovim.init"
+    "key": "ctrl+l",
+    "command": "bookmarks.listFromAllFiles"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "bookmarks.toggle"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "bookmarks.jumpToNext"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "bookmarks.jumpToPrevious"
   }
 ]
