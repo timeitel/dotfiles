@@ -1,9 +1,7 @@
-
-# general aliases
-alias sz='source ~/.zshrc'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ch='~/.chtsh/cht.sh' # cheat.sh client
+
+alias v=nvim
 
 # git aliases
 alias g='git'
