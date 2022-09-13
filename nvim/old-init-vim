@@ -1,8 +1,6 @@
 inoremap kj <Esc>
-nnoremap H ^
-vnoremap H ^
-nnoremap L $
-vnoremap L $
+map H ^
+map L $
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap K i<Enter><Esc> 
@@ -33,10 +31,21 @@ nnoremap <leader>gh <Cmd>call VSCodeNotify('git-graph.view')<CR>
 nnoremap <leader>gp <Cmd>call VSCodeNotify('git.push')<CR>
 nnoremap <leader>fe <Cmd>call VSCodeNotify('editor.action.marker.next')<CR>
 
-set number relativenumber "hybrid line numbers
+" " Find files using Telescope command-line sugar.
+" nnoremap <leader>ff <cmd>Telescope find_files<cr>
+" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+" nnoremap <leader>fb <cmd>Telescope buffers<cr>
+" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Using Lua functions
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+set number relativenumber
 set history=500
-set autoread "auto read when a file is changed from the outside
-set cmdheight=1 "height of the command bar
+set autoread
 set nohlsearch
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
@@ -74,14 +83,6 @@ else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
-" Properly disable sound on errors on MacVim
-if has("gui_macvim")
-    autocmd GUIEnter * set vb t_vb=
-endif
-
-" Return to last edit position when opening files
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
 augroup highlight_yank
   autocmd!
   au TextYankPost * silent! lua vim.highlight.on_yank{higroup='IncSearch', timeout=200}
@@ -95,6 +96,11 @@ Plug 'morhetz/gruvbox'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
 call plug#end()
 
 set bg=dark
