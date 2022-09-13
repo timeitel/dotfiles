@@ -3,6 +3,7 @@ return require('packer').startup(function()
   use 'gruvbox-community/gruvbox'
 
   -- Completion
+  use "neovim/nvim-lspconfig"
   use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-path"

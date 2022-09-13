@@ -1,4 +1,4 @@
-require('settings')
+require('options')
 require('keymaps')
 require('plugins.packer-config')
 -- require('plugins/nvim-tree-config')
