@@ -3,11 +3,11 @@ return require('packer').startup(function()
   use 'gruvbox-community/gruvbox'
 
   -- Telescope
-  use { "nvim-telescope/telescope-file-browser.nvim" }
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+  use { "nvim-telescope/telescope-file-browser.nvim" }
 
   -- LSP
   use "neovim/nvim-lspconfig"
@@ -21,6 +21,8 @@ return require('packer').startup(function()
   use "tamago324/cmp-zsh"
 
   use 'simrat39/rust-tools.nvim'
+
+  use 'jose-elias-alvarez/null-ls.nvim'
 
   -- 10000x developer
   use 'bkad/CamelCaseMotion'

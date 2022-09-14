@@ -13,6 +13,7 @@ require('telescope').setup {
     entry_prefix = "  ",
     multi_icon = "<>",
     -- path_display = "truncate",
+    path_display={"smart"},
     winblend = 0,
     layout_strategy = "horizontal",
     layout_config = {
