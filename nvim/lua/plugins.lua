@@ -2,9 +2,11 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'gruvbox-community/gruvbox'
 
+  -- Telescope
+  use { "nvim-telescope/telescope-file-browser.nvim" }
   use {
-  'nvim-telescope/telescope.nvim', tag = '0.1.0',
-  requires = { {'nvim-lua/plenary.nvim'} }
+    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    requires = { {'nvim-lua/plenary.nvim'} }
   }
 
   -- LSP
@@ -19,4 +21,12 @@ return require('packer').startup(function()
   use "tamago324/cmp-zsh"
 
   use 'simrat39/rust-tools.nvim'
+
+  -- 10000x developer
+  use 'bkad/CamelCaseMotion'
+  use 'inkarkat/vim-ReplaceWithRegister'
+  use 'michaeljsmith/vim-indent-object'
+  use 'tommcdo/vim-exchange'
+  use 'tpope/vim-commentary'
+  use 'tpope/vim-surround'
 end)
