@@ -1,11 +1,7 @@
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local default_opts = { noremap = true }
-map(
-	"n",
-	"<leader>ff",
-	"<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
-	default_opts
-)
+
+map("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files()<cr>", default_opts)
 map("n", "<leader>fg", "<cmd>lua require'telescope.builtin'.git_status()<cr>", default_opts)
 map("n", "<leader>lg", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", default_opts)
 map("n", "<leader>fb", "<cmd>Telescope file_browser<cr>", default_opts)
@@ -13,7 +9,6 @@ map("n", "<leader>fb", "<cmd>Telescope file_browser<cr>", default_opts)
 local actions = require("telescope.actions")
 
 require("telescope").setup({
-
 	defaults = {
 		prompt_prefix = "> ",
 		selection_caret = "> ",
@@ -66,17 +61,17 @@ require("telescope").setup({
 				["<C-k>"] = actions.move_selection_previous,
 				["<C-e>"] = actions.close,
 				["<C-y>"] = actions.select_default + actions.center,
+				["<C-h>"] = "which_key",
 			},
 			n = {
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
 				["<C-e>"] = actions.close,
 				["<C-y>"] = actions.select_default + actions.center,
+				["<C-h>"] = "which_key",
 			},
 		},
-		extensions = {
-			file_browser = {},
-		},
+		extensions = {},
 	},
 })
 
