@@ -50,4 +50,4 @@ if vim.fn.has('nvim-0.5.1') == 1 then
 	vim.lsp.handlers['textDocument/symbol'] = function(_, _, result, _, bufn)
 	    require('lsputil.symbols').workspace_handler(nil, result, { bufnr = bufn }, nil)
 	end
-    en
+end
