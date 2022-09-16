@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/gruvbox-community/gruvbox"
   },
+  harpoon = {
+    loaded = true,
+    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
@@ -134,6 +139,11 @@ _G.packer_plugins = {
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-lsputils"] = {
+    loaded = true,
+    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/nvim-lsputils",
+    url = "https://github.com/RishabhRD/nvim-lsputils"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -144,6 +154,11 @@ _G.packer_plugins = {
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  popfix = {
+    loaded = true,
+    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/popfix",
+    url = "https://github.com/RishabhRD/popfix"
+  },
   ["rust-tools.nvim"] = {
     loaded = true,
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
@@ -153,11 +168,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
     url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
-  },
-  ["telescope-project.nvim"] = {
-    loaded = true,
-    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/telescope-project.nvim",
-    url = "https://github.com/nvim-telescope/telescope-project.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,

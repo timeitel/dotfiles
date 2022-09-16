@@ -39,4 +39,9 @@ return require("packer").startup(function()
 	use("tommcdo/vim-exchange")
 	use("tpope/vim-commentary")
 	use("tpope/vim-surround")
+
+	use("ThePrimeagen/harpoon")
+
+	use("RishabhRD/popfix")
+	use("RishabhRD/nvim-lsputils")
 end)

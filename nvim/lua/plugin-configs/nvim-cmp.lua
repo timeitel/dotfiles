@@ -1,6 +1,3 @@
-vim.opt.completeopt = { "menu", "menuone" }
-vim.opt.shortmess = vim.opt.shortmess + { c = true }
-
 local cmp = require("cmp")
 
 cmp.setup({
