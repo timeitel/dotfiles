@@ -7,7 +7,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 
 return require("packer").startup(function()
 	use("wbthomason/packer.nvim")
-	use("gruvbox-community/gruvbox")
 
 	-- Telescope
 	use({
@@ -44,4 +43,8 @@ return require("packer").startup(function()
 
 	use("RishabhRD/popfix")
 	use("RishabhRD/nvim-lsputils")
+
+	-- Styling
+	use("gruvbox-community/gruvbox")
+	use("kyazdani42/nvim-web-devicons")
 end)

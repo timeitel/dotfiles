@@ -12,27 +12,10 @@ alias gf='git fetch'
 alias gps='git push'
 alias ga='git add'
 alias gaa='git add -A'
-alias gu='git reset --mixed'
 alias gc='git commit -m'
 alias gl='git log --all --decorate --oneline --graph'
-alias grb='git rebase'
 alias gb='git branch'
 alias gco='git checkout'
-alias gm='git merge'
 alias gmos='gf && git merge origin staging'
 alias config='git -C ~/.dotfiles' # dotfiles / config repo
 
-gitbulkdelete() {
-    local response=''
-    local list="git branch --list '*$1*'"
-
-    echo "The following branches will be $(tput bold)*FORCE*$(tput sgr0) deleted:"
-    echo
-    eval $list
-    echo
-    vared -p "Are you sure you'd like to force delete? [y/N]  " -c response
-
-    if [[ ${response:l} == ("y"|"yes") ]] ; then
-      eval "git branch -D \`$list\`"
-    fi
-}

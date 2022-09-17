@@ -1,4 +1,5 @@
 local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
 
 require("telescope").setup({
 	defaults = {
@@ -6,8 +7,6 @@ require("telescope").setup({
 		selection_caret = "> ",
 		entry_prefix = "  ",
 		multi_icon = "<>",
-		-- path_display = "truncate",
-		path_display = { "smart" },
 		winblend = 0,
 		layout_strategy = "horizontal",
 		layout_config = {
@@ -47,14 +46,26 @@ require("telescope").setup({
 				["<C-k>"] = actions.move_selection_previous,
 				["<C-e>"] = actions.close,
 				["<C-y>"] = actions.select_default + actions.center,
+				["<C-w>"] = function()
+					vim.api.nvim_input("<c-s-w>")
+				end,
+				-- TODO: setup change cwd for file_browser
+				-- ["<C-g>"] = function(prompt)
+				-- 	local entry = action_state.get_selected_entry()
+				-- 	actions.close(prompt)
+				-- 	local dir = require("telescope.from_entry").path(entry)
+				-- 	print(entry)
+				-- 	vim.api.nvim_set_current_dir(dir)
+				-- end,
+				["<C-s>"] = actions.select_horizontal,
 			},
 			n = {
-				["<C-j>"] = actions.move_selection_next,
-				["<C-k>"] = actions.move_selection_previous,
 				["<C-e>"] = actions.close,
 				["<C-y>"] = actions.select_default + actions.center,
+				["kj"] = "close",
 			},
 		},
+
 		extensions = {
 			file_browser = {},
 		},

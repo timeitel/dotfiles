@@ -9,7 +9,7 @@ cmp.setup({
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
-		["<C-u>"] = cmp.mapping.scroll_docs(4),:Telescope :Telescope :Telescope :Telescopeng.scroll_docs(4), 
+		["<C-u>"] = cmp.mapping.scroll_docs(4), 
 		["<C-j>"] = cmp.mapping.select_next_item(),
 		["<C-k>"] = cmp.mapping.select_prev_item(),
 		["<C-Space>"] = cmp.mapping.complete(),
