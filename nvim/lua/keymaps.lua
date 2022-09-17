@@ -10,10 +10,13 @@ map("", "L", "$")
 map("", "<C-q>", "<ESC>")
 
 map("i", "kj", "<ESC>")
+map("i", "<C-j>", "<ESC>")
 
 map("n", "n", "nzz")
 map("n", "N", "Nzz")
 map("n", "Y", "yy")
+map("n", "p", "pgvy")
+map("n", "P", "Pgvy")
 
 map("n", "<leader>sv", ":luafile $MYVIMRC<cr>") -- source vimrc
 map("n", "<leader>sp", ":PackerSync<cr>") -- source / synce plugins
@@ -21,15 +24,15 @@ map("n", "<leader>sp", ":PackerSync<cr>") -- source / synce plugins
 -- LSP
 map("n", "J", ":lua vim.lsp.buf.references()<cr>")
 map("n", "K", ":lua vim.lsp.buf.hover()<cr>")
--- map("n", "<leader>.>", ":lua vim.lsp.buf.code_action()<cr>")
+map("n", "<C-,>", ":lua vim.lsp.buf.code_action()<cr>")
 
 -- Telescope
-map("n", "<C-p>", ":lua require'telescope.builtin'.find_files()<cr>")
-map("n", "<leader>fg", ":lua require'telescope.builtin'.git_status()<cr>")
-map("n", "<leader>ff", ":lua require'telescope.builtin'.live_grep()<cr>")
-map("n", "<leader>fh", ":lua require'telescope.builtin'.git_commits()<cr>")
-map("n", "<leader>fb", ":Telescope file_browser<cr>")
-map("n", "<leader>en", ":Telescope find_files cwd=~/.config/nvim<cr>") -- edit neovim
+map("n", "<C-p>", ":lua require('telescope.builtin').find_files()<cr>")
+map("n", "<leader>fg", ":lua require('telescope.builtin').git_status()<cr>")
+map("n", "<leader>ff", ":lua require('telescope.builtin').live_grep()<cr>")
+map("n", "<leader>fh", ":lua require('telescope.builtin').git_commits()<cr>")
+map("n", "<leader>fb", ":lua require('telescope.builtin').file_browser<cr>")
+map("n", "<leader>en", ":lua require('telescope.builtin').find_files cwd=~/.config/nvim<cr>") -- edit neovim
 
 -- Harpoon
 map("n", "<leader>a", ":lua require('harpoon.mark').add_file()<cr>")

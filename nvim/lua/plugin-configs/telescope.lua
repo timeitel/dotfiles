@@ -7,14 +7,14 @@ require("telescope").setup({
 		entry_prefix = "  ",
 		multi_icon = "<>",
 		-- path_display = "truncate",
-		path_display={"smart"},
+		path_display = { "smart" },
 		winblend = 0,
 		layout_strategy = "horizontal",
 		layout_config = {
 			width = 0.95,
 			height = 0.85,
 			-- preview_cutoff = 120,
-			prompt_position = "bottom",
+			prompt_position = "top",
 			horizontal = {
 				preview_width = function(_, cols, _)
 					if cols > 200 then
@@ -36,14 +36,8 @@ require("telescope").setup({
 			},
 		},
 
-		pickers = {
-			find_files = {
-				hidden = true,
-			},
-		},
-
 		selection_strategy = "reset",
-		sorting_strategy = "descending",
+		sorting_strategy = "ascending",
 		scroll_strategy = "cycle",
 		color_devicons = true,
 

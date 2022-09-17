@@ -19,6 +19,7 @@ o.tabstop = 4
 o.laststatus = 2
 o.completeopt = { "menu", "menuone" }
 o.shortmess = vim.opt.shortmess + { c = true }
+o.swapfile = false
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
