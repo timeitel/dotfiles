@@ -1,10 +1,11 @@
-require('options')
-require('keymaps')
-require('plugins')
-require('plugin-configs.gruvbox')
-require('plugin-configs.nvim-cmp')
-require('plugin-configs.telescope')
-require('plugin-configs.null-ls')
+require('tmtl.options')
+require('tmtl.keymaps')
+require('tmtl.plugins')
+require('tmtl.plugin-configs.gruvbox')
+require('tmtl.plugin-configs.nvim-cmp')
+require('tmtl.plugin-configs.telescope')
+require('tmtl.plugin-configs.null-ls')
+-- TODO: get treesitter
 
 -- RishabhRD/nvim-lsputils
 if vim.fn.has('nvim-0.5.1') == 1 then

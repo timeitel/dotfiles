@@ -24,7 +24,7 @@ o.scrolloff = 10
 o.laststatus = 2
 o.backspace = { "eol", "start", "indent" }
 o.completeopt = { "menu", "menuone" }
-o.shortmess = vim.opt.shortmess + { c = true }
+o.shortmess = o.shortmess + { c = true }
 o.swapfile = false
 o.splitright = true
 o.splitbelow = true
@@ -50,21 +50,21 @@ o.modelines = 1
 o.belloff = "all"
 
 -- Copying @TJ for now
-opt.formatoptions = opt.formatoptions
-  - "a" -- Auto formatting is BAD.
-  - "t" -- Don't auto format my code. I got linters for that.
-  + "c" -- In general, I like it when comments respect textwidth
-  + "q" -- Allow formatting comments w/ gq
-  - "o" -- O and o, don't continue comments
-  + "r" -- But do continue when pressing enter.
-  + "n" -- Indent past the formatlistpat, not underneath it.
-  + "j" -- Auto-remove comments if possible.
-  - "2"
+o.formatoptions = o.formatoptions
+	- "a" -- Auto formatting is BAD.
+	- "t" -- Don't auto format my code. I got linters for that.
+	+ "c" -- In general, I like it when comments respect textwidth
+	+ "q" -- Allow formatting comments w/ gq
+	- "o" -- O and o, don't continue comments
+	+ "r" -- But do continue when pressing enter.
+	+ "n" -- Indent past the formatlistpat, not underneath it.
+	+ "j" -- Auto-remove comments if possible.
+	- "2"
 
-opt.joinspaces = false
-opt.fillchars = { eob = "~" }
-vim.opt.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal" }
-vim.opt.undofile = true
+o.joinspaces = false
+o.fillchars = { eob = "~" }
+o.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal" }
+o.undofile = true
 
 -- Cursorline highlighting control
 --  Only have it on in the active buffer
@@ -86,7 +86,7 @@ set_cursorline("FileType", false, "TelescopePrompt")
 vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 	callback = function()
-		require("vim.highlight").on_yank({ timeout = 200 })
+		require("vim.highlight").on_yank({ timeout = 200, })
 	end,
 	desc = "Highlight yank",
 })

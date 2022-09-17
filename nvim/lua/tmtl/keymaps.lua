@@ -2,6 +2,16 @@ local function map(m, k, v)
 	vim.keymap.set(m, k, v, { silent = true, noremap = true })
 end
 
+local function reload_nvim()
+	for k, v in pairs(package.loaded) do
+		if string.match(k, "^tmtl") then
+			package.loaded[k] = nil
+		end
+	end
+	vim.cmd("source ~/.config/nvim/init.lua")
+	print("Reloaded")
+end
+
 vim.g.mapleader = " "
 
 -- TODO: fix for all modes
@@ -23,8 +33,8 @@ map("n", "n", "nzz")
 map("n", "N", "Nzz")
 map("n", "Y", "yy")
 
-map("n", "<leader>sv", ":luafile $MYVIMRC<cr>") -- source vimrc
 map("n", "<leader>sp", ":PackerSync<cr>") -- source / synce plugins
+map("n", "<F5>", reload_nvim)
 
 -- LSP
 map("n", "J", ":lua vim.lsp.buf.references()<cr>")
