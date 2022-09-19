@@ -2,6 +2,9 @@ alias ..='cd ..'
 alias ...='cd ../..'
 
 alias v=nvim
+alias vw='nvim -c "cd ~/code/01-komo/entertainment"'
+alias vp='nvim -c "cd ~/code/03-studies/rust"'
+alias vc='nvim -c "cd ~/.dotfiles"'
 
 # git aliases
 alias g='git'
