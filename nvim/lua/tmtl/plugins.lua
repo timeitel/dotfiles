@@ -5,7 +5,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	command = "source <afile> | PackerCompile",
 })
 
-return require("packer").startup(function()
+return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	-- Telescope
@@ -29,7 +29,7 @@ return require("packer").startup(function()
 
 	use("simrat39/rust-tools.nvim")
 
-	use("jose-elias-alvarez/null-ls.nvim")
+	use("jose-elias-alvarez/null-ls.nvim") -- non-LSP sources
 
 	-- 10000x developer
 	use("bkad/CamelCaseMotion")

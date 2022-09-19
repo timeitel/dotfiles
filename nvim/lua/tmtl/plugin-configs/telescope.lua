@@ -9,6 +9,8 @@ require("telescope").setup({
 		multi_icon = "<>",
 		winblend = 0,
 		layout_strategy = "horizontal",
+        wrap_results = true,
+        path_display = {truncate = 2},
 		layout_config = {
 			width = 0.95,
 			height = 0.85,
@@ -49,7 +51,8 @@ require("telescope").setup({
 				["<C-w>"] = function()
 					vim.api.nvim_input("<c-s-w>")
 				end,
-				-- TODO: setup change cwd for file_browser
+				-- TODO: toggle hidden files in telescope (<C-h> in file_browser)
+				-- TODO: setup change neovim cwd for file_browser
 				-- ["<C-g>"] = function(prompt)
 				-- 	local entry = action_state.get_selected_entry()
 				-- 	actions.close(prompt)
@@ -62,14 +65,18 @@ require("telescope").setup({
 			n = {
 				["<C-e>"] = actions.close,
 				["<C-y>"] = actions.select_default + actions.center,
-				["kj"] = "close",
 			},
 		},
 
-		extensions = {
-			file_browser = {},
-		},
+		pickers = {},
+
 	},
+
+    extensions = {
+        file_browser = {
+          hijack_netrw = true,
+        },
+    },
 })
 
 require("telescope").load_extension("file_browser")
