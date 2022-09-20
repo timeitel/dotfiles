@@ -2,16 +2,6 @@ local function map(m, k, v)
     vim.keymap.set(m, k, v, { silent = true, noremap = true, })
 end
 
-local function reload_nvim()
-    for k, v in pairs(package.loaded) do
-        if string.match(k, "^tmtl") then
-            package.loaded[k] = nil
-        end
-    end
-    vim.cmd("source ~/.config/nvim/init.lua")
-    print("Reloaded nvim config")
-end
-
 vim.g.mapleader = " "
 
 -- TODO: fix for all modes
@@ -34,29 +24,31 @@ map("n", "N", "Nzz")
 map("n", "Y", "yy")
 
 map("n", "<leader>sp", ":PackerSync<cr>") -- source / synce plugins
-map("n", "<F5>", reload_nvim)
+-- map("n", "<F5>", reload_nvim) -- TODO: update after folder change / runtime structure
 map("n", "<leader>i", "i <ESC>i")
 
 -- LSP
-map("n", "K", vim.lsp.buf.hover)
-map("n", "J", "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
-map("n", "gd", vim.lsp.buf.definition)
-map("n", "gt", vim.lsp.buf.type_definition)
-map("n", "gi", vim.lsp.buf.implementation)
+-- map("n", "K", vim.lsp.buf.hover)
+-- map("n", "gr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
+-- map("n", "gd", vim.lsp.buf.definition)
+-- map("n", "gt", vim.lsp.buf.type_definition)
+-- map("n", "gi", vim.lsp.buf.implementation)
 
 map("n", "<leader>dj", vim.diagnostic.goto_next)
 map("n", "<leader>dk", vim.diagnostic.goto_prev)
 map("n", "<leader>da", "<cmd>lua vim.lsp.buf.code_action()<cr>")
 map("n", "<leader>dr", "<cmd>lua vim.lsp.buf.rename()<cr>")
-map("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>") -- TODO: fix telescope not respecting nvim lsp config 
--- map("n", "<leader>dc", "<cmd>lua print(vim.inspect(vim.lsp.buf_get_clients()))<cr>") -- buffer clients
+map("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")
 
 -- Fuzzy finder (files)
 map("n", "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<cr>")
-map("n", "<leader>/", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>")
-map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
-map("n", "<leader>fb", "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true })<cr>")
-map("n", "<leader>fc", "<cmd>Telescope find_files cwd=~/.dotfiles<cr>") -- edit neovim
+map("n", "<leader>/", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>") -- find in current buffer
+map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').live_grep()<cr>") -- find in files
+map("n", "<leader>fc", "<cmd>Telescope find_files cwd=~/.dotfiles<cr>") -- find in config
+map("n", "<leader>fw", "<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h')})<cr>") -- find in cwd 
+
+map("n", "<leader>bp", "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true })<cr>") -- browser project
+map("n", "<leader>bw", "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = vim.fn.expand('%:p:h') })<cr>") -- browser cwd
 
 -- Fuzzy finder (git)
 -- map("n", "<leader>gn", "git next diff")
@@ -73,3 +65,7 @@ map("n", "<A-h>", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>")
 map("n", "<A-j>", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>")
 map("n", "<A-k>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>")
 map("n", "<A-l>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
+
+-- 1000x developer
+vim.cmd[[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]]
+vim.cmd[[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]] -- TODO: just unmap
