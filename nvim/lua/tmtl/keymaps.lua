@@ -34,8 +34,8 @@ map("n", "<leader>i", "i <ESC>i")
 -- map("n", "gt", vim.lsp.buf.type_definition)
 -- map("n", "gi", vim.lsp.buf.implementation)
 
-map("n", "<leader>dj", vim.diagnostic.goto_next)
-map("n", "<leader>dk", vim.diagnostic.goto_prev)
+map("n", "<leader>dj", "<cmd>lua vim.diagnostic.goto_next()<cr>zz")
+map("n", "<leader>dk", "<cmd>lua vim.diagnostic.goto_prev()<cr>zz")
 map("n", "<leader>da", "<cmd>lua vim.lsp.buf.code_action()<cr>")
 map("n", "<leader>dr", "<cmd>lua vim.lsp.buf.rename()<cr>")
 map("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")
@@ -51,8 +51,8 @@ map("n", "<leader>bp", "<cmd>lua require('telescope').extensions.file_browser.fi
 map("n", "<leader>bw", "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = vim.fn.expand('%:p:h') })<cr>") -- browser cwd
 
 -- Fuzzy finder (git)
--- map("n", "<leader>gn", "git next diff")
--- map("n", "<leader>gp", "git previous diff")
+-- map("n", "<leader>gn", "git next diff zz")
+-- map("n", "<leader>gp", "git previous diff zz")
 map("n", "<leader>gs", "<cmd>lua require('telescope.builtin').git_status()<cr>")
 map("n", "<leader>gh", "<cmd>lua require('telescope.builtin').git_commits()<cr>")
 
