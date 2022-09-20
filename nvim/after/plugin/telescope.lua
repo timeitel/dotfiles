@@ -65,7 +65,8 @@ require("telescope").setup({
         },
 
         pickers = {
-
+            code_actions = {
+            }
         },
 
         extensions = {
