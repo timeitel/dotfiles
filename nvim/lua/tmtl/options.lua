@@ -90,3 +90,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 	desc = "Highlight yank",
 })
+
+o.laststatus = 3
+o.background = "dark"
+o.termguicolors = true
+

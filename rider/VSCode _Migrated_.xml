@@ -44,7 +44,6 @@
   <action id="EditorScrollToCenter" />
   <action id="EditorUp">
     <keyboard-shortcut first-keystroke="up" />
-    <keyboard-shortcut first-keystroke="ctrl p" />
     <keyboard-shortcut first-keystroke="meta k" />
   </action>
   <action id="ExpandAllRegions" />
@@ -60,6 +59,10 @@
     <keyboard-shortcut first-keystroke="shift meta p" />
   </action>
   <action id="GotoBookmark8" />
+  <action id="GotoFile">
+    <keyboard-shortcut first-keystroke="ctrl p" />
+    <keyboard-shortcut first-keystroke="meta p" />
+  </action>
   <action id="GotoNextError" />
   <action id="GotoSymbol">
     <keyboard-shortcut first-keystroke="meta t" />
@@ -70,7 +73,6 @@
   <action id="JumpToLastChange" />
   <action id="List-selectPreviousRow">
     <keyboard-shortcut first-keystroke="up" />
-    <keyboard-shortcut first-keystroke="ctrl p" />
     <keyboard-shortcut first-keystroke="meta k" />
   </action>
   <action id="MoveTabRight">
@@ -78,6 +80,10 @@
   </action>
   <action id="NavBar-cancel">
     <keyboard-shortcut first-keystroke="escape" />
+  </action>
+  <action id="NavBar-selectUp">
+    <keyboard-shortcut first-keystroke="up" />
+    <keyboard-shortcut first-keystroke="meta k" />
   </action>
   <action id="NewElementSamePlace">
     <keyboard-shortcut first-keystroke="shift ctrl n" />
@@ -98,6 +104,10 @@
     <keyboard-shortcut first-keystroke="down" />
     <keyboard-shortcut first-keystroke="ctrl n" />
     <keyboard-shortcut first-keystroke="meta j" />
+  </action>
+  <action id="PopupMenu-selectPrevious">
+    <keyboard-shortcut first-keystroke="up" />
+    <keyboard-shortcut first-keystroke="meta k" />
   </action>
   <action id="PreviousEditorTab">
     <keyboard-shortcut first-keystroke="shift ctrl left" />
@@ -122,10 +132,15 @@
   <action id="SelectAllOccurrences">
     <keyboard-shortcut first-keystroke="shift meta l" />
   </action>
+  <action id="ServiceView.GroupByServiceGroups" />
   <action id="SmartTypeCompletion" />
   <action id="SplitVertically" />
   <action id="SwitcherIterateItems" />
   <action id="SwitcherRecentEditedChangedToggleCheckBox" />
+  <action id="Table-selectPreviousRow">
+    <keyboard-shortcut first-keystroke="up" />
+    <keyboard-shortcut first-keystroke="meta k" />
+  </action>
   <action id="Terminal.ClearBuffer">
     <keyboard-shortcut first-keystroke="meta l" />
   </action>
@@ -133,8 +148,13 @@
   <action id="Tree-selectParentNoCollapse">
     <keyboard-shortcut first-keystroke="h" />
   </action>
+  <action id="Tree-selectPrevious">
+    <keyboard-shortcut first-keystroke="up" />
+    <keyboard-shortcut first-keystroke="meta k" />
+  </action>
   <action id="TypeHierarchy" />
   <action id="TypeHierarchyBase.BaseOnThisType" />
+  <action id="UsageGrouping.Directory" />
   <action id="Vcs.ShowMessageHistory">
     <keyboard-shortcut first-keystroke="ctrl m" />
   </action>

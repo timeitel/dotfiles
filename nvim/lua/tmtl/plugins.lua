@@ -44,7 +44,16 @@ return require("packer").startup(function(use)
     use("RishabhRD/popfix")
     use("RishabhRD/nvim-lsputils")
 
+    use({
+        'weilbith/nvim-code-action-menu',
+        cmd = 'CodeActionMenu',
+    }) -- TODO make work
+
+    use ({'lewis6991/gitsigns.nvim'})
+
     -- Styling
-    use("gruvbox-community/gruvbox")
+    -- use("gruvbox-community/gruvbox")
+    use("monsonjeremy/onedark.nvim")
     use("kyazdani42/nvim-web-devicons")
+    use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'} -- TODO: replace with winbar on nvim 0.8
 end)
