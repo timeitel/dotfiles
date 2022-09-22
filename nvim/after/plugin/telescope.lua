@@ -9,7 +9,7 @@ require("telescope").setup({
         winblend = 0,
         layout_strategy = "horizontal",
         wrap_results = true,
-        path_display = {truncate = 2},
+        path_display = { truncate = 2 },
         layout_config = {
             width = 0.95,
             height = 0.85,
@@ -17,7 +17,7 @@ require("telescope").setup({
             prompt_position = "top",
             horizontal = {
                 preview_width = function(_, cols, _)
-                if cols > 200 then
+                    if cols > 200 then
                         return math.floor(cols * 0.4)
                     else
                         return math.floor(cols * 0.6)
@@ -65,8 +65,6 @@ require("telescope").setup({
         },
 
         pickers = {
-            code_actions = {
-            }
         },
 
         extensions = {
@@ -79,6 +77,7 @@ require("telescope").setup({
                 },
             },
         },
-    }})
+    }
+})
 
 require("telescope").load_extension("file_browser")

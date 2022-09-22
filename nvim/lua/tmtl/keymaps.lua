@@ -37,7 +37,7 @@ map("n", "<leader>i", "i <ESC>i")
 map("n", "<leader>dj", "<cmd>lua vim.diagnostic.goto_next()<cr>zz")
 map("n", "<leader>dj", "<cmd>lua vim.diagnostic.goto_next()<cr>zz")
 map("n", "<leader>dk", "<cmd>lua vim.diagnostic.goto_prev()<cr>zz")
-map("n", "<leader>da", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+map("n", "<leader>da", "<cmd>CodeActionMenu<cr>")
 map("n", "<leader>dr", "<cmd>lua vim.lsp.buf.rename()<cr>")
 map("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")
 
@@ -46,14 +46,16 @@ map("n", "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<cr>")
 map("n", "<leader>/", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>") -- find in current buffer
 map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').live_grep()<cr>") -- find in files
 map("n", "<leader>fc", "<cmd>Telescope find_files cwd=~/.dotfiles<cr>") -- find in config
-map("n", "<leader>fw", "<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h')})<cr>") -- find in cwd 
+map("n", "<leader>fw", "<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h')})<cr>") -- find in cwd
 map("n", "<leader>fx", ":Telescope find_files cwd=~/.config") -- x for explore??
 
 -- Fuzzy finder (browser)
 -- TODO: change cwd to folder
 map("n", "<leader>bp", "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true })<cr>") -- browser project
-map("n", "<leader>bw", "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = vim.fn.expand('%:p:h') })<cr>") -- browser cwd
-map("n", "<leader>bc", "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = ~/.dotfiles })<cr>")
+map("n", "<leader>bw",
+    "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = vim.fn.expand('%:p:h') })<cr>") -- browser cwd
+map("n", "<leader>bc",
+    "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = ~/.dotfiles })<cr>")
 map("n", "<leader>bx", ":Telescope file_browser cwd=~/") -- x for explore??
 
 -- Fuzzy finder (git)
@@ -61,6 +63,11 @@ map("n", "<leader>bx", ":Telescope file_browser cwd=~/") -- x for explore??
 -- map("n", "<leader>gp", "git previous diff zz")
 map("n", "<leader>gs", "<cmd>lua require('telescope.builtin').git_status()<cr>")
 map("n", "<leader>gh", "<cmd>lua require('telescope.builtin').git_commits()<cr>")
+
+-- Git hunks
+map("n", "<leader>hj", "<cmd>Gitsigns next_hunk<cr>")
+map("n", "<leader>hk", "<cmd>Gitsigns prev_hunk<cr>")
+map("n", "<leader>hp", "<cmd>Gitsigns preview_hunk<cr>")
 
 -- Quick edit files
 map("n", "<leader>qa", "<cmd>lua require('harpoon.mark').add_file()<cr>")
@@ -73,5 +80,6 @@ map("n", "<A-k>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>")
 map("n", "<A-l>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
 
 -- 1000x developer
-vim.cmd[[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]]
-vim.cmd[[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]] -- TODO: just unmap
+vim.cmd [[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]]
+vim.cmd [[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]] -- TODO: just unmap
+vim.g.code_action_menu_show_details = false -- TODO: move
