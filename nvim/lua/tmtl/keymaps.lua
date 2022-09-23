@@ -24,6 +24,9 @@ map("n", "n", "nzz")
 map("n", "N", "Nzz")
 map("n", "Y", "yy")
 
+map("n", "<leader>to", "<cmd>:%bd|e#<cr>") -- tabs (buffers)
+map("n", "<leader>tj", "<cmd>:bNext<cr>") -- tabs (buffers)
+map("n", "<leader>tk", "<cmd>:bprevious<cr>") -- tabs (buffers)
 map("n", "<leader>sp", ":PackerSync<cr>") -- source / synce plugins
 -- map("n", "<F5>", reload_nvim) -- TODO: update after folder change / runtime structure
 map("n", "<leader>i", "i <ESC>i")

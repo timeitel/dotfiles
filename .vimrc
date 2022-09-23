@@ -1,15 +1,12 @@
 let mapleader = " "
 map <leader>to :tabonly<cr>
 map <leader>ta :qa<cr>
-map <leader>f /
-map <leader>F ? 
 
 noremap H ^
 noremap L $
 noremap n nzz
 noremap N Nzz
 inoremap kj <Esc>
-nnoremap K i<Enter><Esc> 
 
 set number relativenumber "hybrid line numbers
 set history=500
