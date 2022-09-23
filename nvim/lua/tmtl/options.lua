@@ -13,7 +13,7 @@ o.history = 500
 o.autoread = true
 o.cmdheight = 1
 o.hlsearch = false
-o.backspace = {'eol', 'start', 'indent'}
+o.backspace = { 'eol', 'start', 'indent' }
 o.whichwrap = o.whichwrap + "<,>,h,l"
 o.ignorecase = true
 o.smartcase = true
@@ -51,15 +51,15 @@ o.belloff = "all"
 
 -- Copying @TJ for now
 o.formatoptions = o.formatoptions
-	- "a" -- Auto formatting is BAD.
-	- "t" -- Don't auto format my code. I got linters for that.
-	+ "c" -- In general, I like it when comments respect textwidth
-	+ "q" -- Allow formatting comments w/ gq
-	- "o" -- O and o, don't continue comments
-	+ "r" -- But do continue when pressing enter.
-	+ "n" -- Indent past the formatlistpat, not underneath it.
-	+ "j" -- Auto-remove comments if possible.
-	- "2"
+    - "a" -- Auto formatting is BAD.
+    - "t" -- Don't auto format my code. I got linters for that.
+    + "c" -- In general, I like it when comments respect textwidth
+    + "q" -- Allow formatting comments w/ gq
+    - "o" -- O and o, don't continue comments
+    + "r" -- But do continue when pressing enter.
+    + "n" -- Indent past the formatlistpat, not underneath it.
+    + "j" -- Auto-remove comments if possible.
+    - "2"
 
 o.joinspaces = false
 o.fillchars = { eob = "~" }
@@ -71,27 +71,27 @@ o.undofile = true
 o.cursorline = true -- Highlight the current line
 local group = vim.api.nvim_create_augroup("CursorLineControl", { clear = true })
 local set_cursorline = function(event, value, pattern)
-	vim.api.nvim_create_autocmd(event, {
-		group = group,
-		pattern = pattern,
-		callback = function()
-			vim.opt_local.cursorline = value
-		end,
-	})
+    vim.api.nvim_create_autocmd(event, {
+        group = group,
+        pattern = pattern,
+        callback = function()
+            vim.opt_local.cursorline = value
+        end,
+    })
 end
 set_cursorline("WinLeave", false)
 set_cursorline("WinEnter", true)
 set_cursorline("FileType", false, "TelescopePrompt")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-	pattern = "*",
-	callback = function()
-		require("vim.highlight").on_yank({ timeout = 200, })
-	end,
-	desc = "Highlight yank",
+    pattern = "*",
+    callback = function()
+        require("vim.highlight").on_yank({ timeout = 200, })
+    end,
+    desc = "Highlight yank"
 })
 
 o.laststatus = 3
 o.background = "dark"
 o.termguicolors = true
-
+o.signcolumn = "yes:1"

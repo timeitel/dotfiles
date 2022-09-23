@@ -22,13 +22,9 @@ cmp.setup({
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.close(),
         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ['<CR>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true
-        }),
     }),
     sources = cmp.config.sources({
-        { name = 'nvim_lsp', keyword_length = 3, max_item_count = 10 },
+        { name = 'nvim_lsp', keyword_length = 3, max_item_count = 20 },
         { name = "luasnip", keyword_length = 3, max_item_count = 10 },
         { name = 'buffer', keyword_length = 3, max_item_count = 10 },
     }),

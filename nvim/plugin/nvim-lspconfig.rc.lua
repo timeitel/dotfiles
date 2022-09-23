@@ -54,10 +54,13 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
 )
 
 nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" },
-  capabilities = capabilities
+    on_attach = function(client ,buffnr)
+        on_attach(client, buffnr)
+        client.resolved_capabilities.document_formatting = false
+    end,
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+    cmd = { "typescript-language-server", "--stdio" },
+    capabilities = capabilities
 }
 
 nvim_lsp.sumneko_lua.setup {
