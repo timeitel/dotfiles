@@ -7,11 +7,11 @@ vim.g.mapleader = " "
 -- TODO: fix for all modes
 map("", "H", "^")
 map("", "L", "$")
-map("", "<C-q>", "<ESC>")
-map("c", "<C-q>", "<ESC>")
+-- map("", "<C-q>", "<ESC>") -- TODO: use quick fix list and some other remap for esc
+-- map("c", "<C-q>", "<ESC>")
 
 map("i", "kj", "<ESC>")
--- map("i", "<C-j>", "<ESC>") -- TODO: nvim cmp suggestions */
+-- map("i", "<C-j>", "<ESC>") -- TODO: testsetnvim cmp suggestions */
 -- map("i", "<C-j>", "<ESC>")
 
 map("v", "*", 'y/<C-R>"<CR>') -- search for current selection

@@ -3,7 +3,7 @@ if (not ok_cmp) then return end
 
 local ok, lspkind = pcall(require, "lspkind")
 if not ok then
-  return
+    return
 end
 
 lspkind.init()
@@ -28,9 +28,9 @@ cmp.setup({
         }),
     }),
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = "luasnip" },
-        { name = 'buffer' },
+        { name = 'nvim_lsp', keyword_length = 3, max_item_count = 10 },
+        { name = "luasnip", keyword_length = 3, max_item_count = 10 },
+        { name = 'buffer', keyword_length = 3, max_item_count = 10 },
     }),
     experimental = {
         native_menu = false,
