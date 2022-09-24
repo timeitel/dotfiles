@@ -24,7 +24,8 @@ map("n", "n", "nzz")
 map("n", "N", "Nzz")
 map("n", "Y", "yy")
 
-map("n", "<leader>to", "<cmd>:%bd|e#<cr>") -- tabs (buffers)
+map("n", "<leader>ta", "<cmd>:%bd<cr>") -- tabs (buffers)
+map("n", "<leader>to", "<cmd>%bd|e#|bd#<cr>") -- tabs (buffers)
 map("n", "<leader>tj", "<cmd>:bNext<cr>") -- tabs (buffers)
 map("n", "<leader>tk", "<cmd>:bprevious<cr>") -- tabs (buffers)
 map("n", "<leader>sp", ":PackerSync<cr>") -- source / synce plugins
@@ -53,7 +54,7 @@ map("n", "<leader>bw",
     "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = vim.fn.expand('%:p:h') })<cr>") -- browser cwd
 map("n", "<leader>bc",
     "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = '~/.dotfiles' })<cr>")
-map("n", "<leader>bx", "<cmd>Telescope file_browser cwd=~/code<cr>") -- x for explore??
+map("n", "<leader>bx", "<cmd>Telescope file_browser grouped=true cwd=~/code<cr>") -- x for explore??
 
 -- Fuzzy finder (git)
 -- map("n", "<leader>gn", "git next diff zz")
