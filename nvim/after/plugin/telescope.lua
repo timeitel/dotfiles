@@ -1,4 +1,5 @@
 local actions = require("telescope.actions")
+local fb_actions = require("telescope").extensions.file_browser.actions
 
 require("telescope").setup({
     defaults = {
@@ -13,7 +14,6 @@ require("telescope").setup({
         layout_config = {
             width = 0.95,
             height = 0.85,
-            -- preview_cutoff = 120,
             prompt_position = "top",
             horizontal = {
                 preview_width = function(_, cols, _)
@@ -72,7 +72,10 @@ require("telescope").setup({
                 hijack_netrw = true,
                 mappings = {
                     i = {
-                        ['<C-y>'] = actions.select_default
+                        ['<C-y>'] = fb_actions.open
+                    },
+                    n = {
+                        ['<C-y>'] = fb_actions.open
                     },
                 },
             },
