@@ -144,6 +144,11 @@ _G.packer_plugins = {
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
   },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
   neogit = {
     loaded = true,
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/neogit",
@@ -181,6 +186,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["nvim-treesitter-context"] = {
+    loaded = true,
+    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
   },
   ["nvim-web-devicons"] = {
     loaded = true,

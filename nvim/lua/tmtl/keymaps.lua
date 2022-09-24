@@ -32,7 +32,6 @@ map("n", "<leader>sp", ":PackerSync<cr>") -- source / synce plugins
 map("n", "<leader>i", "i <ESC>i")
 
 map("n", "<leader>dj", "<cmd>lua vim.diagnostic.goto_next()<cr>zz")
-map("n", "<leader>dj", "<cmd>lua vim.diagnostic.goto_next()<cr>zz")
 map("n", "<leader>dk", "<cmd>lua vim.diagnostic.goto_prev()<cr>zz")
 map("n", "<leader>da", "<cmd>CodeActionMenu<cr>")
 map("n", "<leader>dr", "<cmd>lua vim.lsp.buf.rename()<cr>")
@@ -42,6 +41,7 @@ map("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")
 map("n", "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<cr>")
 map("n", "<leader>/", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>") -- find in current buffer
 map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').live_grep()<cr>") -- find in files
+map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>") -- find in files
 map("n", "<leader>fc", "<cmd>Telescope find_files cwd=~/.dotfiles<cr>") -- find in config
 map("n", "<leader>fw", "<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h')})<cr>") -- find in cwd
 map("n", "<leader>fx", ":Telescope find_files cwd=~/.config") -- x for explore??
@@ -53,7 +53,7 @@ map("n", "<leader>bw",
     "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = vim.fn.expand('%:p:h') })<cr>") -- browser cwd
 map("n", "<leader>bc",
     "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = '~/.dotfiles' })<cr>")
-map("n", "<leader>bx", ":Telescope file_browser cwd=~/") -- x for explore??
+map("n", "<leader>bx", "<cmd>Telescope file_browser cwd=~/code<cr>") -- x for explore??
 
 -- Fuzzy finder (git)
 -- map("n", "<leader>gn", "git next diff zz")
