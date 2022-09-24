@@ -5,6 +5,7 @@
 /kitty
 .git
 .gitignore
+.starship.toml
 .DS_Store
 README.md
 
