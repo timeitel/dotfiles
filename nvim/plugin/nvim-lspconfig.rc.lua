@@ -78,7 +78,7 @@ nvim_lsp.sumneko_lua.setup {
         checkThirdParty = false
       },
     },
-  },
+    capabilities = capabilities
 }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

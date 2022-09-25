@@ -1,8 +1,10 @@
+local telescope = require("telescope")
 local actions = require("telescope.actions")
-local fb_actions = require("telescope").extensions.file_browser.actions
+local fb_actions = telescope.extensions.file_browser.actions
 
-require("telescope").setup({
+telescope.setup({
     defaults = {
+        file_ignore_patterns = {"node_modules", ".DS_Store"},
         prompt_prefix = "> ",
         selection_caret = "> ",
         entry_prefix = "  ",
@@ -73,11 +75,14 @@ require("telescope").setup({
                 mappings = {
                     i = {
                         ['<C-y>'] = fb_actions.open,
-                        ['<C-t>'] = fb_actions.goto_cwd
+                        ['<C-t>'] = fb_actions.goto_cwd,
+                        ['<C-h>'] = fb_actions.toggle_hidden
                     },
                     n = {
                         ['<C-y>'] = fb_actions.open,
-                        ['<C-t>'] = fb_actions.goto_cwd
+                        ['<C-t>'] = fb_actions.goto_cwd,
+                        ['<C-h>'] = fb_actions.toggle_hidden,
+                        -- ['h'] = fb_actions.goto_parent_dir TODO: make work
                     },
                 },
             },
