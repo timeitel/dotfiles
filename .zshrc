@@ -26,3 +26,9 @@ eval "$(starship init zsh)"
 export PATH="$PATH:/Users/timeitel/development/flutter/bin"
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/timeitel/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/timeitel/google-cloud-sdk/path.zsh.inc'; fi
+
+bindkey '^Y' autosuggest-execute
+bindkey '^E' autosuggest-clear
+bindkey '^K' up-history
+bindkey '^J' down-history
+bindkey '^r' history-incremental-search-backward

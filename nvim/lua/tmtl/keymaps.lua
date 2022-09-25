@@ -8,8 +8,6 @@ vim.g.mapleader = " "
 -- TODO: fix for all modes
 map("", "H", "^")
 map("", "L", "$")
--- map("", "<C-q>", "<ESC>") -- TODO: use quick fix list and some other remap for esc
--- map("c", "<C-q>", "<ESC>")
 
 map("i", "kj", "<ESC>")
 -- map("i", "<C-j>", "<ESC>") -- TODO: testsetnvim cmp suggestions */
