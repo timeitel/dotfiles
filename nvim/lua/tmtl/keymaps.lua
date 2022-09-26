@@ -4,7 +4,7 @@ end
 
 vim.g.mapleader = " "
 
--- TODO: remap caps lock to escape 
+-- TODO: remap caps lock to escape
 -- TODO: fix for all modes
 map("", "H", "^")
 map("", "L", "$")
@@ -56,18 +56,20 @@ map("n", "<leader>bc",
     "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = '~/.dotfiles' })<cr>")
 map("n", "<leader>bx", "<cmd>Telescope file_browser grouped=true cwd=~/code<cr>") -- x for explore??
 
--- Fuzzy finder (git)
--- map("n", "<leader>gn", "git next diff zz")
--- map("n", "<leader>gp", "git previous diff zz")
+-- Git
 map("n", "<leader>gs", "<cmd>Neogit<cr>")
 map("n", "<leader>gd", "<cmd>DiffviewOpen<cr>")
 map("n", "<leader>gh", "<cmd>lua require('telescope.builtin').git_commits()<cr>")
 
--- Git hunks
-map("n", "<leader>hj", "<cmd>Gitsigns next_hunk<cr>")
-map("n", "<leader>hk", "<cmd>Gitsigns prev_hunk<cr>")
+map("n", "<leader>hj", "<cmd>Gitsigns next_hunk<cr>zz")
+map("n", "<leader>hk", "<cmd>Gitsigns prev_hunk<cr>zz")
 map("n", "<leader>hp", "<cmd>Gitsigns preview_hunk<cr>")
-map("n", "<leader>hs", "<cmd>Gitsigns stage_hunk<cr>")
+map({ "n", "v" }, "<leader>hs", "<cmd>Gitsigns stage_hunk<cr><ESC><cmd>DiffviewRefresh<cr>")
+map("n", "<leader>hr", "<cmd>Gitsigns reset_hunk<cr><cmd>DiffviewRefresh<cr>")
+map("n", "<leader>hu", "<cmd>Gitsigns undo_stage_hunk<cr><cmd>DiffviewRefresh<cr>")
+
+map("n", "<leader>fs", "<cmd>Gitsigns stage_buffer<cr><cmd>DiffviewRefresh<cr>")
+map("n", "<leader>fr", "<cmd>Gitsigns reset_buffer<cr><cmd>DiffviewRefresh<cr>")
 
 -- Quick fix list
 map("n", "<leader>ql", "<cmd>copen<cr>")
