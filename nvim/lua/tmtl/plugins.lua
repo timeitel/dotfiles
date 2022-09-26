@@ -30,7 +30,7 @@ return require("packer").startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     }
-    use {'nvim-treesitter/nvim-treesitter-context'}
+    use { 'nvim-treesitter/nvim-treesitter-context' }
 
     -- 10000x developer
     use("bkad/CamelCaseMotion")
@@ -39,12 +39,10 @@ return require("packer").startup(function(use)
     use("tommcdo/vim-exchange")
     use("tpope/vim-commentary")
     use("tpope/vim-surround")
-
+    use({ 'jiangmiao/auto-pairs' }) -- TODO: test and keep?
     use("ThePrimeagen/harpoon")
-
     use("RishabhRD/popfix")
     use("RishabhRD/nvim-lsputils")
-
     use({
         'weilbith/nvim-code-action-menu',
         cmd = 'CodeActionMenu',
@@ -52,8 +50,7 @@ return require("packer").startup(function(use)
 
     -- Git
     use({ 'lewis6991/gitsigns.nvim' })
-    use ({ 'TimUntersberger/neogit', requires = { 'nvim-lua/plenary.nvim', 'sindrets/diffview.nvim' }})
-
+    use({ 'TimUntersberger/neogit', requires = { 'nvim-lua/plenary.nvim', 'sindrets/diffview.nvim' } })
 
     -- Styling
     use("monsonjeremy/onedark.nvim")
