@@ -4,10 +4,8 @@ end
 
 vim.g.mapleader = " "
 
--- TODO: remap caps lock to escape
--- TODO: fix for all modes
-map("", "H", "^")
-map("", "L", "$")
+map({ "n", "v" }, "H", "^")
+map({ "n", "v" }, "L", "$")
 
 map("i", "kj", "<ESC>")
 -- map("i", "<C-j>", "<ESC>") -- TODO: testsetnvim cmp suggestions */
