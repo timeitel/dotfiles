@@ -1,5 +1,5 @@
 local function map(m, k, v)
-    vim.keymap.set(m, k, v, { silent = true, noremap = true, })
+    vim.keymap.set(m, k, v, { silent = true, noremap = true })
 end
 
 vim.g.mapleader = " "
@@ -48,10 +48,16 @@ map("n", "<leader>fx", ":Telescope find_files cwd=~/.config") -- x for explore??
 
 -- Fuzzy finder (browser)
 map("n", "<leader>bp", "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true })<cr>") -- browser project
-map("n", "<leader>bw",
-    "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = vim.fn.expand('%:p:h') })<cr>") -- browser cwd
-map("n", "<leader>bc",
-    "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = '~/.dotfiles' })<cr>")
+map(
+    "n",
+    "<leader>bw",
+    "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = vim.fn.expand('%:p:h') })<cr>"
+) -- browser cwd
+map(
+    "n",
+    "<leader>bc",
+    "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = '~/.dotfiles' })<cr>"
+)
 map("n", "<leader>bx", "<cmd>Telescope file_browser grouped=true cwd=~/code<cr>") -- x for explore??
 
 -- Git
@@ -84,6 +90,6 @@ map("n", "<A-j>", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>")
 map("n", "<A-k>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>")
 map("n", "<A-l>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
 
-vim.cmd [[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]]
-vim.cmd [[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]] -- TODO: just unmap
+vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
+vim.cmd([[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]]) -- TODO: just unmap
 vim.g.code_action_menu_show_details = false -- TODO: move
