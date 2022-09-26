@@ -13,7 +13,6 @@ local on_attach = function(_, bufnr)
     end
 
     -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
     local opts = { noremap = true, silent = true }
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions

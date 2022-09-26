@@ -1,10 +1,11 @@
 local telescope = require("telescope")
 local actions = require("telescope.actions")
+local actions_layout = require("telescope.actions.layout")
 local fb_actions = telescope.extensions.file_browser.actions
 
 telescope.setup({
     defaults = {
-        file_ignore_patterns = {"node_modules", ".DS_Store"},
+        file_ignore_patterns = { "node_modules", ".DS_Store" },
         prompt_prefix = "> ",
         selection_caret = "> ",
         entry_prefix = "  ",
@@ -53,6 +54,7 @@ telescope.setup({
                     vim.api.nvim_input("<c-s-w>")
                 end,
                 ["<C-s>"] = actions.select_horizontal,
+                ["<M-p>"] = actions_layout.toggle_preview,
             },
             n = {
                 ["<C-j>"] = actions.move_selection_next,
@@ -66,28 +68,27 @@ telescope.setup({
             },
         },
 
-        pickers = {
-        },
+        pickers = {},
 
         extensions = {
             file_browser = {
                 hijack_netrw = true,
                 mappings = {
                     i = {
-                        ['<C-y>'] = fb_actions.open,
-                        ['<C-t>'] = fb_actions.goto_cwd,
-                        ['<C-h>'] = fb_actions.toggle_hidden
+                        ["<C-y>"] = fb_actions.open,
+                        ["<C-t>"] = fb_actions.goto_cwd,
+                        ["<C-h>"] = fb_actions.toggle_hidden,
                     },
                     n = {
-                        ['<C-y>'] = fb_actions.open,
-                        ['<C-t>'] = fb_actions.goto_cwd,
-                        ['<C-h>'] = fb_actions.toggle_hidden,
+                        ["<C-y>"] = fb_actions.open,
+                        ["<C-t>"] = fb_actions.goto_cwd,
+                        ["<C-h>"] = fb_actions.toggle_hidden,
                         -- ['h'] = fb_actions.goto_parent_dir TODO: make work
                     },
                 },
             },
         },
-    }
+    },
 })
 
 require("telescope").load_extension("file_browser")

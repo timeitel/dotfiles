@@ -4,8 +4,8 @@ end
 
 vim.g.mapleader = " "
 
-map({ "n", "v" }, "H", "^")
-map({ "n", "v" }, "L", "$")
+map({ "n", "v", "o" }, "H", "^")
+map({ "n", "v", "o" }, "L", "$")
 
 map("i", "kj", "<ESC>")
 -- map("i", "<C-j>", "<ESC>") -- TODO: testsetnvim cmp suggestions */
