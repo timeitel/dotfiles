@@ -7,8 +7,6 @@ neogit.setup({
         diffview = true,
     },
     mappings = {
-        status = {
-            -- ["gf"] = 'go to file', -- TODO
-        },
+        status = {},
     },
 })

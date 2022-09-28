@@ -20,8 +20,8 @@ vim.g.mapleader = " "
 map({ "n", "v", "o" }, "H", "^")
 map({ "n", "v", "o" }, "L", "$")
 
--- map("c", "<C-k>", "<cmd><C-p><cr>") -- TODO in command mode
 -- map("c", "<C-j>", "<C-n>")
+-- map("c", "<C-k>", "<cmd><C-p><cr>") -- TODO in command mode
 
 map("i", "kj", "<ESC>")
 
@@ -75,6 +75,7 @@ map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
 map("n", "<leader>fc", "<cmd>Telescope find_files cwd=~/.dotfiles<cr>")
 map("n", "<leader>fw", "<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h')})<cr>") -- find in cwd
 map("n", "<leader>fx", ":Telescope find_files cwd=~/.config") -- x for explore??
+map("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<cr>")
 
 -- Fuzzy finder (browser)
 map("n", "<leader>bp", "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true })<cr>") -- browser project
@@ -95,6 +96,8 @@ map("n", "<leader>gs", "<cmd>Neogit<cr>")
 map("n", "<leader>gd", "<cmd>DiffviewOpen<cr>")
 map("n", "<leader>gh", "<cmd>lua require('telescope.builtin').git_commits()<cr>")
 map("n", "<leader>gc", "<cmd>Neogit commit<cr>")
+map("n", "<leader>gx", "<cmd>Gitsigns reset_buffer<cr><cmd>DiffviewRefresh<cr>")
+map("n", "<leader>gfs", "<cmd>Gitsigns stage_buffer<cr><cmd>DiffviewRefresh<cr>")
 
 map("n", "<leader>hj", "<cmd>Gitsigns next_hunk<cr>zz")
 map("n", "<leader>hk", "<cmd>Gitsigns prev_hunk<cr>zz")
@@ -102,9 +105,6 @@ map("n", "<leader>hp", "<cmd>Gitsigns preview_hunk<cr>")
 map({ "n", "v" }, "<leader>hs", "<cmd>Gitsigns stage_hunk<cr><ESC><cmd>DiffviewRefresh<cr>")
 map("n", "<leader>hr", "<cmd>Gitsigns reset_hunk<cr><cmd>DiffviewRefresh<cr>")
 map("n", "<leader>hu", "<cmd>Gitsigns undo_stage_hunk<cr><cmd>DiffviewRefresh<cr>")
-
-map("n", "<leader>fs", "<cmd>Gitsigns stage_buffer<cr><cmd>DiffviewRefresh<cr>")
-map("n", "<leader>fr", "<cmd>Gitsigns reset_buffer<cr><cmd>DiffviewRefresh<cr>")
 
 -- Quick fix list
 map("n", "<leader>ql", "<cmd>copen<cr>")

@@ -1,12 +1,12 @@
 local actions = require("diffview.actions")
--- print(vim.inspect(table))
+-- print(vim.inspect(actions))
 
 local keymaps = {
     ["q"] = "<cmd>DiffviewClose<cr>",
     ["f"] = "<cmd>DiffviewToggleFiles<cr>",
     ["s"] = actions.toggle_stage_entry,
-    ["<C-e>"] = actions.scroll_view(-1),
-    ["<C-y>"] = actions.scroll_view(1),
+    ["<C-e>"] = actions.scroll_view(1),
+    ["<C-y>"] = actions.scroll_view(-1),
     ["<C-d>"] = actions.scroll_view(10),
     ["<C-u>"] = actions.scroll_view(-10),
     ["gf"] = actions.goto_file_edit,
