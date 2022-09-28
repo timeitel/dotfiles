@@ -48,6 +48,7 @@ return require("packer").startup(function(use)
         "weilbith/nvim-code-action-menu",
         cmd = "CodeActionMenu",
     })
+    use({ "jiangmiao/auto-pairs" })
 
     -- Git
     use({ "lewis6991/gitsigns.nvim" })

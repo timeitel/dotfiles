@@ -16,12 +16,18 @@ local on_attach = function(_, bufnr)
     local opts = { noremap = true, silent = true }
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+    buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>zz", opts)
     buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<cr>", opts)
-    buf_set_keymap("n", "gr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>", opts)
-    buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<cr>", opts)
-    buf_set_keymap("n", "gt", "<Cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-    buf_set_keymap("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<cr>", opts)
+    buf_set_keymap(
+        "n",
+        "gr",
+        "<cmd>lua require('telescope.builtin').lsp_references({show_line = false, include_declaration = false })<cr>",
+        opts
+    )
+    -- buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<cr>", opts)
+    buf_set_keymap("n", "gd", "<Cmd>Telescope lsp_definitions<cr>zz", opts)
+    buf_set_keymap("n", "gt", "<Cmd>lua vim.lsp.buf.type_definition()<cr>zz", opts)
+    buf_set_keymap("n", "gI", "<Cmd>lua vim.lsp.buf.implementation()<cr>zz", opts)
 end
 
 protocol.CompletionItemKind = {

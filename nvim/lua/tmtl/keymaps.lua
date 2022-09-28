@@ -2,14 +2,28 @@ local function map(m, k, v)
     vim.keymap.set(m, k, v, { silent = true, noremap = true })
 end
 
+function vim.getVisualSelection()
+    vim.cmd('noau normal! "vy"')
+    local text = vim.fn.getreg("v")
+    vim.fn.setreg("v", {})
+
+    text = string.gsub(text, "\n", "")
+    if #text > 0 then
+        return text
+    else
+        return ""
+    end
+end
+
 vim.g.mapleader = " "
 
 map({ "n", "v", "o" }, "H", "^")
 map({ "n", "v", "o" }, "L", "$")
 
+-- map("c", "<C-k>", "<cmd><C-p><cr>") -- TODO in command mode
+-- map("c", "<C-j>", "<C-n>")
+
 map("i", "kj", "<ESC>")
--- map("i", "<C-j>", "<ESC>") -- TODO: testsetnvim cmp suggestions */
--- map("i", "<C-j>", "<ESC>")
 
 map("v", "*", 'y/<C-R>"<CR>') -- search for current selection
 map("v", "#", 'y?<C-R>"<CR>') -- search for current selection
@@ -25,24 +39,40 @@ map("n", "<leader>sp", ":PackerSync<cr>") -- source / synce plugins
 map("n", "<leader>i", "i <ESC>i")
 
 -- Tabs (buffers)
+map("n", "<leader>tc", "<cmd>:bd<cr>")
 map("n", "<leader>ta", "<cmd>:%bd<cr>")
 map("n", "<leader>to", "<cmd>%bd|e#|bd#<cr>")
 map("n", "<leader>tj", "<cmd>:bNext<cr>")
 map("n", "<leader>tk", "<cmd>:bprevious<cr>")
 
 -- Diagnostics
+map("n", "<leader>da", "<cmd>CodeActionMenu<cr>")
+map("n", "<leader>dh", "<cmd>lua vim.diagnostic.open_float()<cr>")
 map("n", "<leader>dj", "<cmd>lua vim.diagnostic.goto_next()<cr>zz")
 map("n", "<leader>dk", "<cmd>lua vim.diagnostic.goto_prev()<cr>zz")
-map("n", "<leader>da", "<cmd>CodeActionMenu<cr>")
-map("n", "<leader>dr", "<cmd>lua vim.lsp.buf.rename()<cr>")
 map("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")
+map(
+    "n",
+    "<leader>do",
+    "<cmd>lua vim.lsp.buf.execute_command({command = '_typescript.organizeImports', arguments = {vim.fn.expand('%:p')}})<cr>"
+)
+map("n", "<leader>dr", "<cmd>lua vim.lsp.buf.rename()<cr>")
 
 -- Fuzzy finder (files)
 map("n", "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<cr>")
 map("n", "<leader>/", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>") -- find in current buffer
-map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').live_grep()<cr>") -- find in files
-map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>") -- find in files
-map("n", "<leader>fc", "<cmd>Telescope find_files cwd=~/.dotfiles<cr>") -- find in config
+map("v", "<leader>/", function()
+    local text = vim.getVisualSelection()
+    require("telescope.builtin").current_buffer_fuzzy_find({ default_text = text })
+end) -- find in current buffer
+
+map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
+map("v", "<leader>ff", function()
+    local text = vim.getVisualSelection()
+    require("telescope.builtin").live_grep({ default_text = text })
+end)
+map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
+map("n", "<leader>fc", "<cmd>Telescope find_files cwd=~/.dotfiles<cr>")
 map("n", "<leader>fw", "<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h')})<cr>") -- find in cwd
 map("n", "<leader>fx", ":Telescope find_files cwd=~/.config") -- x for explore??
 
@@ -64,6 +94,7 @@ map("n", "<leader>bx", "<cmd>Telescope file_browser grouped=true cwd=~/code<cr>"
 map("n", "<leader>gs", "<cmd>Neogit<cr>")
 map("n", "<leader>gd", "<cmd>DiffviewOpen<cr>")
 map("n", "<leader>gh", "<cmd>lua require('telescope.builtin').git_commits()<cr>")
+map("n", "<leader>gc", "<cmd>Neogit commit<cr>")
 
 map("n", "<leader>hj", "<cmd>Gitsigns next_hunk<cr>zz")
 map("n", "<leader>hk", "<cmd>Gitsigns prev_hunk<cr>zz")

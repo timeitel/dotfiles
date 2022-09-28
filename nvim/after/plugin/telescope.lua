@@ -48,8 +48,8 @@ telescope.setup({
             i = {
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
-                ["<C-e>"] = actions.close,
-                ["<C-y>"] = actions.select_default + actions.center,
+                ["<C-h>"] = actions.close,
+                ["<C-l>"] = actions.select_default + actions.center,
                 ["<C-w>"] = function()
                     vim.api.nvim_input("<c-s-w>")
                 end,
@@ -59,8 +59,8 @@ telescope.setup({
             n = {
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
-                ["<C-e>"] = actions.close,
-                ["<C-y>"] = actions.select_default + actions.center,
+                ["<C-h>"] = actions.close,
+                ["<C-l>"] = actions.select_default + actions.center,
                 ["<C-w>"] = function()
                     vim.api.nvim_input("<c-s-w>")
                 end,
@@ -75,14 +75,14 @@ telescope.setup({
                 hijack_netrw = true,
                 mappings = {
                     i = {
-                        ["<C-y>"] = fb_actions.open,
+                        ["<C-l>"] = fb_actions.open,
                         ["<C-t>"] = fb_actions.goto_cwd,
-                        ["<C-h>"] = fb_actions.toggle_hidden,
+                        ["<C-.>"] = fb_actions.toggle_hidden,
                     },
                     n = {
-                        ["<C-y>"] = fb_actions.open,
+                        ["<C-l>"] = fb_actions.open,
                         ["<C-t>"] = fb_actions.goto_cwd,
-                        ["<C-h>"] = fb_actions.toggle_hidden,
+                        ["<C-.>"] = fb_actions.toggle_hidden,
                         -- ['h'] = fb_actions.goto_parent_dir TODO: make work
                     },
                 },
