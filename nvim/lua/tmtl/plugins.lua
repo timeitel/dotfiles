@@ -53,10 +53,11 @@ return require("packer").startup(function(use)
     -- Git
     use({ "lewis6991/gitsigns.nvim" })
     use({ "TimUntersberger/neogit", requires = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" } })
+    use({ "bobrown101/git-blame.nvim" })
 
     -- Styling
     use("monsonjeremy/onedark.nvim")
     use("kyazdani42/nvim-web-devicons")
-    use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" }) -- TODO: replace with winbar on nvim 0.8
+    -- TODO: get winbar on nvim 0.8 test
     use({ "nvim-lualine/lualine.nvim" })
 end)

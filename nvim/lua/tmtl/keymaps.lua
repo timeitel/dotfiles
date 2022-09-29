@@ -1,3 +1,4 @@
+-- TODO: file modified status in search buffers and also close buffers
 local function map(m, k, v)
     vim.keymap.set(m, k, v, { silent = true, noremap = true })
 end
@@ -19,9 +20,6 @@ vim.g.mapleader = " "
 
 map({ "n", "v", "o" }, "H", "^")
 map({ "n", "v", "o" }, "L", "$")
-
--- map("c", "<C-j>", "<C-n>")
--- map("c", "<C-k>", "<cmd><C-p><cr>") -- TODO in command mode
 
 map("i", "kj", "<ESC>")
 
@@ -98,6 +96,7 @@ map("n", "<leader>gh", "<cmd>lua require('telescope.builtin').git_commits()<cr>"
 map("n", "<leader>gc", "<cmd>Neogit commit<cr>")
 map("n", "<leader>gx", "<cmd>Gitsigns reset_buffer<cr><cmd>DiffviewRefresh<cr>")
 map("n", "<leader>gfs", "<cmd>Gitsigns stage_buffer<cr><cmd>DiffviewRefresh<cr>")
+map("n", "<leader>gb", "<cmd>:lua require('git_blame').run()<cr>")
 
 map("n", "<leader>hj", "<cmd>Gitsigns next_hunk<cr>zz")
 map("n", "<leader>hk", "<cmd>Gitsigns prev_hunk<cr>zz")
