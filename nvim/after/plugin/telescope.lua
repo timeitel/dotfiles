@@ -68,7 +68,11 @@ telescope.setup({
             },
         },
 
-        pickers = {},
+        pickers = {
+            buffers = {
+                sort_lastused = true,
+            },
+        },
 
         extensions = {
             file_browser = {

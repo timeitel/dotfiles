@@ -102,7 +102,7 @@ map("n", "<leader>hj", "<cmd>Gitsigns next_hunk<cr>zz")
 map("n", "<leader>hk", "<cmd>Gitsigns prev_hunk<cr>zz")
 map("n", "<leader>hp", "<cmd>Gitsigns preview_hunk<cr>")
 map({ "n", "v" }, "<leader>hs", "<cmd>Gitsigns stage_hunk<cr><ESC><cmd>DiffviewRefresh<cr>")
-map("n", "<leader>hr", "<cmd>Gitsigns reset_hunk<cr><cmd>DiffviewRefresh<cr>")
+map("n", "<leader>hx", "<cmd>Gitsigns reset_hunk<cr><cmd>DiffviewRefresh<cr>")
 map("n", "<leader>hu", "<cmd>Gitsigns undo_stage_hunk<cr><cmd>DiffviewRefresh<cr>")
 
 -- Quick fix list
