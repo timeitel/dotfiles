@@ -32,6 +32,8 @@ map("n", "n", "nzz")
 map("n", "N", "Nzz")
 map("n", "Y", "yy")
 
+map("n", "<leader>y", '"+y') -- from clipboard
+map("n", "<leader>p", '"+p')
 map("n", "<leader>sp", ":PackerSync<cr>") -- source / synce plugins
 -- map("n", "<F5>", reload_nvim) -- TODO: update after folder change / runtime structure
 map("n", "<leader>i", "i <ESC>i")
@@ -74,6 +76,7 @@ map("n", "<leader>fc", "<cmd>Telescope find_files cwd=~/.dotfiles<cr>")
 map("n", "<leader>fw", "<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h')})<cr>") -- find in cwd
 map("n", "<leader>fx", ":Telescope find_files cwd=~/.config") -- x for explore??
 map("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<cr>")
+map("n", "<leader>fm", "<cmd>Telescope harpoon marks<cr>") -- marks
 
 -- Fuzzy finder (browser)
 map("n", "<leader>bp", "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true })<cr>") -- browser project
@@ -109,17 +112,19 @@ map("n", "<leader>hu", "<cmd>Gitsigns undo_stage_hunk<cr><cmd>DiffviewRefresh<cr
 map("n", "<leader>ql", "<cmd>copen<cr>")
 map("n", "<leader>qj", "<cmd>cnext<cr>")
 map("n", "<leader>qk", "<cmd>cprevious<cr>")
+-- map("n", "<leader>qa", "<cmd>cprevious<cr>") --TODO: add to qf list
 
 -- Quick edit files
 map("n", "<leader>ea", "<cmd>lua require('harpoon.mark').add_file()<cr>")
 map("n", "<leader>el", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>")
-map("n", "<A-n>", "<cmd>lua require('harpoon.ui').nav_next()<cr>")
-map("n", "<A-p>", "<cmd>lua require('harpoon.ui').nav_prev()<cr>")
-map("n", "<A-h>", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>")
-map("n", "<A-j>", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>")
-map("n", "<A-k>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>")
-map("n", "<A-l>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
+map("n", "<leader>ej", "<cmd>lua require('harpoon.ui').nav_next()<cr>")
+map("n", "<leader>ek", "<cmd>lua require('harpoon.ui').nav_prev()<cr>")
+map("n", "<C-h>", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>")
+map("n", "<C-j>", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>")
+map("n", "<C-k>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>")
+map("n", "<C-l>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
 
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
 vim.cmd([[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]]) -- TODO: just unmap
 vim.g.code_action_menu_show_details = false -- TODO: move
+-- TODO forward and back autopairs

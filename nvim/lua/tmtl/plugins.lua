@@ -48,7 +48,7 @@ return require("packer").startup(function(use)
         "weilbith/nvim-code-action-menu",
         cmd = "CodeActionMenu",
     })
-    use({ "jiangmiao/auto-pairs" })
+    use("windwp/nvim-autopairs")
 
     -- Git
     use({ "lewis6991/gitsigns.nvim" })
@@ -58,6 +58,5 @@ return require("packer").startup(function(use)
     -- Styling
     use("monsonjeremy/onedark.nvim")
     use("kyazdani42/nvim-web-devicons")
-    -- TODO: get winbar on nvim 0.8 test
     use({ "nvim-lualine/lualine.nvim" })
 end)
