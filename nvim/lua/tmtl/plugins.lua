@@ -49,6 +49,7 @@ return require("packer").startup(function(use)
         cmd = "CodeActionMenu",
     })
     use("windwp/nvim-autopairs")
+    use("windwp/nvim-ts-autotag")
 
     -- Git
     use({ "lewis6991/gitsigns.nvim" })

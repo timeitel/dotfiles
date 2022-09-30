@@ -32,8 +32,10 @@ map("n", "n", "nzz")
 map("n", "N", "Nzz")
 map("n", "Y", "yy")
 
-map("n", "<leader>y", '"+y') -- from clipboard
-map("n", "<leader>p", '"+p')
+-- from clipboard
+map({ "n", "v" }, "<leader>y", '"+y')
+map({ "n", "v" }, "<leader>p", '"+p')
+
 map("n", "<leader>sp", ":PackerSync<cr>") -- source / synce plugins
 -- map("n", "<F5>", reload_nvim) -- TODO: update after folder change / runtime structure
 map("n", "<leader>i", "i <ESC>i")
