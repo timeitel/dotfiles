@@ -1,6 +1,9 @@
 -- TODO: file modified status in search buffers and also close buffers
-local function map(m, k, v)
-    vim.keymap.set(m, k, v, { silent = true, noremap = true })
+local function map(m, k, v, opts)
+    opts = opts or {}
+    opts.silent = true
+    opts.noremap = true
+    vim.keymap.set(m, k, v, opts)
 end
 
 function vim.getVisualSelection()
@@ -39,6 +42,7 @@ map({ "n", "v" }, "<leader>p", '"+p')
 map("n", "<leader>sp", ":PackerSync<cr>") -- source / synce plugins
 -- map("n", "<F5>", reload_nvim) -- TODO: update after folder change / runtime structure
 map("n", "<leader>i", "i <ESC>i")
+map("n", "<leader>?", "<cmd>WhichKey<cr>")
 
 -- Tabs (buffers)
 map("n", "<leader>tc", "<cmd>:bd<cr>")
@@ -50,6 +54,8 @@ map("n", "<leader>tk", "<cmd>:bprevious<cr>")
 -- Diagnostics
 map("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next({float = false})<cr>zz<cmd>CodeActionMenu<cr>")
 map("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev({float = false})<cr>zz<cmd>CodeActionMenu<cr>")
+map("n", "<leader>dj", "<cmd>vim.diagnostic.goto_next()<cr>")
+map("n", "<leader>dk", "<cmd>vim.diagnostic.goto_prev()<cr>")
 map("n", "<leader>da", "<cmd>CodeActionMenu<cr>")
 map("n", "<leader>dh", "<cmd>lua vim.diagnostic.open_float()<cr>")
 map("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")
@@ -129,4 +135,3 @@ map("n", "<A-l>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
 vim.cmd([[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]]) -- TODO: just unmap
 vim.g.code_action_menu_show_details = false -- TODO: move
--- TODO forward and back autopairs

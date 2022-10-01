@@ -55,6 +55,7 @@ return require("packer").startup(function(use)
     })
     use("windwp/nvim-autopairs")
     use("windwp/nvim-ts-autotag")
+    use("folke/which-key.nvim")
 
     -- Styling
     use("monsonjeremy/onedark.nvim")
