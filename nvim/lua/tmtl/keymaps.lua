@@ -48,10 +48,10 @@ map("n", "<leader>tj", "<cmd>:bNext<cr>")
 map("n", "<leader>tk", "<cmd>:bprevious<cr>")
 
 -- Diagnostics
+map("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next({float = false})<cr>zz<cmd>CodeActionMenu<cr>")
+map("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev({float = false})<cr>zz<cmd>CodeActionMenu<cr>")
 map("n", "<leader>da", "<cmd>CodeActionMenu<cr>")
 map("n", "<leader>dh", "<cmd>lua vim.diagnostic.open_float()<cr>")
-map("n", "<leader>dj", "<cmd>lua vim.diagnostic.goto_next()<cr>zz")
-map("n", "<leader>dk", "<cmd>lua vim.diagnostic.goto_prev()<cr>zz")
 map("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")
 map(
     "n",
@@ -119,12 +119,12 @@ map("n", "<leader>qk", "<cmd>cprevious<cr>")
 -- Quick edit files
 map("n", "<leader>ea", "<cmd>lua require('harpoon.mark').add_file()<cr>")
 map("n", "<leader>el", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>")
-map("n", "<leader>ej", "<cmd>lua require('harpoon.ui').nav_next()<cr>")
-map("n", "<leader>ek", "<cmd>lua require('harpoon.ui').nav_prev()<cr>")
-map("n", "<C-h>", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>")
-map("n", "<C-j>", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>")
-map("n", "<C-k>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>")
-map("n", "<C-l>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
+map("n", "<A-n>", "<cmd>lua require('harpoon.ui').nav_next()<cr>")
+map("n", "<A-p>", "<cmd>lua require('harpoon.ui').nav_prev()<cr>")
+map("n", "<A-h>", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>")
+map("n", "<A-j>", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>")
+map("n", "<A-k>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>")
+map("n", "<A-l>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
 
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
 vim.cmd([[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]]) -- TODO: just unmap

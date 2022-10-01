@@ -34,6 +34,11 @@ return require("packer").startup(function(use)
     })
     use({ "nvim-treesitter/nvim-treesitter-context" })
 
+    -- Git
+    use({ "lewis6991/gitsigns.nvim" })
+    use({ "TimUntersberger/neogit", requires = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" } })
+    use({ "bobrown101/git-blame.nvim" })
+
     -- 10000x developer
     use("bkad/CamelCaseMotion")
     use("inkarkat/vim-ReplaceWithRegister")
@@ -50,11 +55,6 @@ return require("packer").startup(function(use)
     })
     use("windwp/nvim-autopairs")
     use("windwp/nvim-ts-autotag")
-
-    -- Git
-    use({ "lewis6991/gitsigns.nvim" })
-    use({ "TimUntersberger/neogit", requires = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" } })
-    use({ "bobrown101/git-blame.nvim" })
 
     -- Styling
     use("monsonjeremy/onedark.nvim")
