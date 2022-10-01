@@ -7,6 +7,8 @@ neogit.setup({
         diffview = true,
     },
     mappings = {
-        status = {},
+        status = {
+            ["<C-h>"] = neogit.close,
+        },
     },
 })

@@ -6,12 +6,20 @@ local shared_maps = {
     ["q"] = "<cmd>DiffviewClose<cr>",
     ["<C-h>"] = "<cmd>DiffviewClose<cr>",
     ["f"] = "<cmd>DiffviewToggleFiles<cr>",
+    ["<C-Space>"] = actions.select_entry,
     ["<C-e>"] = actions.scroll_view(1),
     ["<C-y>"] = actions.scroll_view(-1),
     ["<C-d>"] = actions.scroll_view(10),
     ["<C-u>"] = actions.scroll_view(-10),
     ["gf"] = actions.goto_file_edit,
     ["s"] = actions.toggle_stage_entry, -- TODO: stage and unstage
+    -- ["R"] = function() -- TODO: reset /discard all changes
+    --     local inp = vim.fn.input("Are you sure you'd like to discard changes ALL CHANGES? (y/n): ")
+    --     if string.lower(inp) == "y" then
+    --         actions.()
+    --     end
+    --     print("")
+    -- end,
     ["X"] = function()
         local inp = vim.fn.input("Are you sure you'd like to discard changes? (y/n): ")
         if string.lower(inp) == "y" then
