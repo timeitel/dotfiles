@@ -52,7 +52,7 @@ map("n", "<leader>tj", "<cmd>:bNext<cr>")
 map("n", "<leader>tk", "<cmd>:bprevious<cr>")
 
 -- Diagnostics
-map("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next({float = false})<cr>zz<cmd>CodeActionMenu<cr>")
+map("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next({float = false})<cr>zz<cmd>CodeActionMenu<cr>") -- TODO: get cursor position, spawn menu at location then check if any results, float if no actions
 map("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev({float = false})<cr>zz<cmd>CodeActionMenu<cr>")
 map("n", "<leader>dj", "<cmd>vim.diagnostic.goto_next()<cr>")
 map("n", "<leader>dk", "<cmd>vim.diagnostic.goto_prev()<cr>")
@@ -92,7 +92,7 @@ map(
     "<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h')})<cr>",
     { desc = "Find in cwd" }
 )
-map("n", "<leader>fx", ":Telescope find_files cwd=~/.config") -- x for explore??
+map("n", "<leader>fx", ":Telescope find_files cwd=~/") -- x for explore??
 map("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<cr>")
 map("n", "<leader>fm", "<cmd>Telescope harpoon marks<cr>", { desc = "Find in makrs" })
 
@@ -153,3 +153,4 @@ map("n", "<A-l>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
 vim.cmd([[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]]) -- TODO: just unmap
 vim.g.code_action_menu_show_details = false -- TODO: move
+vim.g.camelcasemotion_key = "<leader>"

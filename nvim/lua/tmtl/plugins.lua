@@ -21,9 +21,7 @@ return require("packer").startup(function(use)
     use("saadparwaiz1/cmp_luasnip")
     use("tamago324/cmp-zsh")
     use("onsails/lspkind-nvim")
-
     use("simrat39/rust-tools.nvim")
-
     use("jose-elias-alvarez/null-ls.nvim") -- non-LSP sources
 
     use({
