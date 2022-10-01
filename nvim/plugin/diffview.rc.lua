@@ -21,8 +21,8 @@ local shared_maps = {
     end,
     ["C"] = function()
         vim.cmd("DiffviewClose")
+        vim.cmd("Neogit")
         vim.cmd("Neogit commit")
-        -- neogit.refresh()
     end,
 }
 
