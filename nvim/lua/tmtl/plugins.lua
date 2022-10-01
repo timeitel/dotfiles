@@ -18,6 +18,7 @@ return require("packer").startup(function(use)
     use("hrsh7th/cmp-nvim-lua")
     use("hrsh7th/cmp-nvim-lsp")
     use("hrsh7th/cmp-nvim-lsp-document-symbol")
+    use("hrsh7th/cmp-nvim-lsp-signature-help")
     use("saadparwaiz1/cmp_luasnip")
     use("tamago324/cmp-zsh")
     use("onsails/lspkind-nvim")
@@ -54,9 +55,6 @@ return require("packer").startup(function(use)
     use("windwp/nvim-autopairs")
     use("windwp/nvim-ts-autotag")
     use("folke/which-key.nvim")
-    use({
-        "ray-x/lsp_signature.nvim",
-    })
 
     -- Styling
     use("monsonjeremy/onedark.nvim")

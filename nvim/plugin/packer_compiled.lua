@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp-document-symbol",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol"
   },
+  ["cmp-nvim-lsp-signature-help"] = {
+    loaded = true,
+    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp-signature-help",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help"
+  },
   ["cmp-nvim-lua"] = {
     loaded = true,
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
@@ -138,11 +143,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
-  },
-  ["lsp_signature.nvim"] = {
-    loaded = true,
-    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
-    url = "https://github.com/ray-x/lsp_signature.nvim"
   },
   ["lspkind-nvim"] = {
     loaded = true,

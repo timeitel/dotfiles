@@ -9,6 +9,7 @@ local keymaps = {
     ["<C-d>"] = actions.scroll_view(10),
     ["<C-u>"] = actions.scroll_view(-10),
     ["gf"] = actions.goto_file_edit,
+    ["s"] = actions.toggle_stage_entry,
     -- ["x"] = actions.,
     -- TODO: discard changes
 }

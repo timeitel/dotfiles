@@ -33,6 +33,7 @@ cmp.setup({
         { name = "nvim_lsp" },
         { name = "luasnip", keyword_length = 3, max_item_count = 10 },
         { name = "buffer", keyword_length = 3, max_item_count = 10 },
+        { name = "nvim_lsp_signature_help" },
     }),
     experimental = {
         native_menu = false,
