@@ -51,7 +51,7 @@ map("n", "<leader>to", "<cmd>%bd|e#|bd#<cr>")
 map("n", "<leader>tj", "<cmd>:bNext<cr>")
 map("n", "<leader>tk", "<cmd>:bprevious<cr>")
 
--- Diagnostics
+-- Diagnostics -- only assign if language server attached to buffer / window -> so C-j can work in other contexts
 map("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next({float = false})<cr>zz<cmd>CodeActionMenu<cr>") -- TODO: get cursor position, spawn menu at location then check if any results, float if no actions
 map("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev({float = false})<cr>zz<cmd>CodeActionMenu<cr>")
 map("n", "<leader>dj", "<cmd>vim.diagnostic.goto_next()<cr>")
