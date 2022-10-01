@@ -1,30 +1,29 @@
 local actions = require("diffview.actions")
--- print(vim.inspect(actions))
+-- print(vim.inspect(neogit))
 
-local keymaps = {
+-- tab to select entry
+local shared_maps = {
     ["q"] = "<cmd>DiffviewClose<cr>",
+    ["<C-h>"] = "<cmd>DiffviewClose<cr>",
     ["f"] = "<cmd>DiffviewToggleFiles<cr>",
     ["<C-e>"] = actions.scroll_view(1),
     ["<C-y>"] = actions.scroll_view(-1),
     ["<C-d>"] = actions.scroll_view(10),
     ["<C-u>"] = actions.scroll_view(-10),
     ["gf"] = actions.goto_file_edit,
-    ["s"] = actions.toggle_stage_entry,
-    -- ["x"] = actions.,
-    -- TODO: discard changes
-}
-
-local viewKeymaps = {
-    ["q"] = "<cmd>DiffviewClose<cr>",
-    ["f"] = "<cmd>DiffviewToggleFiles<cr>",
-    ["<C-e>"] = actions.scroll_view(1),
-    ["<C-y>"] = actions.scroll_view(-1),
-    ["<C-d>"] = actions.scroll_view(10),
-    ["<C-u>"] = actions.scroll_view(-10),
-    ["gf"] = actions.goto_file_edit,
-    ["s"] = actions.toggle_stage_entry,
-    -- ["x"] = actions.,
-    -- TODO: discard changes
+    ["s"] = actions.toggle_stage_entry, -- TODO: stage and unstage
+    ["X"] = function()
+        local inp = vim.fn.input("Are you sure you'd like to discard changes? (y/n): ")
+        if string.lower(inp) == "y" then
+            actions.restore_entry()
+        end
+        print("")
+    end,
+    ["C"] = function()
+        vim.cmd("DiffviewClose")
+        vim.cmd("Neogit commit")
+        -- neogit.refresh()
+    end,
 }
 
 require("diffview").setup({
@@ -35,8 +34,8 @@ require("diffview").setup({
     },
     file_panel = {},
     keymaps = {
-        view = viewKeymaps,
-        file_panel = keymaps,
-        file_history_panel = keymaps,
+        view = shared_maps,
+        file_panel = shared_maps,
+        file_history_panel = shared_maps,
     },
 })
