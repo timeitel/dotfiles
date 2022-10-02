@@ -1,6 +1,7 @@
 local actions = require("diffview.actions")
--- print(vim.inspect(neogit))
+-- print(vim.inspect(git))
 
+-- o to select entry
 local shared_maps = {
     ["q"] = "<cmd>DiffviewClose<cr>",
     ["<C-h>"] = "<cmd>DiffviewClose<cr>",
@@ -11,17 +12,16 @@ local shared_maps = {
     ["<C-u>"] = actions.scroll_view(-10),
     ["gf"] = actions.goto_file_edit,
     ["s"] = actions.toggle_stage_entry, -- TODO: stage and unstage
-    ["<C-Space>"] = actions.select_entry,
     ["<C-j>"] = actions.next_conflict(),
     ["<C-k>"] = actions.prev_conflict(),
-    -- ["R"] = function() -- TODO: reset /discard all changes
+    -- ["r"] = function() -- TODO: reset /discard all changes
     --     local inp = vim.fn.input("Are you sure you'd like to discard changes ALL CHANGES? (y/n): ")
     --     if string.lower(inp) == "y" then
     --         actions.()
     --     end
     --     print("")
     -- end,
-    ["X"] = function()
+    ["x"] = function()
         local inp = vim.fn.input("Are you sure you'd like to discard changes? (y/n): ")
         if string.lower(inp) == "y" then
             actions.restore_entry()
