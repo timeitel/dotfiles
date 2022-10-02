@@ -1,5 +1,3 @@
---vim.lsp.set_log_level("debug")
-
 local status, nvim_lsp = pcall(require, "lspconfig")
 if not status then
     return
@@ -8,26 +6,41 @@ end
 local protocol = require("vim.lsp.protocol")
 
 local on_attach = function(_, bufnr)
-    local function buf_set_keymap(...)
+    local function buf_map(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
 
     -- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
     local opts = { noremap = true, silent = true }
 
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>zz", opts)
-    buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<cr>", opts)
-    buf_set_keymap(
+    -- Diagnostics -- only assign if language server attached to buffer / window -> so C-j can work in other contexts
+    buf_map("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next({float = false})<cr>zz<cmd>CodeActionMenu<cr>", opts) -- TODO: get cursor position, spawn menu at location then check if any results, float if no actions
+    buf_map("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev({float = false})<cr>zz<cmd>CodeActionMenu<cr>", opts)
+    buf_map("n", "<leader>dj", "<cmd>vim.diagnostic.goto_next()<cr>", opts)
+    buf_map("n", "<leader>dk", "<cmd>vim.diagnostic.goto_prev()<cr>", opts)
+    buf_map("n", "<leader>da", "<cmd>CodeActionMenu<cr>", opts)
+    buf_map("n", "<leader>dh", "<cmd>lua vim.diagnostic.open_float()<cr>", opts)
+    buf_map("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", opts)
+    buf_map(
+        "n",
+        "<leader>do",
+        "<cmd>lua vim.lsp.buf.execute_command({command = '_typescript.organizeImports', arguments = {vim.fn.expand('%:p')}})<cr>"
+        ,
+        opts
+    )
+    buf_map("n", "<leader>dr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+
+    buf_map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>zz", opts)
+    buf_map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<cr>", opts)
+    buf_map(
         "n",
         "gr",
         "<cmd>lua require('telescope.builtin').lsp_references({show_line = false, include_declaration = false })<cr>",
         opts
     )
-    -- buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<cr>", opts)
-    buf_set_keymap("n", "gd", "<Cmd>Telescope lsp_definitions<cr>zz", opts)
-    buf_set_keymap("n", "gt", "<Cmd>lua vim.lsp.buf.type_definition()<cr>zz", opts)
-    buf_set_keymap("n", "gI", "<Cmd>lua vim.lsp.buf.implementation()<cr>zz", opts)
+    buf_map("n", "gd", "<Cmd>Telescope lsp_definitions<cr>zz", opts)
+    buf_map("n", "gt", "<Cmd>lua vim.lsp.buf.type_definition()<cr>zz", opts)
+    buf_map("n", "gI", "<Cmd>lua vim.lsp.buf.implementation()<cr>zz", opts)
 end
 
 protocol.CompletionItemKind = {
@@ -87,6 +100,11 @@ nvim_lsp.sumneko_lua.setup({
     },
     capabilities = capabilities,
 })
+
+-- nvim_lsp.rust.setup({
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+-- })
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
