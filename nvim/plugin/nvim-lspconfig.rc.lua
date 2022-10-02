@@ -7,7 +7,7 @@ local protocol = require("vim.lsp.protocol")
 
 local on_attach = function(_, bufnr)
     local function buf_map(m, k, v)
-        vim.api.nvim_buf_set_keymap(bufnr, m, k, v, { noremap = true, silent = true })
+        vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr })
     end
 
     -- Diagnostics
