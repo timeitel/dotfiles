@@ -135,6 +135,9 @@ map("n", "<A-j>", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>")
 map("n", "<A-k>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>")
 map("n", "<A-l>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
 
+-- Window
+map("n", "<leader>wv", "<cmd>vne<cr><cmd>Telescope find_files<cr>")
+
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
 vim.cmd([[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]]) -- TODO: just unmap
 vim.g.code_action_menu_show_details = false -- TODO: move

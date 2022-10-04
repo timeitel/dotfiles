@@ -1,19 +1,20 @@
 local actions = require("diffview.actions")
 -- print(vim.inspect(git))
 
--- o to select entry
 local shared_maps = {
     ["q"] = "<cmd>DiffviewClose<cr>",
     ["<C-h>"] = "<cmd>DiffviewClose<cr>",
     ["f"] = "<cmd>DiffviewToggleFiles<cr>",
+    -- o to preview entry
+    ["O"] = actions.focus_entry,
     ["<C-e>"] = actions.scroll_view(1),
     ["<C-y>"] = actions.scroll_view(-1),
     ["<C-d>"] = actions.scroll_view(10),
     ["<C-u>"] = actions.scroll_view(-10),
-    ["gf"] = actions.goto_file_edit,
-    ["s"] = actions.toggle_stage_entry, -- TODO: stage and unstage
-    ["<C-j>"] = actions.next_conflict(),
-    ["<C-k>"] = actions.prev_conflict(),
+    ["gf"] = actions.goto_file_tab,
+    ["s"] = actions.toggle_stage_entry,
+    ["<C-j>"] = actions.next_conflict,
+    ["<C-k>"] = actions.prev_conflict,
     -- ["r"] = function() -- TODO: reset /discard all changes
     --     local inp = vim.fn.input("Are you sure you'd like to discard changes ALL CHANGES? (y/n): ")
     --     if string.lower(inp) == "y" then

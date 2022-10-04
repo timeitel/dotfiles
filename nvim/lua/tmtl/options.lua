@@ -13,7 +13,7 @@ o.history = 500
 o.autoread = true
 o.cmdheight = 1
 o.hlsearch = false
-o.backspace = { 'eol', 'start', 'indent' }
+o.backspace = { "eol", "start", "indent" }
 o.whichwrap = o.whichwrap + "<,>,h,l"
 o.ignorecase = true
 o.smartcase = true
@@ -21,7 +21,6 @@ o.incsearch = true
 o.lazyredraw = true
 o.showmatch = true
 o.scrolloff = 10
-o.laststatus = 2
 o.backspace = { "eol", "start", "indent" }
 o.completeopt = { "menu", "menuone" }
 o.shortmess = o.shortmess + { c = true }
@@ -86,9 +85,9 @@ set_cursorline("FileType", false, "TelescopePrompt")
 vim.api.nvim_create_autocmd("TextYankPost", {
     pattern = "*",
     callback = function()
-        require("vim.highlight").on_yank({ timeout = 200, })
+        require("vim.highlight").on_yank({ timeout = 200 })
     end,
-    desc = "Highlight yank"
+    desc = "Highlight yank",
 })
 
 o.laststatus = 3

@@ -23,9 +23,9 @@ local on_attach = function(_, bufnr)
         "<leader>do",
         "<cmd>lua vim.lsp.buf.execute_command({command = '_typescript.organizeImports', arguments = {vim.fn.expand('%:p')}})<cr>"
     )
+    buf_map("n", "<leader>dr", "<cmd>lua vim.lsp.buf.rename()<cr>")
 
     -- LSP
-    buf_map("n", "<leader>dr", "<cmd>lua vim.lsp.buf.rename()<cr>")
     buf_map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>zz")
     buf_map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<cr>")
     buf_map(

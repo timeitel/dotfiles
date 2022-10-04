@@ -87,7 +87,6 @@ telescope.setup({
                         ["<C-l>"] = fb_actions.open,
                         ["<C-t>"] = fb_actions.goto_cwd,
                         ["<C-.>"] = fb_actions.toggle_hidden,
-                        -- ['h'] = fb_actions.goto_parent_dir TODO: make work
                     },
                 },
             },
