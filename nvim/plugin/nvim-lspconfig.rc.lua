@@ -10,11 +10,12 @@ local on_attach = function(_, bufnr)
         vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr })
     end
 
+    -- TODO: format the range after accepting code action
     -- Diagnostics
     buf_map("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next({float = false})<cr>zz<cmd>CodeActionMenu<cr>") -- TODO: get cursor position, spawn menu at location then check if any results, float if no actions
     buf_map("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev({float = false})<cr>zz<cmd>CodeActionMenu<cr>")
-    buf_map("n", "<leader>dj", "<cmd>vim.diagnostic.goto_next()<cr>")
-    buf_map("n", "<leader>dk", "<cmd>vim.diagnostic.goto_prev()<cr>")
+    buf_map("n", "<leader>dj", "<cmd>lua vim.diagnostic.goto_next()<cr>")
+    buf_map("n", "<leader>dk", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
     buf_map("n", "<leader>da", "<cmd>CodeActionMenu<cr>")
     buf_map("n", "<leader>dh", "<cmd>lua vim.diagnostic.open_float()<cr>")
     buf_map("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")

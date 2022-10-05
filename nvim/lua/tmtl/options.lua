@@ -94,4 +94,9 @@ o.laststatus = 3
 o.background = "dark"
 o.termguicolors = true
 o.signcolumn = "yes:1"
+
+o.foldmethod = "expr"
+o.foldexpr = "nvim_treesitter#foldexpr()"
+o.foldenable = false
+
 -- o.cmdheight = 0 TODO: when in 0.8
