@@ -73,7 +73,7 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protoco
 nvim_lsp.tsserver.setup({
     on_attach = function(client, buffnr)
         on_attach(client, buffnr)
-        client.resolved_capabilities.document_formatting = false -- done by prettierd
+        client.server_capabilities.document_formatting = false -- done by prettierd
     end,
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
     cmd = { "typescript-language-server", "--stdio" },
