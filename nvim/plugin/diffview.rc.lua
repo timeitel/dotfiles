@@ -27,7 +27,6 @@ local shared_maps = {
         if string.lower(inp) == "y" then
             actions.restore_entry()
         end
-        print("")
     end,
     ["C"] = function()
         vim.cmd("DiffviewClose")
