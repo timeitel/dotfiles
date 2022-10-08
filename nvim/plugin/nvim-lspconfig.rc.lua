@@ -23,16 +23,16 @@ local on_attach = function(_, bufnr)
     buf_map("n", "<leader>da", "<cmd>CodeActionMenu<cr>")
     buf_map("n", "<leader>dh", "<cmd>lua vim.diagnostic.open_float()<cr>")
     buf_map("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")
-    buf_map(
-        "n",
-        "<leader>do",
-        "<cmd>lua vim.lsp.buf.execute_command({command = '_typescript.organizeImports', arguments = {vim.fn.expand('%:p')}})<cr>"
-    )
-    buf_map("n", "<leader>dr", "<cmd>lua vim.lsp.buf.rename()<cr>")
-    buf_map("n", "<leader>ds", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
-    buf_map("i", "<C-S-Space>", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
 
     -- LSP
+    buf_map("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
+    buf_map("n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
+    buf_map(
+        "n",
+        "<leader>li",
+        "<cmd>lua vim.lsp.buf.execute_command({command = '_typescript.organizeImports', arguments = {vim.fn.expand('%:p')}})<cr>"
+    )
+    buf_map("i", "<C-S-Space>", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
     buf_map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>zz")
     buf_map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<cr>")
     buf_map(
