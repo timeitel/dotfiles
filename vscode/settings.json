@@ -195,7 +195,7 @@
   "git.autoRepositoryDetection": false,
   "git.mergeEditor": true,
   "window.zoomLevel": 1,
-  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/bin",
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   }

@@ -1,3 +1,5 @@
+-- TODO: <C-l> in insert mode, if cmp is not open then just accept first suggestion?
+-- TODO: grep within current folder <leader>fF
 -- TODO: file modified status in search buffers and also close buffers
 local function map(m, k, v, opts)
     opts = opts or {}
@@ -104,6 +106,7 @@ map(
 map("n", "<leader>bx", "<cmd>Telescope file_browser grouped=true cwd=~/code<cr>", { desc = "Browse projects" })
 
 -- Git
+-- map("n", "<leader>gr",) --TODO
 map("n", "<leader>gs", "<cmd>Neogit<cr>")
 map("n", "<leader>gd", "<cmd>DiffviewOpen<cr>")
 map("n", "<leader>gh", "<cmd>lua require('telescope.builtin').git_commits()<cr>")
@@ -136,7 +139,7 @@ map("n", "<A-k>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>")
 map("n", "<A-l>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
 
 -- Window
-map("n", "<leader>wv", "<cmd>vne<cr><cmd>Telescope find_files<cr>")
+map("n", "<leader>wv", "<cmd>vne<cr>")
 
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
 vim.cmd([[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]]) -- TODO: just unmap

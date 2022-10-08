@@ -10,10 +10,14 @@ local on_attach = function(_, bufnr)
         vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr })
     end
 
+    -- TODO: <C-.> for repeat last plugin action / commands
+    -- TODO: lsp signature help being blocked by nvim cmp, move signature floating window to the top
+    -- TODO: gfj, gfk for go to function -> treesitter object
+    -- TODO: try using on_list to conditionally call telescope when > 1 reference etc
     -- TODO: format the range after accepting code action
     -- Diagnostics
-    buf_map("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next({float = false})<cr>zz<cmd>CodeActionMenu<cr>") -- TODO: get cursor position, spawn menu at location then check if any results, float if no actions
-    buf_map("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev({float = false})<cr>zz<cmd>CodeActionMenu<cr>")
+    buf_map("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next({float = false})<cr><cmd>CodeActionMenu<cr>") -- TODO: get cursor position, spawn menu at location then check if any results, float if no actions
+    buf_map("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev({float = false})<cr><cmd>CodeActionMenu<cr>")
     buf_map("n", "<leader>dj", "<cmd>lua vim.diagnostic.goto_next()<cr>")
     buf_map("n", "<leader>dk", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
     buf_map("n", "<leader>da", "<cmd>CodeActionMenu<cr>")
@@ -25,6 +29,8 @@ local on_attach = function(_, bufnr)
         "<cmd>lua vim.lsp.buf.execute_command({command = '_typescript.organizeImports', arguments = {vim.fn.expand('%:p')}})<cr>"
     )
     buf_map("n", "<leader>dr", "<cmd>lua vim.lsp.buf.rename()<cr>")
+    buf_map("n", "<leader>ds", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
+    buf_map("i", "<C-S-Space>", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
 
     -- LSP
     buf_map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>zz")
@@ -34,9 +40,9 @@ local on_attach = function(_, bufnr)
         "gr",
         "<cmd>lua require('telescope.builtin').lsp_references({show_line = false, include_declaration = false })<cr>"
     )
-    buf_map("n", "gd", "<Cmd>Telescope lsp_definitions<cr>zz")
-    buf_map("n", "gt", "<Cmd>lua vim.lsp.buf.type_definition()<cr>zz")
-    buf_map("n", "gI", "<Cmd>lua vim.lsp.buf.implementation()<cr>zz")
+    buf_map("n", "gd", "<Cmd>Telescope lsp_definitions<cr>")
+    buf_map("n", "gt", "<Cmd>lua vim.lsp.buf.type_definition()<cr>")
+    buf_map("n", "gI", "<Cmd>lua vim.lsp.buf.implementation()<cr>")
 end
 
 protocol.CompletionItemKind = {

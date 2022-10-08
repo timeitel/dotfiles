@@ -28,6 +28,7 @@ export PATH="$PATH:/Users/timeitel/development/flutter/bin"
 if [ -f '/Users/timeitel/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/timeitel/google-cloud-sdk/path.zsh.inc'; fi
 
 bindkey '^L' autosuggest-execute
+bindkey '^[^L' forward-word
 bindkey '^H' autosuggest-clear
 bindkey '^K' up-history
 bindkey '^J' down-history

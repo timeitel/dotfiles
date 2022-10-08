@@ -32,6 +32,7 @@ return require("packer").startup(function(use)
         end,
     })
     use({ "nvim-treesitter/nvim-treesitter-context" })
+    use({ "nvim-treesitter/nvim-treesitter-textobjects" })
 
     -- Git
     use({ "lewis6991/gitsigns.nvim" })
