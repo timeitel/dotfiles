@@ -3,6 +3,17 @@ if not status then
     return
 end
 
+local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = border,
+})
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = border,
+})
+-- vim.lsp.handlers["textDocument/show_line_diagnostics"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+-- vim.lsp.handlers["textDocument/diagnostic"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+-- vim.lsp.handlers["textDocument/diagnostics"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+
 local protocol = require("vim.lsp.protocol")
 
 local on_attach = function(_, bufnr)
@@ -17,10 +28,16 @@ local on_attach = function(_, bufnr)
     -- Diagnostics
     buf_map("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next({float = false})<cr><cmd>CodeActionMenu<cr>") -- TODO: get cursor position, spawn menu at location then check if any results, float if no actions
     buf_map("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev({float = false})<cr><cmd>CodeActionMenu<cr>")
-    buf_map("n", "<leader>dj", "<cmd>lua vim.diagnostic.goto_next()<cr>")
-    buf_map("n", "<leader>dk", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
+    buf_map("n", "<leader>dj", function()
+        vim.diagnostic.goto_next({ float = { border = border } })
+    end)
+    buf_map("n", "<leader>dk", function()
+        vim.diagnostic.goto_prev({ float = { border = border } })
+    end)
     buf_map("n", "<leader>da", "<cmd>CodeActionMenu<cr>")
-    buf_map("n", "<leader>dh", "<cmd>lua vim.diagnostic.open_float()<cr>")
+    buf_map("n", "<leader>dh", function()
+        vim.diagnostic.open_float(0, { scope = "line", border = border })
+    end)
     buf_map("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")
 
     -- LSP
