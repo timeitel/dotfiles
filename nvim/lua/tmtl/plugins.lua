@@ -8,6 +8,7 @@ return require("packer").startup(function(use)
         requires = { { "nvim-lua/plenary.nvim" } },
     })
     use({ "nvim-telescope/telescope-file-browser.nvim" })
+    use({ "nvim-telescope/telescope-ui-select.nvim" })
 
     -- LSP
     use("neovim/nvim-lspconfig")
@@ -49,10 +50,6 @@ return require("packer").startup(function(use)
     use("ThePrimeagen/harpoon")
     use("RishabhRD/popfix")
     use("RishabhRD/nvim-lsputils")
-    use({
-        "weilbith/nvim-code-action-menu",
-        cmd = "CodeActionMenu",
-    })
     use("windwp/nvim-autopairs")
     use("windwp/nvim-ts-autotag")
     use("folke/which-key.nvim")

@@ -23,15 +23,23 @@ local on_attach = function(_, bufnr)
     -- TODO: try using on_list to conditionally call telescope when > 1 reference etc
     -- TODO: format the range after accepting code action
     -- Diagnostics
-    buf_map("n", "<C-j>", "<cmd>lua vim.diagnostic.goto_next({float = false})<cr><cmd>CodeActionMenu<cr>") -- TODO: get cursor position, spawn menu at location then check if any results, float if no actions
-    buf_map("n", "<C-k>", "<cmd>lua vim.diagnostic.goto_prev({float = false})<cr><cmd>CodeActionMenu<cr>")
+    buf_map("n", "<C-j>", function()
+        vim.diagnostic.goto_next({ float = false })
+        vim.lsp.buf.code_action()
+    end) -- TODO: get cursor position, spawn menu at location then check if any results, float if no actions
+    buf_map("n", "<C-k>", function()
+        vim.diagnostic.goto_prev({ float = false })
+        vim.lsp.buf.code_action()
+    end)
     buf_map("n", "<leader>dj", function()
         vim.diagnostic.goto_next({ float = { border = border } })
     end)
     buf_map("n", "<leader>dk", function()
         vim.diagnostic.goto_prev({ float = { border = border } })
     end)
-    buf_map("n", "<leader>da", "<cmd>CodeActionMenu<cr>")
+    buf_map("n", "<leader>da", function()
+        vim.lsp.buf.code_action()
+    end)
     buf_map("n", "<leader>dh", function()
         vim.diagnostic.open_float(0, { scope = "line", border = border })
     end)
