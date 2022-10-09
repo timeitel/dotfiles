@@ -5,6 +5,7 @@ end
 
 local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 local protocol = require("vim.lsp.protocol")
+local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 
 local on_attach = function(_, bufnr)
     local function buf_map(m, k, v)
@@ -132,7 +133,19 @@ nvim_lsp.sumneko_lua.setup({
 })
 
 nvim_lsp.rust_analyzer.setup({
-    on_attach = on_attach,
+    on_attach = function(client, buffnr)
+        on_attach(client, buffnr)
+        if client.server_capabilities.documentFormattingProvider then
+            vim.api.nvim_clear_autocmds({ buffer = 0, group = augroup_format })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = augroup_format,
+                buffer = 0,
+                callback = function()
+                    vim.lsp.buf.format()
+                end,
+            })
+        end
+    end,
     settings = {
         ["rust-analyzer"] = {
             imports = {
