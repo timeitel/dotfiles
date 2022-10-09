@@ -100,7 +100,7 @@ telescope.setup({
             },
         },
         ["ui-select"] = {
-            require("telescope.themes").get_dropdown({}),
+            require("telescope.themes").get_cursor({}),
         },
     },
 })
