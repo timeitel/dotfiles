@@ -35,27 +35,41 @@ local on_attach = function(_, bufnr)
     buf_map("n", "<leader>dh", function()
         vim.diagnostic.open_float(0, { scope = "line", border = border })
     end)
-    buf_map("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")
+    buf_map("n", "<leader>dl", function()
+        vim.cmd("Telescope diagnostics")
+    end)
 
     -- LSP
-    buf_map("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
-    buf_map("n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
-    buf_map(
-        "n",
-        "<leader>li",
-        "<cmd>lua vim.lsp.buf.execute_command({command = '_typescript.organizeImports', arguments = {vim.fn.expand('%:p')}})<cr>"
-    )
-    buf_map("i", "<C-S-Space>", "<cmd>lua vim.lsp.buf.signature_help()<cr>")
-    buf_map("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>zz")
-    buf_map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<cr>")
-    buf_map(
-        "n",
-        "gr",
-        "<cmd>lua require('telescope.builtin').lsp_references({show_line = false, include_declaration = false })<cr>"
-    )
-    buf_map("n", "gd", "<Cmd>Telescope lsp_definitions<cr>")
-    buf_map("n", "gt", "<Cmd>lua vim.lsp.buf.type_definition()<cr>")
-    buf_map("n", "gI", "<Cmd>lua vim.lsp.buf.implementation()<cr>")
+    buf_map("n", "<leader>lr", function()
+        vim.lsp.buf.rename()
+    end)
+    buf_map("n", "<leader>ls", function()
+        vim.lsp.buf.signature_help()
+    end)
+    buf_map("n", "<leader>li", function()
+        vim.lsp.buf.execute_command({ command = "_typescript.organizeImports", arguments = { vim.fn.expand("%:p") } })
+    end)
+    buf_map("i", "<C-S-Space>", function()
+        vim.lsp.buf.signature_help()
+    end)
+    buf_map("n", "gD", function()
+        vim.lsp.buf.declaration()
+    end)
+    buf_map("n", "K", function()
+        vim.lsp.buf.hover()
+    end)
+    buf_map("n", "gr", function()
+        require("telescope.builtin").lsp_references({ show_line = false, include_declaration = false })
+    end)
+    buf_map("n", "gd", function()
+        vim.cmd("Telescope lsp_definitions")
+    end)
+    buf_map("n", "gt", function()
+        vim.lsp.buf.type_definition()
+    end)
+    buf_map("n", "gI", function()
+        vim.lsp.buf.implementation()
+    end)
 end
 
 protocol.CompletionItemKind = {
