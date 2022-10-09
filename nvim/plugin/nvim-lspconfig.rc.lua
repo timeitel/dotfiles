@@ -4,13 +4,6 @@ if not status then
 end
 
 local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = border,
-})
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = border,
-})
-
 local protocol = require("vim.lsp.protocol")
 
 local on_attach = function(_, bufnr)
@@ -138,16 +131,26 @@ nvim_lsp.sumneko_lua.setup({
     capabilities = capabilities,
 })
 
--- nvim_lsp.rust.setup({
---     on_attach = on_attach,
---     capabilities = capabilities,
--- })
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    update_in_insert = false,
-    virtual_text = { spacing = 4, prefix = "●" },
-    severity_sort = true,
+nvim_lsp.rust_analyzer.setup({
+    on_attach = on_attach,
+    settings = {
+        ["rust-analyzer"] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true,
+            },
+        },
+    },
 })
 
 -- Diagnostic symbols in the sign column (gutter)
@@ -165,4 +168,16 @@ vim.diagnostic.config({
     float = {
         source = "always", -- Or "if_many"
     },
+})
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = border,
+})
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = border,
+})
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    update_in_insert = false,
+    virtual_text = { spacing = 4, prefix = "●" },
+    severity_sort = true,
 })
