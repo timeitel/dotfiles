@@ -78,6 +78,8 @@ telescope.setup({
                 },
             },
         },
+        git_stash = {}, -- TODO: delete either stash or branch
+        git_branches = {},
     },
 
     extensions = {
