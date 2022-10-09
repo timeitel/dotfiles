@@ -65,29 +65,35 @@ telescope.setup({
                     vim.api.nvim_input("<c-s-w>")
                 end,
                 ["<C-s>"] = actions.select_horizontal,
+                ["<M-p>"] = actions_layout.toggle_preview,
             },
         },
+    },
 
-        pickers = {
-            buffers = {
-                sort_lastused = true,
+    pickers = {
+        buffers = {
+            mappings = {
+                n = {
+                    ["d"] = require("telescope.actions").delete_buffer,
+                },
             },
         },
+    },
 
-        extensions = {
-            file_browser = {
-                hijack_netrw = true,
-                mappings = {
-                    i = {
-                        ["<C-l>"] = fb_actions.open,
-                        ["<C-t>"] = fb_actions.goto_cwd,
-                        ["<C-.>"] = fb_actions.toggle_hidden,
-                    },
-                    n = {
-                        ["<C-l>"] = fb_actions.open,
-                        ["<C-t>"] = fb_actions.goto_cwd,
-                        ["<C-.>"] = fb_actions.toggle_hidden,
-                    },
+    extensions = {
+        file_browser = {
+            hijack_netrw = true,
+            mappings = {
+                i = {
+                    ["<C-t>"] = fb_actions.change_cwd,
+                    ["<C-.>"] = fb_actions.toggle_hidden,
+                },
+                n = {
+                    ["<C-t>"] = fb_actions.change_cwd,
+                    ["<C-.>"] = fb_actions.toggle_hidden,
+                    ["h"] = fb_actions.goto_parent_dir,
+                    ["H"] = fb_actions.goto_cwd,
+                    ["l"] = actions.select_default + actions.center,
                 },
             },
         },

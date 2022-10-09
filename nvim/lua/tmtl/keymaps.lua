@@ -71,7 +71,11 @@ map("v", "<leader>ff", function()
     local text = vim.getVisualSelection()
     require("telescope.builtin").live_grep({ default_text = text })
 end)
-map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
+map(
+    "n",
+    "<leader>fb",
+    "<cmd>lua require('telescope.builtin').buffers({ sort_mru = true, ignore_current_buffer = true })<cr>"
+)
 map("n", "<leader>fc", "<cmd>Telescope find_files cwd=~/.dotfiles<cr>")
 map(
     "n",

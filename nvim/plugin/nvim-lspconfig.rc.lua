@@ -12,7 +12,6 @@ local on_attach = function(_, bufnr)
 
     -- TODO: <C-.> for repeat last plugin action / commands
     -- TODO: lsp signature help being blocked by nvim cmp, move signature floating window to the top
-    -- TODO: gfj, gfk for go to function -> treesitter object
     -- TODO: try using on_list to conditionally call telescope when > 1 reference etc
     -- TODO: format the range after accepting code action
     -- Diagnostics
