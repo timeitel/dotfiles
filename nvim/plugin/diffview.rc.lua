@@ -23,8 +23,7 @@ local shared_maps = {
     --     print("")
     -- end,
     ["x"] = function()
-        local inp = vim.fn.input("Are you sure you'd like to discard changes? (y/n): ")
-        if string.lower(inp) == "y" then
+        if vim.fn.confirm("", "Are you sure you'd like to discard changes? (&Yes\n&No)", 1) == 1 then
             actions.restore_entry()
         end
     end,
