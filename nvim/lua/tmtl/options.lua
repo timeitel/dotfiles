@@ -87,7 +87,6 @@ o.foldmethod = "expr"
 o.foldexpr = "nvim_treesitter#foldexpr()"
 o.foldenable = false
 
--- TODO: snippets
 -- TODO: fix
 -- vim.api.nvim_command([[
 -- au FileType * setlocal fo-=ato2 fo+=cqrnj

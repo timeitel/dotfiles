@@ -1,6 +1,5 @@
 -- TODO: <C-l> in insert mode, if cmp is not open then just accept first suggestion?
 -- TODO: grep within current folder <leader>fF
--- TODO: file modified status in search buffers and also close buffers
 local function map(m, k, v, opts)
     opts = opts or {}
     opts.silent = true

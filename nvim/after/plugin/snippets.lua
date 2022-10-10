@@ -1,4 +1,3 @@
--- TODO: format range after 'kj'
 local ls = require("luasnip")
 local s = ls.snippet
 local text = ls.text_node
