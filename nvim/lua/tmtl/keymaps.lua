@@ -28,8 +28,6 @@ map({ "n", "v", "o" }, "L", "$")
 
 map("i", "kj", "<ESC>")
 
-map("v", "*", 'y/<C-R>"<CR>', { desc = "Search for current selection" })
-map("v", "#", 'y?<C-R>"<CR>', { desc = "Search for current selection" })
 map("v", "p", "pgvy")
 map("v", "P", "Pgvy")
 
@@ -150,5 +148,4 @@ map("n", "<leader>wv", "<cmd>vne<cr>")
 
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
 vim.cmd([[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]]) -- TODO: just unmap
-vim.g.code_action_menu_show_details = false -- TODO: move
 vim.g.camelcasemotion_key = "<leader>"
