@@ -96,6 +96,9 @@ telescope.setup({
                     ["h"] = fb_actions.goto_parent_dir,
                     ["H"] = fb_actions.goto_cwd,
                     ["l"] = actions.select_default + actions.center,
+                    ["F"] = function(one, two)
+                        print(vim.inspect(one), vim.inspect(two))
+                    end,
                 },
             },
         },

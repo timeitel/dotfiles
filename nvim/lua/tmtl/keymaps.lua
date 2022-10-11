@@ -1,3 +1,4 @@
+-- TODO: kitty layouts
 -- TODO: <C-l> in insert mode, if cmp is not open then just accept first suggestion?
 -- TODO: grep within current folder <leader>fF
 local function map(m, k, v, opts)
