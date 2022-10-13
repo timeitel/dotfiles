@@ -1,3 +1,4 @@
+-- TODO: .ts files not oworking for treesiter text objects
 local status, nvim_lsp = pcall(require, "lspconfig")
 if not status then
     return
@@ -6,6 +7,40 @@ end
 local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 local protocol = require("vim.lsp.protocol")
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
+local tsHandlers = {
+    ["textDocument/definition"] = function(_, result, params)
+        local util = require("vim.lsp.util")
+        if result == nil or vim.tbl_isempty(result) then
+            local _ = vim.lsp.log.info() and vim.lsp.log.info(params.method, "No location found")
+            return nil
+        end
+
+        if vim.tbl_islist(result) then
+            util.jump_to_location(result[1], "utf-8", true)
+
+            --if #result > 1 then
+            --    local isReactDTs = false
+            --    ---@diagnostic disable-next-line: unused-local
+            --    for key, value in pairs(result) do
+            --        print(key, value)
+            --        if string.match(value.uri, "react/index.d.ts") then
+            --            isReactDTs = true
+            --            break
+            --        end
+            --    end
+            --    if not isReactDTs then
+            --        -- this sets the value for the quickfix list
+            --        util.set_qflist(util.locations_to_items(result, "utf-8"))
+            --        -- this opens the quickfix window
+            --        vim.api.nvim_command("copen")
+            --        vim.api.nvim_command("wincmd p")
+            --    end
+            --end
+        else
+            util.jump_to_location(result, "utf-8", true)
+        end
+    end,
+}
 
 local on_attach = function(_, bufnr)
     local function buf_map(m, k, v)
@@ -19,17 +54,21 @@ local on_attach = function(_, bufnr)
     -- Diagnostics
     buf_map("n", "<C-j>", function()
         vim.diagnostic.goto_next({ float = false })
+        vim.fn.feedkeys("zz")
         vim.lsp.buf.code_action()
     end)
     buf_map("n", "<C-k>", function()
         vim.diagnostic.goto_prev({ float = false })
+        vim.fn.feedkeys("zz")
         vim.lsp.buf.code_action()
     end)
     buf_map("n", "<leader>dj", function()
         vim.diagnostic.goto_next({ float = { border = border } })
+        vim.fn.feedkeys("zz")
     end)
     buf_map("n", "<leader>dk", function()
         vim.diagnostic.goto_prev({ float = { border = border } })
+        vim.fn.feedkeys("zz")
     end)
     buf_map("n", "<leader>da", function()
         vim.lsp.buf.code_action()
@@ -51,11 +90,16 @@ local on_attach = function(_, bufnr)
     buf_map("n", "<leader>li", function()
         vim.lsp.buf.execute_command({ command = "_typescript.organizeImports", arguments = { vim.fn.expand("%:p") } })
     end)
-    buf_map("i", "<C-S-Space>", function()
+    buf_map({ "i", "n" }, "<C-S-Space>", function()
         vim.lsp.buf.signature_help()
+    end)
+    buf_map("n", "gd", function()
+        vim.cmd("Telescope lsp_definitions")
+        vim.fn.feedkeys("zz")
     end)
     buf_map("n", "gD", function()
         vim.lsp.buf.declaration()
+        vim.fn.feedkeys("zz")
     end)
     buf_map("n", "K", function()
         vim.lsp.buf.hover()
@@ -63,14 +107,13 @@ local on_attach = function(_, bufnr)
     buf_map("n", "gr", function()
         require("telescope.builtin").lsp_references({ show_line = false, include_declaration = false })
     end)
-    buf_map("n", "gd", function()
-        vim.cmd("Telescope lsp_definitions")
-    end)
     buf_map("n", "gt", function()
         vim.lsp.buf.type_definition()
+        vim.fn.feedkeys("zz")
     end)
     buf_map("n", "gI", function()
         vim.lsp.buf.implementation()
+        vim.fn.feedkeys("zz")
     end)
 end
 
@@ -106,10 +149,15 @@ protocol.CompletionItemKind = {
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 nvim_lsp.tsserver.setup({
-    on_attach = function(client, buffnr)
-        on_attach(client, buffnr)
+    on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false -- done by prettierd
+        vim.keymap.set("n", "gd", function()
+            vim.lsp.buf.definition()
+            vim.fn.feedkeys("zz") -- TODO: not working?
+        end, { noremap = true, silent = true, buffer = bufnr })
     end,
+    handlers = tsHandlers,
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
     cmd = { "typescript-language-server", "--stdio" },
     capabilities = capabilities,
@@ -164,6 +212,7 @@ nvim_lsp.rust_analyzer.setup({
             },
         },
     },
+    capabilities = capabilities,
 })
 
 -- Diagnostic symbols in the sign column (gutter)

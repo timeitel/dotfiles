@@ -79,7 +79,8 @@ telescope.setup({
             },
         },
         git_stash = {}, -- TODO: delete either stash or branch
-        git_branches = {},
+        git_branches = {}, -- TODO: toggle for local and remote, default to local
+        -- TODO: <C-d> in marks deletes mark, need to add to defaults list I think to override all pickers
     },
 
     extensions = {

@@ -41,17 +41,15 @@ ts.setup({
             enable = true,
             set_jumps = false,
             goto_next_start = {
-                ["<C-]>"] = "@function.outer",
+                ["]f"] = "@function.outer",
+                ["]a"] = "@parameter.outer",
             },
-            goto_next_end = { -- TODO: map these?
-                ["<C-'>"] = "@function.outer",
-            },
+            goto_next_end = {},
             goto_previous_start = {
-                ["<C-[>"] = "@function.outer",
+                ["[f"] = "@function.outer",
+                ["[a"] = "@parameter.outer",
             },
-            goto_previous_end = {
-                ["<C-;>"] = "@function.outer",
-            },
+            goto_previous_end = {},
         },
         lsp_interop = {
             enable = true,
