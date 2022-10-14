@@ -154,7 +154,7 @@ nvim_lsp.tsserver.setup({
         client.server_capabilities.documentFormattingProvider = false -- done by prettierd
         vim.keymap.set("n", "gd", function()
             vim.lsp.buf.definition()
-            vim.fn.feedkeys("zz") -- TODO: not working?
+            vim.fn.feedkeys("zz")
         end, { noremap = true, silent = true, buffer = bufnr })
     end,
     handlers = tsHandlers,
@@ -184,10 +184,10 @@ nvim_lsp.rust_analyzer.setup({
     on_attach = function(client, buffnr)
         on_attach(client, buffnr)
         if client.server_capabilities.documentFormattingProvider then
-            vim.api.nvim_clear_autocmds({ buffer = 0, group = augroup_format })
+            vim.api.nvim_clear_autocmds({ buffer = buffnr, group = augroup_format })
             vim.api.nvim_create_autocmd("BufWritePre", {
                 group = augroup_format,
-                buffer = 0,
+                buffer = buffnr,
                 callback = function()
                     vim.lsp.buf.format()
                 end,

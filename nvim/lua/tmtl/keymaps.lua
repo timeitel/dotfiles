@@ -132,16 +132,16 @@ map("n", "<leader>hu", "<cmd>Gitsigns undo_stage_hunk<cr><cmd>DiffviewRefresh<cr
 
 -- Quick fix list
 map("n", "<leader>ql", "<cmd>copen<cr>")
-map("n", "]q", "<cmd>cnext<cr>")
-map("n", "[q", "<cmd>cprevious<cr>")
--- map("n", "<leader>qa", "<cmd>cprevious<cr>") --TODO: add to qf list
+map("n", "<leader>qj", "<cmd>cnext<cr>")
+map("n", "<leader>qk", "<cmd>cprevious<cr>")
+-- map("n", "<leader>qa", "") --TODO: add to qf list
 
 -- TODO: configure with c-h and c-l
 -- Quick edit files
 map("n", "<leader>ea", "<cmd>lua require('harpoon.mark').add_file()<cr>")
 map("n", "<leader>el", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>")
-map("n", "]e", "<cmd>lua require('harpoon.ui').nav_next()<cr>")
-map("n", "[e", "<cmd>lua require('harpoon.ui').nav_prev()<cr>")
+map("n", "<leader>ej", "<cmd>lua require('harpoon.ui').nav_next()<cr>")
+map("n", "<leader>ek", "<cmd>lua require('harpoon.ui').nav_prev()<cr>")
 map("n", "<A-h>", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>")
 map("n", "<A-j>", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>")
 map("n", "<A-k>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>")

@@ -10,7 +10,7 @@ return require("packer").startup(function(use)
     use({ "nvim-telescope/telescope-file-browser.nvim" })
     use({ "nvim-telescope/telescope-ui-select.nvim" })
 
-    -- LSP
+    -- LSP & completion
     use("neovim/nvim-lspconfig")
     use("L3MON4D3/LuaSnip")
     use("hrsh7th/nvim-cmp")
@@ -20,6 +20,7 @@ return require("packer").startup(function(use)
     use("hrsh7th/cmp-nvim-lsp")
     use("hrsh7th/cmp-nvim-lsp-document-symbol")
     use("hrsh7th/cmp-nvim-lsp-signature-help")
+    use("hrsh7th/cmp-cmdline")
     use("saadparwaiz1/cmp_luasnip")
     use("tamago324/cmp-zsh")
     use("onsails/lspkind-nvim")
