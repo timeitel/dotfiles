@@ -65,15 +65,15 @@ cmp.setup({
 cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-        { name = "cmdline", keyword_length = 2, max_item_count = 5 },
-        { name = "nvim_lua", keyword_length = 2, max_item_count = 5 },
+        { name = "cmdline", keyword_length = 2 },
+        { name = "nvim_lua", keyword_length = 2 },
     },
 })
 
 cmp.setup.cmdline("/", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-        { name = "buffer", keyword_length = 2, max_item_count = 5 },
+        { name = "buffer", keyword_length = 2 },
     },
 })
 
