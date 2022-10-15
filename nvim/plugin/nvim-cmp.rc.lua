@@ -28,7 +28,13 @@ local mapping = cmp.mapping.preset.insert({
         end
     end, { "i", "c" }),
     ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-h>"] = cmp.mapping.close(),
+    ["<C-h>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+            cmp.close()
+        else
+            fallback()
+        end
+    end, { "i", "c" }),
     ["<C-l>"] = cmp.mapping(function()
         if cmp.visible() then
             cmp.confirm({ select = true })
