@@ -1,7 +1,5 @@
--- TODO: :bo but keep any buffer inside a split
 -- TODO: open two files at once into v split -> old files
 -- TODO: kitty layouts
--- TODO: <C-l> in insert mode, if cmp is not open then just accept first suggestion?
 -- TODO: grep within current folder <leader>fF
 local function map(m, k, v, opts)
     opts = opts or {}

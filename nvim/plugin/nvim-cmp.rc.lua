@@ -10,7 +10,6 @@ end
 
 lspkind.init()
 
---  TODO: moving between snippet nodes
 local mapping = cmp.mapping.preset.insert({
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-u>"] = cmp.mapping.scroll_docs(4),
