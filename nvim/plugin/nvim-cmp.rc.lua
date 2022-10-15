@@ -10,6 +10,36 @@ end
 
 lspkind.init()
 
+local mapping = cmp.mapping.preset.insert({
+    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-u>"] = cmp.mapping.scroll_docs(4),
+    ["<C-j>"] = cmp.mapping.select_next_item(),
+    ["<C-k>"] = cmp.mapping.select_prev_item(),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-h>"] = cmp.mapping.close(),
+    ["<C-l>"] = cmp.mapping.confirm({ select = true }),
+})
+
+-- for cmdline
+mapping["<Tab>"] = cmp.mapping({
+    c = function()
+        if cmp.visible() then
+            cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+        else
+            cmp.complete()
+        end
+    end,
+})
+mapping["<S-Tab>"] = cmp.mapping({
+    c = function()
+        if cmp.visible() then
+            cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+        else
+            cmp.complete()
+        end
+    end,
+})
+
 -- Insert `(` after select function or method item
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
@@ -27,15 +57,7 @@ cmp.setup({
             require("luasnip").lsp_expand(args.body)
         end,
     },
-    mapping = cmp.mapping.preset.insert({
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-u>"] = cmp.mapping.scroll_docs(4),
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-h>"] = cmp.mapping.close(),
-        ["<C-l>"] = cmp.mapping.confirm({ select = true }),
-    }),
+    mapping = mapping,
     sources = cmp.config.sources({
         { name = "nvim_lsp", keyword_length = 2, max_item_count = 10 },
         { name = "luasnip", keyword_length = 2, max_item_count = 10 },
@@ -63,17 +85,17 @@ cmp.setup({
 })
 
 cmp.setup.cmdline(":", {
-    mapping = cmp.mapping.preset.cmdline(),
+    mapping = mapping,
     sources = {
-        { name = "cmdline", keyword_length = 2 },
-        { name = "nvim_lua", keyword_length = 2 },
+        { name = "cmdline", keyword_length = 2, max_item_count = 15 },
+        { name = "nvim_lua", keyword_length = 2, max_item_count = 15 },
     },
 })
 
 cmp.setup.cmdline("/", {
-    mapping = cmp.mapping.preset.cmdline(),
+    mapping = mapping,
     sources = {
-        { name = "buffer", keyword_length = 2 },
+        { name = "buffer", keyword_length = 2, max_item_count = 15 },
     },
 })
 

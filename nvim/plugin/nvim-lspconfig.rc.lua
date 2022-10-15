@@ -54,7 +54,7 @@ local on_attach = function(_, bufnr)
     -- Diagnostics
     buf_map("n", "<C-j>", function()
         vim.diagnostic.goto_next({ float = false })
-        vim.fn.feedkeys("zz")
+        vim.fn.feedkeys("zz") -- TODO: only center if there's diagnostics
         vim.lsp.buf.code_action()
     end)
     buf_map("n", "<C-k>", function()
