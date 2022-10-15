@@ -17,7 +17,15 @@ local mapping = cmp.mapping.preset.insert({
     ["<C-k>"] = cmp.mapping.select_prev_item(),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-h>"] = cmp.mapping.close(),
-    ["<C-l>"] = cmp.mapping.confirm({ select = true }),
+    ["<C-l>"] = cmp.mapping({
+        i = function()
+            if cmp.visible() then
+                cmp.confirm({ select = true })
+            else
+                cmp.complete()
+            end
+        end,
+    }),
 })
 
 -- for cmdline
