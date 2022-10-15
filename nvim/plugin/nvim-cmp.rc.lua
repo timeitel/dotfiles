@@ -10,22 +10,33 @@ end
 
 lspkind.init()
 
+--  TODO: moving between snippet nodes
 local mapping = cmp.mapping.preset.insert({
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-u>"] = cmp.mapping.scroll_docs(4),
-    ["<C-j>"] = cmp.mapping.select_next_item(),
-    ["<C-k>"] = cmp.mapping.select_prev_item(),
+    ["<C-j>"] = cmp.mapping(function()
+        if cmp.visible() then
+            cmp.select_next_item()
+        else
+            cmp.complete()
+        end
+    end, { "i", "c" }),
+    ["<C-k>"] = cmp.mapping(function()
+        if cmp.visible() then
+            cmp.select_prev_item()
+        else
+            cmp.complete()
+        end
+    end, { "i", "c" }),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-h>"] = cmp.mapping.close(),
-    ["<C-l>"] = cmp.mapping({
-        i = function()
-            if cmp.visible() then
-                cmp.confirm({ select = true })
-            else
-                cmp.complete()
-            end
-        end,
-    }),
+    ["<C-l>"] = cmp.mapping(function()
+        if cmp.visible() then
+            cmp.confirm({ select = true })
+        else
+            cmp.complete()
+        end
+    end, { "i", "c" }),
 })
 
 -- for cmdline
