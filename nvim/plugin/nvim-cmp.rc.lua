@@ -39,26 +39,6 @@ local mapping = cmp.mapping.preset.insert({
     end, { "i", "c" }),
 })
 
--- for cmdline
-mapping["<Tab>"] = cmp.mapping({
-    c = function()
-        if cmp.visible() then
-            cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-        else
-            cmp.complete()
-        end
-    end,
-})
-mapping["<S-Tab>"] = cmp.mapping({
-    c = function()
-        if cmp.visible() then
-            cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-        else
-            cmp.complete()
-        end
-    end,
-})
-
 -- Insert `(` after select function or method item
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
