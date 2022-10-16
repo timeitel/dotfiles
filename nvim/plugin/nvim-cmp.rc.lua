@@ -30,7 +30,7 @@ local mapping = cmp.mapping.preset.insert({
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-h>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-            cmp.close()
+            cmp.abort()
         else
             fallback()
         end
