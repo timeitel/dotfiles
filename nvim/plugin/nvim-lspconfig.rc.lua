@@ -146,7 +146,7 @@ protocol.CompletionItemKind = {
 }
 
 -- Set up completion using nvim_cmp with LSP source
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 nvim_lsp.tsserver.setup({
     on_attach = function(client, bufnr)
@@ -160,6 +160,11 @@ nvim_lsp.tsserver.setup({
     handlers = tsHandlers,
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
     cmd = { "typescript-language-server", "--stdio" },
+    settings = {
+        completions = {
+            completeFunctionCalls = true,
+        },
+    },
     capabilities = capabilities,
 })
 
@@ -167,6 +172,9 @@ nvim_lsp.sumneko_lua.setup({
     on_attach = on_attach,
     settings = {
         Lua = {
+            completion = {
+                callSnippet = "Replace",
+            },
             diagnostics = {
                 globals = { "vim" },
             },
