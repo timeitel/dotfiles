@@ -5,28 +5,27 @@ o.wildignore = "__pycache__"
 o.wildignore:append({ "*.o", "*~", "*.pyc", "*pycache*" })
 o.wildignore:append("Cargo.lock")
 
-o.showmode = false
-o.showcmd = true
-o.relativenumber = true
-o.number = true
-o.history = 500
 o.autoread = true
-o.cmdheight = 1
-o.hlsearch = false
 o.backspace = { "eol", "start", "indent" }
-o.whichwrap = o.whichwrap + "<,>,h,l"
+o.cmdheight = 1
+o.completeopt = { "menu", "menuone", "noinsert" }
+o.history = 500
+o.hlsearch = false
 o.ignorecase = true
-o.smartcase = true
 o.incsearch = true
 o.lazyredraw = true
-o.showmatch = true
+o.number = true
+o.relativenumber = true
 o.scrolloff = 10
-o.backspace = { "eol", "start", "indent" }
-o.completeopt = { "menu", "menuone" }
 o.shortmess = o.shortmess + { c = true }
-o.swapfile = false
-o.splitright = true
+o.showcmd = true
+o.showmatch = true
+o.showmode = false
+o.smartcase = true
 o.splitbelow = true
+o.splitright = true
+o.swapfile = false
+o.whichwrap = o.whichwrap + "<,>,h,l"
 
 -- Tabs
 o.autoindent = true
