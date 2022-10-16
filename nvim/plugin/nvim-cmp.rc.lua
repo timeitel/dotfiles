@@ -82,7 +82,7 @@ cmp.setup({
                 path = "[path]",
                 luasnip = "[snip]",
                 gh_issues = "[issues]",
-                tn = "[TabNine]",
+                tn = "[TabNine]", -- TODO: try this?
             },
         }),
     },
@@ -91,15 +91,15 @@ cmp.setup({
 cmp.setup.cmdline(":", {
     mapping = mapping,
     sources = {
-        { name = "cmdline", keyword_length = 2, max_item_count = 15 },
-        { name = "nvim_lua", keyword_length = 2, max_item_count = 15 },
+        { name = "cmdline", keyword_length = 2 },
+        { name = "nvim_lua", keyword_length = 2 },
     },
 })
 
 cmp.setup.cmdline("/", {
     mapping = mapping,
     sources = {
-        { name = "buffer", keyword_length = 2, max_item_count = 15 },
+        { name = "buffer", keyword_length = 2 },
     },
 })
 
