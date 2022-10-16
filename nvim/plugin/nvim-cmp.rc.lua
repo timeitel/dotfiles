@@ -64,9 +64,10 @@ cmp.setup({
     mapping = mapping,
     sources = cmp.config.sources({
         { name = "nvim_lsp", keyword_length = 2, max_item_count = 10 },
+        { name = "nvim_lua", keyword_length = 2, max_item_count = 10 },
+        { name = "path" },
         { name = "luasnip", keyword_length = 2, max_item_count = 10 },
         { name = "buffer", keyword_length = 5, max_item_count = 10 },
-        { name = "nvim_lsp_signature_help" },
     }),
     experimental = {
         native_menu = false,
@@ -81,8 +82,8 @@ cmp.setup({
                 nvim_lua = "[api]",
                 path = "[path]",
                 luasnip = "[snip]",
-                gh_issues = "[issues]",
-                tn = "[TabNine]", -- TODO: try this?
+                -- gh_issues = "[issues]", -- TODO try
+                -- tn = "[TabNine]", -- TODO: try this?
             },
         }),
     },
