@@ -2,6 +2,7 @@ local telescope = require("telescope")
 local actions = require("telescope.actions")
 local actions_layout = require("telescope.actions.layout")
 local fb_actions = telescope.extensions.file_browser.actions
+-- TODO: show current open file highlighted
 
 telescope.setup({
     defaults = {
@@ -57,6 +58,7 @@ telescope.setup({
                 ["<M-p>"] = actions_layout.toggle_preview,
             },
             n = {
+                ["c"] = false,
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
                 ["<C-h>"] = actions.close,
@@ -90,8 +92,10 @@ telescope.setup({
                 i = {
                     ["<C-t>"] = fb_actions.change_cwd,
                     ["<C-.>"] = fb_actions.toggle_hidden,
+                    ["<C-c>"] = fb_actions.create,
                 },
                 n = {
+                    ["<C-c>"] = fb_actions.create,
                     ["<C-t>"] = fb_actions.change_cwd,
                     ["<C-.>"] = fb_actions.toggle_hidden,
                     ["h"] = fb_actions.goto_parent_dir,

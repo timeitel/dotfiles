@@ -97,7 +97,7 @@ cmp.setup.cmdline(":", {
     },
 })
 
-cmp.setup.cmdline("/", {
+cmp.setup.cmdline({ "/", "?" }, {
     mapping = mapping,
     sources = {
         { name = "buffer", keyword_length = 2 },

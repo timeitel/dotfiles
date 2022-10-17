@@ -81,6 +81,7 @@ map(
 map("n", "<leader>fx", ":Telescope find_files cwd=~/") -- x for explore??
 map("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<cr>")
 map("n", "<leader>fm", "<cmd>Telescope harpoon marks<cr>", { desc = "Find in makrs" })
+-- map("n", "<leader>fy", "<cmd>Telescope frecency CWD", { desc = "Find frecent files" })
 
 -- Fuzzy finder (browser)
 map(
