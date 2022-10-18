@@ -28,7 +28,7 @@ return require("packer").startup(function(use)
 
     use({
         "nvim-treesitter/nvim-treesitter",
-        commit = "4cccb6f494eb255b32a290d37c35ca12584c74d0", -- broken TS highlights
+        commit = "4cccb6f494eb255b32a290d37c35ca12584c74d0", -- breaking changes to highlight tokens
         run = function()
             require("nvim-treesitter.install").update({ with_sync = true })
         end,
@@ -55,6 +55,7 @@ return require("packer").startup(function(use)
     use("windwp/nvim-ts-autotag")
     use("folke/which-key.nvim")
     use("karb94/neoscroll.nvim")
+    use("unblevable/quick-scope")
 
     -- Styling
     use("monsonjeremy/onedark.nvim")
