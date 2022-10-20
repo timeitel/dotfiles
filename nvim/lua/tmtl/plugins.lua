@@ -7,8 +7,8 @@ return require("packer").startup(function(use)
         tag = "0.1.0",
         requires = { { "nvim-lua/plenary.nvim" } },
     })
-    use({ "nvim-telescope/telescope-file-browser.nvim" })
-    use({ "nvim-telescope/telescope-ui-select.nvim" })
+    use("nvim-telescope/telescope-file-browser.nvim")
+    use("nvim-telescope/telescope-ui-select.nvim")
 
     -- LSP & completion
     use("neovim/nvim-lspconfig")
@@ -56,10 +56,11 @@ return require("packer").startup(function(use)
     use("folke/which-key.nvim")
     use("karb94/neoscroll.nvim")
     use("unblevable/quick-scope")
+    use("akinsho/toggleterm.nvim")
 
     -- Styling
     use("monsonjeremy/onedark.nvim")
     use("kyazdani42/nvim-web-devicons")
-    use({ "nvim-lualine/lualine.nvim" })
-    use({ "j-hui/fidget.nvim" })
+    use("nvim-lualine/lualine.nvim")
+    use("j-hui/fidget.nvim")
 end)

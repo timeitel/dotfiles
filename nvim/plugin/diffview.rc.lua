@@ -12,7 +12,6 @@ local shared_maps = {
     ["<C-d>"] = actions.scroll_view(10),
     ["<C-u>"] = actions.scroll_view(-10),
     ["gf"] = actions.goto_file_tab,
-    ["s"] = actions.toggle_stage_entry,
     ["<C-j>"] = actions.next_conflict,
     ["<C-k>"] = actions.prev_conflict,
     -- ["r"] = function() -- TODO: reset /discard all changes
@@ -22,12 +21,15 @@ local shared_maps = {
     --     end
     --     print("")
     -- end,
-    ["x"] = function()
+    ["<leader>U"] = actions.unstage_all,
+    ["<leader>S"] = actions.stage_all,
+    ["<leader>s"] = actions.toggle_stage_entry,
+    ["<leader>x"] = function()
         if vim.fn.confirm("", "Are you sure you'd like to discard changes? (&Yes\n&No)", 1) == 1 then
             actions.restore_entry()
         end
     end,
-    ["C"] = function()
+    ["<leader>c"] = function()
         vim.cmd("DiffviewClose")
         vim.cmd("Neogit")
         vim.cmd("Neogit commit")

@@ -43,6 +43,7 @@ map("n", "Y", "yy")
 map({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
 map({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
+-- TODO: create snapshot before syncing
 map("n", "<leader>sp", ":PackerSync<cr>", { desc = "Sync plugins" })
 -- map("n", "<F5>", reload_nvim, { desc = "Reload config" })
 map("n", "<leader>i", "i <ESC>i")
