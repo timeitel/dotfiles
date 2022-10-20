@@ -101,3 +101,5 @@ o.formatoptions = o.formatoptions
     + "n" -- Indent past the formatlistpat, not underneath it.
     + "j" -- Auto-remove comments if possible.
     - "2"
+
+o.scrollbind = false
