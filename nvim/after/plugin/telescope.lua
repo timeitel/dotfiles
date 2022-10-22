@@ -4,6 +4,23 @@ local actions_layout = require("telescope.actions.layout")
 local fb_actions = telescope.extensions.file_browser.actions
 -- TODO: show current open file highlighted
 
+local custom_actions = {}
+
+function custom_actions.delete_backward_word()
+    vim.api.nvim_input("<c-s-w>")
+end
+
+local default_mappings = {
+    ["c"] = false,
+    ["<C-j>"] = actions.move_selection_next,
+    ["<C-k>"] = actions.move_selection_previous,
+    ["<C-h>"] = actions.close,
+    ["<C-l>"] = actions.select_default + actions.center,
+    ["<C-w>"] = custom_actions.delete_backward_word,
+    ["<C-s>"] = actions.select_horizontal,
+    ["<M-p>"] = actions_layout.toggle_preview,
+}
+
 telescope.setup({
     defaults = {
         file_ignore_patterns = { "node_modules", ".DS_Store" },
@@ -37,29 +54,8 @@ telescope.setup({
         color_devicons = true,
 
         mappings = {
-            i = {
-                ["<C-j>"] = actions.move_selection_next,
-                ["<C-k>"] = actions.move_selection_previous,
-                ["<C-h>"] = actions.close,
-                ["<C-l>"] = actions.select_default + actions.center,
-                ["<C-w>"] = function()
-                    vim.api.nvim_input("<c-s-w>")
-                end,
-                ["<C-s>"] = actions.select_horizontal,
-                ["<M-p>"] = actions_layout.toggle_preview,
-            },
-            n = {
-                ["c"] = false,
-                ["<C-j>"] = actions.move_selection_next,
-                ["<C-k>"] = actions.move_selection_previous,
-                ["<C-h>"] = actions.close,
-                ["<C-l>"] = actions.select_default + actions.center,
-                ["<C-w>"] = function()
-                    vim.api.nvim_input("<c-s-w>")
-                end,
-                ["<C-s>"] = actions.select_horizontal,
-                ["<M-p>"] = actions_layout.toggle_preview,
-            },
+            i = default_mappings,
+            n = default_mappings,
         },
     },
 
@@ -67,19 +63,30 @@ telescope.setup({
         buffers = {
             initial_mode = "normal",
             mappings = {
+                i = {
+                    ["<C-d>"] = actions.delete_buffer,
+                },
                 n = {
-                    ["d"] = require("telescope.actions").delete_buffer,
+                    ["<C-d>"] = actions.delete_buffer,
                 },
             },
         },
         git_stash = {
             initial_mode = "normal",
-        }, -- TODO: delete either stash or branch
+        },
         git_branches = {
             previewer = false,
             initial_mode = "normal",
+            mappings = {
+                n = {
+                    ["<C-d>"] = function(opts)
+                        actions.git_delete_branch(opts)
+                        require("telescope.builtin").git_branches()
+                    end,
+                    ["<C-m>"] = actions.git_merge_branch,
+                },
+            },
         }, -- TODO: toggle for local and remote, default to local
-        -- TODO: <C-d> in marks deletes mark, need to add to defaults list I think to override all pickers
     },
 
     extensions = {

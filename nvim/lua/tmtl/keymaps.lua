@@ -1,5 +1,4 @@
 -- TODO: open two files at once into v split -> old files
--- TODO: kitty layouts
 -- TODO: grep within current folder <leader>fF
 local function map(m, k, v, opts)
     opts = opts or {}
