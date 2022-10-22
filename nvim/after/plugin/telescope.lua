@@ -13,21 +13,12 @@ telescope.setup({
         multi_icon = "<>",
         winblend = 0,
         layout_strategy = "horizontal",
-        wrap_results = true,
+        wrap_results = false,
         path_display = { truncate = 2 },
         layout_config = {
             width = 0.95,
             height = 0.85,
             prompt_position = "top",
-            horizontal = {
-                preview_width = function(_, cols, _)
-                    if cols > 200 then
-                        return math.floor(cols * 0.4)
-                    else
-                        return math.floor(cols * 0.6)
-                    end
-                end,
-            },
             vertical = {
                 width = 0.9,
                 height = 0.95,
@@ -74,19 +65,26 @@ telescope.setup({
 
     pickers = {
         buffers = {
+            initial_mode = "normal",
             mappings = {
                 n = {
                     ["d"] = require("telescope.actions").delete_buffer,
                 },
             },
         },
-        git_stash = {}, -- TODO: delete either stash or branch
-        git_branches = {}, -- TODO: toggle for local and remote, default to local
+        git_stash = {
+            initial_mode = "normal",
+        }, -- TODO: delete either stash or branch
+        git_branches = {
+            previewer = false,
+            initial_mode = "normal",
+        }, -- TODO: toggle for local and remote, default to local
         -- TODO: <C-d> in marks deletes mark, need to add to defaults list I think to override all pickers
     },
 
     extensions = {
         file_browser = {
+            initial_mode = "normal",
             hijack_netrw = true,
             mappings = {
                 i = {

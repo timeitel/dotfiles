@@ -29,7 +29,7 @@ local shared_maps = {
             actions.restore_entry()
         end
     end,
-    ["<leader>c"] = function()
+    ["<leader>C"] = function()
         vim.cmd("DiffviewClose")
         vim.cmd("Neogit")
         vim.cmd("Neogit commit")

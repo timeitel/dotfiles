@@ -113,15 +113,15 @@ map("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>")
 -- Git
 -- map("n", "<leader>gr",) --TODO
 map("n", "<leader>gs", "<cmd>Neogit<cr>")
+map("n", "<leader><leader>gs", "<cmd>lua require('telescope.builtin').git_stash()<cr>")
 map("n", "<leader>gd", "<cmd>DiffviewOpen<cr>")
 map("n", "<leader>gh", "<cmd>lua require('telescope.builtin').git_commits()<cr>")
-map("n", "<leader>gfh", "<cmd>lua require('telescope.builtin').git_bcommits()<cr>")
+map("n", "<leader><leader>gh", "<cmd>lua require('telescope.builtin').git_bcommits()<cr>")
 -- map("n", "<leader>gc", "<cmd>Neogit commit<cr>")
 map("n", "<leader>gfx", "<cmd>Gitsigns reset_buffer<cr>")
 map("n", "<leader>gfs", "<cmd>Gitsigns stage_buffer<cr>")
-map("n", "<leader>gbr", "<cmd>lua require('telescope.builtin').git_branches()<cr>")
-map("n", "<leader>gbl", "<cmd>lua require('git_blame').run()<cr>")
-map("n", "<leader>gS", "<cmd>lua require('telescope.builtin').git_stash()<cr>")
+map("n", "<leader>gb", "<cmd>lua require('telescope.builtin').git_branches()<cr>")
+map("n", "<leader><leader>gb", "<cmd>lua require('git_blame').run()<cr>")
 
 map("n", "<leader>hj", "<cmd>Gitsigns next_hunk<cr>zz")
 map("n", "<leader>hk", "<cmd>Gitsigns prev_hunk<cr>zz")
@@ -147,8 +147,7 @@ map("n", "<A-j>", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>")
 map("n", "<A-k>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>")
 map("n", "<A-l>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
 
--- Window
-map("n", "<leader>wv", "<cmd>vne<cr>")
+map("n", "zx", "<cmd>update<cr>")
 
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
 vim.cmd([[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]]) -- TODO: just unmap
