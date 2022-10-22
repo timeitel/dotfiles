@@ -4,19 +4,15 @@ local actions_layout = require("telescope.actions.layout")
 local fb_actions = telescope.extensions.file_browser.actions
 -- TODO: show current open file highlighted
 
-local custom_actions = {}
-
-function custom_actions.delete_backward_word()
-    vim.api.nvim_input("<c-s-w>")
-end
-
 local default_mappings = {
     ["c"] = false,
     ["<C-j>"] = actions.move_selection_next,
     ["<C-k>"] = actions.move_selection_previous,
     ["<C-h>"] = actions.close,
     ["<C-l>"] = actions.select_default + actions.center,
-    ["<C-w>"] = custom_actions.delete_backward_word,
+    ["<C-w>"] = function()
+        vim.api.nvim_input("<c-s-w>")
+    end,
     ["<C-s>"] = actions.select_horizontal,
     ["<M-p>"] = actions_layout.toggle_preview,
 }
@@ -28,9 +24,7 @@ telescope.setup({
         selection_caret = "> ",
         entry_prefix = "  ",
         multi_icon = "<>",
-        winblend = 0,
-        layout_strategy = "horizontal",
-        wrap_results = false,
+        sorting_strategy = "ascending",
         path_display = { truncate = 2 },
         layout_config = {
             width = 0.95,
@@ -47,11 +41,6 @@ telescope.setup({
                 },
             },
         },
-
-        selection_strategy = "reset",
-        sorting_strategy = "ascending",
-        scroll_strategy = "cycle",
-        color_devicons = true,
 
         mappings = {
             i = default_mappings,
