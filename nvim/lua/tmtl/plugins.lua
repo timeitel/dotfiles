@@ -55,8 +55,8 @@ return require("packer").startup(function(use)
     use("windwp/nvim-ts-autotag")
     use("folke/which-key.nvim")
     use("karb94/neoscroll.nvim")
-    use("unblevable/quick-scope")
     use("akinsho/toggleterm.nvim")
+    use("ggandor/leap.nvim")
 
     -- Styling
     use("monsonjeremy/onedark.nvim")

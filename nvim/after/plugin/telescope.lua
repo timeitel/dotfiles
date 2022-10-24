@@ -4,7 +4,15 @@ local actions_layout = require("telescope.actions.layout")
 local fb_actions = telescope.extensions.file_browser.actions
 -- TODO: show current open file highlighted
 
-local default_mappings = {
+function table.shallow_copy(t)
+    local t2 = {}
+    for k, v in pairs(t) do
+        t2[k] = v
+    end
+    return t2
+end
+
+local default_insert_mappings = {
     ["c"] = false,
     ["<C-j>"] = actions.move_selection_next,
     ["<C-k>"] = actions.move_selection_previous,
@@ -17,6 +25,11 @@ local default_mappings = {
     ["<M-p>"] = actions_layout.toggle_preview,
 }
 
+local default_normal_mappings = table.shallow_copy(default_insert_mappings)
+default_normal_mappings["c"] = false
+default_normal_mappings["l"] = actions.select_default + actions.center
+
+-- print(vim.inspect(default_normal_mappings))
 telescope.setup({
     defaults = {
         file_ignore_patterns = { "node_modules", ".DS_Store" },
@@ -43,8 +56,8 @@ telescope.setup({
         },
 
         mappings = {
-            i = default_mappings,
-            n = default_mappings,
+            i = default_insert_mappings,
+            n = default_normal_mappings,
         },
     },
 
@@ -67,15 +80,23 @@ telescope.setup({
             previewer = false,
             initial_mode = "normal",
             mappings = {
+                i = {
+                    ["<C-d>"] = function(opts)
+                        actions.git_delete_branch(opts)
+                        require("telescope.builtin").git_branches()
+                    end,
+                },
                 n = {
                     ["<C-d>"] = function(opts)
                         actions.git_delete_branch(opts)
                         require("telescope.builtin").git_branches()
                     end,
-                    ["<C-m>"] = actions.git_merge_branch,
                 },
             },
         }, -- TODO: toggle for local and remote, default to local
+        lsp_references = {
+            initial_mode = "normal",
+        },
     },
 
     extensions = {
@@ -84,18 +105,17 @@ telescope.setup({
             hijack_netrw = true,
             mappings = {
                 i = {
-                    ["<C-t>"] = fb_actions.change_cwd,
                     ["<C-.>"] = fb_actions.toggle_hidden,
                     ["<C-c>"] = fb_actions.create,
+                    ["<C-t>"] = fb_actions.change_cwd,
                 },
                 n = {
+                    ["<C-.>"] = fb_actions.toggle_hidden,
                     ["<C-c>"] = fb_actions.create,
                     ["<C-t>"] = fb_actions.change_cwd,
-                    ["<C-.>"] = fb_actions.toggle_hidden,
                     ["h"] = fb_actions.goto_parent_dir,
                     ["H"] = fb_actions.goto_cwd,
-                    ["l"] = actions.select_default + actions.center,
-                    ["F"] = function(one, two)
+                    ["F"] = function(one, two) --TODO: find in files of folder
                         print(vim.inspect(one), vim.inspect(two))
                     end,
                 },
