@@ -1,4 +1,6 @@
 local telescope = require("telescope")
+local action_state = require("telescope.actions.state")
+local action_util = require("telescope.actions.utils")
 local actions = require("telescope.actions")
 local actions_layout = require("telescope.actions.layout")
 local fb_actions = telescope.extensions.file_browser.actions
@@ -29,7 +31,6 @@ local default_normal_mappings = table.shallow_copy(default_insert_mappings)
 default_normal_mappings["c"] = false
 default_normal_mappings["l"] = actions.select_default + actions.center
 
--- print(vim.inspect(default_normal_mappings))
 telescope.setup({
     defaults = {
         file_ignore_patterns = { "node_modules", ".DS_Store" },
@@ -93,7 +94,7 @@ telescope.setup({
                     end,
                 },
             },
-        }, -- TODO: toggle for local and remote, default to local
+        },
         lsp_references = {
             initial_mode = "normal",
         },
@@ -108,6 +109,11 @@ telescope.setup({
                     ["<C-.>"] = fb_actions.toggle_hidden,
                     ["<C-c>"] = fb_actions.create,
                     ["<C-t>"] = fb_actions.change_cwd,
+                    ["<C-f>"] = function() --TODO: find in files of folder
+                        local entry = action_state.get_selected_entry()
+                        local filename = entry.Path.filename
+                        require("telescope.builtin").live_grep({ search_dirs = { filename }, results_title = filename })
+                    end,
                 },
                 n = {
                     ["<C-.>"] = fb_actions.toggle_hidden,
@@ -115,8 +121,10 @@ telescope.setup({
                     ["<C-t>"] = fb_actions.change_cwd,
                     ["h"] = fb_actions.goto_parent_dir,
                     ["H"] = fb_actions.goto_cwd,
-                    ["F"] = function(one, two) --TODO: find in files of folder
-                        print(vim.inspect(one), vim.inspect(two))
+                    ["<C-f>"] = function() --TODO: find in files of folder
+                        local entry = action_state.get_selected_entry()
+                        local filename = entry.Path.filename
+                        require("telescope.builtin").live_grep({ search_dirs = { filename }, results_title = filename })
                     end,
                 },
             },
