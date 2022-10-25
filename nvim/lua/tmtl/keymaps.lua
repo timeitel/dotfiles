@@ -77,6 +77,7 @@ map(
 )
 map("n", "<leader>fx", ":Telescope find_files cwd=~/")
 map("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume({initial_mode = 'normal'})<cr>")
+map("n", "<leader><leader>fr", "<cmd>lua require('telescope.builtin').registers({initial_mode = 'normal'})<cr>")
 map("n", "<leader>fm", "<cmd>Telescope harpoon marks<cr>", { desc = "Find in makrs" })
 
 -- Fuzzy finder (browser)
