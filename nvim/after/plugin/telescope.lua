@@ -1,10 +1,9 @@
+-- TODO: default open man in vsplit
 local telescope = require("telescope")
 local action_state = require("telescope.actions.state")
-local action_util = require("telescope.actions.utils")
 local actions = require("telescope.actions")
 local actions_layout = require("telescope.actions.layout")
 local fb_actions = telescope.extensions.file_browser.actions
--- TODO: show current open file highlighted
 
 function table.shallow_copy(t)
     local t2 = {}
@@ -14,8 +13,8 @@ function table.shallow_copy(t)
     return t2
 end
 
+-- Telescope defaults
 local default_insert_mappings = {
-    ["c"] = false,
     ["<C-j>"] = actions.move_selection_next,
     ["<C-k>"] = actions.move_selection_previous,
     ["<C-h>"] = actions.close,
@@ -30,6 +29,21 @@ local default_insert_mappings = {
 local default_normal_mappings = table.shallow_copy(default_insert_mappings)
 default_normal_mappings["c"] = false
 default_normal_mappings["l"] = actions.select_default + actions.center
+
+-- Telescope File-browser
+local browser_insert_mappings = {
+    ["<C-.>"] = fb_actions.toggle_hidden,
+    ["<C-c>"] = fb_actions.create,
+    ["<C-t>"] = fb_actions.change_cwd,
+    ["<C-f>"] = function()
+        local entry = action_state.get_selected_entry()
+        local filename = entry.Path.filename
+        require("telescope.builtin").live_grep({ search_dirs = { filename }, results_title = filename })
+    end,
+}
+local browser_normal_mappings = table.shallow_copy(browser_insert_mappings)
+browser_insert_mappings["h"] = fb_actions.goto_parent_dir
+browser_insert_mappings["H"] = fb_actions.goto_cwd
 
 telescope.setup({
     defaults = {
@@ -66,30 +80,30 @@ telescope.setup({
         buffers = {
             initial_mode = "normal",
             mappings = {
-                i = {
-                    ["<C-d>"] = actions.delete_buffer,
-                },
                 n = {
-                    ["<C-d>"] = actions.delete_buffer,
+                    ["d"] = actions.delete_buffer,
                 },
             },
         },
         git_stash = {
             initial_mode = "normal",
+            mappings = {
+                n = {
+                    ["d"] = function()
+                        local entry = action_state.get_selected_entry()
+                        -- local stash_idx = entry.value.find(entry, "%d+")
+                        -- print(vim.inspect(stash_idx))
+                    end,
+                },
+            },
         },
         git_branches = {
             previewer = false,
             initial_mode = "normal",
             mappings = {
-                i = {
-                    ["<C-d>"] = function(opts)
-                        actions.git_delete_branch(opts)
-                        require("telescope.builtin").git_branches()
-                    end,
-                },
                 n = {
-                    ["<C-d>"] = function(opts)
-                        actions.git_delete_branch(opts)
+                    ["d"] = function(prompt_bufnr)
+                        actions.git_delete_branch(prompt_bufnr)
                         require("telescope.builtin").git_branches()
                     end,
                 },
@@ -105,28 +119,8 @@ telescope.setup({
             initial_mode = "normal",
             hijack_netrw = true,
             mappings = {
-                i = {
-                    ["<C-.>"] = fb_actions.toggle_hidden,
-                    ["<C-c>"] = fb_actions.create,
-                    ["<C-t>"] = fb_actions.change_cwd,
-                    ["<C-f>"] = function() --TODO: find in files of folder
-                        local entry = action_state.get_selected_entry()
-                        local filename = entry.Path.filename
-                        require("telescope.builtin").live_grep({ search_dirs = { filename }, results_title = filename })
-                    end,
-                },
-                n = {
-                    ["<C-.>"] = fb_actions.toggle_hidden,
-                    ["<C-c>"] = fb_actions.create,
-                    ["<C-t>"] = fb_actions.change_cwd,
-                    ["h"] = fb_actions.goto_parent_dir,
-                    ["H"] = fb_actions.goto_cwd,
-                    ["<C-f>"] = function() --TODO: find in files of folder
-                        local entry = action_state.get_selected_entry()
-                        local filename = entry.Path.filename
-                        require("telescope.builtin").live_grep({ search_dirs = { filename }, results_title = filename })
-                    end,
-                },
+                i = browser_insert_mappings,
+                n = browser_normal_mappings,
             },
         },
         ["ui-select"] = {

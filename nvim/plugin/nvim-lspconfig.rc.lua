@@ -1,4 +1,3 @@
--- TODO: .ts files not oworking for treesiter text objects
 local status, nvim_lsp = pcall(require, "lspconfig")
 if not status then
     return
@@ -47,14 +46,12 @@ local on_attach = function(_, bufnr)
         vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr })
     end
 
-    -- TODO: <C-.> for repeat last plugin action / commands
-    -- TODO: lsp signature help being blocked by nvim cmp, move signature floating window to the top
-    -- TODO: try using on_list to conditionally call telescope when > 1 reference etc
+    -- TODO: <leader>-. for repeat last plugin action / commands
     -- TODO: format the range after accepting code action
     -- Diagnostics
     buf_map("n", "<C-j>", function()
         vim.diagnostic.goto_next({ float = false })
-        vim.fn.feedkeys("zz") -- TODO: only center if there's diagnostics
+        vim.fn.feedkeys("zz") -- TODO: only center if there's diagnostics and check if no code actions, then pop dh
         vim.lsp.buf.code_action()
     end)
     buf_map("n", "<C-k>", function()

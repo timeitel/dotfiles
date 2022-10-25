@@ -1,5 +1,3 @@
--- TODO: open two files at once into v split -> old files
--- TODO: grep within current folder <leader>fF
 local function map(m, k, v, opts)
     opts = opts or {}
     opts.silent = true
@@ -42,7 +40,6 @@ map("n", "Y", "yy")
 map({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
 map({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
--- TODO: create snapshot before syncing
 map("n", "<leader>sp", function()
     vim.cmd([[PackerSnapshot last_snapshot]])
     vim.cmd([[PackerSync]])
@@ -81,10 +78,9 @@ map(
     "<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h')})<cr>",
     { desc = "Find in cwd" }
 )
-map("n", "<leader>fx", ":Telescope find_files cwd=~/") -- x for explore??
-map("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<cr>")
+map("n", "<leader>fx", ":Telescope find_files cwd=~/")
+map("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume({initial_mode = 'normal'})<cr>")
 map("n", "<leader>fm", "<cmd>Telescope harpoon marks<cr>", { desc = "Find in makrs" })
--- map("n", "<leader>fy", "<cmd>Telescope frecency CWD", { desc = "Find frecent files" })
 
 -- Fuzzy finder (browser)
 map(
@@ -113,7 +109,6 @@ map("n", "<leader>ba", "<cmd>:%bd<cr>")
 map("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>")
 
 -- Git
--- map("n", "<leader>gr",) --TODO
 map("n", "<leader>gs", "<cmd>Neogit<cr>")
 map("n", "<leader><leader>gs", "<cmd>lua require('telescope.builtin').git_stash()<cr>")
 map("n", "<leader>gd", "<cmd>DiffviewOpen<cr>")
@@ -141,7 +136,6 @@ map("n", "<leader>hu", "<cmd>Gitsigns undo_stage_hunk<cr><cmd>DiffviewRefresh<cr
 map("n", "<leader>ql", "<cmd>copen<cr>")
 map("n", "<leader>qj", "<cmd>cnext<cr>")
 map("n", "<leader>qk", "<cmd>cprevious<cr>")
--- map("n", "<leader>qa", "") --TODO: add to qf list
 
 -- TODO: configure with c-h and c-l
 -- Quick edit files
@@ -155,6 +149,12 @@ map("n", "<A-k>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>")
 map("n", "<A-l>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
 
 map("n", "zx", "<cmd>update<cr>")
+
+map("n", "<leader>gr", function()
+    vim.fn.feedkeys([[gg/export]])
+    vim.fn.feedkeys("\n")
+    vim.fn.feedkeys([[WWgr]])
+end)
 
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
 vim.cmd([[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]]) -- TODO: just unmap

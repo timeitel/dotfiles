@@ -82,8 +82,6 @@ cmp.setup({
                 nvim_lua = "[api]",
                 path = "[path]",
                 luasnip = "[snip]",
-                -- gh_issues = "[issues]", -- TODO try
-                -- tn = "[TabNine]", -- TODO: try this?
             },
         }),
     },
