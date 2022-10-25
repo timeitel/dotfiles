@@ -42,15 +42,12 @@ local browser_insert_mappings = {
     end,
 }
 local browser_normal_mappings = table.shallow_copy(browser_insert_mappings)
-browser_insert_mappings["h"] = fb_actions.goto_parent_dir
-browser_insert_mappings["H"] = fb_actions.goto_cwd
+browser_normal_mappings["h"] = fb_actions.goto_parent_dir
+browser_normal_mappings["H"] = fb_actions.goto_cwd
 
 telescope.setup({
     defaults = {
         file_ignore_patterns = { "node_modules", ".DS_Store" },
-        prompt_prefix = "> ",
-        selection_caret = "> ",
-        entry_prefix = "  ",
         multi_icon = "<>",
         sorting_strategy = "ascending",
         path_display = { truncate = 2 },
@@ -88,13 +85,13 @@ telescope.setup({
         git_stash = {
             initial_mode = "normal",
             mappings = {
-                n = {
-                    ["d"] = function()
-                        local entry = action_state.get_selected_entry()
-                        -- local stash_idx = entry.value.find(entry, "%d+")
-                        -- print(vim.inspect(stash_idx))
-                    end,
-                },
+                -- n = {
+                --     ["d"] = function()
+                --         local entry = action_state.get_selected_entry()
+                --         -- local stash_idx = entry.value.find(entry, "%d+")
+                --         -- print(vim.inspect(stash_idx))
+                --     end,
+                -- },
             },
         },
         git_branches = {
@@ -117,7 +114,6 @@ telescope.setup({
     extensions = {
         file_browser = {
             initial_mode = "normal",
-            hijack_netrw = true,
             mappings = {
                 i = browser_insert_mappings,
                 n = browser_normal_mappings,
