@@ -27,8 +27,8 @@ map("i", "kj", "<ESC>")
 map("i", "<A-l>", "<Right>")
 map("i", "<A-h>", "<Left>")
 
-map("v", "p", "pgvy")
-map("v", "P", "Pgvy")
+map("v", "<leader><leader>p", "pgvy")
+map("v", "<leader><leader>P", "Pgvy")
 
 map("n", "<C-o>", "<C-o>zz")
 map("n", "<C-i>", "<C-i>zz")
