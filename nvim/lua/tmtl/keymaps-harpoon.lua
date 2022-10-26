@@ -1,12 +1,35 @@
 local map = Utils.map
+local harpoon_ui = require("harpoon.ui")
 
 -- TODO: configure with c-h and c-l
--- Quick edit files
-map("n", "<leader>ea", "<cmd>lua require('harpoon.mark').add_file()<cr>")
-map("n", "<leader>el", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>")
-map("n", "<leader>ej", "<cmd>lua require('harpoon.ui').nav_next()<cr>")
-map("n", "<leader>ek", "<cmd>lua require('harpoon.ui').nav_prev()<cr>")
-map("n", "<A-h>", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>")
-map("n", "<A-j>", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>")
-map("n", "<A-k>", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>")
-map("n", "<A-l>", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
+map("n", "<leader>ea", function()
+    require("harpoon.mark").add_file()
+end, { desc = "Edit list - add" })
+
+map("n", "<leader>el", function()
+    harpoon_ui.toggle_quick_menu()
+end, { desc = "Edit list - toggle menu" })
+
+map("n", "<leader>ej", function()
+    harpoon_ui.nav_next()
+end, { desc = "Edit list - next" })
+
+map("n", "<leader>ek", function()
+    harpoon_ui.nav_prev()
+end, { desc = "Edit list - previous" })
+
+map("n", "<A-h>", function()
+    harpoon_ui.nav_file(1)
+end, { desc = "Edit list - file 1" })
+
+map("n", "<A-j>", function()
+    harpoon_ui.nav_file(2)
+end, { desc = "Edit list - file 2" })
+
+map("n", "<A-k>", function()
+    harpoon_ui.nav_file(3)
+end, { desc = "Edit list - file 3" })
+
+map("n", "<A-l>", function()
+    harpoon_ui.nav_file(4)
+end, { desc = "Edit list - file 4" })
