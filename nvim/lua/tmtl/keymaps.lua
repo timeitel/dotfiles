@@ -29,7 +29,6 @@ map("n", "<leader>sp", function()
         -- vim.cmd([[PackerSync]])
     end
 end, { desc = "Sync plugins" })
--- map("n", "<F5>", reload_nvim, { desc = "Reload config" })
 
 -- Tabs (buffers)
 map("n", "<leader>ba", "<cmd>:%bd<cr>")
