@@ -43,6 +43,7 @@ local browser_insert_mappings = {
 local browser_normal_mappings = table.shallow_copy(browser_insert_mappings)
 browser_normal_mappings["h"] = fb_actions.goto_parent_dir
 browser_normal_mappings["H"] = fb_actions.goto_cwd
+browser_normal_mappings["<leader>x"] = fb_actions.remove
 
 telescope.setup({
     defaults = {
@@ -122,3 +123,4 @@ telescope.setup({
 
 require("telescope").load_extension("file_browser")
 require("telescope").load_extension("ui-select")
+require("telescope").load_extension("possession")

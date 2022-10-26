@@ -1,22 +1,5 @@
-local function map(m, k, v, opts)
-    opts = opts or {}
-    opts.silent = true
-    opts.noremap = true
-    vim.keymap.set(m, k, v, opts)
-end
-
-function vim.getVisualSelection()
-    vim.cmd('noau normal! "vy"')
-    local text = vim.fn.getreg("v")
-    vim.fn.setreg("v", {})
-
-    text = string.gsub(text, "\n", "")
-    if #text > 0 then
-        return text
-    else
-        return ""
-    end
-end
+local map = Utils.map
+local getVisualSelection = Utils.getVisualSelection
 
 vim.g.mapleader = " "
 
@@ -40,8 +23,10 @@ map({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from clipboard" })
 map("n", "<leader>sp", function()
     -- TODO
     -- local time = os.time(os.date("!*t"))
-    vim.cmd([[PackerSnapshot time]])
-    vim.cmd([[PackerSync]])
+    if vim.fn.confirm("", "Are you sure you'd like to discard changes? (&Yes\n&No)", 1) == 1 then
+        -- vim.cmd([[PackerSnapshot time]])
+        -- vim.cmd([[PackerSync]])
+    end
 end, { desc = "Sync plugins" })
 -- map("n", "<F5>", reload_nvim, { desc = "Reload config" })
 map("n", "<leader>i", "i <ESC>i")
@@ -56,13 +41,13 @@ map(
     { desc = "Find in current buffer" }
 )
 map("v", "<leader>/", function()
-    local text = vim.getVisualSelection()
+    local text = getVisualSelection()
     require("telescope.builtin").current_buffer_fuzzy_find({ default_text = text })
 end, { desc = "Find in current buffer" })
 
 map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 map("v", "<leader>ff", function()
-    local text = vim.getVisualSelection()
+    local text = getVisualSelection()
     require("telescope.builtin").live_grep({ default_text = text })
 end)
 map(
@@ -77,6 +62,7 @@ map(
     "<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h')})<cr>",
     { desc = "Find in cwd" }
 )
+map("n", "<leader>fk", ":Telescope keymaps")
 map("n", "<leader>fx", ":Telescope find_files cwd=~/")
 map("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<cr>")
 map("n", "<leader><leader>fr", function()
@@ -164,3 +150,14 @@ end)
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
 vim.cmd([[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]]) -- TODO: just unmap
 vim.g.camelcasemotion_key = "<leader>"
+
+-- Sessions
+map("n", "<leader>fs", function()
+    require("telescope").extensions.possession.list()
+end, { desc = "List sessions" })
+map("n", "<leader>sl", function()
+    vim.cmd([[SLoad]])
+end, { desc = "Load last session" })
+map("n", "<leader>sd", function()
+    vim.cmd([[SDelete]])
+end, { desc = "Delete current session" })
