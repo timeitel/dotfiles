@@ -1,62 +1,66 @@
+local ts = require("telescope.builtin")
+local fb = require("telescope").extensions.file_browser
 local map = Utils.map
 local getVisualSelection = Utils.getVisualSelection
 
--- Fuzzy finder (files)
-map("n", "<C-p>", "<cmd>lua require('telescope.builtin').find_files()<cr>")
-map(
-    "n",
-    "<leader>/",
-    "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>",
-    { desc = "Find in current buffer" }
-)
+map("n", "<C-p>", function()
+    ts.find_files()
+end, { desc = "Find - files" })
+
+map("n", "<leader>/", function()
+    ts.current_buffer_fuzzy_find()
+end, { desc = "Find - current buffer" })
+
 map("v", "<leader>/", function()
     local text = getVisualSelection()
-    require("telescope.builtin").current_buffer_fuzzy_find({ default_text = text })
-end, { desc = "Find in current buffer" })
+    ts.current_buffer_fuzzy_find({ default_text = text })
+end, { desc = "Find - current buffer" })
 
-map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
+map("n", "<leader>ff", function()
+    ts.live_grep()
+end, { desc = "Find - in files" })
+
 map("v", "<leader>ff", function()
     local text = getVisualSelection()
-    require("telescope.builtin").live_grep({ default_text = text })
-end)
-map(
-    "n",
-    "<leader>fb",
-    "<cmd>lua require('telescope.builtin').buffers({ sort_mru = true, ignore_current_buffer = true })<cr>"
-)
-map("n", "<leader>fc", "<cmd>Telescope find_files cwd=~/.dotfiles<cr>")
-map(
-    "n",
-    "<leader>fw",
-    "<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.expand('%:p:h')})<cr>",
-    { desc = "Find in cwd" }
-)
-map("n", "<leader>fk", ":Telescope keymaps")
-map("n", "<leader>fx", ":Telescope find_files cwd=~/")
-map("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<cr>")
-map("n", "<leader><leader>fr", function()
-    require("telescope.builtin").registers()
-end)
-map("n", "<leader>fm", "<cmd>Telescope harpoon marks<cr>", { desc = "Find in makrs" })
+    ts.live_grep({ default_text = text })
+end, { desc = "Find - in files" })
 
--- Fuzzy finder (browser)
-map(
-    "n",
-    "<leader>bp",
-    "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true })<cr>",
-    { desc = "Browse project" }
-)
-map(
-    "n",
-    "<leader>bw",
-    "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = vim.fn.expand('%:p:h') })<cr>"
-    ,
-    { desc = "Browse cwd" }
-)
-map(
-    "n",
-    "<leader>bc",
-    "<cmd>lua require('telescope').extensions.file_browser.file_browser({ grouped = true,  cwd = '~/.dotfiles' })<cr>",
-    { desc = "Browse config" }
-)
-map("n", "<leader>bx", "<cmd>Telescope file_browser grouped=true cwd=~/code<cr>", { desc = "Browse projects" })
+map("n", "<leader>fb", function()
+    ts.buffers({ sort_mru = true, ignore_current_buffer = true })
+end, { desc = "Find - buffers" })
+
+map("n", "<leader>fc", function()
+    ts.find_files({ cwd = "~/.dotfiles" })
+end, { desc = "Find - files in config" })
+
+map("n", "<leader>fw", function()
+    ts.find_files({ cwd = "vim.fn.expand('%:p:h')" })
+end, { desc = "Find - files in buffer's wd" })
+
+map("n", "<leader>fk", function()
+    ts.keymaps()
+end, { desc = "Find - keymaps" })
+
+map("n", "<leader>fr", function()
+    ts.resume()
+end, { desc = "Find - resume last picker" })
+
+map("n", "<leader><leader>fr", function()
+    ts.registers()
+end, { desc = "Find - registers" })
+
+map("n", "<leader>fm", function()
+    vim.cmd([[Telescope harpoon marks]])
+end, { desc = "Find - harpoon marks" })
+
+map("n", "<leader>bp", function()
+    fb.file_browser({ grouped = true })
+end, { desc = "Browse - project" })
+
+map("n", "<leader>bw", function()
+    fb.file_browser({ grouped = true, cwd = vim.fn.expand("%:p:h") })
+end, { desc = "Browse - buffer's wd" })
+
+map("n", "<leader>bc", function()
+    fb.file_browser({ grouped = true, cwd = "~/.dotfiles" })
+end, { desc = "Browse - config" })
