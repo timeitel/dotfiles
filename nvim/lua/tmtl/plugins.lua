@@ -55,6 +55,12 @@ return require("packer").startup(function(use)
     use("akinsho/toggleterm.nvim")
     use("ggandor/leap.nvim")
 
+    -- Sessions
+    use({
+        "jedrzejboczar/possession.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+    })
+
     -- Styling
     use("monsonjeremy/onedark.nvim")
     use("kyazdani42/nvim-web-devicons")

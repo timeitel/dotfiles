@@ -91,3 +91,4 @@ au FileType * set fo=cqrnj
     ]])
 
 o.scrollbind = false
+o.sessionoptions = o.sessionoptions - "buffers"
