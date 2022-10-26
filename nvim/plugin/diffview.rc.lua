@@ -29,13 +29,6 @@ local shared_maps = {
             actions.restore_entry()
         end
     end,
-    ["<leader>C"] = function()
-        vim.cmd("DiffviewClose")
-        local neogit = require("neogit")
-        neogit.open()
-        neogit.open({ "commit" })
-        vim.fn.feedkeys("c")
-    end,
 }
 
 require("diffview").setup({

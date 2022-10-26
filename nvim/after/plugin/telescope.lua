@@ -1,4 +1,3 @@
--- TODO: default open man in vsplit
 local telescope = require("telescope")
 local action_state = require("telescope.actions.state")
 local actions = require("telescope.actions")
@@ -47,6 +46,7 @@ browser_normal_mappings["H"] = fb_actions.goto_cwd
 
 telescope.setup({
     defaults = {
+        initial_mode = "normal",
         file_ignore_patterns = { "node_modules", ".DS_Store" },
         multi_icon = "<>",
         sorting_strategy = "ascending",
@@ -75,15 +75,13 @@ telescope.setup({
 
     pickers = {
         buffers = {
-            initial_mode = "normal",
             mappings = {
                 n = {
-                    ["d"] = actions.delete_buffer,
+                    ["<leader>x"] = actions.delete_buffer,
                 },
             },
         },
         git_stash = {
-            initial_mode = "normal",
             mappings = {
                 -- n = {
                 --     ["d"] = function()
@@ -96,24 +94,21 @@ telescope.setup({
         },
         git_branches = {
             previewer = false,
-            initial_mode = "normal",
             mappings = {
                 n = {
-                    ["d"] = function(prompt_bufnr)
+                    ["<leader>x"] = function(prompt_bufnr)
                         actions.git_delete_branch(prompt_bufnr)
                         require("telescope.builtin").git_branches()
                     end,
                 },
             },
         },
-        lsp_references = {
-            initial_mode = "normal",
-        },
+        find_files = { initial_mode = "insert" },
+        live_grep = { initial_mode = "insert" },
     },
 
     extensions = {
         file_browser = {
-            initial_mode = "normal",
             mappings = {
                 i = browser_insert_mappings,
                 n = browser_normal_mappings,

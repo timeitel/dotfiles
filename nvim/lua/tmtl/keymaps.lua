@@ -38,7 +38,9 @@ map({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
 map({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
 map("n", "<leader>sp", function()
-    vim.cmd([[PackerSnapshot last_snapshot]])
+    -- TODO
+    -- local time = os.time(os.date("!*t"))
+    vim.cmd([[PackerSnapshot time]])
     vim.cmd([[PackerSync]])
 end, { desc = "Sync plugins" })
 -- map("n", "<F5>", reload_nvim, { desc = "Reload config" })
@@ -76,8 +78,10 @@ map(
     { desc = "Find in cwd" }
 )
 map("n", "<leader>fx", ":Telescope find_files cwd=~/")
-map("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume({initial_mode = 'normal'})<cr>")
-map("n", "<leader><leader>fr", "<cmd>lua require('telescope.builtin').registers({initial_mode = 'normal'})<cr>")
+map("n", "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<cr>")
+map("n", "<leader><leader>fr", function()
+    require("telescope.builtin").registers()
+end)
 map("n", "<leader>fm", "<cmd>Telescope harpoon marks<cr>", { desc = "Find in makrs" })
 
 -- Fuzzy finder (browser)
