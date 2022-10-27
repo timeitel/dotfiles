@@ -29,11 +29,11 @@ map("n", "<leader>gc", function()
     vim.fn.feedkeys("c")
 end, { desc = "Git commit" })
 
-map("n", "<leader>gfx", function()
+map("n", "<leader><leader>gx", function()
     vim.cmd([[Gitsigns reset_buffer]])
 end, { desc = "Git file - discard changes" })
 
-map("n", "<leader>gfs", function()
+map("n", "<leader><leader>gs", function()
     vim.cmd([[Gitsigns stage_buffer]])
 end, { desc = "Git file - stage" })
 
@@ -55,7 +55,7 @@ map("n", "<leader>hk", function()
     vim.fn.feedkeys("zz")
 end, { desc = "Git hunk - previous" })
 
-map("n", "<leader>hp", function()
+map({ "n", "v" }, "<leader>hp", function()
     vim.cmd([[Gitsigns preview_hunk]])
 end, { desc = "Git hunk - preview" })
 
@@ -63,7 +63,7 @@ map({ "n", "v" }, "<leader>hs", function()
     vim.cmd([[Gitsigns stage_hunk]])
 end, { desc = "Git hunk - stage" })
 
-map("n", "<leader>hx", function()
+map({ "n", "v" }, "<leader>hx", function()
     vim.cmd([[Gitsigns reset_hunk]])
 end, { desc = "Git hunk - reset" })
 
