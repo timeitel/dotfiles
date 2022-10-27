@@ -2,14 +2,14 @@ local map = Utils.map
 
 map("n", "<leader>fs", function()
     require("telescope").extensions.possession.list()
-end, { desc = "List sessions" })
+end, { desc = "Session - list" })
 
-map("n", "<leader>ss", ":SSave ", { desc = "Save session" })
+map("n", "<leader>ss", ":SSave ", { desc = "Session - save" })
 
 map("n", "<leader>sl", function()
     vim.cmd([[SLoad]])
-end, { desc = "Load last session" })
+end, { desc = "Session - load last" })
 
 map("n", "<leader>sd", function()
     vim.cmd([[SDelete]])
-end, { desc = "Delete current session" })
+end, { desc = "Session - delete current" })
