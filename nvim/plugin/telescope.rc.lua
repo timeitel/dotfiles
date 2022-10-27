@@ -106,6 +106,14 @@ telescope.setup({
         },
         find_files = { initial_mode = "insert" },
         live_grep = { initial_mode = "insert" },
+        registers = {
+            mappings = {
+                n = {
+
+                    ["<leader>e"] = actions.edit_register,
+                },
+            },
+        },
     },
 
     extensions = {
