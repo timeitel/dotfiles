@@ -42,8 +42,8 @@ local tsHandlers = {
 }
 
 local on_attach = function(_, bufnr)
-    local function buf_map(m, k, v)
-        vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr })
+    local function buf_map(m, k, v, d)
+        vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr, desc = d })
     end
 
     -- TODO: <leader>-. for repeat last plugin action / commands
@@ -53,61 +53,76 @@ local on_attach = function(_, bufnr)
         vim.diagnostic.goto_next({ float = false })
         vim.fn.feedkeys("zz") -- TODO: only center if there's diagnostics and check if no code actions, then pop dh
         vim.lsp.buf.code_action()
-    end)
+    end, "Next error and pop code action / hover")
+
     buf_map("n", "<C-k>", function()
         vim.diagnostic.goto_prev({ float = false })
         vim.fn.feedkeys("zz")
         vim.lsp.buf.code_action()
-    end)
+    end, "Previous error and pop code action / hover")
+
     buf_map("n", "<leader>dj", function()
         vim.diagnostic.goto_next({ float = { border = border } })
         vim.fn.feedkeys("zz")
-    end)
+    end, "Next error")
+
     buf_map("n", "<leader>dk", function()
         vim.diagnostic.goto_prev({ float = { border = border } })
         vim.fn.feedkeys("zz")
-    end)
+    end, "Previous error")
+
     buf_map("n", "<leader>da", function()
         vim.lsp.buf.code_action()
-    end)
+    end, "Code actions")
+
     buf_map("n", "<leader>dh", function()
         vim.diagnostic.open_float(0, { border = border })
-    end)
+    end, "Hover diagnostics")
+
     buf_map("n", "<leader>dl", function()
         vim.cmd("Telescope diagnostics")
-    end)
+    end, "List diagnostics")
 
     -- LSP
     buf_map("n", "<leader>lr", function()
         vim.lsp.buf.rename()
-    end)
+    end, "Lsp - rename")
+
     buf_map("n", "<leader>ls", function()
         vim.lsp.buf.signature_help()
-    end)
+    end, "Lsp - signature")
+
     buf_map("n", "<leader>li", function()
         vim.lsp.buf.execute_command({ command = "_typescript.organizeImports", arguments = { vim.fn.expand("%:p") } })
-    end)
+    end, "Lsp - organize imports")
+
     buf_map({ "i", "n" }, "<C-S-Space>", function()
         vim.lsp.buf.signature_help()
-    end)
+    end, "Lsp - signature")
+
     buf_map("n", "gd", function()
         vim.cmd("Telescope lsp_definitions")
         vim.fn.feedkeys("zz")
     end)
+
     buf_map("n", "gD", function()
         vim.lsp.buf.declaration()
         vim.fn.feedkeys("zz")
     end)
+
     buf_map("n", "K", function()
         vim.lsp.buf.hover()
-    end)
+    end, "Hover")
+
     buf_map("n", "gr", function()
         require("telescope.builtin").lsp_references({ show_line = false, include_declaration = false })
     end)
+
     buf_map("n", "gt", function()
         vim.lsp.buf.type_definition()
         vim.fn.feedkeys("zz")
     end)
+
     buf_map("n", "gI", function()
         vim.lsp.buf.implementation()
         vim.fn.feedkeys("zz")

@@ -24,8 +24,9 @@ return require("packer").startup(function(use)
     use("tamago324/cmp-zsh")
     use("onsails/lspkind-nvim")
     use("simrat39/rust-tools.nvim")
-    use("jose-elias-alvarez/null-ls.nvim") -- non-LSP sources
+    use("jose-elias-alvarez/null-ls.nvim")
 
+    -- Treesitter
     use({
         "nvim-treesitter/nvim-treesitter",
         commit = "4cccb6f494eb255b32a290d37c35ca12584c74d0", -- breaking changes to highlight tokens
@@ -50,12 +51,9 @@ return require("packer").startup(function(use)
     use("ThePrimeagen/harpoon")
     use("windwp/nvim-autopairs")
     use("windwp/nvim-ts-autotag")
-    use("folke/which-key.nvim")
     use("karb94/neoscroll.nvim")
     use("akinsho/toggleterm.nvim")
     use("ggandor/leap.nvim")
-
-    -- Sessions
     use({
         "jedrzejboczar/possession.nvim",
         requires = { "nvim-lua/plenary.nvim" },
