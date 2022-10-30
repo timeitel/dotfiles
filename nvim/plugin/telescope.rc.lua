@@ -1,3 +1,4 @@
+-- TODO: C-. for find files
 local telescope = require("telescope")
 local action_state = require("telescope.actions.state")
 local actions = require("telescope.actions")
@@ -48,7 +49,7 @@ browser_normal_mappings["<leader>x"] = fb_actions.remove
 telescope.setup({
     defaults = {
         initial_mode = "normal",
-        file_ignore_patterns = { "node_modules", ".DS_Store" },
+        file_ignore_patterns = { ".DS_Store" },
         multi_icon = "<>",
         sorting_strategy = "ascending",
         path_display = { truncate = 2 },

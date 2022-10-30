@@ -1,8 +1,10 @@
 local map = Utils.map
 local ts = require("telescope.builtin")
+local diffview_actions = require("diffview.actions")
+local neogit = require("neogit")
 
 map("n", "<leader>gs", function()
-    require("neogit").open()
+    neogit.open()
 end, { desc = "Git status" })
 
 map("n", "<leader><leader>gs", function()
@@ -23,11 +25,18 @@ end, { desc = "Git file history" })
 
 map("n", "<leader>gc", function()
     vim.cmd("DiffviewClose")
-    local neogit = require("neogit")
     neogit.open()
     neogit.open({ "commit" })
     vim.fn.feedkeys("c")
 end, { desc = "Git commit" })
+
+map("n", "<leader><leader>gc", function()
+    diffview_actions.stage_all()
+    vim.cmd("DiffviewClose")
+    neogit.open()
+    neogit.open({ "commit" })
+    vim.fn.feedkeys("c")
+end, { desc = "Git stage all and commit" })
 
 map("n", "<leader><leader>gx", function()
     vim.cmd([[Gitsigns reset_buffer]])

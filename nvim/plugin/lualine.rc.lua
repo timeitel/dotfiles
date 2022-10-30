@@ -10,10 +10,6 @@ local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
     end
 end
 
-local function session_name()
-    return require("possession.session").session_name or ""
-end
-
 require("lualine").setup({
     options = {
         theme = "nord",
@@ -37,7 +33,7 @@ require("lualine").setup({
         lualine_a = { { "branch", fmt = trunc(100, 20, 80, false) } },
         lualine_b = { "diff", "diagnostics" },
         lualine_c = { "filename" },
-        lualine_x = { session_name },
+        lualine_x = {},
         lualine_y = { "progress" },
         lualine_z = { "filetype" },
     },

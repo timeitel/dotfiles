@@ -24,10 +24,12 @@ map({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from clipboard" })
 map("n", "<leader>sp", function()
     -- TODO
     -- local time = os.time(os.date("!*t"))
-    if vim.fn.confirm("", "Are you sure you'd like to discard changes? (&Yes\n&No)", 1) == 1 then
-        -- vim.cmd([[PackerSnapshot time]])
-        -- vim.cmd([[PackerSync]])
+    local inp = vim.fn.input("What would you like to name the current snapshot? ")
+    if inp == nil or inp == "" then
+        return
     end
+    vim.cmd([[PackerSnapshot inp]])
+    vim.cmd([[PackerSync]])
 end, { desc = "Sync plugins" })
 
 -- Tabs (buffers)
