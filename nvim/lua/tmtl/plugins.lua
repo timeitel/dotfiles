@@ -47,7 +47,13 @@ return require("packer").startup(function(use)
     use("inkarkat/vim-ReplaceWithRegister")
     use("michaeljsmith/vim-indent-object")
     use("tpope/vim-commentary")
-    use("tpope/vim-surround")
+    use({
+        "kylechui/nvim-surround",
+        tag = "*",
+        config = function()
+            require("nvim-surround").setup()
+        end,
+    })
     use("ThePrimeagen/harpoon")
     use("windwp/nvim-autopairs")
     use("windwp/nvim-ts-autotag")
