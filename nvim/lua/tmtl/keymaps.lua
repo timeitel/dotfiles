@@ -28,7 +28,7 @@ map("n", "<leader>sp", function()
     if inp == nil or inp == "" then
         return
     end
-    vim.cmd([[PackerSnapshot inp]])
+    vim.cmd(string.format("PackerSnapshot %s", inp))
     vim.cmd([[PackerSync]])
 end, { desc = "Sync plugins" })
 
