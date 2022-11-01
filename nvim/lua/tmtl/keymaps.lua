@@ -1,3 +1,4 @@
+-- TODO: spell check
 local map = Utils.map
 
 vim.g.mapleader = " "
@@ -22,14 +23,14 @@ map({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
 map({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
 map("n", "<leader>sp", function()
-    -- TODO
-    -- local time = os.time(os.date("!*t"))
-    local inp = vim.fn.input("What would you like to name the current snapshot? ")
-    if inp == nil or inp == "" then
-        return
-    end
-    vim.cmd(string.format("PackerSnapshot %s", inp))
-    vim.cmd([[PackerSync]])
+  -- TODO
+  -- local time = os.time(os.date("!*t"))
+  local inp = vim.fn.input("What would you like to name the current snapshot? ")
+  if inp == nil or inp == "" then
+    return
+  end
+  vim.cmd(string.format("PackerSnapshot %s", inp))
+  vim.cmd([[PackerSync]])
 end, { desc = "Sync plugins" })
 
 -- Tabs (buffers)
@@ -42,9 +43,9 @@ map("n", "<leader>qj", "<cmd>cnext<cr>", { desc = "Quickfix list - next" })
 map("n", "<leader>qk", "<cmd>cprevious<cr>", { desc = "Quickfix list - previous" })
 
 map("n", "<leader>gr", function()
-    vim.fn.feedkeys([[gg/export]])
-    vim.fn.feedkeys("\n")
-    vim.fn.feedkeys([[WWgr]])
+  vim.fn.feedkeys([[gg/export]])
+  vim.fn.feedkeys("\n")
+  vim.fn.feedkeys([[WWgr]])
 end, { desc = "Lsp - file references" })
 
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])

@@ -29,13 +29,12 @@ o.whichwrap = o.whichwrap + "<,>,h,l"
 
 -- Tabs
 o.autoindent = true
+o.expandtab = true
+o.tabstop = 2
+o.shiftwidth = 2
 o.cindent = true
 o.wrap = true
-
-o.tabstop = 4
-o.shiftwidth = 4
-o.softtabstop = 4
-o.expandtab = true
+o.smartindent = true
 
 o.breakindent = true
 o.showbreak = string.rep(" ", 3) -- Make it so that long lines wrap smartly
@@ -57,24 +56,24 @@ o.undofile = true
 o.cursorline = true -- Highlight the current line
 local group = vim.api.nvim_create_augroup("CursorLineControl", { clear = true })
 local set_cursorline = function(event, value, pattern)
-    vim.api.nvim_create_autocmd(event, {
-        group = group,
-        pattern = pattern,
-        callback = function()
-            vim.opt_local.cursorline = value
-        end,
-    })
+  vim.api.nvim_create_autocmd(event, {
+    group = group,
+    pattern = pattern,
+    callback = function()
+      vim.opt_local.cursorline = value
+    end,
+  })
 end
 set_cursorline("WinLeave", false)
 set_cursorline("WinEnter", true)
 set_cursorline("FileType", false, "TelescopePrompt")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-    pattern = "*",
-    callback = function()
-        require("vim.highlight").on_yank({ timeout = 200 })
-    end,
-    desc = "Highlight yank",
+  pattern = "*",
+  callback = function()
+    require("vim.highlight").on_yank({ timeout = 200 })
+  end,
+  desc = "Highlight yank",
 })
 
 o.laststatus = 3
