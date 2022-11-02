@@ -1,5 +1,4 @@
 local actions = require("diffview.actions")
--- print(vim.inspect(git))
 
 local shared_maps = {
   ["q"] = "<cmd>DiffviewClose<cr>",
@@ -14,13 +13,6 @@ local shared_maps = {
   ["gf"] = actions.goto_file_tab,
   ["<C-j>"] = actions.next_conflict,
   ["<C-k>"] = actions.prev_conflict,
-  -- ["r"] = function() -- TODO: reset /discard all changes
-  --     local inp = vim.fn.input("Are you sure you'd like to discard changes ALL CHANGES? (y/n): ")
-  --     if string.lower(inp) == "y" then
-  --         actions.()
-  --     end
-  --     print("")
-  -- end,
   ["<leader>U"] = actions.unstage_all,
   ["<leader>S"] = actions.stage_all,
   ["<leader>s"] = actions.toggle_stage_entry,
@@ -29,6 +21,13 @@ local shared_maps = {
       actions.restore_entry()
     end
   end,
+  -- ["<leader>X"] = function() -- TODO: reset /discard all changes
+  --     local inp = vim.fn.input("Are you sure you'd like to discard changes ALL CHANGES? (y/n): ")
+  --     if string.lower(inp) == "y" then
+  --         actions.()
+  --     end
+  --     print("")
+  -- end,
 }
 
 require("diffview").setup({

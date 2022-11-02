@@ -1,3 +1,4 @@
+-- TODO: C-O and C-I to go forward and back in file browser
 -- TODO: C-. for find files
 local telescope = require("telescope")
 local action_state = require("telescope.actions.state")
@@ -92,6 +93,26 @@ telescope.setup({
         --         -- print(vim.inspect(stash_idx))
         --     end,
         -- },
+      },
+    },
+    git_commits = {
+      mappings = {
+        n = {
+          ["<leader>yc"] = function()
+            local entry = action_state.get_selected_entry()
+            vim.fn.setreg("*", entry.value)
+            print("Yanked hash:", entry.value)
+          end,
+          ["<leader>gd"] = function(prompt_bufnr)
+            local current = action_state.get_selected_entry()
+            actions.move_selection_next(prompt_bufnr)
+            local previous = action_state.get_selected_entry()
+
+            actions.close(prompt_bufnr)
+            print(string.format("Opening diff of: %s, with its previous commit", current.value))
+            vim.cmd(string.format("DiffviewOpen %s..%s", previous.value, current.value))
+          end,
+        },
       },
     },
     git_branches = {

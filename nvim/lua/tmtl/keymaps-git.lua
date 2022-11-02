@@ -38,7 +38,7 @@ map("n", "<leader><leader>gc", function()
   vim.fn.feedkeys("c")
 end, { desc = "Git stage all and commit" })
 
-map("n", "<leader><leader>gx", function()
+map("n", "<leader>gx", function()
   vim.cmd([[Gitsigns reset_buffer]])
 end, { desc = "Git file - discard changes" })
 
