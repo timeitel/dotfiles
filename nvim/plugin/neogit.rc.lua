@@ -1,14 +1,14 @@
 local neogit = require("neogit")
 
 neogit.setup({
-    disable_commit_confirmation = true,
-    disable_insert_on_commit = false,
-    integrations = {
-        diffview = true,
+  disable_commit_confirmation = true,
+  disable_insert_on_commit = false,
+  integrations = {
+    diffview = true,
+  },
+  mappings = {
+    status = {
+      ["<C-h>"] = neogit.close,
     },
-    mappings = {
-        status = {
-            ["<C-h>"] = neogit.close,
-        },
-    },
+  },
 })
