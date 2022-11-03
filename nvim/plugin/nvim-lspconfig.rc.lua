@@ -46,7 +46,6 @@ local on_attach = function(_, bufnr)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr, desc = d })
   end
 
-  -- TODO: <leader>-. for repeat last plugin action / commands
   -- TODO: format the range after accepting code action
   -- Diagnostics
   buf_map("n", "<C-j>", function()
