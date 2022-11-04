@@ -46,4 +46,4 @@ end, { desc = "Lsp - file references" })
 
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
 vim.cmd([[xmap <Leader>r <Plug>ReplaceWithRegisterVisual]])
-vim.cmd([[nmap <Leader>(( <Plug>ReplaceWithRegisterLine]]) -- TODO: just unmap
+vim.cmd([[nmap <Leader>R <Plug>ReplaceWithRegisterLine]])
