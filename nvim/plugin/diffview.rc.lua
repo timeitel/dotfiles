@@ -1,9 +1,11 @@
 local actions = require("diffview.actions")
 
 local shared_maps = {
+  ["L"] = false,
   ["q"] = "<cmd>DiffviewClose<cr>",
   ["<C-h>"] = "<cmd>DiffviewClose<cr>",
   ["f"] = "<cmd>DiffviewToggleFiles<cr>",
+  ["<leader>f"] = "<cmd>DiffviewFocusFiles<cr>",
   -- o to preview entry
   ["O"] = actions.focus_entry,
   ["<C-e>"] = actions.scroll_view(1),
