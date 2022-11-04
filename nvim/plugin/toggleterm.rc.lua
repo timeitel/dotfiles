@@ -1,5 +1,5 @@
 require("toggleterm").setup({
-  open_mapping = [[<C-\>]],
+  open_mapping = [[<C-;>]],
   direction = "float",
   float_opts = {
     border = "curved",

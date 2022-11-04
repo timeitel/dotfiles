@@ -1,4 +1,3 @@
--- TODO: spell check
 local map = Utils.map
 
 vim.g.mapleader = " "
