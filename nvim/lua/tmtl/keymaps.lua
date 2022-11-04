@@ -22,8 +22,6 @@ map({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
 map({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
 map("n", "<leader>sp", function()
-  -- TODO
-  -- local time = os.time(os.date("!*t"))
   local inp = vim.fn.input("What would you like to name the current snapshot? ")
   if inp == nil or inp == "" then
     return
