@@ -103,3 +103,10 @@ vim.api.nvim_create_autocmd({ "BufLeave" }, {
   end,
   group = group,
 })
+
+-- pipe tsc errors into qf list
+vim.cmd([[
+  augroup tsc
+    autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=npx\ tsc
+  augroup END
+]])
