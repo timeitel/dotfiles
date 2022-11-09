@@ -92,21 +92,12 @@ au FileType * set fo=cqrnj
 o.scrollbind = false
 o.sessionoptions = o.sessionoptions - "buffers"
 
--- remove no-name buffers -> spam created from Neogit status
-vim.api.nvim_create_autocmd({ "BufLeave" }, {
-  pattern = "{}",
-  callback = function()
-    if vim.fn.line("$") == 1 and vim.fn.getline(1) == "" then
-      vim.bo.buftype = "nofile"
-      vim.bo.bufhidden = "wipe"
-    end
-  end,
-  group = group,
-})
+o.guitablabel = "[%N] %t %M"
 
 -- pipe tsc errors into qf list
+-- TODO: use local config
 vim.cmd([[
   augroup tsc
-    autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=npx\ tsc
+    autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=tsc
   augroup END
 ]])

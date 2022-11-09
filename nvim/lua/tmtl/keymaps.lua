@@ -29,10 +29,17 @@ map("n", "<leader>sp", function()
   vim.cmd([[PackerSync]])
 end, { desc = "Plugins - sync" })
 
--- Tabs (buffers)
+-- Buffers
 map("n", "<leader>ba", "<cmd>:%bd<cr>", { desc = "Buffer - delete all" })
 map("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>", { desc = "Buffer - delete all others" })
-map("n", "zx", "<cmd>update<cr>", { desc = "Buffer - save" })
+map("n", "<leader>bj", "<cmd>bnext<cr>", { desc = "Buffer - next" })
+map("n", "<leader>bk", "<cmd>bprevious<cr>", { desc = "Buffer - previous" })
+map({ "n", "i" }, "<C-s>", "<cmd>update<cr>", { desc = "Buffer - save" })
+
+-- Tabs
+map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "Tab - new" })
+map("n", "<leader>tj", "<cmd>tabnext<cr>", { desc = "Tab - next" })
+map("n", "<leader>tk", "<cmd>tabprevious<cr>", { desc = "Tab - previous" })
 
 -- Quick fix list
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "Quickfix list - show" })
@@ -42,6 +49,9 @@ map("n", "<leader>qk", "<cmd>cprevious<cr>", { desc = "Quickfix list - previous"
 map("n", "<leader>gr", function()
   vim.api.nvim_feedkeys("gg/export\nWW", "n", true)
   vim.fn.feedkeys("gr")
+  -- local ts = require("telescope.builtin")
+  -- local themes = require("telescope.themes")
+  -- ts.lsp_references(themes.get_cursor({ show_line = false, include_declaration = false }))
 end, { desc = "Lsp - file references" })
 
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])

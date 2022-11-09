@@ -102,12 +102,12 @@ local on_attach = function(_, bufnr)
   buf_map("n", "gd", function()
     vim.cmd("Telescope lsp_definitions")
     vim.fn.feedkeys("zz")
-  end)
+  end, "Lsp - go to definition")
 
   buf_map("n", "gD", function()
     vim.lsp.buf.declaration()
     vim.fn.feedkeys("zz")
-  end)
+  end, "Lsp - go to declaration")
 
   buf_map("n", "K", function()
     vim.lsp.buf.hover()
@@ -115,17 +115,17 @@ local on_attach = function(_, bufnr)
 
   buf_map("n", "gr", function()
     require("telescope.builtin").lsp_references({ show_line = false, include_declaration = false })
-  end)
+  end, "Lsp - go to references")
 
   buf_map("n", "gt", function()
     vim.lsp.buf.type_definition()
     vim.fn.feedkeys("zz")
-  end)
+  end, "Lsp - go to type definition")
 
   buf_map("n", "gI", function()
     vim.lsp.buf.implementation()
     vim.fn.feedkeys("zz")
-  end)
+  end, "Lsp - go to implementation")
 end
 
 protocol.CompletionItemKind = {

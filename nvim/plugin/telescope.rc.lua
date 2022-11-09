@@ -1,5 +1,4 @@
 -- TODO: C-O and C-I to go forward and back in file browser
--- TODO: C-. for find files
 local telescope = require("telescope")
 local action_state = require("telescope.actions.state")
 local actions = require("telescope.actions")
@@ -131,7 +130,6 @@ telescope.setup({
     registers = {
       mappings = {
         n = {
-
           ["<leader>e"] = actions.edit_register,
         },
       },
