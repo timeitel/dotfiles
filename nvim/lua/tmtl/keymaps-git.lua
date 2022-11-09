@@ -54,7 +54,7 @@ end, { desc = "Git branches" })
 
 map("n", "<leader>gu", function()
   vim.cmd([[TermExec cmd="git reset --soft HEAD~1"]])
-  -- vim.cmd([[ToggleTerm]])
+  vim.cmd([[ToggleTerm]])
 end, { desc = "Git - undo last commit into working directory" })
 
 map("n", "<leader><leader>gb", function()
