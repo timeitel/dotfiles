@@ -57,6 +57,13 @@ map("n", "<leader>gu", function()
   vim.cmd([[ToggleTerm]])
 end, { desc = "Git - undo last commit into working directory" })
 
+map("n", "<leader>gr", function()
+  if vim.fn.confirm("", "Are you sure you'd like to discard working changes? (&Yes\n&No)", 1) == 1 then
+    vim.cmd([[TermExec cmd="git restore . && git clean -fd"]])
+    vim.cmd([[ToggleTerm]])
+  end
+end, { desc = "Git - undo last commit into working directory" })
+
 map("n", "<leader><leader>gb", function()
   require("git_blame").run()
 end, { desc = "Git blame" })
