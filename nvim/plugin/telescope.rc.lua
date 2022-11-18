@@ -31,20 +31,19 @@ default_normal_mappings["c"] = false
 default_normal_mappings["l"] = actions.select_default + actions.center
 
 -- Telescope File-browser
-local browser_insert_mappings = {
-  ["<C-.>"] = fb_actions.toggle_hidden,
-  ["<C-c>"] = fb_actions.create,
-  ["<C-t>"] = fb_actions.change_cwd,
-  ["<C-f>"] = function()
+local file_browser_mappings = {
+  ["<leader>."] = fb_actions.toggle_hidden,
+  ["<leader>c"] = fb_actions.create,
+  ["<leader>t"] = fb_actions.change_cwd,
+  ["<leader>f"] = function()
     local entry = action_state.get_selected_entry()
     local filename = entry.Path.filename
     require("telescope.builtin").live_grep({ search_dirs = { filename }, results_title = filename })
   end,
+  ["<leader>x"] = fb_actions.remove,
+  ["h"] = fb_actions.goto_parent_dir,
+  ["H"] = fb_actions.goto_cwd,
 }
-local browser_normal_mappings = table.shallow_copy(browser_insert_mappings)
-browser_normal_mappings["h"] = fb_actions.goto_parent_dir
-browser_normal_mappings["H"] = fb_actions.goto_cwd
-browser_normal_mappings["<leader>x"] = fb_actions.remove
 
 telescope.setup({
   defaults = {
@@ -139,8 +138,7 @@ telescope.setup({
   extensions = {
     file_browser = {
       mappings = {
-        i = browser_insert_mappings,
-        n = browser_normal_mappings,
+        n = file_browser_mappings,
       },
     },
     ["ui-select"] = {
