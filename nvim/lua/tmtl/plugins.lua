@@ -44,6 +44,7 @@ return require("packer").startup(function(use)
   use({ "bobrown101/git-blame.nvim" })
 
   -- 10000x developer
+  use("lewis6991/impatient.nvim")
   use("bkad/CamelCaseMotion")
   use("inkarkat/vim-ReplaceWithRegister")
   use("michaeljsmith/vim-indent-object")

@@ -1,3 +1,4 @@
+require("impatient")
 require("tmtl.utils")
 require("tmtl.plugins")
 require("tmtl.options")
