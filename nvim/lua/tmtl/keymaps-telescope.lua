@@ -2,6 +2,7 @@ local ts = require("telescope.builtin")
 local fb = require("telescope").extensions.file_browser
 local map = Utils.map
 local getVisualSelection = Utils.getVisualSelection
+-- TODO: multi select buffers to save all
 
 map("n", "<C-p>", function()
   ts.find_files()
@@ -64,3 +65,8 @@ end, { desc = "Browse - buffer's wd" })
 map("n", "<leader>bc", function()
   fb.file_browser({ grouped = true, cwd = "~/.dotfiles" })
 end, { desc = "Browse - config" })
+
+-- TODO: find files -> toggle show hidden
+map("n", "<leader>yw", function()
+  -- TODO
+end, { desc = "Browse - yank current working directorty path" })

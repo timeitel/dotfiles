@@ -1,5 +1,6 @@
 alias ..='cd ..'
 alias ...='cd ../..'
+alias cdg='cd $(git rev-parse --show-toplevel)'
 
 alias v=nvim
 alias vw='nvim -c "cd ~/code/01-komo/entertainment"'

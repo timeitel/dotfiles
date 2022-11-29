@@ -15,12 +15,16 @@ map("n", "<leader>gd", function()
   vim.cmd([[DiffviewOpen]])
 end, { desc = "Git diff" })
 
+map("n", "<leader><leader>gd", function()
+  vim.cmd([[DiffviewOpen origin/staging...HEAD]])
+end, { desc = "Git diff - HEAD against staging" })
+
 map("n", "<leader>gh", function()
-  ts.git_commits()
+  vim.cmd([[DiffviewFileHistory]])
 end, { desc = "Git history" })
 
 map("n", "<leader><leader>gh", function()
-  ts.git_bcommits()
+  vim.cmd([[DiffviewFileHistory %]])
 end, { desc = "Git file history" })
 
 map("n", "<leader>gc", function()
@@ -44,9 +48,10 @@ map("n", "<leader>gx", function()
   vim.cmd([[Gitsigns reset_buffer]])
 end, { desc = "Git file - discard changes" })
 
-map("n", "<leader><leader>gs", function()
-  vim.cmd([[Gitsigns stage_buffer]])
-end, { desc = "Git file - stage" })
+-- TODO: conflicting map
+-- map("n", "<leader><leader>gs", function()
+--   vim.cmd([[Gitsigns stage_buffer]])
+-- end, { desc = "Git file - stage" })
 
 map("n", "<leader>gb", function()
   ts.git_branches()
@@ -57,12 +62,12 @@ map("n", "<leader>gu", function()
   vim.cmd([[ToggleTerm]])
 end, { desc = "Git - undo last commit into working directory" })
 
-map("n", "<leader>gr", function()
-  if vim.fn.confirm("", "Are you sure you'd like to discard working changes? (&Yes\n&No)", 1) == 1 then
+map("n", "<leader><leader>gr", function()
+  if vim.fn.confirm("", "Are you sure you'd like to discard ALL working changes? (&Yes\n&No)", 1) == 1 then
     vim.cmd([[TermExec cmd="git restore . && git clean -fd"]])
     vim.cmd([[ToggleTerm]])
   end
-end, { desc = "Git - undo last commit into working directory" })
+end, { desc = "Git - discard working changes" })
 
 map("n", "<leader><leader>gb", function()
   require("git_blame").run()

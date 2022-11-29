@@ -144,6 +144,11 @@ _G.packer_plugins = {
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["glow.nvim"] = {
+    loaded = true,
+    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/glow.nvim",
+    url = "https://github.com/ellisonleao/glow.nvim"
+  },
   harpoon = {
     loaded = true,
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -269,6 +274,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-ReplaceWithRegister"] = {
     loaded = true,

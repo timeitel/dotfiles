@@ -5,8 +5,7 @@ local shared_maps = {
   ["q"] = "<cmd>DiffviewClose<cr>",
   ["<C-h>"] = "<cmd>DiffviewClose<cr>",
   ["f"] = "<cmd>DiffviewToggleFiles<cr>",
-  ["<leader>f"] = "<cmd>DiffviewFocusFiles<cr>",
-  -- o to preview entry
+  ["<leader>f"] = "<cmd>DiffviewFocusFiles<cr>", -- TODO: add for filehistory panel to toggle history panel
   ["O"] = actions.focus_entry,
   ["<C-e>"] = actions.scroll_view(1),
   ["<C-y>"] = actions.scroll_view(-1),
@@ -23,13 +22,6 @@ local shared_maps = {
       actions.restore_entry()
     end
   end,
-  -- ["<leader>X"] = function() -- TODO: reset /discard all changes
-  --     local inp = vim.fn.input("Are you sure you'd like to discard changes ALL CHANGES? (y/n): ")
-  --     if string.lower(inp) == "y" then
-  --         actions.()
-  --     end
-  --     print("")
-  -- end,
 }
 
 require("diffview").setup({
@@ -38,7 +30,9 @@ require("diffview").setup({
       layout = "diff3_mixed",
     },
   },
-  file_panel = {},
+  file_panel = {
+    listing_style = "list",
+  },
   keymaps = {
     view = shared_maps,
     file_panel = shared_maps,

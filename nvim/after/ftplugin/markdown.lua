@@ -1,0 +1,3 @@
+-- " TODO: make work
+-- vim.cmd([[set filetype=markdown]])
+-- print("test")
