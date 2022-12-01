@@ -4,5 +4,6 @@ require("bufferline").setup({
     buffer_close_icon = "",
     show_duplicate_prefix = false,
     max_name_length = 30,
+    always_show_bufferline = false,
   },
 })
