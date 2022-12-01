@@ -24,7 +24,9 @@ o.smartcase = true
 o.splitbelow = true
 o.splitright = true
 o.swapfile = false
-o.whichwrap = o.whichwrap + "<,>,h,l"
+o.whichwrap:append("<,>,h,l")
+-- TODO: fix n of N matches
+o.shortmess:append("c")
 
 -- Tabs
 o.autoindent = true
