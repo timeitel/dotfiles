@@ -29,6 +29,12 @@ map("n", "<leader>sp", function()
   vim.cmd([[PackerSync]])
 end, { desc = "Plugins - sync" })
 
+map("n", "<leader>T", function()
+  vim.fn.feedkeys("iTODO: ")
+  vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<esc>"'), "n", true)
+  vim.fn.feedkeys("gccA")
+end, { desc = "Insert - TODO comment" })
+
 -- Buffers
 map("n", "<leader>ba", "<cmd>:%bd<cr>", { desc = "Buffer - delete all" })
 map("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>", { desc = "Buffer - delete all others" })
@@ -42,9 +48,11 @@ map("n", "<leader>tj", "<cmd>tabnext<cr>", { desc = "Tab - next" })
 map("n", "<leader>tk", "<cmd>tabprevious<cr>", { desc = "Tab - previous" })
 
 -- Quick fix list
+-- TODO: qf close
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "Quickfix list - show" })
 map("n", "<leader>qj", "<cmd>cnext<cr>", { desc = "Quickfix list - next" })
 map("n", "<leader>qk", "<cmd>cprevious<cr>", { desc = "Quickfix list - previous" })
+map("n", "<leader>qc", "<cmd>cclose<cr>", { desc = "Quickfix list - close" })
 
 map("n", "<leader>gr", function()
   vim.api.nvim_feedkeys("gg/export\nWW", "n", true)

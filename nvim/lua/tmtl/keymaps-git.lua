@@ -28,6 +28,7 @@ map("n", "<leader>gc", function()
   neogit.open()
   neogit.open({ "commit" })
   vim.fn.feedkeys("c")
+  -- TODO: then feedkeys feat: or test:
 end, { desc = "Git commit" })
 
 map("n", "<leader><leader>gc", function()

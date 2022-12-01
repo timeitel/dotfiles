@@ -8,6 +8,7 @@ map("n", "<C-p>", function()
   ts.find_files({ hidden = true })
 end, { desc = "Find - files" })
 
+-- TODO: fix not working
 map("n", "<leader>/", function()
   ts.current_buffer_fuzzy_find()
 end, { desc = "Find - current buffer" })
