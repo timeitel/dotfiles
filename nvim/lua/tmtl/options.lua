@@ -17,7 +17,6 @@ o.lazyredraw = true
 o.number = true
 o.relativenumber = true
 o.scrolloff = 10
-o.shortmess = o.shortmess + { c = true }
 o.showcmd = true
 o.showmatch = true
 o.showmode = false
@@ -47,7 +46,7 @@ o.modelines = 1
 o.belloff = "all"
 
 o.joinspaces = false
-o.fillchars = { eob = "~" }
+o.fillchars = { eob = "~", diff = "╱" }
 o.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal" }
 o.undofile = true
 
@@ -91,8 +90,6 @@ au FileType * set fo=cqrnj
 
 o.scrollbind = false
 o.sessionoptions = o.sessionoptions - "buffers"
-
-o.guitablabel = "[%N] %t %M"
 
 -- pipe tsc errors into qf list
 -- TODO: use local config

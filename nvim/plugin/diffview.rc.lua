@@ -1,3 +1,4 @@
+-- TODO: highlight and stage multiple files
 local actions = require("diffview.actions")
 
 local shared_maps = {
