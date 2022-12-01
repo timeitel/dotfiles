@@ -55,7 +55,8 @@ ts.setup({
       enable = true,
       border = "none",
       peek_definition_code = {
-        ["<leader>lf"] = "@function.outer",
+        ["<leader>pf"] = "@function.outer", -- preview function
+        -- TODO: open preview in split
       },
     },
   },

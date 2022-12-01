@@ -24,7 +24,7 @@ map("n", "<leader>gh", function()
 end, { desc = "Git history" })
 
 map("n", "<leader>gc", function()
-  vim.cmd("DiffviewClose")
+  -- TODO: if no uncommited changes left then close
   neogit.open()
   neogit.open({ "commit" })
   vim.fn.feedkeys("c")
