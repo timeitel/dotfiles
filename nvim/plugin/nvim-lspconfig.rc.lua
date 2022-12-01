@@ -46,6 +46,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr, desc = d })
   end
 
+  -- TODO: <leader>dh if no results
   -- TODO: format the range after accepting code action
   -- Diagnostics
   buf_map("n", "<C-j>", function()
@@ -187,7 +188,7 @@ nvim_lsp.sumneko_lua.setup({
         callSnippet = "Replace",
       },
       diagnostics = {
-        globals = { "vim" },
+        globals = { "vim", "hs" },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files

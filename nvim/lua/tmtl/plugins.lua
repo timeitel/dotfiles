@@ -66,12 +66,12 @@ return require("packer").startup(function(use)
     "jedrzejboczar/possession.nvim",
     requires = { "nvim-lua/plenary.nvim" },
   })
-  use("ellisonleao/glow.nvim")
+  use("ellisonleao/glow.nvim") -- preview markdown
 
   -- Styling
-  use("monsonjeremy/onedark.nvim")
   use("kyazdani42/nvim-web-devicons")
   use("nvim-lualine/lualine.nvim")
   use("j-hui/fidget.nvim")
   use("folke/tokyonight.nvim")
+  use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 end)

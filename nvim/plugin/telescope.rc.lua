@@ -1,3 +1,4 @@
+-- TODO: yank file name
 -- TODO: C-O and C-I to go forward and back in file browser
 local telescope = require("telescope")
 local action_state = require("telescope.actions.state")
