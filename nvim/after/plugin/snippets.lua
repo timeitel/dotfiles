@@ -1,5 +1,6 @@
 local ls = require("luasnip")
 local s = ls.snippet
+local f = ls.function_node
 local text = ls.text_node
 local insert = ls.insert_node
 local keymap = vim.api.nvim_set_keymap
@@ -10,6 +11,13 @@ keymap("s", "<Tab>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
 keymap("i", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
 keymap("s", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
 
+local get_filename = function()
+  return f(function(_, snip)
+    local name = vim.split(snip.snippet.env.TM_FILENAME, ".", true)
+    return name[1] or ""
+  end)
+end
+
 ls.add_snippets(nil, {
   all = {
     s({
@@ -18,7 +26,8 @@ ls.add_snippets(nil, {
       dscr = "React functional component",
     }, {
       text("export const "),
-      insert(1, "Component"),
+      get_filename(),
+      insert(1),
       text({ " : FC = () => {" }),
       text({ "return (" }),
       text({ "<>" }),
