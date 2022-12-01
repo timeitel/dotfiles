@@ -5,7 +5,7 @@ local getVisualSelection = Utils.getVisualSelection
 -- TODO: multi select buffers to save all
 
 map("n", "<C-p>", function()
-  ts.find_files()
+  ts.find_files({ hidden = true })
 end, { desc = "Find - files" })
 
 map("n", "<leader>/", function()
@@ -21,6 +21,10 @@ map("n", "<leader>ff", function()
   ts.live_grep()
 end, { desc = "Find - in files" })
 
+map("n", "<leader>ft", function()
+  ts.grep_string({ search = "TODO" })
+end, { desc = "Find - TODOs" })
+
 map("v", "<leader>ff", function()
   local text = getVisualSelection()
   ts.live_grep({ default_text = text })
@@ -31,11 +35,11 @@ map("n", "<leader>fb", function()
 end, { desc = "Find - buffers" })
 
 map("n", "<leader>fc", function()
-  ts.find_files({ cwd = "~/.dotfiles" })
+  ts.find_files({ cwd = "~/.dotfiles", hidden = true })
 end, { desc = "Find - files in config" })
 
 map("n", "<leader>fw", function()
-  ts.find_files({ cwd = "vim.fn.expand('%:p:h')" })
+  ts.find_files({ cwd = "vim.fn.expand('%:p:h')", hidden = true })
 end, { desc = "Find - files in buffer's wd" })
 
 map("n", "<leader>fk", function()
@@ -55,15 +59,15 @@ map("n", "<leader>fm", function()
 end, { desc = "Find - harpoon marks" })
 
 map("n", "<leader>bp", function()
-  fb.file_browser({ grouped = true })
+  fb.file_browser({ grouped = true, hidden = true })
 end, { desc = "Browse - project" })
 
 map("n", "<leader>bw", function()
-  fb.file_browser({ grouped = true, cwd = vim.fn.expand("%:p:h") })
+  fb.file_browser({ grouped = true, cwd = vim.fn.expand("%:p:h"), hidden = true })
 end, { desc = "Browse - buffer's wd" })
 
 map("n", "<leader>bc", function()
-  fb.file_browser({ grouped = true, cwd = "~/.dotfiles" })
+  fb.file_browser({ grouped = true, cwd = "~/.dotfiles", hidden = true })
 end, { desc = "Browse - config" })
 
 -- TODO: find files -> toggle show hidden

@@ -23,10 +23,6 @@ map("n", "<leader>gh", function()
   vim.cmd([[DiffviewFileHistory]])
 end, { desc = "Git history" })
 
-map("n", "<leader><leader>gh", function()
-  vim.cmd([[DiffviewFileHistory %]])
-end, { desc = "Git file history" })
-
 map("n", "<leader>gc", function()
   vim.cmd("DiffviewClose")
   neogit.open()
@@ -44,14 +40,17 @@ map("n", "<leader><leader>gc", function()
   end, 100)
 end, { desc = "Git stage all and commit" })
 
-map("n", "<leader>gx", function()
+map("n", "<leader>gfh", function()
+  vim.cmd([[DiffviewFileHistory %]])
+end, { desc = "Git file - history" })
+
+map("n", "<leader>gfx", function()
   vim.cmd([[Gitsigns reset_buffer]])
 end, { desc = "Git file - discard changes" })
 
--- TODO: conflicting map
--- map("n", "<leader><leader>gs", function()
---   vim.cmd([[Gitsigns stage_buffer]])
--- end, { desc = "Git file - stage" })
+map("n", "<leader><leader>gfs", function()
+  vim.cmd([[Gitsigns stage_buffer]])
+end, { desc = "Git file - stage" })
 
 map("n", "<leader>gb", function()
   ts.git_branches()

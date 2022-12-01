@@ -1,7 +1,6 @@
 local map = Utils.map
 local harpoon_ui = require("harpoon.ui")
 
--- TODO: configure with c-h and c-l
 map("n", "<leader>ea", function()
   require("harpoon.mark").add_file()
 end, { desc = "Edit list - add" })
