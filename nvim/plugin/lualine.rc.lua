@@ -15,7 +15,7 @@ require("lualine").setup({
     theme = "nord",
     icons_enabled = true,
     component_separators = { left = "", right = "" },
-    section_separators = { left = "", right = "" },
+    section_separators = {},
     disabled_filetypes = {
       statusline = {},
       winbar = {},
@@ -30,9 +30,9 @@ require("lualine").setup({
     },
   },
   sections = {
-    lualine_a = { { "branch", fmt = trunc(100, 20, 80, false) } },
-    lualine_b = { "diff", "diagnostics" },
-    lualine_c = { "filename" },
+    lualine_a = { { "branch", fmt = trunc(100, 20, 80, false) }, "diff" },
+    lualine_b = { "filename", "diagnostics" },
+    lualine_c = {},
     lualine_x = {},
     lualine_y = { "progress" },
     lualine_z = { "filetype" },

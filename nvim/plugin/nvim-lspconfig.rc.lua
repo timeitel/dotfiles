@@ -46,28 +46,29 @@ local on_attach = function(_, bufnr)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr, desc = d })
   end
 
-  -- TODO: <leader>dh if no results
+  -- TODO: next by severity
+  -- TODO: <leader>dh if no results & only center (zz) if any diagnostics
   -- TODO: format the range after accepting code action
   -- Diagnostics
   buf_map("n", "<C-j>", function()
-    vim.diagnostic.goto_next({ float = false })
+    vim.diagnostic.goto_next({ float = false, severity = vim.diagnostic.severity.ERROR })
     vim.fn.feedkeys("zz") -- TODO: only center if there's diagnostics and check if no code actions, then pop dh
     vim.lsp.buf.code_action()
   end, "Next error and pop code action / hover")
 
   buf_map("n", "<C-k>", function()
-    vim.diagnostic.goto_prev({ float = false })
+    vim.diagnostic.goto_prev({ float = false, severity = vim.diagnostic.severity.ERROR })
     vim.fn.feedkeys("zz")
     vim.lsp.buf.code_action()
   end, "Previous error and pop code action / hover")
 
   buf_map("n", "<leader>dj", function()
-    vim.diagnostic.goto_next({ float = { border = border } })
+    vim.diagnostic.goto_next({ float = { border = border }, severity = vim.diagnostic.severity.ERROR })
     vim.fn.feedkeys("zz")
   end, "Next error")
 
   buf_map("n", "<leader>dk", function()
-    vim.diagnostic.goto_prev({ float = { border = border } })
+    vim.diagnostic.goto_prev({ float = { border = border, severity = vim.diagnostic.severity.ERROR } })
     vim.fn.feedkeys("zz")
   end, "Previous error")
 
