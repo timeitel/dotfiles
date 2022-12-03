@@ -3,6 +3,14 @@ local ts = require("telescope.builtin")
 local diffview_actions = require("diffview.actions")
 local neogit = require("neogit")
 
+function Open_Git_Commit()
+  -- TODO: if no uncommited changes left then close
+  neogit.open()
+  neogit.open({ "commit" })
+  vim.fn.feedkeys("c")
+  -- TODO: then feedkeys feat: or test:
+end
+
 map("n", "<leader>gs", function()
   neogit.open()
 end, { desc = "Git status" })
@@ -23,13 +31,7 @@ map("n", "<leader>gh", function()
   vim.cmd([[DiffviewFileHistory]])
 end, { desc = "Git history" })
 
-map("n", "<leader>gc", function()
-  -- TODO: if no uncommited changes left then close
-  neogit.open()
-  neogit.open({ "commit" })
-  vim.fn.feedkeys("c")
-  -- TODO: then feedkeys feat: or test:
-end, { desc = "Git commit" })
+map("n", "<leader>gc", Open_Git_Commit, { desc = "Git commit" })
 
 map("n", "<leader><leader>gc", function()
   diffview_actions.stage_all()

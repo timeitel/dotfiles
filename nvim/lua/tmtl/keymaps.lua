@@ -11,6 +11,8 @@ map("i", "<A-l>", "<Right>", { desc = "Cursor right" })
 map("i", "<A-h>", "<Left>", { desc = "Cursor left" })
 
 map("n", "<C-b>", "<C-^>", { desc = "Jump - previous file" })
+map("n", "<C-d>", "<C-d>zz", { desc = "Jump - down" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Jump - up" })
 map("n", "<C-o>", "<C-o>zz", { desc = "Jump - back" })
 map("n", "<C-i>", "<C-i>zz", { desc = "Jump - forward" })
 map("n", "n", "nzz", { desc = "Next search match" })
@@ -48,7 +50,6 @@ map("n", "<leader>tj", "<cmd>tabnext<cr>", { desc = "Tab - next" })
 map("n", "<leader>tk", "<cmd>tabprevious<cr>", { desc = "Tab - previous" })
 
 -- Quick fix list
--- TODO: qf close
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "Quickfix list - show" })
 map("n", "<leader>qj", "<cmd>cnext<cr>", { desc = "Quickfix list - next" })
 map("n", "<leader>qk", "<cmd>cprevious<cr>", { desc = "Quickfix list - previous" })

@@ -17,6 +17,12 @@ local shared_maps = {
   ["<C-k>"] = actions.prev_conflict,
   ["<leader>U"] = actions.unstage_all,
   ["<leader>S"] = actions.stage_all,
+  ["<leader>c"] = Open_Git_Commit,
+  ["<leader>C"] = function()
+    -- TODO: fix
+    -- actions.stage_all()
+    -- Open_Git_Commit()
+  end,
   ["<leader>s"] = actions.toggle_stage_entry,
   ["<leader>x"] = function()
     if vim.fn.confirm("", "Are you sure you'd like to discard changes? (&Yes\n&No)", 1) == 1 then
