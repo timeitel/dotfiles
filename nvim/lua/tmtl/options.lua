@@ -27,6 +27,7 @@ o.swapfile = false
 o.whichwrap:append("<,>,h,l")
 -- TODO: fix n of N matches
 o.shortmess:append("c")
+o.cmdheight = 0
 
 -- Tabs
 o.autoindent = true
