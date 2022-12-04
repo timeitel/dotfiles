@@ -1,5 +1,6 @@
 require("tokyonight").setup({
-  -- TODO set backgroundc olor instead from current kitty theme
-  transparent = true,
+  on_colors = function(colors)
+    colors.bg = "#282c34" -- gunmetal
+  end,
 })
 vim.cmd([[colorscheme tokyonight-moon]])
