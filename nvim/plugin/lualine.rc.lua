@@ -59,7 +59,7 @@ require("lualine").setup({
     },
     lualine_x = { "searchcount" },
     lualine_y = { "progress" },
-    lualine_z = { { "filetype", separator = { right = "" }, left_padding = 2 } },
+    lualine_z = { { "filetype", separator = { right = "" }, left_padding = 2, icon_only = true } },
   },
   inactive_sections = {
     lualine_a = {},
