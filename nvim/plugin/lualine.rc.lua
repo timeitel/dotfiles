@@ -22,8 +22,8 @@ end
 require("lualine").setup({
   options = {
     icons_enabled = true,
-    component_separators = { left = "", right = "" },
-    section_separators = {},
+    component_separators = "|",
+    section_separators = { left = "", right = "" },
     disabled_filetypes = {
       statusline = { "DiffviewFiles", "DiffviewFileHistory" },
       winbar = {},
@@ -38,7 +38,18 @@ require("lualine").setup({
     },
   },
   sections = {
-    lualine_a = { { "branch", fmt = trunc(100, 20, 80, false) }, "diff" },
+    lualine_a = {
+      {
+        "branch",
+        fmt = trunc(100, 20, 80, false),
+        separator = { left = "" },
+      },
+      {
+        "diff",
+        separator = { right = "" },
+        right_padding = 20,
+      },
+    },
     lualine_b = { "filename", "diagnostics" },
     lualine_c = {
       {
@@ -48,7 +59,7 @@ require("lualine").setup({
     },
     lualine_x = { "searchcount" },
     lualine_y = { "progress" },
-    lualine_z = { "filetype" },
+    lualine_z = { { "filetype", separator = { right = "" }, left_padding = 2 } },
   },
   inactive_sections = {
     lualine_a = {},
