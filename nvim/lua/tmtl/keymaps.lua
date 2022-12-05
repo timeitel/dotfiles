@@ -6,6 +6,9 @@ vim.g.camelcasemotion_key = "<leader>"
 map({ "n", "v", "o" }, "H", "^", { desc = "First character on line" })
 map({ "n", "v", "o" }, "L", "$", { desc = "Last character on line" })
 
+map("v", "p", "P", { desc = "Keep register on visual paste" })
+map("v", "P", "p", { desc = "Replace register on visual paste" })
+
 map("i", "kj", "<ESC>", { desc = "Escape" })
 map("i", "<A-l>", "<Right>", { desc = "Cursor right" })
 map("i", "<A-h>", "<Left>", { desc = "Cursor left" })
