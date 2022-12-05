@@ -48,12 +48,13 @@ map({ "n", "i" }, "<C-s>", "<cmd>update<cr>", { desc = "Buffer - save" })
 map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "Tab - new" })
 map("n", "<leader>tj", "<cmd>tabnext<cr>", { desc = "Tab - next" })
 map("n", "<leader>tk", "<cmd>tabprevious<cr>", { desc = "Tab - previous" })
+map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "Tab - quit" })
 
 -- Quick fix list
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "Quickfix list - show" })
 map("n", "<leader>qj", "<cmd>cnext<cr>", { desc = "Quickfix list - next" })
 map("n", "<leader>qk", "<cmd>cprevious<cr>", { desc = "Quickfix list - previous" })
-map("n", "<leader>qc", "<cmd>cclose<cr>", { desc = "Quickfix list - close" })
+map("n", "<leader>qq", "<cmd>cclose<cr>", { desc = "Quickfix list - quit" })
 
 map("n", "<leader>gr", function()
   vim.api.nvim_feedkeys("gg/export\nWW", "n", true)
