@@ -4,11 +4,9 @@ local diffview_actions = require("diffview.actions")
 local neogit = require("neogit")
 
 function Open_Git_Commit()
-  -- TODO: if no uncommited changes left then close
   neogit.open()
   neogit.open({ "commit" })
   vim.fn.feedkeys("c")
-  -- TODO: then feedkeys feat: or test:
 end
 
 map("n", "<leader>gs", function()

@@ -16,14 +16,9 @@ local shared_maps = {
   ["<C-j>"] = actions.next_conflict,
   ["<C-k>"] = actions.prev_conflict,
   ["<leader>U"] = actions.unstage_all,
+  ["<leader>s"] = actions.toggle_stage_entry,
   ["<leader>S"] = actions.stage_all,
   ["<leader>c"] = Open_Git_Commit,
-  ["<leader>C"] = function()
-    -- TODO: fix
-    -- actions.stage_all()
-    -- Open_Git_Commit()
-  end,
-  ["<leader>s"] = actions.toggle_stage_entry,
   ["<leader>x"] = function()
     if vim.fn.confirm("", "Are you sure you'd like to discard changes? (&Yes\n&No)", 1) == 1 then
       actions.restore_entry()
@@ -43,6 +38,7 @@ require("diffview").setup({
   keymaps = {
     view = shared_maps,
     file_panel = shared_maps,
+    -- TODO: checkout on enter
     file_history_panel = shared_maps,
   },
 })

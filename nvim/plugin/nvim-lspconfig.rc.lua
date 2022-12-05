@@ -46,8 +46,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr, desc = d })
   end
 
-  -- TODO: next by severity
-  -- TODO: <leader>dh if no results & only center (zz) if any diagnostics
+  -- TODO: 1. <leader>dh if no results & only center (zz) if any diagnostics
   -- TODO: format the range after accepting code action
   -- Diagnostics
   buf_map("n", "<C-j>", function()

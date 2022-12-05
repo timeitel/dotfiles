@@ -25,7 +25,6 @@ o.splitbelow = true
 o.splitright = true
 o.swapfile = false
 o.whichwrap:append("<,>,h,l")
--- TODO: fix n of N matches
 o.shortmess:append("c")
 o.cmdheight = 0
 
