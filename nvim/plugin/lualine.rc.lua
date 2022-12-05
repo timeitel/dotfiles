@@ -10,18 +10,26 @@ local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
   end
 end
 
+local function show_macro_recording()
+  local recording_register = vim.fn.reg_recording()
+  if recording_register == "" then
+    return ""
+  else
+    return "Recording @" .. recording_register
+  end
+end
+
 require("lualine").setup({
   options = {
-    theme = "nord",
     icons_enabled = true,
     component_separators = { left = "", right = "" },
     section_separators = {},
     disabled_filetypes = {
-      statusline = {},
+      statusline = { "DiffviewFiles", "DiffviewFileHistory" },
       winbar = {},
     },
     ignore_focus = {},
-    always_divide_middle = true,
+    always_divide_middle = false,
     globalstatus = false,
     refresh = {
       statusline = 1000,
@@ -32,8 +40,13 @@ require("lualine").setup({
   sections = {
     lualine_a = { { "branch", fmt = trunc(100, 20, 80, false) }, "diff" },
     lualine_b = { "filename", "diagnostics" },
-    lualine_c = {},
-    lualine_x = {},
+    lualine_c = {
+      {
+        "macro-recording",
+        fmt = show_macro_recording,
+      },
+    },
+    lualine_x = { "searchcount" },
     lualine_y = { "progress" },
     lualine_z = { "filetype" },
   },
