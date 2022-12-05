@@ -70,8 +70,3 @@ end, { desc = "Browse - buffer's wd" })
 map("n", "<leader>bc", function()
   fb.file_browser({ grouped = true, cwd = "~/.dotfiles", hidden = true })
 end, { desc = "Browse - config" })
-
--- TODO: find files -> toggle show hidden
-map("n", "<leader>yw", function()
-  -- TODO
-end, { desc = "Browse - yank current working directorty path" })

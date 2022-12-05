@@ -1,4 +1,3 @@
--- TODO: yank file name
 -- TODO: C-O and C-I to go forward and back in file browser
 local telescope = require("telescope")
 local action_state = require("telescope.actions.state")
@@ -33,6 +32,22 @@ default_normal_mappings["l"] = actions.select_default + actions.center
 
 -- Telescope File-browser
 local file_browser_mappings = {
+  -- TODO: same maps for inside buffer
+  ["<leader>yf"] = function()
+    local entry = action_state.get_selected_entry()
+    local copy_filename_cmd = string.format(':let @+="%s"', entry.ordinal)
+    vim.cmd(copy_filename_cmd)
+  end,
+  ["<leader>yd"] = function()
+    local entry = action_state.get_selected_entry()
+    local copy_directory_cmd = string.format(':let @+="%s"', entry.cwd)
+    vim.cmd(copy_directory_cmd)
+  end,
+  ["<leader>yp"] = function()
+    local entry = action_state.get_selected_entry()
+    local copy_path_cmd = string.format(':let @+="%s"', entry.Path.filename)
+    vim.cmd(copy_path_cmd)
+  end,
   ["<leader>."] = fb_actions.toggle_hidden,
   ["<leader>c"] = fb_actions.create,
   ["<leader>t"] = fb_actions.change_cwd,
