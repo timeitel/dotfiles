@@ -46,8 +46,8 @@ require("lualine").setup({
       },
       {
         "diff",
+        colored = false,
         separator = { right = "" },
-        right_padding = 20,
       },
     },
     lualine_b = { "filename", "diagnostics" },
@@ -59,7 +59,9 @@ require("lualine").setup({
     },
     lualine_x = { "searchcount" },
     lualine_y = { "progress" },
-    lualine_z = { { "filetype", separator = { right = "" }, left_padding = 2, icon_only = true } },
+    lualine_z = {
+      { "filetype", separator = { right = "" }, icon_only = true, colored = false },
+    },
   },
   inactive_sections = {
     lualine_a = {},
