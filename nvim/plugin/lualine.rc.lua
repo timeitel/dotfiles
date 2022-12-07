@@ -45,6 +45,7 @@ require("lualine").setup({
         separator = { left = "" },
       },
       {
+        -- TODO: diff not showing in work project
         "diff",
         colored = false,
         separator = { right = "" },

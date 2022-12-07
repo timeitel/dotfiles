@@ -32,7 +32,6 @@ default_normal_mappings["l"] = actions.select_default + actions.center
 
 -- Telescope File-browser
 local file_browser_mappings = {
-  -- TODO: same maps for inside buffer
   ["<leader>yf"] = function()
     local entry = action_state.get_selected_entry()
     local copy_filename_cmd = string.format(':let @+="%s"', entry.ordinal)

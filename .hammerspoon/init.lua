@@ -35,3 +35,4 @@ hs.hotkey.bind(open_app_modifiers, ";", open_app("Messenger"))
 -- TODO: window management
 -- TODO: window scrolling and browser forward back H, L
 -- TODO: browser detach tab to window
+-- TODO: refresh browser without switching focus
