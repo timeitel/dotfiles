@@ -68,6 +68,7 @@ map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "Tab - new" })
 map("n", "<leader>tj", "<cmd>tabnext<cr>", { desc = "Tab - next" })
 map("n", "<leader>tk", "<cmd>tabprevious<cr>", { desc = "Tab - previous" })
 map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "Tab - quit" })
+map("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "Tab - only" })
 
 -- Quick fix list
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "Quickfix list - show" })

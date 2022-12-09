@@ -49,7 +49,7 @@ o.belloff = "all"
 
 o.joinspaces = false
 o.fillchars = { eob = "~", diff = "╱" }
-o.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal" }
+o.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal", "vertical" }
 o.undofile = true
 
 -- Cursorline highlighting control

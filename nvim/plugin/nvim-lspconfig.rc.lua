@@ -62,12 +62,12 @@ local on_attach = function(_, bufnr)
   end, "Previous error and pop code action / hover")
 
   buf_map("n", "<leader>dj", function()
-    vim.diagnostic.goto_next({ float = { border = border }, severity = vim.diagnostic.severity.ERROR })
+    vim.diagnostic.goto_next({ float = { border = border } })
     vim.fn.feedkeys("zz")
   end, "Next error")
 
   buf_map("n", "<leader>dk", function()
-    vim.diagnostic.goto_prev({ float = { border = border, severity = vim.diagnostic.severity.ERROR } })
+    vim.diagnostic.goto_prev({ float = { border = border } })
     vim.fn.feedkeys("zz")
   end, "Previous error")
 

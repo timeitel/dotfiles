@@ -17,7 +17,10 @@ local shared_maps = {
   ["<leader>U"] = actions.unstage_all,
   ["<leader>s"] = actions.toggle_stage_entry,
   ["<leader>S"] = actions.stage_all,
-  ["<leader>c"] = Open_Git_Commit,
+  ["<leader>c"] = function()
+    actions.focus_files()
+    Open_Git_Commit()
+  end,
   ["<leader>x"] = function()
     if vim.fn.confirm("", "Are you sure you'd like to discard changes? (&Yes\n&No)", 1) == 1 then
       actions.restore_entry()
