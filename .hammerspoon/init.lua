@@ -1,3 +1,5 @@
+require("window-management")
+
 --- start love you
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "l", function()
   hs.alert.show("love you")
