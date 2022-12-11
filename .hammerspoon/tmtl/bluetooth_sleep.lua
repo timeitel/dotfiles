@@ -1,18 +1,18 @@
 require("string")
 
-function checkBluetoothResult(rc, stderr, stderr)
+local function check_bluetooth_result(rc, stderr, stderr)
   if rc ~= 0 then
     print(string.format("Unexpected result executing `blueutil`: rc=%d stderr=%s stdout=%s", rc, stderr, stdout))
   end
 end
 
-function bluetooth(power)
+local function bluetooth(power)
   print("Setting bluetooth to " .. power)
-  local t = hs.task.new("/opt/homebrew/bin/blueutil", checkBluetoothResult, { "--power", power })
+  local t = hs.task.new("/opt/homebrew/bin/blueutil", check_bluetooth_result, { "--power", power })
   t:start()
 end
 
-function f(event)
+local function f(event)
   if event == hs.caffeinate.watcher.systemWillSleep then
     bluetooth("off")
   elseif event == hs.caffeinate.watcher.screensDidWake then
@@ -20,5 +20,5 @@ function f(event)
   end
 end
 
-watcher = hs.caffeinate.watcher.new(f)
+local watcher = hs.caffeinate.watcher.new(f)
 watcher:start()
