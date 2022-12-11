@@ -73,7 +73,26 @@ local function center_window()
   hs.window.focusedWindow():centerOnScreen(toScreen, inBounds)
 end
 
+local function dev_layout()
+  local primary_screen = hs.screen.primaryScreen():name()
+  local laptop_screen = "Built-in Retina Display"
+
+  local windowLayout = {
+    { "kitty", nil, primary_screen, hs.layout.left50, nil, nil },
+    { "Brave Browser", nil, primary_screen, hs.layout.right50, nil, nil },
+    { "Obsidian", nil, laptop_screen, hs.layout.maximized, nil, nil },
+  }
+  hs.layout.apply(windowLayout)
+end
+
+local function test()
+  print(hs.application.frontmostApplication())
+end
+
+-- TODO: layout for coding ctrl shift d (dev)
 local modifiers = { "ctrl", "shift" }
+hs.hotkey.bind(modifiers, "t", test)
+hs.hotkey.bind(modifiers, "d", dev_layout)
 hs.hotkey.bind(modifiers, "h", move_window_half_left)
 hs.hotkey.bind(modifiers, "l", move_window_half_right)
 hs.hotkey.bind(modifiers, "return", maximize_window)

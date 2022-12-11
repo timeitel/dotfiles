@@ -1,16 +1,11 @@
 require("window-management")
+require("app-management")
 
 --- start love you
 hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "l", function()
   hs.alert.show("love you")
 end)
 --- end love you
-
---- start test
-hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "t", function()
-  print(hs.application.frontmostApplication())
-end)
---- end test
 
 --- start quick open applications
 local function open_app(name)
