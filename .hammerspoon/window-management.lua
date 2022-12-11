@@ -76,6 +76,9 @@ end
 local function dev_layout()
   local primary_screen = hs.screen.primaryScreen():name()
   local laptop_screen = "Built-in Retina Display"
+  hs.application.launchOrFocus("Brave Browser")
+  hs.application.launchOrFocus("Obsidian")
+  hs.application.launchOrFocus("kitty")
 
   local windowLayout = {
     { "kitty", nil, primary_screen, hs.layout.left50, nil, nil },
@@ -85,13 +88,20 @@ local function dev_layout()
   hs.layout.apply(windowLayout)
 end
 
-local function test()
-  print(hs.application.frontmostApplication())
+local function move_to_screen_maximized(screen_number)
+  return function()
+    local win = hs.window.focusedWindow()
+    local screen = hs.screen.allScreens()[screen_number]
+    if screen ~= nil then
+      hs.grid.set(win, { x = 0, y = 0, w = total_width, h = total_height }, screen)
+      return
+    end
+    print("Screen not found")
+  end
 end
 
--- TODO: layout for coding ctrl shift d (dev)
 local modifiers = { "ctrl", "shift" }
-hs.hotkey.bind(modifiers, "t", test)
+-- TODO: 1, move window to screen 1 and full screen
 hs.hotkey.bind(modifiers, "d", dev_layout)
 hs.hotkey.bind(modifiers, "h", move_window_half_left)
 hs.hotkey.bind(modifiers, "l", move_window_half_right)
@@ -103,3 +113,5 @@ hs.hotkey.bind(modifiers, "Right", grid.resizeWindowWider)
 hs.hotkey.bind(modifiers, "Left", grid.resizeWindowThinner)
 hs.hotkey.bind(modifiers, "Up", grid.resizeWindowTaller)
 hs.hotkey.bind(modifiers, "Down", grid.resizeWindowShorter)
+hs.hotkey.bind(modifiers, "1", move_to_screen_maximized(1))
+hs.hotkey.bind(modifiers, "2", move_to_screen_maximized(2))
