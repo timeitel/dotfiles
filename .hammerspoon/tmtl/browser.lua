@@ -8,3 +8,5 @@ end
 
 local modifiers = { "ctrl", "alt" }
 hs.hotkey.bind(modifiers, "j", hard_refresh)
+
+-- TODO: window scrolling and browser forward back H, L

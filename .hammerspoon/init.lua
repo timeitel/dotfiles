@@ -1,5 +1,4 @@
-require("windows")
-require("apps")
-require("browser")
-
--- TODO: window scrolling and browser forward back H, L
+require("tmtl.windows")
+require("tmtl.apps")
+require("tmtl.browser")
+require("tmtl.bluetooth_sleep")
