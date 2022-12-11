@@ -11,11 +11,11 @@ local function open_app(name)
   end
 end
 
-local open_app_modifiers = { "ctrl", "cmd" }
-hs.hotkey.bind(open_app_modifiers, "h", open_app("Brave Browser"))
-hs.hotkey.bind(open_app_modifiers, "j", open_app("Spotify"))
-hs.hotkey.bind(open_app_modifiers, "k", open_app("Rider"))
-hs.hotkey.bind(open_app_modifiers, "l", open_app("kitty"))
-hs.hotkey.bind(open_app_modifiers, "n", open_app("Slack"))
-hs.hotkey.bind(open_app_modifiers, "y", open_app("Obsidian"))
-hs.hotkey.bind(open_app_modifiers, ";", open_app("Messenger"))
+local modifiers = { "ctrl", "cmd" }
+hs.hotkey.bind(modifiers, "h", open_app("Brave Browser"))
+hs.hotkey.bind(modifiers, "j", open_app("Spotify"))
+hs.hotkey.bind(modifiers, "k", open_app("Rider"))
+hs.hotkey.bind(modifiers, "l", open_app("kitty"))
+hs.hotkey.bind(modifiers, "n", open_app("Slack"))
+hs.hotkey.bind(modifiers, "y", open_app("Obsidian"))
+hs.hotkey.bind(modifiers, ";", open_app("Messenger"))

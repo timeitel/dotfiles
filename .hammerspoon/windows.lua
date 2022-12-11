@@ -101,7 +101,6 @@ local function move_to_screen_maximized(screen_number)
 end
 
 local modifiers = { "ctrl", "shift" }
--- TODO: 1, move window to screen 1 and full screen
 hs.hotkey.bind(modifiers, "d", dev_layout)
 hs.hotkey.bind(modifiers, "h", move_window_half_left)
 hs.hotkey.bind(modifiers, "l", move_window_half_right)
