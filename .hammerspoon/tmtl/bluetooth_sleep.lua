@@ -1,5 +1,7 @@
 require("string")
 
+-- turn off bluetooth when in sleep
+-- TODO: check it works
 local function check_bluetooth_result(rc, stderr, stderr)
   if rc ~= 0 then
     print(string.format("Unexpected result executing `blueutil`: rc=%d stderr=%s stdout=%s", rc, stderr, stdout))
