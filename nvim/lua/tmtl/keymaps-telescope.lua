@@ -26,6 +26,15 @@ map("n", "<leader>ft", function()
   ts.grep_string({ search = "TODO" })
 end, { desc = "Find - TODOs" })
 
+map("n", "<leader>*", function()
+  ts.grep_string()
+end, { desc = "Find - word under cursor" })
+
+map("v", "<leader>*", function()
+  local text = getVisualSelection()
+  ts.grep_string({ search = text })
+end, { desc = "Find - word highlighted" })
+
 map("v", "<leader>ff", function()
   local text = getVisualSelection()
   ts.live_grep({ default_text = text })

@@ -6,11 +6,16 @@ local function hard_refresh()
   win:focus()
 end
 
-local function scroll(vertical)
-  return function()
-    hs.eventtap.event.newScrollEvent({ 0, vertical }, {}):post()
+function applicationWatcher(appName, eventType, appObject)
+  if eventType == hs.application.watcher.activated then
+    if appName == "YourAppNameHere" then
+      hs.eventtap.event.newScrollEvent({ 0, vertical }, {}):post()
+    end
   end
 end
+
+-- local appWatcher = hs.application.watcher.new(applicationWatcher)
+-- appWatcher:start()
 
 local modifiers = { "ctrl", "alt" }
 hs.hotkey.bind(modifiers, "j", hard_refresh)

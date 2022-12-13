@@ -3,6 +3,10 @@ local actions = require("diffview.actions")
 local shared_maps = {
   ["L"] = false,
   ["q"] = "<cmd>DiffviewClose<cr>",
+  ["s"] = function()
+    vim.cmd([[DiffviewClose]])
+    require("neogit").open()
+  end,
   ["<C-h>"] = "<cmd>DiffviewClose<cr>",
   ["f"] = "<cmd>DiffviewToggleFiles<cr>",
   ["<leader>f"] = "<cmd>DiffviewFocusFiles<cr>",

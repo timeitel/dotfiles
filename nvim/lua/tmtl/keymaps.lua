@@ -1,3 +1,5 @@
+local getVisualSelection = Utils.getVisualSelection
+
 local map = Utils.map
 
 vim.g.mapleader = " "
@@ -56,6 +58,17 @@ map("n", "<leader>T", function()
   vim.fn.feedkeys("gccA")
 end, { desc = "Insert - TODO comment" })
 
+map("n", "<leader>R", function()
+  vim.fn.feedkeys(":%s/")
+  vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<c-r>\\<c-w>"'), "n", true)
+end, { desc = "Replace in file - word under cursor" })
+
+map("v", "<leader>R", function()
+  local text = getVisualSelection()
+  vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<esc>"'), "n", true)
+  vim.fn.feedkeys(":%s/" .. text)
+end, { desc = "Replace in file - word under cursor" })
+
 -- Buffers
 map("n", "<leader>ba", "<cmd>:%bd<cr>", { desc = "Buffer - delete all" })
 map("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>", { desc = "Buffer - delete all others" })
@@ -86,4 +99,4 @@ end, { desc = "Lsp - file references" })
 
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
 vim.cmd([[xmap <Leader>r <Plug>ReplaceWithRegisterVisual]])
-vim.cmd([[nmap <Leader>R <Plug>ReplaceWithRegisterLine]])
+vim.cmd([[nmap <Leader>((( <Plug>ReplaceWithRegisterLine]]) --just unmap
