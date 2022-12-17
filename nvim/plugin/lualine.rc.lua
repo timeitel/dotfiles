@@ -31,7 +31,7 @@ end
 require("lualine").setup({
   options = {
     icons_enabled = true,
-    component_separators = "|",
+    component_separators = "",
     section_separators = { left = "", right = "" },
     disabled_filetypes = {
       statusline = { "DiffviewFiles", "DiffviewFileHistory" },
@@ -57,10 +57,12 @@ require("lualine").setup({
         "unsaved-buffers",
         fmt = show_unsaved_buffers,
         padding = { left = 0, right = 1 },
-        separator = { right = "" },
       },
     },
-    lualine_b = { "filename", "diagnostics" },
+    lualine_b = {
+      { "filename", padding = { right = 0, left = 1 } },
+      { "diagnostics" },
+    },
     lualine_c = {
       {
         "macro-recording",
