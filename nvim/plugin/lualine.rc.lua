@@ -1,4 +1,3 @@
--- TODO: lualine show if any unsaved buffers
 local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
   return function(str)
     local win_width = vim.fn.winwidth(0)
@@ -18,6 +17,15 @@ local function show_macro_recording()
   else
     return "Recording @" .. recording_register
   end
+end
+
+local function show_unsaved_buffers()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_get_option(buf, "modified") then
+      return "[+]"
+    end
+  end
+  return ""
 end
 
 require("lualine").setup({
@@ -46,9 +54,9 @@ require("lualine").setup({
         separator = { left = "" },
       },
       {
-        -- TODO: diff not showing in work project
-        "diff",
-        colored = false,
+        "unsaved-buffers",
+        fmt = show_unsaved_buffers,
+        padding = { left = 0, right = 1 },
         separator = { right = "" },
       },
     },
