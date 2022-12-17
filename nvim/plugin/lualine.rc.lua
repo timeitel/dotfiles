@@ -1,3 +1,4 @@
+-- TODO: lualine show if any unsaved buffers
 local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
   return function(str)
     local win_width = vim.fn.winwidth(0)
