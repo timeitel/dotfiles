@@ -11,25 +11,25 @@ end
 
 map("n", "<leader>gs", function()
   neogit.open()
-end, { desc = "Git status" })
+end, { desc = "[G]it [S]tatus" })
 
 map("n", "<leader><leader>gs", function()
   ts.git_stash()
-end, { desc = "Git stash" })
+end, { desc = "[[G]]it [S]tash" })
 
 map("n", "<leader>gd", function()
   vim.cmd([[DiffviewOpen]])
-end, { desc = "Git diff" })
+end, { desc = "[G]it [D]iff" })
 
 map("n", "<leader><leader>gd", function()
   vim.cmd([[DiffviewOpen origin/staging...HEAD]])
-end, { desc = "Git diff - HEAD against staging" })
+end, { desc = "[[G]]it [D]iff - HEAD against staging" })
 
 map("n", "<leader>gh", function()
   vim.cmd([[DiffviewFileHistory]])
-end, { desc = "Git history" })
+end, { desc = "[G]it [H]istory" })
 
-map("n", "<leader>gc", Open_Git_Commit, { desc = "Git commit" })
+map("n", "<leader>gc", Open_Git_Commit, { desc = "[G]it [C]ommit" })
 
 map("n", "<leader><leader>gc", function()
   diffview_actions.stage_all()
@@ -39,62 +39,62 @@ map("n", "<leader><leader>gc", function()
     neogit.open({ "commit" })
     vim.fn.feedkeys("c")
   end, 100)
-end, { desc = "Git stage all and commit" })
+end, { desc = "[[G]]it [C]ommit - stage all and commit" })
 
 map("n", "<leader>gfh", function()
   vim.cmd([[DiffviewFileHistory %]])
-end, { desc = "Git file - history" })
+end, { desc = "[G]it [F]ile [H]istory" })
 
 map("n", "<leader>gfx", function()
   vim.cmd([[Gitsigns reset_buffer]])
-end, { desc = "Git file - discard changes" })
+end, { desc = "[G]it [F]ile - discard changes" })
 
 map("n", "<leader><leader>gfs", function()
   vim.cmd([[Gitsigns stage_buffer]])
-end, { desc = "Git file - stage" })
+end, { desc = "[[G]]it [F]ile [S]tage" })
 
 map("n", "<leader>gb", function()
   ts.git_branches()
-end, { desc = "Git branches" })
+end, { desc = "[G]it [B]ranches" })
 
 map("n", "<leader>gu", function()
   vim.cmd([[TermExec cmd="git reset --soft HEAD~1"]])
   vim.cmd([[ToggleTerm]])
-end, { desc = "Git - undo last commit into working directory" })
+end, { desc = "[G]it [U]ndo - last commit into working directory" })
 
 map("n", "<leader><leader>gr", function()
   if vim.fn.confirm("", "Are you sure you'd like to discard ALL working changes? (&Yes\n&No)", 1) == 1 then
     vim.cmd([[TermExec cmd="git restore . && git clean -fd"]])
     vim.cmd([[ToggleTerm]])
   end
-end, { desc = "Git - discard working changes" })
+end, { desc = "[[G]]it [R]eset - discard all working changes" })
 
 map("n", "<leader><leader>gb", function()
   require("git_blame").run()
-end, { desc = "Git blame" })
+end, { desc = "[G]it [B]lame" })
 
 map("n", "<leader>hj", function()
   vim.cmd([[Gitsigns next_hunk]])
   vim.fn.feedkeys("zz")
-end, { desc = "Git hunk - next" })
+end, { desc = "Git [H]unk - next" })
 
 map("n", "<leader>hk", function()
   vim.cmd([[Gitsigns prev_hunk]])
   vim.fn.feedkeys("zz")
-end, { desc = "Git hunk - previous" })
+end, { desc = "Git [H]unk - previous" })
 
 map({ "n", "v" }, "<leader>hp", function()
   vim.cmd([[Gitsigns preview_hunk]])
-end, { desc = "Git hunk - preview" })
+end, { desc = "Git [H]unk [P]review" })
 
 map({ "n", "v" }, "<leader>hs", function()
   vim.cmd([[Gitsigns stage_hunk]])
-end, { desc = "Git hunk - stage" })
+end, { desc = "Git [H]unk [S]tage" })
 
 map({ "n", "v" }, "<leader>hx", function()
   vim.cmd([[Gitsigns reset_hunk]])
-end, { desc = "Git hunk - reset" })
+end, { desc = "Git [H]unk - reset" })
 
 map("n", "<leader>hu", function()
   vim.cmd([[Gitsigns undo_stage_hunk]])
-end, { desc = "Git hunk - undo stage" })
+end, { desc = "Git [H]unk [U]ndo - last staged hunk" })

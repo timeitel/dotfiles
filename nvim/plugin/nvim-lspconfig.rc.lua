@@ -64,37 +64,37 @@ local on_attach = function(_, bufnr)
   buf_map("n", "<leader>dj", function()
     vim.diagnostic.goto_next({ float = { border = border } })
     vim.fn.feedkeys("zz")
-  end, "Next error")
+  end, "[D]iagnostics - next error")
 
   buf_map("n", "<leader>dk", function()
     vim.diagnostic.goto_prev({ float = { border = border } })
     vim.fn.feedkeys("zz")
-  end, "Previous error")
+  end, "[D]iagnostics - previous error")
 
   buf_map("n", "<leader>da", function()
     vim.lsp.buf.code_action()
-  end, "Code actions")
+  end, "[D]iagnostics - code [A]ctions")
 
   buf_map("n", "<leader>dh", function()
     vim.diagnostic.open_float(0, { border = border })
-  end, "Hover diagnostics")
+  end, "[D]iagnostics - [H]over")
 
   buf_map("n", "<leader>dl", function()
     vim.cmd("Telescope diagnostics")
-  end, "List diagnostics")
+  end, "[D]iagnostics [L]ist - show")
 
   -- LSP
   buf_map("n", "<leader>lr", function()
     vim.lsp.buf.rename()
-  end, "Lsp - rename")
+  end, "[L]sp - [R]ename")
 
   buf_map("n", "<leader>ls", function()
     vim.lsp.buf.signature_help()
-  end, "Lsp - signature")
+  end, "[L]sp - [S]ignature")
 
   buf_map("n", "<leader>li", function()
     vim.lsp.buf.execute_command({ command = "_typescript.organizeImports", arguments = { vim.fn.expand("%:p") } })
-  end, "Lsp - organize imports")
+  end, "[L]sp - organize [I]mports")
 
   buf_map({ "i", "n" }, "<C-S-Space>", function()
     vim.lsp.buf.signature_help()
@@ -103,30 +103,30 @@ local on_attach = function(_, bufnr)
   buf_map("n", "gd", function()
     vim.cmd("Telescope lsp_definitions")
     vim.fn.feedkeys("zz")
-  end, "Lsp - go to definition")
+  end, "Lsp - [G]o to [D]efinition")
 
   buf_map("n", "gD", function()
     vim.lsp.buf.declaration()
     vim.fn.feedkeys("zz")
-  end, "Lsp - go to declaration")
+  end, "Lsp - [G]o to [D]eclaration")
 
   buf_map("n", "K", function()
     vim.lsp.buf.hover()
-  end, "Hover")
+  end, "Lsp - Hover")
 
   buf_map("n", "gr", function()
     require("telescope.builtin").lsp_references({ show_line = false, include_declaration = false })
-  end, "Lsp - go to references")
+  end, "Lsp - [G]o to [R]eferences")
 
   buf_map("n", "gt", function()
     vim.lsp.buf.type_definition()
     vim.fn.feedkeys("zz")
-  end, "Lsp - go to type definition")
+  end, "Lsp - [G]o to [T]ype definition")
 
   buf_map("n", "gI", function()
     vim.lsp.buf.implementation()
     vim.fn.feedkeys("zz")
-  end, "Lsp - go to implementation")
+  end, "Lsp - [G]o to [I]mplementation")
 end
 
 protocol.CompletionItemKind = {

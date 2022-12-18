@@ -31,7 +31,7 @@ default_normal_mappings["c"] = false
 default_normal_mappings["l"] = actions.select_default + actions.center
 
 -- Telescope File-browser
-local file_browser_mappings = {
+local file_browser_normal_mappings = {
   ["<leader>yf"] = function()
     local entry = action_state.get_selected_entry()
     local copy_filename_cmd = string.format(':let @+="%s"', entry.ordinal)
@@ -47,15 +47,15 @@ local file_browser_mappings = {
     local copy_path_cmd = string.format(':let @+="%s"', entry.Path.filename)
     vim.cmd(copy_path_cmd)
   end,
-  ["<leader>."] = fb_actions.toggle_hidden,
-  ["<leader>c"] = fb_actions.create,
-  ["<leader>t"] = fb_actions.change_cwd,
-  ["<leader>f"] = function()
+  ["."] = fb_actions.toggle_hidden,
+  ["n"] = fb_actions.create,
+  ["t"] = fb_actions.change_cwd,
+  ["f"] = function()
     local entry = action_state.get_selected_entry()
     local filename = entry.Path.filename
     require("telescope.builtin").live_grep({ search_dirs = { filename }, results_title = filename })
   end,
-  ["<leader>x"] = fb_actions.remove,
+  ["x"] = fb_actions.remove,
   ["h"] = fb_actions.goto_parent_dir,
   ["H"] = fb_actions.goto_cwd,
 }
@@ -140,7 +140,6 @@ telescope.setup({
       },
     },
     find_files = { initial_mode = "insert" },
-    live_grep = { initial_mode = "insert" },
     registers = {
       mappings = {
         n = {
@@ -153,7 +152,7 @@ telescope.setup({
   extensions = {
     file_browser = {
       mappings = {
-        n = file_browser_mappings,
+        n = file_browser_normal_mappings,
       },
     },
     ["ui-select"] = {
