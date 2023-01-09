@@ -5,7 +5,7 @@ alias cdg='cd $(git rev-parse --show-toplevel)'
 alias v=nvim
 alias vw='nvim -c "cd ~/code/01-komo/entertainment"'
 alias vp='nvim -c "cd ~/code/03-studies/rust"'
-alias vc='nvim -c "cd ~/.dotfiles"'
+alias vc='nvim -c "cd ~/code/__dotfiles__"'
 
 # git aliases
 alias g='git'
