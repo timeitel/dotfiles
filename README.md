@@ -1,6 +1,6 @@
 ## wip for eternity
 
-## Contents
+### Contents
 
 - xdg_config
   > Shared configuration that will go to `$XDG_CONFIG_HOME` (generally, `~/.config`).
