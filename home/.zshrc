@@ -5,7 +5,7 @@ export NVM_DIR="$HOME/.nvm"
 # keep 1000 lines of history
 HISTSIZE=1000
 SAVEHIST=1000
-HISTFILE=~/.zsh_history
+HISTFILE=~/.zsh/.zsh_history
 
 unsetopt BEEP
 zle_highlight=('paste:none')
