@@ -16,16 +16,12 @@ zstyle ':completion:*' menu select
 # auto complete with case insenstivity
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-source ~/.aliases
+source ~/.config/.aliases
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # starship prompt
 eval "$(starship init zsh)"
-
-export PATH="$PATH:/Users/timeitel/development/flutter/bin"
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/timeitel/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/timeitel/google-cloud-sdk/path.zsh.inc'; fi
 
 bindkey '^L' autosuggest-execute
 bindkey '^[^L' forward-word
