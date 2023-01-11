@@ -170,7 +170,7 @@ nvim_lsp.tsserver.setup({
     end, { noremap = true, silent = true, buffer = bufnr })
   end,
   handlers = tsHandlers,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
   settings = {
     completions = {

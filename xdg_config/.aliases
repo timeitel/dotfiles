@@ -22,5 +22,5 @@ alias gl='git log --all --decorate --oneline --graph'
 alias gb='git branch'
 alias gco='git checkout'
 alias gmos='gf && git merge origin staging'
-alias config='git -C ~/.dotfiles' # dotfiles / config repo
+alias config='git -C ~/code/.dotfiles'
 

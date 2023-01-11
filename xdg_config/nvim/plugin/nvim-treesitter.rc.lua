@@ -14,6 +14,11 @@ ts.setup({
   },
   ensure_installed = {
     "tsx",
+    "typescript",
+    "javascript",
+    "python",
+    "rust",
+    "markdown",
     "json",
     "yaml",
     "css",

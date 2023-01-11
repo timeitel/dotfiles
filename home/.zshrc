@@ -25,7 +25,6 @@ eval "$(starship init zsh)"
 
 bindkey '^L' autosuggest-execute
 bindkey '^[^L' forward-word
-bindkey '^H' autosuggest-clear
 bindkey '^K' up-history
 bindkey '^J' down-history
 bindkey '^r' history-incremental-search-backward
