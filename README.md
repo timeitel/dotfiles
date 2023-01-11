@@ -9,7 +9,9 @@
 
 ### Usage
 
-- symlink everything inside xdg_config folder to ~/.config
-  > `ln -s ~/absolute-path-to-this-xdg_config/a ~/.config/`
-- symlink everything inside home folder to home path
-  > `ln -s ~/absolute-path-to-this-home/a ~/`
+Run `sh install.sh` or manually symlink:
+
+- xdg_config files to ~/.config
+  > `ln -s ~/absolute-path-to-this/xdg_config/a ~/.config/`
+- home files to ~
+  > `ln -s ~/absolute-path-to-this/home/a ~/`
