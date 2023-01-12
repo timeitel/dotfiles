@@ -4,9 +4,9 @@ alias ...='cd ../..'
 alias cdg='cd $(git rev-parse --show-toplevel)'
 
 alias v=nvim
-alias vw='nvim -c "cd ~/code/01-komo/entertainment"'
-alias vp='nvim -c "cd ~/code/03-studies/rust"'
-alias vc='nvim -c "cd ~/code/.dotfiles"'
+alias vw='nvim -c "cd $TMTL_WORK_PATH"'
+alias vp='nvim -c "cd $TMTL_PERSONAL_PATH"'
+alias vc='nvim -c "cd $TMTL_CONFIG_PATH"'
 
 # git aliases
 alias g='git'
@@ -22,5 +22,5 @@ alias gl='git log --all --decorate --oneline --graph'
 alias gb='git branch'
 alias gco='git checkout'
 alias gmos='gf && git merge origin staging'
-alias config='git -C ~/code/.dotfiles'
+alias config='git -C $TMTL_CONFIG_PATH'
 
