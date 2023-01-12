@@ -1,7 +1,7 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 if [[ $PWD == $HOME ]]; then
-    cd $TMTL_START_WD
+    cd $TMTL_START_PATH
 fi
 
 # Setting PATH for Python 3.10
