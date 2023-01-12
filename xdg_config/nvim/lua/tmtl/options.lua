@@ -26,7 +26,6 @@ o.splitright = true
 o.swapfile = false
 o.whichwrap:append("<,>,h,l")
 o.shortmess:append("c")
-o.cmdheight = 0
 
 -- Tabs
 o.autoindent = true

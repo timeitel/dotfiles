@@ -28,3 +28,9 @@ bindkey '^[^L' forward-word
 bindkey '^K' up-history
 bindkey '^J' down-history
 bindkey '^r' history-incremental-search-backward
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/eitelt/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eitelt/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/eitelt/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eitelt/google-cloud-sdk/completion.zsh.inc'; fi

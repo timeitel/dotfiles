@@ -76,7 +76,7 @@ end
 local function dev_layout()
   local primary_screen = hs.screen.primaryScreen():name()
   local laptop_screen = "Built-in Retina Display"
-  hs.application.launchOrFocus("Brave Browser")
+  hs.application.launchOrFocus("Google Chrome")
   hs.application.launchOrFocus("Obsidian")
   hs.application.launchOrFocus("kitty")
 
@@ -112,5 +112,5 @@ hs.hotkey.bind(modifiers, "Right", grid.resizeWindowWider)
 hs.hotkey.bind(modifiers, "Left", grid.resizeWindowThinner)
 hs.hotkey.bind(modifiers, "Up", grid.resizeWindowTaller)
 hs.hotkey.bind(modifiers, "Down", grid.resizeWindowShorter)
-hs.hotkey.bind(modifiers, "1", move_to_screen_maximized(1))
-hs.hotkey.bind(modifiers, "2", move_to_screen_maximized(2))
+hs.hotkey.bind(modifiers, "]", move_to_screen_maximized(1))
+hs.hotkey.bind(modifiers, "[", move_to_screen_maximized(2))

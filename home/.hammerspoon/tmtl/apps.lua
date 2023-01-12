@@ -12,7 +12,7 @@ local function open_app(name)
 end
 
 local modifiers = { "ctrl", "cmd" }
-hs.hotkey.bind(modifiers, "h", open_app("Brave Browser"))
+hs.hotkey.bind(modifiers, "h", open_app("Google Chrome"))
 hs.hotkey.bind(modifiers, "j", open_app("Spotify"))
 hs.hotkey.bind(modifiers, "k", open_app("Rider"))
 hs.hotkey.bind(modifiers, "l", open_app("kitty"))
