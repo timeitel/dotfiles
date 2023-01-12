@@ -5,4 +5,4 @@
   defaultBranch = main
 [core]
   editor = vim
-  excludesfile = ~/.gitignore_global
+  excludesfile = ~/.config/git/ignore
