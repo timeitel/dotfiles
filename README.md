@@ -15,3 +15,5 @@ Run `sh install.sh` or manually symlink:
   > `ln -s ~/absolute-path-to-this/xdg_config/a ~/.config/`
 - home files to ~
   > `ln -s ~/absolute-path-to-this/home/a ~/`
+
+Set environment variables: TMTL_WORK_PATH, TMTL_PERSONAL_PATH, TMTL_CONFIG_PATH, TMTL_START_PATH

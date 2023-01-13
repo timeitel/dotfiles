@@ -5,7 +5,7 @@ export NVM_DIR="$HOME/.nvm"
 # keep 1000 lines of history
 HISTSIZE=1000
 SAVEHIST=1000
-HISTFILE=~/.zsh/.zsh_history
+HISTFILE=~/.zsh/history
 
 unsetopt BEEP
 zle_highlight=('paste:none')
@@ -16,7 +16,7 @@ zstyle ':completion:*' menu select
 # auto complete with case insenstivity
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-source ~/.config/.aliases
+source ~/.config/zsh/aliases
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
