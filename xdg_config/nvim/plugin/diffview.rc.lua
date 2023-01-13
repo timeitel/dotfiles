@@ -1,4 +1,5 @@
 local actions = require("diffview.actions")
+local copy = Utils.shallow_copy
 
 local shared_maps = {
   ["L"] = false,
@@ -21,16 +22,18 @@ local shared_maps = {
   ["<leader>U"] = actions.unstage_all,
   ["<leader>s"] = actions.toggle_stage_entry,
   ["<leader>S"] = actions.stage_all,
-  ["<leader>c"] = function()
-    actions.focus_files()
-    Open_Git_Commit()
-  end,
   ["<leader>x"] = function()
     if vim.fn.confirm("", "Are you sure you'd like to discard changes? (&Yes\n&No)", 1) == 1 then
       actions.restore_entry()
     end
   end,
 }
+
+local shared_maps_with_commit = copy(shared_maps)
+shared_maps_with_commit["<leader>c"] = function()
+  actions.focus_files()
+  Open_Git_Commit()
+end
 
 require("diffview").setup({
   view = {
@@ -43,8 +46,8 @@ require("diffview").setup({
   },
   keymaps = {
     view = shared_maps,
-    file_panel = shared_maps,
-    -- TODO: checkout on enter
-    file_history_panel = shared_maps,
+    file_history_panel = shared_maps, -- TODO: checkout on enter
+    file_panel = shared_maps_with_commit,
+    diff_view = shared_maps_with_commit,
   },
 })
