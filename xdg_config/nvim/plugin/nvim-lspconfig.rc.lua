@@ -160,16 +160,32 @@ protocol.CompletionItemKind = {
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-nvim_lsp.eslint.setup({
-  capabilities = capabilities,
-  on_attach = function(client, buffnr)
-    on_attach(client, buffnr)
+nvim_lsp.eslint.setup({})
+
+nvim_lsp.tsserver.setup({
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+
+    vim.keymap.set("n", "gd", function()
+      vim.lsp.buf.definition()
+      vim.fn.feedkeys("zz")
+    end, { noremap = true, silent = true, buffer = bufnr })
+
     vim.api.nvim_create_autocmd("BufWritePost", {
       callback = function()
         vim.cmd([[EslintFixAll]])
       end,
     })
   end,
+  handlers = tsHandlers,
+  filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
+  cmd = { "typescript-language-server", "--stdio" },
+  settings = {
+    completions = {
+      completeFunctionCalls = true,
+    },
+  },
+  capabilities = capabilities,
 })
 
 nvim_lsp.sumneko_lua.setup({
