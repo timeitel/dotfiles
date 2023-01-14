@@ -48,6 +48,7 @@ local on_attach = function(_, bufnr)
 
   -- TODO: 1. <leader>dh if no results & only center (zz) if any diagnostics
   -- TODO: format the range after accepting code action
+  -- TODO: sometimes these maps arent set?? and need to restart vim
   -- Diagnostics
   buf_map("n", "<C-j>", function()
     vim.diagnostic.goto_next({ float = false, severity = vim.diagnostic.severity.ERROR })
@@ -200,6 +201,7 @@ nvim_lsp.sumneko_lua.setup({
   capabilities = capabilities,
 })
 
+-- TODO: only works in cargo package, not in standalone .rs files
 nvim_lsp.rust_analyzer.setup({
   on_attach = function(client, buffnr)
     on_attach(client, buffnr)
