@@ -16,4 +16,4 @@ Run `sh install.sh` or manually symlink:
 - home files to ~
   > `ln -s ~/absolute-path-to-this/home/a ~/`
 
-Set environment variables: TMTL_WORK_PATH, TMTL_PERSONAL_PATH, TMTL_CONFIG_PATH, TMTL_START_PATH
+Set environment variables in ~/.zshenv: TMTL_WORK_PATH, TMTL_PERSONAL_PATH, TMTL_CONFIG_PATH, TMTL_START_PATH
