@@ -14,6 +14,7 @@ map("v", "P", "p", { desc = "Replace register on visual paste" })
 map("i", "kj", "<ESC>", { desc = "Escape" })
 map("i", "<A-l>", "<Right>", { desc = "Cursor right" })
 map("i", "<A-h>", "<Left>", { desc = "Cursor left" })
+map("i", "<C-d>", "<Esc>lcw", { desc = "Delete word right" })
 
 map("n", "<C-b>", "<C-^>", { desc = "Jump - previous file" })
 map("n", "<C-d>", "<C-d>zz", { desc = "Jump - down" })
@@ -83,7 +84,7 @@ map("n", "<leader>tk", "<cmd>tabprevious<cr>", { desc = "[T]ab - previous" })
 map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "[T]ab [Q]uit" })
 map("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "[T]ab - delete [O]thers" })
 
--- Quick fix list
+-- Quickfix list
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "[Q]uickfix [L]ist - show" })
 map("n", "<leader>qj", "<cmd>cnext<cr>", { desc = "[Q]uickfix List - next" })
 map("n", "<leader>qk", "<cmd>cprevious<cr>", { desc = "[Q]uickfix List - previous" })
