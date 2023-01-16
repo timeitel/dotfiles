@@ -22,6 +22,7 @@ local default_insert_mappings = {
 
 local default_normal_mappings = copy(default_insert_mappings)
 default_normal_mappings["c"] = false
+default_normal_mappings["q"] = actions.close
 default_normal_mappings["l"] = actions.select_default + actions.center
 
 -- Telescope File-browser
