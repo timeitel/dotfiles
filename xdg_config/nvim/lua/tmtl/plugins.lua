@@ -57,6 +57,10 @@ return require("packer").startup(function(use)
   use({ "TimUntersberger/neogit", requires = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" } })
   use({ "bobrown101/git-blame.nvim" })
 
+  -- Notifications
+  use({ "rcarriga/nvim-notify" })
+  use("j-hui/fidget.nvim")
+
   -- 10000x developer
   use("lewis6991/impatient.nvim")
   use("bkad/CamelCaseMotion")
@@ -85,7 +89,6 @@ return require("packer").startup(function(use)
   -- Styling
   use("kyazdani42/nvim-web-devicons")
   use("nvim-lualine/lualine.nvim")
-  use("j-hui/fidget.nvim")
   use("folke/tokyonight.nvim")
   use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 

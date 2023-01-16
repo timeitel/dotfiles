@@ -3,15 +3,9 @@ local telescope = require("telescope")
 local action_state = require("telescope.actions.state")
 local actions = require("telescope.actions")
 local actions_layout = require("telescope.actions.layout")
+local notify = require("notify")
 local fb_actions = telescope.extensions.file_browser.actions
-
-function table.shallow_copy(t)
-  local t2 = {}
-  for k, v in pairs(t) do
-    t2[k] = v
-  end
-  return t2
-end
+local copy = Utils.shallow_copy
 
 -- Telescope defaults
 local default_insert_mappings = {
@@ -26,7 +20,7 @@ local default_insert_mappings = {
   ["<M-p>"] = actions_layout.toggle_preview,
 }
 
-local default_normal_mappings = table.shallow_copy(default_insert_mappings)
+local default_normal_mappings = copy(default_insert_mappings)
 default_normal_mappings["c"] = false
 default_normal_mappings["l"] = actions.select_default + actions.center
 
@@ -36,16 +30,19 @@ local file_browser_normal_mappings = {
     local entry = action_state.get_selected_entry()
     local copy_filename_cmd = string.format(':let @+="%s"', entry.ordinal)
     vim.cmd(copy_filename_cmd)
+    notify(string.format("Yanked filename %s to clipboard", entry.ordinal))
   end,
   ["<leader>yd"] = function()
     local entry = action_state.get_selected_entry()
     local copy_directory_cmd = string.format(':let @+="%s"', entry.cwd)
     vim.cmd(copy_directory_cmd)
+    notify(string.format("Yanked working directory %s to clipboard", entry.cwd))
   end,
   ["<leader>yp"] = function()
     local entry = action_state.get_selected_entry()
     local copy_path_cmd = string.format(':let @+="%s"', entry.Path.filename)
     vim.cmd(copy_path_cmd)
+    notify(string.format("Yanked file path %s to clipboard", entry.Path.filename))
   end,
   ["."] = fb_actions.toggle_hidden,
   ["n"] = fb_actions.create,
@@ -114,7 +111,7 @@ telescope.setup({
           ["<leader>yc"] = function()
             local entry = action_state.get_selected_entry()
             vim.fn.setreg("*", entry.value)
-            print("Yanked hash:", entry.value)
+            notify(string.format("Yanked commit hash: %s to clipboard", entry.value))
           end,
           ["<leader>gd"] = function(prompt_bufnr)
             local current = action_state.get_selected_entry()
@@ -164,3 +161,4 @@ telescope.setup({
 require("telescope").load_extension("file_browser")
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension("possession")
+require("telescope").load_extension("notify")

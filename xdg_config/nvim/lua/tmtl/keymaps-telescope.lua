@@ -1,5 +1,6 @@
 local ts = require("telescope.builtin")
 local fb = require("telescope").extensions.file_browser
+local notify_ext = require("telescope").extensions.notify
 local map = Utils.map
 local getVisualSelection = Utils.getVisualSelection
 
@@ -62,6 +63,10 @@ end, { desc = "[F]ind [R]egisters" })
 map("n", "<leader>fm", function()
   vim.cmd([[Telescope harpoon marks]])
 end, { desc = "[F]ind - harpoon [M]arks" })
+
+map("n", "<leader>fn", function()
+  notify_ext.notify(require("telescope.themes").get_dropdown({}))
+end, { desc = "[F]ind - [N]otifications" })
 
 map("n", "<leader>bp", function()
   fb.file_browser({ grouped = true, hidden = true })

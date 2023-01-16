@@ -29,6 +29,9 @@ bindkey '^K' up-history
 bindkey '^J' down-history
 bindkey '^r' history-incremental-search-backward
 
+# delete forward word
+bindkey '^d' kill-word
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/eitelt/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eitelt/google-cloud-sdk/path.zsh.inc'; fi
 
