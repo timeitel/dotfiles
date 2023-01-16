@@ -28,3 +28,6 @@ bindkey '^[^L' forward-word
 bindkey '^K' up-history
 bindkey '^J' down-history
 bindkey '^r' history-incremental-search-backward
+
+# delete forward word
+bindkey '^d' kill-word
