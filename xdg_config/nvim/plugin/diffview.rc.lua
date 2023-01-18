@@ -35,6 +35,15 @@ shared_maps_with_commit["<leader>c"] = function()
   Open_Git_Commit()
 end
 
+-- TODO: make work
+-- local diff_view_maps = copy(shared_maps_with_commit)
+-- diff_view_maps["<C-j>"] = function()
+--   vim.cmd([[Gitsigns next_hunk]])
+-- end
+-- diff_view_maps["<C-k>"] = function()
+--   vim.cmd([[Gitsigns previous_hunk]])
+-- end
+
 require("diffview").setup({
   view = {
     merge_tool = {

@@ -22,7 +22,7 @@ enableHotkeyOutsideTerminal(
 enableHotkeyOutsideTerminal(
   wf,
   hs.hotkey.new({ "ctrl" }, "h", function()
-    hs.eventtap.keyStroke(_, "delete", 0)
+    hs.eventtap.keyStroke({}, "delete", 0)
   end)
 )
 
@@ -34,7 +34,7 @@ enableHotkeyOutsideTerminal(
   end)
 )
 
--- -- <C-u> to delete line
+-- <C-u> to delete line
 enableHotkeyOutsideTerminal(
   wf,
   hs.hotkey.new({ "ctrl" }, "u", function()
@@ -42,3 +42,36 @@ enableHotkeyOutsideTerminal(
     hs.eventtap.keyStroke({ "cmd" }, "delete", 0)
   end)
 )
+
+-- Up & down, enter: terminal / vim bindings for homerow
+enableHotkeyOutsideTerminal(
+  wf,
+  hs.hotkey.new({ "ctrl" }, "k", function()
+    hs.eventtap.keyStroke({}, "up", 0)
+  end)
+)
+enableHotkeyOutsideTerminal(
+  wf,
+  hs.hotkey.new({ "ctrl" }, "j", function()
+    hs.eventtap.keyStroke({}, "down", 0)
+  end)
+)
+enableHotkeyOutsideTerminal(
+  wf,
+  hs.hotkey.new({ "ctrl" }, "l", function()
+    hs.eventtap.keyStroke({}, "return", 0)
+  end)
+)
+enableHotkeyOutsideTerminal(
+  wf,
+  hs.hotkey.new({ "alt" }, "l", function()
+    hs.eventtap.keyStroke({ "alt" }, "right", 0)
+  end)
+)
+enableHotkeyOutsideTerminal(
+  wf,
+  hs.hotkey.new({ "alt" }, "h", function()
+    hs.eventtap.keyStroke({ "alt" }, "left", 0)
+  end)
+)
+-- TODO: scroll
