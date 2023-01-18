@@ -30,8 +30,8 @@ o.shortmess:append("c")
 -- Tabs
 o.autoindent = true
 o.expandtab = true
-o.tabstop = 2
-o.shiftwidth = 2
+o.tabstop = 4
+o.shiftwidth = 4
 o.cindent = true
 o.wrap = true
 o.smartindent = true
