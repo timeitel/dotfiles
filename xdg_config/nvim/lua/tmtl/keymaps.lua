@@ -11,11 +11,13 @@ map({ "n", "v", "o" }, "L", "$", { desc = "Last character on line" })
 map("v", "p", "P", { desc = "Keep register on visual paste" })
 map("v", "P", "p", { desc = "Replace register on visual paste" })
 
-map("i", "kj", "<ESC>", { desc = "Escape" })
+map("i", "kj", "<Esc>", { desc = "Escape" })
 map("i", "<A-l>", "<Right>", { desc = "Cursor right" })
 map("i", "<A-h>", "<Left>", { desc = "Cursor left" })
 map("i", "<C-d>", "<Esc>lcw", { desc = "Delete word right" })
 
+map({ "n", "v" }, "j", "gj", { desc = "Down one line, including wrapped lines" })
+map({ "n", "v" }, "k", "gk", { desc = "Up one line, including wrapped lines" })
 map("n", "<C-b>", "<C-^>", { desc = "Jump - previous file" })
 map("n", "<C-d>", "<C-d>zz", { desc = "Jump - down" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Jump - up" })
@@ -75,7 +77,7 @@ map("n", "<leader>ba", "<cmd>:%bd<cr>", { desc = "[B]uffer - delete [A]ll" })
 map("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>", { desc = "[B]uffer - delete [O]thers" })
 map("n", "<leader>bj", "<cmd>bnext<cr>", { desc = "[B]uffer - next" })
 map("n", "<leader>bk", "<cmd>bprevious<cr>", { desc = "[B]uffer - previous" })
-map({ "n", "i" }, "<C-s>", "<cmd>update<cr>", { desc = "[B]uffer - save" })
+map({ "n", "i" }, "<C-s>", "<cmd>w<cr>", { desc = "[B]uffer - save" })
 
 -- Tabs
 map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "[T]ab [N]ew" })
@@ -97,6 +99,8 @@ map("n", "<leader>gr", function()
   -- local themes = require("telescope.themes")
   -- ts.lsp_references(themes.get_cursor({ show_line = false, include_declaration = false }))
 end, { desc = "Lsp - [G]o to file [R]eferences" })
+-- TODO: when app / kitty resizes, resize windows equally
+-- TODO: confirm when discarding hunk, too easy to do
 
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
 vim.cmd([[xmap <Leader>r <Plug>ReplaceWithRegisterVisual]])
