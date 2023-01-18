@@ -2,7 +2,6 @@
 export NVM_DIR="$HOME/.nvm"
     [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"
 
-# keep 1000 lines of history
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh/history
@@ -23,6 +22,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # starship prompt
 eval "$(starship init zsh)"
 
+# command history and completion
 bindkey '^L' autosuggest-execute
 bindkey '^[^L' forward-word
 bindkey '^K' up-history

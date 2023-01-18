@@ -75,3 +75,15 @@ enableHotkeyOutsideTerminal(
   end)
 )
 -- TODO: scroll
+enableHotkeyOutsideTerminal(
+  wf,
+  hs.hotkey.new({ "ctrl" }, "e", function()
+    hs.eventtap.keyStroke({}, "pagedown", 0)
+  end)
+)
+enableHotkeyOutsideTerminal(
+  wf,
+  hs.hotkey.new({ "ctrl" }, "y", function()
+    hs.eventtap.keyStroke({}, "pageup", 0)
+  end)
+)
