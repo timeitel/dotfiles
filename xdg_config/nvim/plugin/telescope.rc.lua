@@ -11,8 +11,11 @@ local copy = Utils.shallow_copy
 local default_insert_mappings = {
   ["<C-j>"] = actions.move_selection_next,
   ["<C-k>"] = actions.move_selection_previous,
-  ["<C-h>"] = actions.close,
+  ["<C-q>"] = actions.close,
   ["<C-l>"] = actions.select_default + actions.center,
+  ["<C-h>"] = function()
+    vim.api.nvim_input("<BS>")
+  end,
   ["<C-w>"] = function()
     vim.api.nvim_input("<c-s-w>")
   end,
@@ -21,6 +24,10 @@ local default_insert_mappings = {
 }
 
 local default_normal_mappings = copy(default_insert_mappings)
+default_normal_mappings["<leader>qf"] = function(bfnr)
+  actions.send_to_qflist(bfnr)
+  vim.cmd([[copen]])
+end
 default_normal_mappings["c"] = false
 default_normal_mappings["q"] = actions.close
 default_normal_mappings["l"] = actions.select_default + actions.center
