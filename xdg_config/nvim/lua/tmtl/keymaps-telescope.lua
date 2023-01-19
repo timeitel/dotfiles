@@ -8,16 +8,6 @@ map("n", "<C-p>", function()
   ts.find_files({ hidden = true })
 end, { desc = "Find - files" })
 
--- TODO: fix not working
-map("n", "<leader>/", function()
-  ts.current_buffer_fuzzy_find()
-end, { desc = "Find - current buffer" })
-
-map("v", "<leader>/", function()
-  local text = getVisualSelection()
-  ts.current_buffer_fuzzy_find({ default_text = text })
-end, { desc = "Find - current buffer" })
-
 map("n", "<leader>ff", function()
   ts.live_grep({ initial_mode = "insert" })
 end, { desc = "[F]ind in [F]iles - live grep" })
