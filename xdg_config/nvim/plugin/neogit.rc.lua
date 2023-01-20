@@ -8,7 +8,6 @@ neogit.setup({
   },
   mappings = {
     status = {
-      ["<C-h>"] = neogit.close,
       ["d"] = function() -- open diff anywhere in status window and in an actual diffview tab, not a neogit wrapper
         vim.cmd([[ DiffviewOpen ]])
       end,
