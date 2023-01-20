@@ -1,23 +1,38 @@
-local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
-  return function(str)
-    local win_width = vim.fn.winwidth(0)
-    if hide_width and win_width < hide_width then
-      return ""
-    elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
-      return str:sub(1, trunc_len) .. (no_ellipsis and "" or "..")
-    end
-    return str
-  end
-end
+-- local colors = {
+--   red = "#cdd6f4",
+--   grey = "#181825",
+--   black = "#1e1e2e",
+--   white = "#313244",
+--   light_green = "#6c7086",
+--   orange = "#fab387",
+--   green = "#a6e3a1",
+--   blue = "#80A7EA",
+--   innerbg = nil,
+-- }
 
-local function show_macro_recording()
-  local recording_register = vim.fn.reg_recording()
-  if recording_register == "" then
-    return ""
-  else
-    return "Recording @" .. recording_register
-  end
-end
+-- local theme = {
+--   normal = {
+--     a = { fg = colors.black, bg = colors.innerbg },
+--     b = { fg = colors.blue, bg = colors.innerbg },
+--     c = { fg = colors.white, bg = colors.innerbg },
+--     z = { fg = colors.white, bg = colors.innerbg },
+--   },
+--   insert = { a = { fg = colors.black, bg = colors.innerbg } },
+--   visual = { a = { fg = colors.black, bg = colors.innerbg } },
+--   replace = { a = { fg = colors.black, bg = colors.innerbg } },
+-- }
+
+-- local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
+--   return function(str)
+--     local win_width = vim.fn.winwidth(0)
+--     if hide_width and win_width < hide_width then
+--       return ""
+--     elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
+--       return str:sub(1, trunc_len) .. (no_ellipsis and "" or "..")
+--     end
+--     return str
+--   end
+-- end
 
 local function show_unsaved_buffers()
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
@@ -28,11 +43,72 @@ local function show_unsaved_buffers()
   return ""
 end
 
+local space = {
+  function()
+    return " "
+  end,
+  color = { bg = "#000", fg = "#80A7EA" },
+}
+
+local filename = {
+  "filename",
+  color = { bg = "#80A7EA", fg = "#242735" },
+  separator = { left = "", right = "" },
+}
+
+local filetype = {
+  "filetype",
+  icon_only = true,
+  colored = true,
+  color = { bg = "#313244" },
+  separator = { left = "", right = "" },
+}
+
+local branch = {
+  "branch",
+  color = { bg = "#a6e3a1", fg = "#313244" },
+  separator = { left = "", right = "" },
+}
+
+local diff = {
+  "diff",
+  colored = false,
+  separator = { left = "", right = "" },
+}
+
+local function getLspName()
+  local msg = "No Active Lsp"
+  local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+  local clients = vim.lsp.get_active_clients()
+  if next(clients) == nil then
+    return msg
+  end
+  for _, client in ipairs(clients) do
+    local filetypes = client.config.filetypes
+    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+      return "  " .. client.name
+    end
+  end
+  return "  " .. msg
+end
+
+local dia = {
+  "diagnostics",
+  color = { bg = "#313244", fg = "#80A7EA" },
+  separator = { left = "", right = "" },
+}
+
+local lsp = {
+  function()
+    return getLspName()
+  end,
+  separator = { left = "", right = "" },
+  color = { bg = "#f38ba8", fg = "#1e1e2e" },
+}
+
 require("lualine").setup({
   options = {
     icons_enabled = true,
-    component_separators = "",
-    section_separators = { left = "", right = "" },
     disabled_filetypes = {
       statusline = { "DiffviewFiles", "DiffviewFileHistory" },
       winbar = {},
@@ -47,33 +123,12 @@ require("lualine").setup({
     },
   },
   sections = {
-    lualine_a = {
-      {
-        "branch",
-        fmt = trunc(100, 20, 80, false),
-        separator = { left = "" },
-      },
-      {
-        "unsaved-buffers",
-        fmt = show_unsaved_buffers,
-        padding = { left = 0, right = 1 },
-      },
-    },
-    lualine_b = {
-      { "filename", padding = { right = 0, left = 1 } },
-      { "diagnostics" },
-    },
-    lualine_c = {
-      {
-        "macro-recording",
-        fmt = show_macro_recording,
-      },
-    },
-    lualine_x = { "searchcount" },
-    lualine_y = { "progress" },
-    lualine_z = {
-      { "filetype", separator = { right = "" }, icon_only = true, colored = false },
-    },
+    lualine_a = { branch, show_unsaved_buffers, diff, space, filename, filetype },
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = { dia, lsp },
   },
   inactive_sections = {
     lualine_a = {},
