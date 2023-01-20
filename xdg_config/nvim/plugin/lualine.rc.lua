@@ -1,26 +1,26 @@
--- local colors = {
---   red = "#cdd6f4",
---   grey = "#181825",
---   black = "#1e1e2e",
---   white = "#313244",
---   light_green = "#6c7086",
---   orange = "#fab387",
---   green = "#a6e3a1",
---   blue = "#80A7EA",
---   innerbg = nil,
--- }
+local colors = {
+  red = "#cdd6f4",
+  grey = "#181825",
+  black = "#1e1e2e",
+  white = "#313244",
+  light_green = "#6c7086",
+  orange = "#fab387",
+  green = "#a6e3a1",
+  blue = "#80A7EA",
+  innerbg = nil,
+}
 
--- local theme = {
---   normal = {
---     a = { fg = colors.black, bg = colors.innerbg },
---     b = { fg = colors.blue, bg = colors.innerbg },
---     c = { fg = colors.white, bg = colors.innerbg },
---     z = { fg = colors.white, bg = colors.innerbg },
---   },
---   insert = { a = { fg = colors.black, bg = colors.innerbg } },
---   visual = { a = { fg = colors.black, bg = colors.innerbg } },
---   replace = { a = { fg = colors.black, bg = colors.innerbg } },
--- }
+local theme = {
+  normal = {
+    a = { fg = colors.black, bg = colors.innerbg },
+    b = { fg = colors.blue, bg = colors.innerbg },
+    c = { fg = colors.white, bg = colors.innerbg },
+    z = { fg = colors.white, bg = colors.innerbg },
+  },
+  insert = { a = { fg = colors.black, bg = colors.innerbg } },
+  visual = { a = { fg = colors.black, bg = colors.innerbg } },
+  replace = { a = { fg = colors.black, bg = colors.innerbg } },
+}
 
 -- local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
 --   return function(str)
@@ -34,6 +34,7 @@
 --   end
 -- end
 
+-- TODO: change to just icon on the right
 local function show_unsaved_buffers()
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
     if vim.api.nvim_buf_get_option(buf, "modified") then
@@ -43,16 +44,9 @@ local function show_unsaved_buffers()
   return ""
 end
 
-local space = {
-  function()
-    return " "
-  end,
-  color = { bg = "#000", fg = "#80A7EA" },
-}
-
 local filename = {
   "filename",
-  color = { bg = "#80A7EA", fg = "#242735" },
+  color = { bg = "#82aaff", fg = "#313244" },
   separator = { left = "", right = "" },
 }
 
@@ -66,48 +60,27 @@ local filetype = {
 
 local branch = {
   "branch",
-  color = { bg = "#a6e3a1", fg = "#313244" },
+  color = { bg = "#82aaff", fg = "#313244" },
   separator = { left = "", right = "" },
 }
 
 local diff = {
   "diff",
   colored = false,
-  separator = { left = "", right = "" },
-}
-
-local function getLspName()
-  local msg = "No Active Lsp"
-  local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-  local clients = vim.lsp.get_active_clients()
-  if next(clients) == nil then
-    return msg
-  end
-  for _, client in ipairs(clients) do
-    local filetypes = client.config.filetypes
-    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-      return "  " .. client.name
-    end
-  end
-  return "  " .. msg
-end
-
-local dia = {
-  "diagnostics",
   color = { bg = "#313244", fg = "#80A7EA" },
   separator = { left = "", right = "" },
 }
 
-local lsp = {
-  function()
-    return getLspName()
-  end,
+local dia = {
+  "diagnostics",
+  colored = false,
+  color = { bg = "#313244", fg = "#80A7EA" },
   separator = { left = "", right = "" },
-  color = { bg = "#f38ba8", fg = "#1e1e2e" },
 }
 
 require("lualine").setup({
   options = {
+    theme = theme,
     icons_enabled = true,
     disabled_filetypes = {
       statusline = { "DiffviewFiles", "DiffviewFileHistory" },
@@ -123,12 +96,12 @@ require("lualine").setup({
     },
   },
   sections = {
-    lualine_a = { branch, show_unsaved_buffers, diff, space, filename, filetype },
+    lualine_a = { branch, diff },
     lualine_b = {},
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = { dia, lsp },
+    lualine_z = { dia, filename, filetype },
   },
   inactive_sections = {
     lualine_a = {},
