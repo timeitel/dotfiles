@@ -26,7 +26,6 @@ o.splitright = true
 o.swapfile = false
 o.whichwrap:append("<,>,h,l")
 o.shortmess:append("c")
-o.cmdheight = 0
 
 -- Tabs
 o.autoindent = true
@@ -52,10 +51,10 @@ o.fillchars = { eob = "~", diff = "╱" }
 o.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal", "vertical" }
 o.undofile = true
 
--- Cursorline highlighting control
---  Only have it on in the active buffer
+local group = vim.api.nvim_create_augroup("Options", { clear = true })
+
 o.cursorline = true -- Highlight the current line
-local group = vim.api.nvim_create_augroup("CursorLineControl", { clear = true })
+
 local set_cursorline = function(event, value, pattern)
   vim.api.nvim_create_autocmd(event, {
     group = group,
@@ -75,6 +74,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     require("vim.highlight").on_yank({ timeout = 200 })
   end,
   desc = "Highlight yank",
+  group = group,
+})
+
+vim.api.nvim_create_autocmd("VimResized", {
+  pattern = "*",
+  callback = function()
+    vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-w>="'))
+  end,
+  desc = "Resize windows on terminal resize",
+  group = group,
 })
 
 o.laststatus = 3
