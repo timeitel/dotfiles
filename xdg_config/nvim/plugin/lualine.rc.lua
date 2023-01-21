@@ -17,6 +17,11 @@ local theme = {
     c = { fg = colors.white, bg = colors.innerbg },
     z = { fg = colors.white, bg = colors.innerbg },
   },
+  inactive = {
+    a = { fg = colors.gray, bg = colors.outerbg },
+    b = { fg = colors.gray, bg = colors.outerbg },
+    c = { fg = colors.gray, bg = colors.innerbg },
+  },
   insert = { a = { fg = colors.black, bg = colors.innerbg } },
   visual = { a = { fg = colors.black, bg = colors.innerbg } },
   replace = { a = { fg = colors.black, bg = colors.innerbg } },
@@ -47,6 +52,12 @@ end
 local filename = {
   "filename",
   color = { bg = "#82aaff", fg = "#313244" },
+  separator = { left = "", right = "" },
+}
+
+local inactive_filename = {
+  "filename",
+  color = { bg = "#313244", fg = "#80A7EA" },
   separator = { left = "", right = "" },
 }
 
@@ -104,9 +115,9 @@ require("lualine").setup({
     lualine_z = { dia, filename, filetype },
   },
   inactive_sections = {
-    lualine_a = {},
+    lualine_a = { inactive_filename },
     lualine_b = {},
-    lualine_c = { "filename" },
+    lualine_c = {},
     lualine_x = {},
     lualine_y = {},
     lualine_z = {},
