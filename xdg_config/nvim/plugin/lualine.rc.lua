@@ -1,30 +1,26 @@
 local colors = {
-  red = "#cdd6f4",
-  grey = "#181825",
-  black = "#1e1e2e",
-  white = "#313244",
-  light_green = "#6c7086",
-  orange = "#fab387",
-  green = "#a6e3a1",
-  blue = "#80A7EA",
-  innerbg = nil,
+  blue = "#313244",
+  gray = "#82aaff",
+  green = "41a6b5",
 }
 
+local function get_mode_colors(primary)
+  return {
+    a = { bg = colors.gray, fg = primary },
+    b = { bg = primary, fg = colors.gray },
+    c = { bg = nil, fg = nil },
+    x = { bg = primary, fg = colors.gray },
+    y = { bg = colors.gray, fg = primary },
+    z = { bg = primary, fg = colors.gray },
+  }
+end
+
 local theme = {
-  normal = {
-    a = { fg = colors.black, bg = colors.innerbg },
-    b = { fg = colors.blue, bg = colors.innerbg },
-    c = { fg = colors.white, bg = colors.innerbg },
-    z = { fg = colors.white, bg = colors.innerbg },
-  },
-  inactive = {
-    a = { fg = colors.gray, bg = colors.outerbg },
-    b = { fg = colors.gray, bg = colors.outerbg },
-    c = { fg = colors.gray, bg = colors.innerbg },
-  },
-  insert = { a = { fg = colors.black, bg = colors.innerbg } },
-  visual = { a = { fg = colors.black, bg = colors.innerbg } },
-  replace = { a = { fg = colors.black, bg = colors.innerbg } },
+  normal = get_mode_colors(colors.blue),
+  insert = get_mode_colors(colors.blue),
+  visual = get_mode_colors(colors.blue),
+  replace = get_mode_colors(colors.blue),
+  command = get_mode_colors(colors.blue),
 }
 
 -- local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
@@ -40,54 +36,86 @@ local theme = {
 -- end
 
 -- TODO: change to just icon on the right
-local function show_unsaved_buffers()
-  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_get_option(buf, "modified") then
-      return "[+]"
-    end
-  end
-  return ""
-end
+-- local function show_unsaved_buffers()
+--   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+--     if vim.api.nvim_buf_get_option(buf, "modified") then
+--       return "[+]"
+--     end
+--   end
+--   return ""
+-- end
 
 local filename = {
   "filename",
-  color = { bg = "#82aaff", fg = "#313244" },
   separator = { left = "", right = "" },
 }
 
 local inactive_filename = {
   "filename",
-  color = { bg = "#313244", fg = "#80A7EA" },
-  separator = { left = "", right = "" },
+  separator = { left = "", right = "" },
 }
 
 local filetype = {
   "filetype",
   icon_only = true,
   colored = true,
-  color = { bg = "#313244" },
-  separator = { left = "", right = "" },
+  separator = { left = "", right = "" },
 }
 
 local branch = {
   "branch",
-  color = { bg = "#82aaff", fg = "#313244" },
-  separator = { left = "", right = "" },
+  separator = { left = "", right = "" },
 }
 
 local diff = {
   "diff",
   colored = false,
-  color = { bg = "#313244", fg = "#80A7EA" },
   separator = { left = "", right = "" },
 }
 
 local dia = {
   "diagnostics",
   colored = false,
-  color = { bg = "#313244", fg = "#80A7EA" },
   separator = { left = "", right = "" },
 }
+
+function GetCurrentDiagnostic()
+  local bufnr = 0
+  local line_nr = vim.api.nvim_win_get_cursor(0)[1] - 1
+  local opts = { ["lnum"] = line_nr }
+
+  local line_diagnostics = vim.diagnostic.get(bufnr, opts)
+  if vim.tbl_isempty(line_diagnostics) then
+    return
+  end
+
+  local best_diagnostic = nil
+
+  for _, diagnostic in ipairs(line_diagnostics) do
+    if best_diagnostic == nil or diagnostic.severity < best_diagnostic.severity then
+      best_diagnostic = diagnostic
+    end
+  end
+
+  return best_diagnostic
+end
+
+function GetCurrentDiagnosticString()
+  local diagnostic = GetCurrentDiagnostic()
+
+  if not diagnostic or not diagnostic.message then
+    return
+  end
+
+  local message = vim.split(diagnostic.message, "\n")[1]
+  local max_width = vim.api.nvim_win_get_width(0) - 35
+
+  if string.len(message) < max_width then
+    return message
+  else
+    return string.sub(message, 1, max_width) .. "..."
+  end
+end
 
 require("lualine").setup({
   options = {
@@ -107,20 +135,21 @@ require("lualine").setup({
     },
   },
   sections = {
-    lualine_a = { branch, diff },
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = { dia, filename, filetype },
+    lualine_a = { branch },
+
+    lualine_b = { diff },
+    lualine_c = { "GetCurrentDiagnosticString()" },
+    lualine_x = { dia },
+    lualine_y = { filename },
+    lualine_z = { filetype },
   },
   inactive_sections = {
-    lualine_a = { inactive_filename },
+    lualine_a = {},
     lualine_b = {},
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {},
+    lualine_z = { inactive_filename },
   },
   tabline = {},
   winbar = {},

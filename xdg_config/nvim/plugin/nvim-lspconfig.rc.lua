@@ -54,10 +54,20 @@ local on_attach = function(_, bufnr)
     vim.fn.feedkeys("zz")
   end, "[D]iagnostics - next error")
 
+  buf_map("n", "<leader>dJ", function()
+    vim.diagnostic.goto_next({ float = { border = border } })
+    vim.fn.feedkeys("zz")
+  end, "[D]iagnostics - next diagnostic")
+
   buf_map("n", "<leader>dk", function()
     vim.diagnostic.goto_prev({ float = { border = border }, severity = vim.diagnostic.severity.ERROR })
     vim.fn.feedkeys("zz")
   end, "[D]iagnostics - previous error")
+
+  buf_map("n", "<leader>dK", function()
+    vim.diagnostic.goto_prev({ float = { border = border } })
+    vim.fn.feedkeys("zz")
+  end, "[D]iagnostics - previous diagnostic")
 
   buf_map("n", "<leader>da", function()
     vim.lsp.buf.code_action()
