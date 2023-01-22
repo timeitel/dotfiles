@@ -76,3 +76,6 @@ require("diffview").setup({
     merge_tool = merge_tool_maps,
   },
 })
+
+-- vim.api.nvim_set_hl(0, "DiffviewStatusAdded", { guibg = "#282c34" })
+-- vim.api.nvim_set_hl(0, "DiffviewStatusDeleted", { guibg = "#282c34" })
