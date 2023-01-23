@@ -37,7 +37,7 @@ o.wrap = true
 o.smartindent = true
 
 o.breakindent = true
-o.showbreak = string.rep(" ", 3) -- Make it so that long lines wrap smartly
+o.showbreak = string.rep(" ", 3) -- smart line wrapping
 o.linebreak = true
 
 o.foldmethod = "marker"

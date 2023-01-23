@@ -2,6 +2,7 @@ local map = Utils.map
 local ts = require("telescope.builtin")
 local diffview_actions = require("diffview.actions")
 local neogit = require("neogit")
+local notify = require("notify")
 
 function Open_Git_Commit()
   neogit.open()
@@ -15,6 +16,7 @@ end, { desc = "[G]it [S]tatus" })
 
 map("n", "<leader><leader>gs", function()
   ts.git_stash()
+  notify("Stashing changes")
 end, { desc = "[[G]]it [S]tash" })
 
 map("n", "<leader>gd", function()
@@ -22,7 +24,8 @@ map("n", "<leader>gd", function()
 end, { desc = "[G]it [D]iff" })
 
 map("n", "<leader><leader>gd", function()
-  vim.cmd([[DiffviewOpen origin/staging...HEAD]])
+  vim.cmd([[DiffviewOpen origin/dev...HEAD]])
+  notify('Opening diff: "origin/dev...HEAD"')
 end, { desc = "[[G]]it [D]iff - HEAD against staging" })
 
 map("n", "<leader>gh", function()
@@ -39,6 +42,7 @@ map("n", "<leader><leader>gc", function()
     neogit.open({ "commit" })
     vim.fn.feedkeys("c")
   end, 100)
+  notify("Staging all changes")
 end, { desc = "[[G]]it [C]ommit - stage all and commit" })
 
 map("n", "<leader>gfh", function()
@@ -47,10 +51,12 @@ end, { desc = "[G]it [F]ile [H]istory" })
 
 map("n", "<leader>gfx", function()
   vim.cmd([[Gitsigns reset_buffer]])
+  notify("Discarded changes of current file", vim.log.levels.WARN)
 end, { desc = "[G]it [F]ile - discard changes" })
 
 map("n", "<leader><leader>gfs", function()
   vim.cmd([[Gitsigns stage_buffer]])
+  notify("Staged current file")
 end, { desc = "[[G]]it [F]ile [S]tage" })
 
 map("n", "<leader>gb", function()
@@ -60,6 +66,7 @@ end, { desc = "[G]it [B]ranches" })
 map("n", "<leader>gu", function()
   vim.cmd([[TermExec cmd="git reset --soft HEAD~1"]])
   vim.cmd([[ToggleTerm]])
+  notify("Soft resetting last commit", vim.log.levels.WARN)
 end, { desc = "[G]it [U]ndo - last commit into working directory" })
 
 map("n", "<leader><leader>gr", function()
@@ -67,6 +74,7 @@ map("n", "<leader><leader>gr", function()
     vim.cmd([[TermExec cmd="git restore . && git clean -fd"]])
     vim.cmd([[ToggleTerm]])
   end
+  notify("Staging all changes", vim.log.levels.WARN)
 end, { desc = "[[G]]it [R]eset - discard all working changes" })
 
 map("n", "<leader><leader>gb", function()
@@ -93,12 +101,15 @@ end, { desc = "Git [H]unk [P]review" })
 
 map({ "n", "v" }, "<leader>hs", function()
   vim.cmd([[Gitsigns stage_hunk]])
+  notify("Staged hunk")
 end, { desc = "Git [H]unk [S]tage" })
 
 map({ "n", "v" }, "<leader>hx", function()
   vim.cmd([[Gitsigns reset_hunk]])
+  notify("Discarded hunk", vim.log.levels.WARN)
 end, { desc = "Git [H]unk - reset" })
 
 map("n", "<leader>hu", function()
   vim.cmd([[Gitsigns undo_stage_hunk]])
+  notify("Unstaged the last staged hunk")
 end, { desc = "Git [H]unk [U]ndo - last staged hunk" })

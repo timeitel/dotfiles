@@ -10,6 +10,7 @@ map({ "n", "v", "o" }, "L", "$", { desc = "Last character on line" })
 
 map("v", "p", "P", { desc = "Keep register on visual paste" })
 map("v", "P", "p", { desc = "Replace register on visual paste" })
+map("v", "<C-q>", "<Esc>", { desc = "Return to normal mode" })
 
 map("c", "<C-q>", function()
   vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-u>\\<BS>"'))
