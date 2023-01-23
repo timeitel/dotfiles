@@ -123,8 +123,6 @@ map("n", "<leader>gr", function()
   -- local themes = require("telescope.themes")
   -- ts.lsp_references(themes.get_cursor({ show_line = false, include_declaration = false }))
 end, { desc = "Lsp - [G]o to file [R]eferences" })
--- TODO: when app / kitty resizes, resize windows equally
--- TODO: confirm when discarding hunk, too easy to do
 
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
 vim.cmd([[xmap <Leader>r <Plug>ReplaceWithRegisterVisual]])

@@ -55,8 +55,6 @@ local group = vim.api.nvim_create_augroup("Options", { clear = true })
 
 o.cursorline = true -- Highlight the current line
 
--- TODO: fix
--- vim.api.nvim_set_hl(0, "CursorLine", { bg = "#313244" })
 local set_cursorline = function(event, value, pattern)
   vim.api.nvim_create_autocmd(event, {
     group = group,
