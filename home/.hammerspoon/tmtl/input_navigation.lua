@@ -43,6 +43,14 @@ enableHotkeyOutsideTerminal(
   end)
 )
 
+-- <C-q> to escape
+enableHotkeyOutsideTerminal(
+  wf,
+  hs.hotkey.new({ "ctrl" }, "q", function()
+    hs.eventtap.keyStroke({}, "escape", 0)
+  end)
+)
+
 -- Up & down, enter: terminal / vim bindings for homerow
 enableHotkeyOutsideTerminal(
   wf,

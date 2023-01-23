@@ -10,6 +10,7 @@ map({ "n", "v", "o" }, "L", "$", { desc = "Last character on line" })
 
 map("v", "p", "P", { desc = "Keep register on visual paste" })
 map("v", "P", "p", { desc = "Replace register on visual paste" })
+map("v", "<C-q>", "<Esc>", { desc = "Return to normal mode" })
 
 map("i", "kj", "<Esc>", { desc = "Escape" })
 map("i", "<A-l>", "<Right>", { desc = "Cursor right" })
