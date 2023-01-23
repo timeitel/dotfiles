@@ -79,11 +79,13 @@ local function dev_layout()
   hs.application.launchOrFocus("Google Chrome")
   hs.application.launchOrFocus("Obsidian")
   hs.application.launchOrFocus("kitty")
+  hs.application.launchOrFocus("Slack")
 
   local windowLayout = {
     { "kitty", nil, primary_screen, hs.layout.left50, nil, nil },
-    { "Brave Browser", nil, primary_screen, hs.layout.right50, nil, nil },
-    { "Obsidian", nil, laptop_screen, hs.layout.maximized, nil, nil },
+    { "Google Chrome", nil, primary_screen, hs.layout.right50, nil, nil },
+    { "Slack", nil, laptop_screen, hs.layout.left50, nil, nil },
+    { "Obsidian", nil, laptop_screen, hs.layout.right50, nil, nil },
   }
   hs.layout.apply(windowLayout)
 end
@@ -112,5 +114,5 @@ hs.hotkey.bind(modifiers, "Right", grid.resizeWindowWider)
 hs.hotkey.bind(modifiers, "Left", grid.resizeWindowThinner)
 hs.hotkey.bind(modifiers, "Up", grid.resizeWindowTaller)
 hs.hotkey.bind(modifiers, "Down", grid.resizeWindowShorter)
-hs.hotkey.bind(modifiers, "]", move_to_screen_maximized(1))
-hs.hotkey.bind(modifiers, "[", move_to_screen_maximized(2))
+hs.hotkey.bind(modifiers, "[", move_to_screen_maximized(1))
+hs.hotkey.bind(modifiers, "]", move_to_screen_maximized(2))
