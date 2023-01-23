@@ -2,9 +2,13 @@ local colors = {
   blue = "#313244",
   gray = "#82aaff",
   green = "41a6b5",
+  gunmetal = "#282c34",
+  yellow = "#e0af68",
+  magenta = "#bb9af7",
+  cyan = "#7dcfff",
 }
 
-local function get_mode_colors(primary)
+local function get_normal_mode_colors(primary)
   return {
     a = { bg = colors.gray, fg = primary },
     b = { bg = primary, fg = colors.gray },
@@ -15,25 +19,35 @@ local function get_mode_colors(primary)
   }
 end
 
+local function get_mode_colors(primary)
+  return {
+    a = { bg = primary, fg = colors.gunmetal },
+    b = { bg = colors.gunmetal, fg = primary },
+    x = { bg = colors.gunmetal, fg = primary },
+    y = { bg = primary, fg = colors.gunmetal },
+    z = { bg = colors.gunmetal, fg = primary },
+  }
+end
+
 local theme = {
-  normal = get_mode_colors(colors.blue),
-  insert = get_mode_colors(colors.blue),
-  visual = get_mode_colors(colors.blue),
-  replace = get_mode_colors(colors.blue),
-  command = get_mode_colors(colors.blue),
+  normal = get_normal_mode_colors(colors.blue),
+  insert = get_mode_colors(colors.green),
+  visual = get_mode_colors(colors.magenta),
+  replace = get_mode_colors(colors.cyan),
+  command = get_mode_colors(colors.yellow),
 }
 
--- local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
---   return function(str)
---     local win_width = vim.fn.winwidth(0)
---     if hide_width and win_width < hide_width then
---       return ""
---     elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
---       return str:sub(1, trunc_len) .. (no_ellipsis and "" or "..")
---     end
---     return str
---   end
--- end
+local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
+  return function(str)
+    local win_width = vim.fn.winwidth(0)
+    if hide_width and win_width < hide_width then
+      return ""
+    elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
+      return str:sub(1, trunc_len) .. (no_ellipsis and "" or "..")
+    end
+    return str
+  end
+end
 
 -- TODO: change to just icon on the right
 -- local function show_unsaved_buffers()
@@ -64,6 +78,7 @@ local filetype = {
 
 local branch = {
   "branch",
+  fmt = trunc(100, 20, 80, false),
   separator = { left = "", right = "" },
 }
 
@@ -136,7 +151,6 @@ require("lualine").setup({
   },
   sections = {
     lualine_a = { branch },
-
     lualine_b = { diff },
     lualine_c = { "GetCurrentDiagnosticString()" },
     lualine_x = { dia },
