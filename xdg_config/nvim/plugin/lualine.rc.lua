@@ -61,11 +61,6 @@ end
 
 local filename = {
   "filename",
-  separator = { left = "", right = "" },
-}
-
-local inactive_filename = {
-  "filename",
   separator = { left = "", right = "" },
 }
 
@@ -132,17 +127,40 @@ function GetCurrentDiagnosticString()
   end
 end
 
+local function getLspName()
+  local msg = "No Active Lsp"
+  local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+  local clients = vim.lsp.get_active_clients()
+  if next(clients) == nil then
+    return msg
+  end
+  for _, client in ipairs(clients) do
+    local filetypes = client.config.filetypes
+    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+      return "  " .. client.name
+    end
+  end
+  return "  " .. msg
+end
+
+local lsp = {
+  function()
+    return getLspName()
+  end,
+  separator = { left = "", right = "" },
+}
+
 require("lualine").setup({
   options = {
     theme = theme,
     icons_enabled = true,
     disabled_filetypes = {
       statusline = { "DiffviewFiles", "DiffviewFileHistory" },
-      winbar = {},
+      winbar = { "DiffviewFiles", "DiffviewFileHistory" },
     },
     ignore_focus = {},
     always_divide_middle = false,
-    globalstatus = false,
+    globalstatus = true,
     refresh = {
       statusline = 1000,
       tabline = 1000,
@@ -153,9 +171,9 @@ require("lualine").setup({
     lualine_a = { branch },
     lualine_b = { diff },
     lualine_c = { "GetCurrentDiagnosticString()" },
-    lualine_x = { dia },
-    lualine_y = { filename },
-    lualine_z = { filetype },
+    lualine_x = {},
+    lualine_y = { dia },
+    lualine_z = { lsp },
   },
   inactive_sections = {
     lualine_a = {},
@@ -163,10 +181,16 @@ require("lualine").setup({
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = { inactive_filename },
+    lualine_z = {},
   },
   tabline = {},
-  winbar = {},
-  inactive_winbar = {},
+  winbar = {
+    lualine_x = { dia },
+    lualine_z = { filename },
+  },
+  inactive_winbar = {
+    lualine_x = { dia },
+    lualine_z = { filename },
+  },
   extensions = {},
 })
