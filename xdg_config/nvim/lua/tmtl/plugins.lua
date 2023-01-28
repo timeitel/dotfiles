@@ -91,9 +91,16 @@ return require("packer").startup(function(use)
   use("nvim-lualine/lualine.nvim")
   use("folke/tokyonight.nvim")
   use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
+  use({
+    "nvim-zh/colorful-winsep.nvim",
+    config = function()
+      require("colorful-winsep").setup()
+    end,
+  })
 
   -- Automatically set up configuration after cloning packer.nvim
   -- Leave at the end after all plugins
+
   if packer_bootstrap then
     require("packer").sync()
   end
