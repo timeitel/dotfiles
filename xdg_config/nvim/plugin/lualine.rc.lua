@@ -7,6 +7,7 @@ local colors = {
   magenta = "#bb9af7",
   cyan = "#7dcfff",
 }
+local secondary_blue = { bg = colors.blue, fg = colors.gray }
 
 local function get_normal_mode_colors(primary)
   return {
@@ -15,17 +16,17 @@ local function get_normal_mode_colors(primary)
     c = { bg = colors.gunmetal, fg = colors.gunmetal },
     x = { bg = primary, fg = colors.gray },
     y = { bg = colors.gray, fg = primary },
-    z = { bg = primary, fg = colors.gray },
+    -- z = { bg = primary, fg = colors.gray },
   }
 end
 
 local function get_mode_colors(primary)
   return {
-    a = { bg = primary, fg = colors.gunmetal },
+    a = { bg = colors.gunmetal, fg = primary },
     b = { bg = colors.gunmetal, fg = primary },
     x = { bg = colors.gunmetal, fg = primary },
     y = { bg = primary, fg = colors.gunmetal },
-    z = { bg = colors.gunmetal, fg = primary },
+    -- z = { bg = colors.gunmetal, fg = primary },
   }
 end
 
@@ -52,6 +53,21 @@ local filename = {
   separator = { left = "", right = "" },
 }
 
+local inactive_filename = {
+  "filename",
+  separator = { left = "", right = "" },
+  color = { bg = colors.blue, fg = colors.gray },
+}
+
+local inactive_filetype = {
+  "filetype",
+  icon_only = true,
+  colored = false,
+  separator = { left = "", right = "" },
+  padding = { right = -3, left = 1 },
+  color = { bg = colors.blue, fg = colors.gray },
+}
+
 local filetype = {
   "filetype",
   icon_only = true,
@@ -63,6 +79,7 @@ local filetype = {
 local branch = {
   "branch",
   separator = { left = "", right = "" },
+  color = { bg = colors.blue, fg = colors.gray },
 }
 
 local diff = {
@@ -136,6 +153,7 @@ local lsp = {
     return getLspName()
   end,
   separator = { left = "", right = "" },
+  color = { bg = colors.blue, fg = colors.gray },
 }
 
 require("lualine").setup({
@@ -178,7 +196,7 @@ require("lualine").setup({
   },
   inactive_winbar = {
     lualine_x = { dia },
-    lualine_z = { filetype, filename },
+    lualine_z = { inactive_filetype, inactive_filename },
   },
   extensions = {},
 })
