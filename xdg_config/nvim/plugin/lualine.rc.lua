@@ -56,7 +56,7 @@ local filetype = {
   "filetype",
   icon_only = true,
   colored = false,
-  separator = { left = "", right = "" },
+  separator = { left = "", right = "" },
   padding = { right = -3, left = 1 },
 }
 
