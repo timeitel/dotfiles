@@ -4,4 +4,4 @@ require("tokyonight").setup({
   end,
 })
 vim.cmd([[colorscheme tokyonight-moon]])
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "#313244" })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#363c58" })
