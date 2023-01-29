@@ -12,7 +12,7 @@ local function get_normal_mode_colors(primary)
   return {
     a = { bg = colors.gray, fg = primary },
     b = { bg = primary, fg = colors.gray },
-    c = { bg = nil, fg = nil },
+    c = { bg = colors.gunmetal, fg = colors.gunmetal },
     x = { bg = primary, fg = colors.gray },
     y = { bg = colors.gray, fg = primary },
     z = { bg = primary, fg = colors.gray },
@@ -37,18 +37,6 @@ local theme = {
   command = get_mode_colors(colors.yellow),
 }
 
-local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
-  return function(str)
-    local win_width = vim.fn.winwidth(0)
-    if hide_width and win_width < hide_width then
-      return ""
-    elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
-      return str:sub(1, trunc_len) .. (no_ellipsis and "" or "..")
-    end
-    return str
-  end
-end
-
 -- TODO: change to just icon on the right
 -- local function show_unsaved_buffers()
 --   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
@@ -61,19 +49,19 @@ end
 
 local filename = {
   "filename",
-  separator = { left = "", right = "" },
+  separator = { left = "", right = "" },
 }
 
 local filetype = {
   "filetype",
   icon_only = true,
-  colored = true,
-  separator = { left = "", right = "" },
+  colored = false,
+  separator = { left = "", right = "" },
+  padding = { right = -3, left = 1 },
 }
 
 local branch = {
   "branch",
-  fmt = trunc(100, 20, 80, false),
   separator = { left = "", right = "" },
 }
 
@@ -186,11 +174,11 @@ require("lualine").setup({
   tabline = {},
   winbar = {
     lualine_x = { dia },
-    lualine_z = { filename },
+    lualine_z = { filetype, filename },
   },
   inactive_winbar = {
     lualine_x = { dia },
-    lualine_z = { filename },
+    lualine_z = { filetype, filename },
   },
   extensions = {},
 })
