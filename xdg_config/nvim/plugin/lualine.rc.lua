@@ -56,7 +56,7 @@ local filename = {
 local inactive_filename = {
   "filename",
   separator = { left = "", right = "" },
-  color = { bg = colors.blue, fg = colors.gray },
+  color = secondary_blue,
 }
 
 local inactive_filetype = {
@@ -65,7 +65,7 @@ local inactive_filetype = {
   colored = false,
   separator = { left = "", right = "" },
   padding = { right = -3, left = 1 },
-  color = { bg = colors.blue, fg = colors.gray },
+  color = secondary_blue,
 }
 
 local filetype = {
@@ -79,7 +79,7 @@ local filetype = {
 local branch = {
   "branch",
   separator = { left = "", right = "" },
-  color = { bg = colors.blue, fg = colors.gray },
+  color = secondary_blue,
 }
 
 local diff = {
@@ -133,7 +133,7 @@ function GetCurrentDiagnosticString()
 end
 
 local function getLspName()
-  local msg = "No Active Lsp"
+  local msg = "No LSP"
   local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
   local clients = vim.lsp.get_active_clients()
   if next(clients) == nil then
@@ -153,7 +153,7 @@ local lsp = {
     return getLspName()
   end,
   separator = { left = "", right = "" },
-  color = { bg = colors.blue, fg = colors.gray },
+  color = secondary_blue,
 }
 
 require("lualine").setup({
