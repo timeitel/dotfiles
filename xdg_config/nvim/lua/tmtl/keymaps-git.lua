@@ -16,7 +16,6 @@ end, { desc = "[G]it [S]tatus" })
 
 map("n", "<leader><leader>gs", function()
   ts.git_stash()
-  notify("Stashing changes")
 end, { desc = "[[G]]it [S]tash" })
 
 map("n", "<leader>gd", function()
@@ -72,9 +71,12 @@ end, { desc = "[G]it [U]ndo - last commit into working directory" })
 map("n", "<leader><leader>gr", function()
   if vim.fn.confirm("", "Are you sure you'd like to discard ALL working changes? (&Yes\n&No)", 1) == 1 then
     vim.cmd([[TermExec cmd="git restore . && git clean -fd"]])
-    vim.cmd([[ToggleTerm]])
+
+    vim.defer_fn(function()
+      vim.cmd([[ToggleTerm]])
+    end, 20)
   end
-  notify("Staging all changes", vim.log.levels.WARN)
+  notify("Discarding all working changes", vim.log.levels.WARN)
 end, { desc = "[[G]]it [R]eset - discard all working changes" })
 
 map("n", "<leader><leader>gb", function()

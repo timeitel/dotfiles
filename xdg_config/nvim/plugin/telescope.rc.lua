@@ -113,26 +113,6 @@ telescope.setup({
         -- },
       },
     },
-    git_commits = {
-      mappings = {
-        n = {
-          ["<leader>yc"] = function()
-            local entry = action_state.get_selected_entry()
-            vim.fn.setreg("*", entry.value)
-            notify(string.format('Yanked commit hash: "%s" to clipboard', entry.value))
-          end,
-          ["<leader>gd"] = function(prompt_bufnr)
-            local current = action_state.get_selected_entry()
-            actions.move_selection_next(prompt_bufnr)
-            local previous = action_state.get_selected_entry()
-
-            actions.close(prompt_bufnr)
-            print(string.format("Opening diff of: %s, with its previous commit", current.value))
-            vim.cmd(string.format("DiffviewOpen %s..%s", previous.value, current.value))
-          end,
-        },
-      },
-    },
     git_branches = {
       previewer = false,
       mappings = {

@@ -155,6 +155,9 @@ protocol.CompletionItemKind = {
   "", -- TypeParameter
 }
 
+-- TODO: look into nvim -q <(flake8 .)
+-- passing lint output into qf list
+
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -164,7 +167,10 @@ nvim_lsp.tsserver.setup({
     client.server_capabilities.documentFormattingProvider = false -- done by prettierd
     vim.keymap.set("n", "gd", function()
       vim.lsp.buf.definition()
-      vim.fn.feedkeys("zz")
+
+      vim.defer_fn(function()
+        vim.fn.feedkeys("zz")
+      end, 10)
     end, { noremap = true, silent = true, buffer = bufnr })
   end,
   handlers = tsHandlers,

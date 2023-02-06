@@ -30,8 +30,22 @@ map("n", "<C-d>", "<C-d>zz", { desc = "Jump - down" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Jump - up" })
 map("n", "<C-o>", "<C-o>zz", { desc = "Jump - back" })
 map("n", "<C-i>", "<C-i>zz", { desc = "Jump - forward" })
+
+-- Text search
 map("n", "n", "nzz", { desc = "Next search match" })
 map("n", "N", "Nzz", { desc = "Previous search match" })
+-- TODO: also zz with g; and g, and also look into tab for getting out of closing pair
+-- TODO: store qf movement into . operation
+
+-- TODO: fix
+-- map({ "n", "v" }, "*", function()
+--   vim.fn.feedkeys("*")
+--   -- vim.defer_fn(function()
+--   --   vim.fn.feedkeys("zz")
+--   -- end, 10)
+-- end, { desc = "Previous search match" })
+-- map({ "n", "v" }, "N", "Nzz", { desc = "Previous search match" })
+
 map("n", "Y", "yy", { desc = "Yank line" })
 map("n", "<leader>i", "i <ESC>i", { desc = "Enter insert mode with proceeding space" })
 
