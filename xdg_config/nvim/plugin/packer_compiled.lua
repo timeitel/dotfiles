@@ -132,7 +132,7 @@ _G.packer_plugins = {
   ["colorful-winsep.nvim"] = {
     config = { "\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20colorful-winsep\frequire\0" },
     loaded = true,
-    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/colorful-winsep.nvim",
+    path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/colorful-winsep.nvim",
     url = "https://github.com/nvim-zh/colorful-winsep.nvim"
   },
   ["diffview.nvim"] = {
