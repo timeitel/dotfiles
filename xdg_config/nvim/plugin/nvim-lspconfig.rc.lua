@@ -54,7 +54,7 @@ local on_attach = function(_, bufnr)
     vim.fn.feedkeys("zz")
   end, "[D]iagnostics - next error")
 
-  buf_map("n", "<leader>dJ", function()
+  buf_map("n", "<leader><leader>dj", function()
     vim.diagnostic.goto_next({ float = { border = border } })
     vim.fn.feedkeys("zz")
   end, "[D]iagnostics - next diagnostic")
@@ -64,7 +64,7 @@ local on_attach = function(_, bufnr)
     vim.fn.feedkeys("zz")
   end, "[D]iagnostics - previous error")
 
-  buf_map("n", "<leader>dK", function()
+  buf_map("n", "<leader><leader>dk", function()
     vim.diagnostic.goto_prev({ float = { border = border } })
     vim.fn.feedkeys("zz")
   end, "[D]iagnostics - previous diagnostic")
@@ -155,6 +155,9 @@ protocol.CompletionItemKind = {
   "", -- TypeParameter
 }
 
+-- TODO: look into nvim -q <(flake8 .)
+-- passing lint output into qf list
+
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -166,7 +169,10 @@ nvim_lsp.tsserver.setup({
 
     vim.keymap.set("n", "gd", function()
       vim.lsp.buf.definition()
-      vim.fn.feedkeys("zz")
+
+      vim.defer_fn(function()
+        vim.fn.feedkeys("zz")
+      end, 10)
     end, { noremap = true, silent = true, buffer = bufnr })
 
     vim.api.nvim_create_autocmd("BufWritePost", {

@@ -18,7 +18,7 @@ end
 -- appWatcher:start()
 
 local modifiers = { "ctrl", "alt" }
-hs.hotkey.bind(modifiers, "j", hard_refresh)
+hs.hotkey.bind(modifiers, "h", hard_refresh)
 
 -- TODO: filter for browser
 -- hs.hotkey.bind("ctrl", "d", scroll(-10))

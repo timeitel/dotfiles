@@ -12,7 +12,7 @@ local secondary_blue = { bg = colors.blue, fg = colors.gray }
 local function get_normal_mode_colors(primary)
   return {
     a = { bg = colors.gray, fg = primary },
-    b = { bg = primary, fg = colors.gray },
+    b = { bg = colors.gray, fg = primary },
     c = { bg = colors.gunmetal, fg = colors.gunmetal },
     x = { bg = primary, fg = colors.gray },
     y = { bg = colors.gray, fg = primary },
@@ -48,23 +48,21 @@ local theme = {
 --   return ""
 -- end
 
-local filename = {
+local global_line_filename = {
   "filename",
-  separator = { left = "", right = "" },
+  separator = { left = "", right = "" },
 }
 
-local inactive_filename = {
+local winbar_filename = {
   "filename",
-  separator = { left = "", right = "" },
-  color = secondary_blue,
-}
-
-local inactive_filetype = {
-  "filetype",
-  icon_only = true,
-  colored = false,
+  path = 1,
   separator = { left = "", right = "" },
-  padding = { right = -3, left = 1 },
+}
+
+local winbar_inactive_filename = {
+  "filename",
+  separator = { left = "", right = "" },
+  path = 1,
   color = secondary_blue,
 }
 
@@ -72,20 +70,14 @@ local filetype = {
   "filetype",
   icon_only = true,
   colored = false,
-  separator = { left = "", right = "" },
-  padding = { right = -3, left = 1 },
+  padding = { right = 0, left = 2 },
+  separator = { left = "", right = "" },
 }
 
 local branch = {
   "branch",
   separator = { left = "", right = "" },
   color = secondary_blue,
-}
-
-local diff = {
-  "diff",
-  colored = false,
-  separator = { left = "", right = "" },
 }
 
 local dia = {
@@ -142,10 +134,10 @@ local function getLspName()
   for _, client in ipairs(clients) do
     local filetypes = client.config.filetypes
     if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-      return "  " .. client.name
+      return " " .. client.name
     end
   end
-  return "  " .. msg
+  return " " .. msg
 end
 
 local lsp = {
@@ -175,28 +167,20 @@ require("lualine").setup({
   },
   sections = {
     lualine_a = { branch },
-    lualine_b = { diff },
+    lualine_b = { filetype, global_line_filename },
     lualine_c = { "GetCurrentDiagnosticString()" },
     lualine_x = {},
     lualine_y = { dia },
     lualine_z = { lsp },
   },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {},
-  },
+  inactive_sections = {},
   tabline = {},
   winbar = {
-    lualine_x = { dia },
-    lualine_z = { filetype, filename },
+    lualine_z = { winbar_filename },
   },
   inactive_winbar = {
     lualine_x = { dia },
-    lualine_z = { inactive_filetype, inactive_filename },
+    lualine_z = { winbar_inactive_filename },
   },
   extensions = {},
 })

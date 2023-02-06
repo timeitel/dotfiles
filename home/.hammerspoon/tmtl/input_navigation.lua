@@ -9,6 +9,7 @@ local enableHotkeyOutsideTerminal = function(windowFilter, hotkey)
 end
 
 local wf = hs.window.filter.new():setFilters({ kitty = false, Terminal = false })
+local wfIncludingObsidian = hs.window.filter.new():setFilters({ kitty = false, Terminal = false, Obsidian = false })
 
 -- <C-w> to delete previous word
 enableHotkeyOutsideTerminal(
@@ -28,7 +29,7 @@ enableHotkeyOutsideTerminal(
 
 -- <C-d> to delete next word
 enableHotkeyOutsideTerminal(
-  wf,
+  wfIncludingObsidian,
   hs.hotkey.new({ "ctrl" }, "d", function()
     hs.eventtap.keyStroke({ "alt" }, "forwarddelete", 0)
   end)
@@ -36,7 +37,7 @@ enableHotkeyOutsideTerminal(
 
 -- <C-u> to delete line
 enableHotkeyOutsideTerminal(
-  wf,
+  wfIncludingObsidian,
   hs.hotkey.new({ "ctrl" }, "u", function()
     hs.eventtap.keyStroke({ "cmd" }, "right", 0)
     hs.eventtap.keyStroke({ "cmd" }, "delete", 0)
