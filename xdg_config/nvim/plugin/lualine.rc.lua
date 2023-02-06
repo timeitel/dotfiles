@@ -53,6 +53,11 @@ local filename = {
   separator = { left = "", right = "" },
 }
 
+local bottom_filename = {
+  "filename",
+  separator = { left = "", right = "" },
+}
+
 local inactive_filename = {
   "filename",
   separator = { left = "", right = "" },
@@ -175,7 +180,7 @@ require("lualine").setup({
   },
   sections = {
     lualine_a = { branch },
-    lualine_b = { diff },
+    lualine_b = { diff, bottom_filename },
     lualine_c = { "GetCurrentDiagnosticString()" },
     lualine_x = {},
     lualine_y = { dia },
