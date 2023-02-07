@@ -75,6 +75,7 @@ require("diffview").setup({
     listing_style = "list",
   },
   keymaps = {
+
     view = shared_maps,
     file_history_panel = shared_maps, -- TODO: checkout on enter
     file_panel = shared_maps,
@@ -82,7 +83,3 @@ require("diffview").setup({
     merge_tool = merge_tool_maps,
   },
 })
-
--- vim.api.nvim_set_hl(0, "DiffviewStatusAdded", { guibg = "#282c34" })
--- vim.api.nvim_set_hl(0, "DiffviewStatusDeleted", { guibg = "#282c34" })
-vim.api.nvim_set_hl(0, "DiffChange", { bg = "#323a5a" })
