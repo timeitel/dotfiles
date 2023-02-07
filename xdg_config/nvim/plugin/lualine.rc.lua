@@ -13,7 +13,7 @@ local function get_normal_mode_colors(primary)
   return {
     a = { bg = colors.gray, fg = primary },
     b = { bg = colors.gray, fg = primary },
-    c = { bg = colors.gunmetal, fg = colors.gunmetal },
+    c = { bg = colors.gunmetal, fg = "#7a88cf" },
     x = { bg = primary, fg = colors.gray },
     y = { bg = colors.gray, fg = primary },
     -- z = { bg = primary, fg = colors.gray },
