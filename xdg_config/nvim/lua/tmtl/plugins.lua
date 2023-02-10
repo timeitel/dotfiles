@@ -97,6 +97,7 @@ return require("packer").startup(function(use)
       require("colorful-winsep").setup()
     end,
   })
+  use("joechrisellis/lsp-format-modifications.nvim")
 
   -- Automatically set up configuration after cloning packer.nvim
   -- Leave at the end after all plugins

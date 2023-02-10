@@ -175,6 +175,11 @@ _G.packer_plugins = {
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/leap.nvim",
     url = "https://github.com/ggandor/leap.nvim"
   },
+  ["lsp-format-modifications.nvim"] = {
+    loaded = true,
+    path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/lsp-format-modifications.nvim",
+    url = "https://github.com/joechrisellis/lsp-format-modifications.nvim"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
