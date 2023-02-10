@@ -16,9 +16,12 @@ map("c", "<C-q>", function()
   vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-u>\\<BS>"'))
 end, { desc = "Return to normal mode" })
 
-map("i", "kj", "<Esc>", { desc = "Escape" })
+map("i", "kj", "<Esc>", { desc = "Return to normal mode" })
+map("t", "kj", "<C-\\><C-n>", { desc = "Return to normal mode" })
 map("i", "<A-l>", "<Right>", { desc = "Cursor right" })
 map("i", "<A-h>", "<Left>", { desc = "Cursor left" })
+map("i", "<A-j>", "<Down>", { desc = "Cursor down" })
+map("i", "<A-k>", "<Up>", { desc = "Cursor up" })
 map("i", "<C-d>", "<Esc>lcw", { desc = "Delete word right" })
 
 map({ "n", "v" }, "j", "gj", { desc = "Down one line, including wrapped lines" })
@@ -131,13 +134,8 @@ map("n", "<leader>qq", "<cmd>cclose<cr>", { desc = "[Q]uickfix List - [Q]uit" })
 
 map("n", "<leader>gr", function()
   vim.api.nvim_feedkeys("gg/export\nWW", "n", true)
-  vim.fn.feedkeys("gr")
+  vim.fn.feedkeys("<leader>r")
   -- local ts = require("telescope.builtin")
   -- local themes = require("telescope.themes")
   -- ts.lsp_references(themes.get_cursor({ show_line = false, include_declaration = false }))
 end, { desc = "Lsp - [G]o to file [R]eferences" })
--- TODO: a repeat command / action like stage file -> also assign <C-.>
-
-vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
-vim.cmd([[xmap <Leader>r <Plug>ReplaceWithRegisterVisual]])
-vim.cmd([[nmap <Leader>((( <Plug>ReplaceWithRegisterLine]]) --just unmap

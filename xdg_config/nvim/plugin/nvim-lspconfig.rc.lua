@@ -112,7 +112,7 @@ local on_attach = function(_, bufnr)
     vim.lsp.buf.hover()
   end, "Lsp - Hover")
 
-  buf_map("n", "gr", function()
+  buf_map("n", "<leader>r", function()
     require("telescope.builtin").lsp_references({ show_line = false, include_declaration = false })
   end, "Lsp - [G]o to [R]eferences")
 
