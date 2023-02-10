@@ -41,6 +41,7 @@ o.signcolumn = "yes:1"
 o.smartcase = true
 o.smartindent = true
 o.splitbelow = true
+o.splitright = true
 o.swapfile = false
 o.tabstop = 2
 o.termguicolors = true
