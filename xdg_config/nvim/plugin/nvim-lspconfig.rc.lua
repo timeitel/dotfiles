@@ -99,8 +99,11 @@ local on_attach = function(_, bufnr)
   end, "Lsp - signature")
 
   buf_map("n", "gd", function()
-    vim.cmd("Telescope lsp_definitions")
-    vim.fn.feedkeys("zz")
+    vim.lsp.buf.definition()
+
+    vim.defer_fn(function()
+      vim.fn.feedkeys("zz")
+    end, 10)
   end, "Lsp - [G]o to [D]efinition")
 
   buf_map("n", "gD", function()
@@ -163,14 +166,6 @@ nvim_lsp.eslint.setup({})
 nvim_lsp.tsserver.setup({
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
-
-    vim.keymap.set("n", "gd", function()
-      vim.lsp.buf.definition()
-
-      vim.defer_fn(function()
-        vim.fn.feedkeys("zz")
-      end, 10)
-    end, { noremap = true, silent = true, buffer = bufnr })
 
     vim.api.nvim_create_autocmd("BufWritePost", {
       callback = function()
