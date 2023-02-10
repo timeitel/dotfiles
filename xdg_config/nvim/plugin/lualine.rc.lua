@@ -38,16 +38,6 @@ local theme = {
   command = get_mode_colors(colors.yellow),
 }
 
--- TODO: change to just icon on the right
--- local function show_unsaved_buffers()
---   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
---     if vim.api.nvim_buf_get_option(buf, "modified") then
---       return "[+]"
---     end
---   end
---   return ""
--- end
-
 local global_line_filename = {
   "filename",
   separator = { left = "", right = "" },

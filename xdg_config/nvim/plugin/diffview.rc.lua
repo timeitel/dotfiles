@@ -75,9 +75,8 @@ require("diffview").setup({
     listing_style = "list",
   },
   keymaps = {
-
     view = shared_maps,
-    file_history_panel = shared_maps, -- TODO: checkout on enter
+    file_history_panel = shared_maps,
     file_panel = shared_maps,
     diff_view = shared_maps,
     merge_tool = merge_tool_maps,

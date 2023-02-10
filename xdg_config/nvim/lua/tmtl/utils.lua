@@ -27,3 +27,10 @@ Utils.shallow_copy = function(t)
   end
   return t2
 end
+
+-- TODO: shoule try this?
+Utils.assign_to_next_previous = function(next, previous)
+  -- assign to shift
+  local opts = { silent = true, noremap = true }
+  vim.keymap.set(m, k, v, opts)
+end
