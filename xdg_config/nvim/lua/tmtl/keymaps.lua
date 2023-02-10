@@ -118,6 +118,7 @@ map("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "[T]ab - delete [O]thers" })
 
 -- Quickfix list
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "[Q]uickfix [L]ist - show" })
+-- TODO: similar to nap.nvim -> attach the repeat operation to shift or something so qj once, then can repeat shift after
 map("n", "<leader>qj", function()
   vim.cmd([[cnext]])
   vim.fn.feedkeys("zz")
@@ -135,6 +136,7 @@ map("n", "<leader>gr", function()
   -- local themes = require("telescope.themes")
   -- ts.lsp_references(themes.get_cursor({ show_line = false, include_declaration = false }))
 end, { desc = "Lsp - [G]o to file [R]eferences" })
+-- TODO: a repeat command / action like stage file -> also assign <C-.>
 
 vim.cmd([[nmap <Leader>r <Plug>ReplaceWithRegisterOperator]])
 vim.cmd([[xmap <Leader>r <Plug>ReplaceWithRegisterVisual]])

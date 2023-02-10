@@ -103,7 +103,9 @@ o.scrollbind = false
 o.sessionoptions = o.sessionoptions - "buffers"
 
 -- pipe tsc errors into qf list
--- TODO: use local config
+-- TODO: look into nvim -q <(flake8 .)
+-- passing lint output into qf list
+
 vim.cmd([[
   augroup tsc
     autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=tsc
