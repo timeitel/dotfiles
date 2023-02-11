@@ -41,7 +41,7 @@ local tsHandlers = {
   end,
 }
 
-local on_attach = function(_, bufnr)
+local attach_lsp_maps = function(_, bufnr)
   local function buf_map(m, k, v, d)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr, desc = d })
   end
@@ -163,7 +163,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protoc
 
 nvim_lsp.tsserver.setup({
   on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
+    attach_lsp_maps(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false -- done by prettierd
   end,
   handlers = tsHandlers,
@@ -178,7 +178,7 @@ nvim_lsp.tsserver.setup({
 })
 
 nvim_lsp.sumneko_lua.setup({
-  on_attach = on_attach,
+  on_attach = attach_lsp_maps,
   settings = {
     Lua = {
       completion = {
@@ -200,7 +200,7 @@ nvim_lsp.sumneko_lua.setup({
 -- TODO: only works in cargo package, not in standalone .rs files
 nvim_lsp.rust_analyzer.setup({
   on_attach = function(client, buffnr)
-    on_attach(client, buffnr)
+    attach_lsp_maps(client, buffnr)
     if client.server_capabilities.documentFormattingProvider then
       vim.api.nvim_clear_autocmds({ buffer = buffnr, group = augroup_format })
       vim.api.nvim_create_autocmd("BufWritePre", {
