@@ -1,4 +1,9 @@
-require("neoscroll").setup({
+local ok, neoscroll = pcall(require, "neoscroll")
+if not ok then
+  return
+end
+
+neoscroll.setup({
   mappings = { "<C-u>", "<C-d>" },
   hide_cursor = true, -- Hide cursor while scrolling
   stop_eof = true, -- Stop at <EOF> when scrolling downwards

@@ -1,4 +1,7 @@
-local actions = require("diffview.actions")
+local ok, actions = pcall(require, "diffview.actions")
+if not ok then
+  return
+end
 
 local shared_maps = {
   ["L"] = false,
