@@ -1,3 +1,8 @@
+local ok, lualine = pcall(require, "lualine")
+if not ok then
+  return
+end
+
 local colors = {
   blue = "#313244",
   gray = "#82aaff",
@@ -143,7 +148,7 @@ local lsp = {
   color = secondary_blue,
 }
 
-require("lualine").setup({
+lualine.setup({
   options = {
     theme = theme,
     icons_enabled = true,
