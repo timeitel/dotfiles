@@ -16,25 +16,6 @@ local tsHandlers = {
 
     if vim.tbl_islist(result) then
       util.jump_to_location(result[1], "utf-8", true)
-
-      --if #result > 1 then
-      --    local isReactDTs = false
-      --    ---@diagnostic disable-next-line: unused-local
-      --    for key, value in pairs(result) do
-      --        print(key, value)
-      --        if string.match(value.uri, "react/index.d.ts") then
-      --            isReactDTs = true
-      --            break
-      --        end
-      --    end
-      --    if not isReactDTs then
-      --        -- this sets the value for the quickfix list
-      --        util.set_qflist(util.locations_to_items(result, "utf-8"))
-      --        -- this opens the quickfix window
-      --        vim.api.nvim_command("copen")
-      --        vim.api.nvim_command("wincmd p")
-      --    end
-      --end
     else
       util.jump_to_location(result, "utf-8", true)
     end
@@ -117,7 +98,7 @@ local attach_lsp_maps = function(_, bufnr)
 
   buf_map("n", "<leader>r", function()
     require("telescope.builtin").lsp_references({ show_line = false, include_declaration = false })
-  end, "Lsp - [G]o to [R]eferences")
+  end, "Lsp - [R]eferences")
 
   buf_map("n", "gt", function()
     vim.lsp.buf.type_definition()
