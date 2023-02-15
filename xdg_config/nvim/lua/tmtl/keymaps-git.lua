@@ -25,7 +25,7 @@ end, { desc = "[G]it [D]iff" })
 map("n", "<leader><leader>gd", function()
   vim.cmd([[DiffviewOpen origin/dev...HEAD]])
   notify('Opening diff: "origin/dev...HEAD"')
-end, { desc = "[[G]]it [D]iff - HEAD against staging" })
+end, { desc = "[[G]]it [D]iff - HEAD against origin/dev" })
 
 map("n", "<leader>gh", function()
   vim.cmd([[DiffviewFileHistory]])
