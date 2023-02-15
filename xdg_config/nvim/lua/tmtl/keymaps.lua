@@ -132,7 +132,7 @@ map("n", "<leader>qk", function()
 end, { desc = "[Q]uickfix List - previous" })
 map("n", "<leader>qq", "<cmd>cclose<cr>", { desc = "[Q]uickfix List - [Q]uit" })
 
-map("n", "<leader><leader>r", function()
+map("n", "<leader>R", function()
   vim.api.nvim_feedkeys("gg/export\nWW", "n", true)
   vim.fn.feedkeys("<leader>r")
 end, { desc = "Lsp - [G]o to file [R]eferences" })

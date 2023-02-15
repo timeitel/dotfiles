@@ -64,8 +64,6 @@ end, { desc = "[G]it [B]ranches" })
 
 map("n", "<leader>gu", function()
   vim.cmd([[TermExec cmd="git reset --soft HEAD~1"]])
-  vim.cmd([[ToggleTerm]])
-  notify("Soft resetting last commit", vim.log.levels.WARN)
 end, { desc = "[G]it [U]ndo - last commit into working directory" })
 
 map("n", "<leader>gx", function()
