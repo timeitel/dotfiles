@@ -2,6 +2,7 @@ local ok, toggleterm = pcall(require, "toggleterm")
 if not ok then
   return
 end
+local map = Utils.map
 
 -- prefix terminal number befor toggle open for multiple terminals
 toggleterm.setup({
@@ -11,3 +12,7 @@ toggleterm.setup({
     border = "curved",
   },
 })
+
+map("n", "<leader>rt", function()
+	vim.cmd([[TermExec cmd="npm run type-check"]])
+end, { desc = "[R]un [T]ypecheck" })

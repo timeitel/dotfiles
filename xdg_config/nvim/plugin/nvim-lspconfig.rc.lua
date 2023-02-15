@@ -28,6 +28,7 @@ local attach_lsp_maps = function(_, bufnr)
   end
 
   -- TODO: 1. <leader>dh if no code actions
+  -- TODO: 2. floating diag window max width
   -- TODO: format the range after accepting code action
   -- Diagnostics
   buf_map("n", "<leader>dj", function()
@@ -96,7 +97,7 @@ local attach_lsp_maps = function(_, bufnr)
     vim.lsp.buf.hover()
   end, "Lsp - Hover")
 
-  buf_map("n", "<leader>r", function()
+  buf_map("n", "R", function()
     require("telescope.builtin").lsp_references({ show_line = false, include_declaration = false })
   end, "Lsp - [R]eferences")
 
