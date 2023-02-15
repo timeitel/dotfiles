@@ -84,7 +84,6 @@ return require("packer").startup(function(use)
     "jedrzejboczar/possession.nvim",
     requires = { "nvim-lua/plenary.nvim" },
   })
-  use("ellisonleao/glow.nvim") -- preview markdown
 
   -- Styling
   use("kyazdani42/nvim-web-devicons")
