@@ -91,7 +91,7 @@ au FileType * set fo=cqrnj
 
 -- pipe tsc errors into qf list
 -- TODO: look into nvim -q <(flake8 .)
--- passing lint output into qf list
+-- passing tsc lint output into qf list
 
 vim.cmd([[
   augroup tsc

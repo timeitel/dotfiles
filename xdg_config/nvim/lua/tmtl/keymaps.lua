@@ -135,8 +135,5 @@ map("n", "<leader>qq", "<cmd>cclose<cr>", { desc = "[Q]uickfix List - [Q]uit" })
 map("n", "<leader><leader>r", function()
   vim.api.nvim_feedkeys("gg/export\nWW", "n", true)
   vim.fn.feedkeys("<leader>r")
-  -- local ts = require("telescope.builtin")
-  -- local themes = require("telescope.themes")
-  -- ts.lsp_references(themes.get_cursor({ show_line = false, include_declaration = false }))
 end, { desc = "Lsp - [G]o to file [R]eferences" })
 -- TODO: a repeat command / action like stage file -> also assign <C-.>
