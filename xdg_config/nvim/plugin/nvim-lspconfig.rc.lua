@@ -58,7 +58,7 @@ local attach_lsp_maps = function(_, bufnr)
 
   buf_map("n", "<leader><leader>dj", function()
 		assign_to_next_prev(Goto_Diagnostic, function()
-			Goto_Diagnostic({ direction = "prev" })
+			Goto_Diagnostic({ prev = true })
 		end)
 
 		Goto_Diagnostic()
@@ -66,20 +66,20 @@ local attach_lsp_maps = function(_, bufnr)
 
   buf_map("n", "<leader>dk", function()
 		assign_to_next_prev(function()
-			Goto_Diagnostic({ direction = "prev", severity = vim.diagnostic.severity.ERROR })
+			Goto_Diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
 		end, function()
 			Goto_Diagnostic({ severity = vim.diagnostic.severity.ERROR })
 		end)
 
-		Goto_Diagnostic({ direction = "prev", severity = vim.diagnostic.severity.ERROR })
+		Goto_Diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
   end, "[D]iagnostics - previous error")
 
   buf_map("n", "<leader><leader>dk", function()
 		assign_to_next_prev(function()
-			Goto_Diagnostic({ direction = "prev" })
+			Goto_Diagnostic({ prev = true })
 		end, Goto_Diagnostic)
 
-		Goto_Diagnostic({ direction = "prev" })
+		Goto_Diagnostic({ prev = true })
   end, "[D]iagnostics - previous diagnostic")
 
   buf_map("n", "<leader>da", function()
@@ -99,10 +99,17 @@ local attach_lsp_maps = function(_, bufnr)
     vim.lsp.buf.rename()
   end, "[L]sp - [R]ename")
 
-  -- unused
-  -- buf_map("n", "<leader>ls", function()
-  --   vim.lsp.buf.signature_help()
-  -- end, "[L]sp - [S]ignature")
+	buf_map("n", "<leader><leader>lr", function()
+		vim.cmd([[LspRestart]])
+	end, "[L]sp - [R]ename")
+
+	buf_map("n", "<leader>ls", function()
+		vim.cmd([[LspStop]])
+	end, "[L]sp - [S]ignature")
+
+	buf_map("n", "<leader><leader>ls", function()
+		vim.cmd([[LspStart]])
+	end, "[L]sp - [S]ignature")
 
   buf_map("n", "<leader>li", function()
     vim.lsp.buf.execute_command({ command = "_typescript.organizeImports", arguments = { vim.fn.expand("%:p") } })
