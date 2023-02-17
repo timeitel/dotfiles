@@ -128,33 +128,33 @@ map("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "[T]ab - delete [O]thers" })
 
 -- Quickfix list
 function Goto_QfItem(opts)
-	opts = opts or {}
-	local prev = opts.prev or false
+  opts = opts or {}
+  local prev = opts.prev or false
 
-	if prev then
-		vim.cmd([[cprevious]])
-	else
-		vim.cmd([[cnext]])
-	end
+  if prev then
+    vim.cmd([[cprevious]])
+  else
+    vim.cmd([[cnext]])
+  end
 
-	vim.fn.feedkeys("zz")
+  vim.fn.feedkeys("zz")
 end
 
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "[Q]uickfix [L]ist - show" })
 
 map("n", "<leader>qj", function()
-	assign_to_next_prev(Goto_QfItem, function()
-		Goto_QfItem({ prev = true })
-	end)
+  assign_to_next_prev(Goto_QfItem, function()
+    Goto_QfItem({ prev = true })
+  end)
 
-	Goto_QfItem()
+  Goto_QfItem()
 end, { desc = "[Q]uickfix List - next" })
 map("n", "<leader>qk", function()
-	assign_to_next_prev(function()
-		Goto_QfItem({ prev = true })
-	end, Goto_QfItem)
+  assign_to_next_prev(function()
+    Goto_QfItem({ prev = true })
+  end, Goto_QfItem)
 
-	Goto_QfItem({ prev = true })
+  Goto_QfItem({ prev = true })
 end, { desc = "[Q]uickfix List - previous" })
 map("n", "<leader>qq", "<cmd>cclose<cr>", { desc = "[Q]uickfix List - [Q]uit" })
 
