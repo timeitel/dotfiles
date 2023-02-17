@@ -25,16 +25,16 @@ local tsHandlers = {
 
 -- TODO: sort out typing of globals
 function Goto_Diagnostic(opts)
-	opts = opts or {}
-	local prev = opts.prev or false
+  opts = opts or {}
+  local prev = opts.prev or false
 
-	if prev then
-		vim.diagnostic.goto_prev({ float = { border = border }, severity = opts.severity })
-	else
-		vim.diagnostic.goto_next({ float = { border = border }, severity = opts.severity })
-	end
+  if prev then
+    vim.diagnostic.goto_prev({ float = { border = border }, severity = opts.severity })
+  else
+    vim.diagnostic.goto_next({ float = { border = border }, severity = opts.severity })
+  end
 
-	vim.fn.feedkeys("zz")
+  vim.fn.feedkeys("zz")
 end
 
 local attach_lsp_maps = function(_, bufnr)
@@ -47,39 +47,39 @@ local attach_lsp_maps = function(_, bufnr)
   -- TODO: format the range after accepting code action
   -- Diagnostics
   buf_map("n", "<leader>dj", function()
-		assign_to_next_prev(function()
-			Goto_Diagnostic({ severity = vim.diagnostic.severity.ERROR })
-		end, function()
-			Goto_Diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
-		end)
+    assign_to_next_prev(function()
+      Goto_Diagnostic({ severity = vim.diagnostic.severity.ERROR })
+    end, function()
+      Goto_Diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
+    end)
 
-		Goto_Diagnostic({ severity = vim.diagnostic.severity.ERROR })
+    Goto_Diagnostic({ severity = vim.diagnostic.severity.ERROR })
   end, "[D]iagnostics - next error")
 
   buf_map("n", "<leader><leader>dj", function()
-		assign_to_next_prev(Goto_Diagnostic, function()
-			Goto_Diagnostic({ prev = true })
-		end)
+    assign_to_next_prev(Goto_Diagnostic, function()
+      Goto_Diagnostic({ prev = true })
+    end)
 
-		Goto_Diagnostic()
+    Goto_Diagnostic()
   end, "[D]iagnostics - next diagnostic")
 
   buf_map("n", "<leader>dk", function()
-		assign_to_next_prev(function()
-			Goto_Diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
-		end, function()
-			Goto_Diagnostic({ severity = vim.diagnostic.severity.ERROR })
-		end)
+    assign_to_next_prev(function()
+      Goto_Diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
+    end, function()
+      Goto_Diagnostic({ severity = vim.diagnostic.severity.ERROR })
+    end)
 
-		Goto_Diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
+    Goto_Diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
   end, "[D]iagnostics - previous error")
 
   buf_map("n", "<leader><leader>dk", function()
-		assign_to_next_prev(function()
-			Goto_Diagnostic({ prev = true })
-		end, Goto_Diagnostic)
+    assign_to_next_prev(function()
+      Goto_Diagnostic({ prev = true })
+    end, Goto_Diagnostic)
 
-		Goto_Diagnostic({ prev = true })
+    Goto_Diagnostic({ prev = true })
   end, "[D]iagnostics - previous diagnostic")
 
   buf_map("n", "<leader>da", function()
@@ -99,17 +99,17 @@ local attach_lsp_maps = function(_, bufnr)
     vim.lsp.buf.rename()
   end, "[L]sp - [R]ename")
 
-	buf_map("n", "<leader><leader>lr", function()
-		vim.cmd([[LspRestart]])
-	end, "[L]sp - [R]ename")
+  buf_map("n", "<leader><leader>lr", function()
+    vim.cmd([[LspRestart]])
+  end, "[L]sp - [R]ename")
 
-	buf_map("n", "<leader>ls", function()
-		vim.cmd([[LspStop]])
-	end, "[L]sp - [S]ignature")
+  buf_map("n", "<leader>ls", function()
+    vim.cmd([[LspStop]])
+  end, "[L]sp - [S]ignature")
 
-	buf_map("n", "<leader><leader>ls", function()
-		vim.cmd([[LspStart]])
-	end, "[L]sp - [S]ignature")
+  buf_map("n", "<leader><leader>ls", function()
+    vim.cmd([[LspStart]])
+  end, "[L]sp - [S]ignature")
 
   buf_map("n", "<leader>li", function()
     vim.lsp.buf.execute_command({ command = "_typescript.organizeImports", arguments = { vim.fn.expand("%:p") } })
@@ -120,7 +120,7 @@ local attach_lsp_maps = function(_, bufnr)
   end, "Lsp - signature")
 
   buf_map("n", "gd", function()
-    vim.lsp.buf.definition()
+    require("telescope.builtin").lsp_definitions()
 
     vim.defer_fn(function()
       vim.fn.feedkeys("zz")
@@ -198,7 +198,7 @@ nvim_lsp.tsserver.setup({
   capabilities = capabilities,
 })
 
-nvim_lsp.sumneko_lua.setup({
+nvim_lsp.lua_ls.setup({
   on_attach = attach_lsp_maps,
   settings = {
     Lua = {
