@@ -1,5 +1,5 @@
 local ls = require("luasnip")
-local s = ls.snippet
+local snippet = ls.snippet
 local f = ls.function_node
 local text = ls.text_node
 local insert = ls.insert_node
@@ -20,7 +20,7 @@ end
 
 ls.add_snippets(nil, {
   all = {
-    s({
+    snippet({
       trig = "fc",
       namr = "Functional component",
       dscr = "React functional component",
@@ -36,7 +36,7 @@ ls.add_snippets(nil, {
       text({ ");" }),
       text({ "};" }),
     }),
-    s({
+    snippet({
       trig = "dar",
       namr = "Destructured array",
       dscr = "JS destructured array",
@@ -48,7 +48,7 @@ ls.add_snippets(nil, {
       text("] = "),
       insert(3, "Object"),
     }),
-    s({
+    snippet({
       trig = "dob",
       namr = "Destructured object",
       dscr = "JS destructured object",
@@ -59,7 +59,7 @@ ls.add_snippets(nil, {
       text(" = "),
       insert(1, "Object"),
     }),
-    s({
+    snippet({
       trig = "clg",
       namr = "Console log",
       dscr = "JS console log",
@@ -68,7 +68,7 @@ ls.add_snippets(nil, {
       insert(1),
       text(")"),
     }),
-    s({
+    snippet({
       trig = "nfn",
       namr = "Named function",
       dscr = "JS named function",
@@ -80,6 +80,18 @@ ls.add_snippets(nil, {
       text(") => {"),
       insert(3),
       text("}"),
+    }),
+    snippet({
+      trig = "int",
+      namr = "Interface",
+      dscr = "TypeScript interface",
+    }, {
+      text("interface "),
+      insert(1, "Props"),
+      text({ " {", '' }),
+      text("    "),
+      insert(2),
+      text({ "", "}"}),
     }),
   },
 })

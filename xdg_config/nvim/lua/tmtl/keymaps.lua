@@ -106,6 +106,12 @@ map("v", "<leader>gr", function()
   vim.fn.feedkeys(":%s/" .. text)
 end, { desc = "[R]eplace in file - word under cursor" })
 
+map("n", "<leader>sii", function()
+	require("treesitter_indent_object.textobj").select_indent_inner()
+	vim.fn.feedkeys(":sort")
+	vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<Cr>"'), "n", true)
+end, { desc = "[S]ort [I]nside [I]ndent" })
+
 -- Buffers
 map("n", "<leader>ba", "<cmd>:%bd<cr>", { desc = "[B]uffer - delete [A]ll" })
 map("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>", { desc = "[B]uffer - delete [O]thers" })
