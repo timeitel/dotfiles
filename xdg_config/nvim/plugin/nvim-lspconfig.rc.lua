@@ -1,3 +1,4 @@
+local assign_to_next_prev = Utils.assign_to_next_prev
 local ok, nvim_lsp = pcall(require, "lspconfig")
 if not ok then
   return
@@ -22,6 +23,20 @@ local tsHandlers = {
   end,
 }
 
+-- TODO: sort out typing of globals
+function Goto_Diagnostic(opts)
+	opts = opts or {}
+	local prev = opts.prev or false
+
+	if prev then
+		vim.diagnostic.goto_prev({ float = { border = border }, severity = opts.severity })
+	else
+		vim.diagnostic.goto_next({ float = { border = border }, severity = opts.severity })
+	end
+
+	vim.fn.feedkeys("zz")
+end
+
 local attach_lsp_maps = function(_, bufnr)
   local function buf_map(m, k, v, d)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr, desc = d })
@@ -32,23 +47,39 @@ local attach_lsp_maps = function(_, bufnr)
   -- TODO: format the range after accepting code action
   -- Diagnostics
   buf_map("n", "<leader>dj", function()
-    vim.diagnostic.goto_next({ float = { border = border }, severity = vim.diagnostic.severity.ERROR })
-    vim.fn.feedkeys("zz")
+		assign_to_next_prev(function()
+			Goto_Diagnostic({ severity = vim.diagnostic.severity.ERROR })
+		end, function()
+			Goto_Diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
+		end)
+
+		Goto_Diagnostic({ severity = vim.diagnostic.severity.ERROR })
   end, "[D]iagnostics - next error")
 
   buf_map("n", "<leader><leader>dj", function()
-    vim.diagnostic.goto_next({ float = { border = border } })
-    vim.fn.feedkeys("zz")
+		assign_to_next_prev(Goto_Diagnostic, function()
+			Goto_Diagnostic({ direction = "prev" })
+		end)
+
+		Goto_Diagnostic()
   end, "[D]iagnostics - next diagnostic")
 
   buf_map("n", "<leader>dk", function()
-    vim.diagnostic.goto_prev({ float = { border = border }, severity = vim.diagnostic.severity.ERROR })
-    vim.fn.feedkeys("zz")
+		assign_to_next_prev(function()
+			Goto_Diagnostic({ direction = "prev", severity = vim.diagnostic.severity.ERROR })
+		end, function()
+			Goto_Diagnostic({ severity = vim.diagnostic.severity.ERROR })
+		end)
+
+		Goto_Diagnostic({ direction = "prev", severity = vim.diagnostic.severity.ERROR })
   end, "[D]iagnostics - previous error")
 
   buf_map("n", "<leader><leader>dk", function()
-    vim.diagnostic.goto_prev({ float = { border = border } })
-    vim.fn.feedkeys("zz")
+		assign_to_next_prev(function()
+			Goto_Diagnostic({ direction = "prev" })
+		end, Goto_Diagnostic)
+
+		Goto_Diagnostic({ direction = "prev" })
   end, "[D]iagnostics - previous diagnostic")
 
   buf_map("n", "<leader>da", function()
@@ -68,9 +99,10 @@ local attach_lsp_maps = function(_, bufnr)
     vim.lsp.buf.rename()
   end, "[L]sp - [R]ename")
 
-  buf_map("n", "<leader>ls", function()
-    vim.lsp.buf.signature_help()
-  end, "[L]sp - [S]ignature")
+  -- unused
+  -- buf_map("n", "<leader>ls", function()
+  --   vim.lsp.buf.signature_help()
+  -- end, "[L]sp - [S]ignature")
 
   buf_map("n", "<leader>li", function()
     vim.lsp.buf.execute_command({ command = "_typescript.organizeImports", arguments = { vim.fn.expand("%:p") } })

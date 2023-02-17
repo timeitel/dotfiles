@@ -1,3 +1,4 @@
+local assign_to_next_prev = Utils.assign_to_next_prev
 local getVisualSelection = Utils.getVisualSelection
 
 local map = Utils.map
@@ -94,12 +95,12 @@ map("n", "<leader>T", function()
   vim.fn.feedkeys("gccA")
 end, { desc = "Insert - [T]ODO comment" })
 
-map("n", "<leader>R", function()
+map("n", "<leader>gr", function()
   vim.fn.feedkeys(":%s/")
   vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<c-r>\\<c-w>"'), "n", true)
 end, { desc = "[R]eplace in file - word under cursor" })
 
-map("v", "<leader>R", function()
+map("v", "<leader>gr", function()
   local text = getVisualSelection()
   vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<esc>"'), "n", true)
   vim.fn.feedkeys(":%s/" .. text)
@@ -120,18 +121,38 @@ map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "[T]ab [Q]uit" })
 map("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "[T]ab - delete [O]thers" })
 
 -- Quickfix list
+function Goto_QfItem(opts)
+	opts = opts or {}
+	local prev = opts.prev or false
+
+	if prev then
+		vim.cmd([[cprevious]])
+	else
+		vim.cmd([[cnext]])
+	end
+
+	vim.fn.feedkeys("zz")
+end
+
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "[Q]uickfix [L]ist - show" })
--- TODO: similar to nap.nvim -> attach the repeat operation to shift or something so qj once, then can repeat shift after
+
 map("n", "<leader>qj", function()
-  vim.cmd([[cnext]])
-  vim.fn.feedkeys("zz")
+	assign_to_next_prev(Goto_QfItem, function()
+		Goto_QfItem({ prev = true })
+	end)
+
+	Goto_QfItem()
 end, { desc = "[Q]uickfix List - next" })
 map("n", "<leader>qk", function()
-  vim.cmd([[cprevious]])
-  vim.fn.feedkeys("zz")
+	assign_to_next_prev(function()
+		Goto_QfItem({ prev = true })
+	end, Goto_QfItem)
+
+	Goto_QfItem({ prev = true })
 end, { desc = "[Q]uickfix List - previous" })
 map("n", "<leader>qq", "<cmd>cclose<cr>", { desc = "[Q]uickfix List - [Q]uit" })
 
+-- TODO: find based on treesitter export node
 map("n", "<leader>R", function()
   vim.api.nvim_feedkeys("gg/export\nWW", "n", true)
   vim.fn.feedkeys("<leader>r")
