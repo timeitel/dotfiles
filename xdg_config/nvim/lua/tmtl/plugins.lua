@@ -49,17 +49,17 @@ return require("packer").startup(function(use)
       require("nvim-treesitter.install").update({ with_sync = true })
     end,
   })
-  use({ "nvim-treesitter/nvim-treesitter-context" })
-  use({ "nvim-treesitter/nvim-treesitter-textobjects" })
-	use({ "kiyoon/treesitter-indent-object.nvim" })
+  use("nvim-treesitter/nvim-treesitter-context")
+  use("nvim-treesitter/nvim-treesitter-textobjects")
+  use("kiyoon/treesitter-indent-object.nvim")
 
   -- Git
-  use({ "lewis6991/gitsigns.nvim" })
+  use("lewis6991/gitsigns.nvim")
   use({ "TimUntersberger/neogit", requires = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" } })
-  use({ "bobrown101/git-blame.nvim" })
+  use("bobrown101/git-blame.nvim")
 
   -- Notifications
-  use({ "rcarriga/nvim-notify" })
+  use("rcarriga/nvim-notify")
   use("j-hui/fidget.nvim")
 
   -- 10000x developer
@@ -84,6 +84,7 @@ return require("packer").startup(function(use)
     "jedrzejboczar/possession.nvim",
     requires = { "nvim-lua/plenary.nvim" },
   })
+  use("smjonas/live-command.nvim")
 
   -- Styling
   use("kyazdani42/nvim-web-devicons")
