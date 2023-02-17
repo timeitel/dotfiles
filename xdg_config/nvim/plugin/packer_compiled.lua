@@ -155,11 +155,6 @@ _G.packer_plugins = {
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["glow.nvim"] = {
-    loaded = true,
-    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/glow.nvim",
-    url = "https://github.com/ellisonleao/glow.nvim"
-  },
   harpoon = {
     loaded = true,
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -174,6 +169,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/leap.nvim",
     url = "https://github.com/ggandor/leap.nvim"
+  },
+  ["live-command.nvim"] = {
+    loaded = true,
+    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/live-command.nvim",
+    url = "https://github.com/smjonas/live-command.nvim"
   },
   ["lspkind-nvim"] = {
     loaded = true,
@@ -291,6 +291,11 @@ _G.packer_plugins = {
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
+  ["treesitter-indent-object.nvim"] = {
+    loaded = true,
+    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/treesitter-indent-object.nvim",
+    url = "https://github.com/kiyoon/treesitter-indent-object.nvim"
+  },
   ["vim-ReplaceWithRegister"] = {
     loaded = true,
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/vim-ReplaceWithRegister",
@@ -300,23 +305,18 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/vim-commentary",
     url = "https://github.com/tpope/vim-commentary"
-  },
-  ["vim-indent-object"] = {
-    loaded = true,
-    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/vim-indent-object",
-    url = "https://github.com/michaeljsmith/vim-indent-object"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: colorful-winsep.nvim
-time([[Config for colorful-winsep.nvim]], true)
-try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20colorful-winsep\frequire\0", "config", "colorful-winsep.nvim")
-time([[Config for colorful-winsep.nvim]], false)
 -- Config for: nvim-surround
 time([[Config for nvim-surround]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
 time([[Config for nvim-surround]], false)
+-- Config for: colorful-winsep.nvim
+time([[Config for colorful-winsep.nvim]], true)
+try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20colorful-winsep\frequire\0", "config", "colorful-winsep.nvim")
+time([[Config for colorful-winsep.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
