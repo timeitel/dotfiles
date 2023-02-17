@@ -51,6 +51,7 @@ return require("packer").startup(function(use)
   })
   use({ "nvim-treesitter/nvim-treesitter-context" })
   use({ "nvim-treesitter/nvim-treesitter-textobjects" })
+	use({ "kiyoon/treesitter-indent-object.nvim" })
 
   -- Git
   use({ "lewis6991/gitsigns.nvim" })
@@ -65,7 +66,6 @@ return require("packer").startup(function(use)
   use("lewis6991/impatient.nvim")
   use("bkad/CamelCaseMotion")
   use("inkarkat/vim-ReplaceWithRegister")
-  use("michaeljsmith/vim-indent-object")
   use("tpope/vim-commentary")
   use({
     "kylechui/nvim-surround",
