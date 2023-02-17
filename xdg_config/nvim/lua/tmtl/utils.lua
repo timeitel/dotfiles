@@ -28,9 +28,7 @@ Utils.shallow_copy = function(t)
   return t2
 end
 
--- TODO: shoule try this?
-Utils.assign_to_next_previous = function(next, previous)
-  -- assign to shift
-  local opts = { silent = true, noremap = true }
-  vim.keymap.set(m, k, v, opts)
+Utils.assign_to_next_prev = function(next, prev)
+	Utils.map("n", "<tab>", next, { desc = "Next - special" })
+	Utils.map("n", "<S-tab>", prev, { desc = "Previous - special" })
 end
