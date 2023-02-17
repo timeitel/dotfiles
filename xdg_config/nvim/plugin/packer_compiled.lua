@@ -155,11 +155,6 @@ _G.packer_plugins = {
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["glow.nvim"] = {
-    loaded = true,
-    path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/glow.nvim",
-    url = "https://github.com/ellisonleao/glow.nvim"
-  },
   harpoon = {
     loaded = true,
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -174,6 +169,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/leap.nvim",
     url = "https://github.com/ggandor/leap.nvim"
+  },
+  ["live-command.nvim"] = {
+    loaded = true,
+    path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/live-command.nvim",
+    url = "https://github.com/smjonas/live-command.nvim"
   },
   ["lsp-format-modifications.nvim"] = {
     loaded = true,
