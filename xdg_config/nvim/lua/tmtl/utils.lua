@@ -29,6 +29,11 @@ Utils.shallow_copy = function(t)
 end
 
 Utils.assign_to_next_prev = function(next, prev)
-	Utils.map("n", "<tab>", next, { desc = "Next - special" })
-	Utils.map("n", "<S-tab>", prev, { desc = "Previous - special" })
+  Utils.map("n", "<tab>", next, { desc = "Next - special" })
+  Utils.map("n", "<S-tab>", prev, { desc = "Previous - special" })
+end
+
+-- TODO: use like in hx
+Utils.assign_to_repeat_cmd = function(cmd)
+  Utils.map("n", "<C-.>", cmd, { desc = "Repeat command" })
 end
