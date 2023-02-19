@@ -15,19 +15,19 @@ local function goto_diagnostic(opts)
   vim.fn.feedkeys("zz")
 end
 
+-- Default next_prev action to next_diagnostic
+assign_to_next_prev(function()
+  goto_diagnostic({ severity = vim.diagnostic.severity.ERROR })
+end, function()
+  goto_diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
+end)
+
 local M = {}
 
 M.attach = function(bufnr)
   local function buf_map(m, k, v, d)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr, desc = d })
   end
-
-  -- Default next_prev action to next_diagnostic
-  assign_to_next_prev(function()
-    goto_diagnostic({ severity = vim.diagnostic.severity.ERROR })
-  end, function()
-    goto_diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
-  end)
 
   -- TODO: 1. <leader>dh if no code actions
   -- TODO: 2. floating diag window max width

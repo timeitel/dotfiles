@@ -115,7 +115,7 @@ map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "[T]ab [Q]uit" })
 map("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "[T]ab - delete [O]thers" })
 
 -- Quickfix list
-function Goto_QfItem(opts)
+local function goto_qf_item(opts)
   opts = opts or {}
   local prev = opts.prev or false
 
@@ -131,18 +131,18 @@ end
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "[Q]uickfix [L]ist - show" })
 
 map("n", "<leader>qj", function()
-  assign_to_next_prev(Goto_QfItem, function()
-    Goto_QfItem({ prev = true })
+  assign_to_next_prev(goto_qf_item, function()
+    goto_qf_item({ prev = true })
   end)
 
-  Goto_QfItem()
+  goto_qf_item()
 end, { desc = "[Q]uickfix List - next" })
 map("n", "<leader>qk", function()
   assign_to_next_prev(function()
-    Goto_QfItem({ prev = true })
-  end, Goto_QfItem)
+    goto_qf_item({ prev = true })
+  end, goto_qf_item)
 
-  Goto_QfItem({ prev = true })
+  goto_qf_item({ prev = true })
 end, { desc = "[Q]uickfix List - previous" })
 map("n", "<leader>qq", "<cmd>cclose<cr>", { desc = "[Q]uickfix List - [Q]uit" })
 
