@@ -7,7 +7,7 @@ M.map = function(m, k, v, opts)
   vim.keymap.set(m, k, v, opts)
 end
 
-M.getVisualSelection = function()
+M.get_visual_selection = function()
   vim.cmd('noau normal! "vy"')
   local text = vim.fn.getreg("v")
   vim.fn.setreg("v", {})
