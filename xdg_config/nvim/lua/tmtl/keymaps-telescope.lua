@@ -2,7 +2,7 @@ local ts = require("telescope.builtin")
 local fb = require("telescope").extensions.file_browser
 local notify_ext = require("telescope").extensions.notify
 local map = require("tmtl.utils").map
-local getVisualSelection = require("tmtl.utils").getVisualSelection
+local get_visual_selection = require("tmtl.utils").get_visual_selection
 
 map("n", "<C-p>", function()
   ts.find_files({ hidden = true })
@@ -13,7 +13,7 @@ map("n", "<leader>ff", function()
 end, { desc = "[F]ind in [F]iles - live grep" })
 
 map("v", "<leader>ff", function()
-  local text = getVisualSelection()
+  local text = get_visual_selection()
   ts.live_grep({ default_text = text })
 end, { desc = "[F]ind in [F]iles - live grep selection" })
 
@@ -26,7 +26,7 @@ map("n", "<leader>*", function()
 end, { desc = "Find - word under cursor" })
 
 map("v", "<leader>*", function()
-  local text = getVisualSelection()
+  local text = get_visual_selection()
   ts.grep_string({ search = text })
 end, { desc = "Find - word highlighted" })
 

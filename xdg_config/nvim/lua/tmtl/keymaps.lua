@@ -1,5 +1,5 @@
 local assign_to_next_prev = require("tmtl.utils").assign_to_next_prev
-local getVisualSelection = require("tmtl.utils").getVisualSelection
+local get_visual_selection = require("tmtl.utils").get_visual_selection
 local map = require("tmtl.utils").map
 
 vim.g.mapleader = " "
@@ -45,7 +45,7 @@ map("n", "<leader>/", function()
 end, { desc = "Find - exact match" })
 
 map("v", "<leader>/", function()
-  local text = getVisualSelection()
+  local text = get_visual_selection()
   local search = string.format("/\\<%s\\>", text)
   vim.fn.feedkeys(search)
 end, { desc = "Find - exact match" })
@@ -89,7 +89,7 @@ map("n", "<leader>gr", function()
 end, { desc = "[R]eplace in file - word under cursor" })
 
 map("v", "<leader>gr", function()
-  local text = getVisualSelection()
+  local text = get_visual_selection()
   vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<esc>"'), "n", true)
   vim.fn.feedkeys(":%s/" .. text)
 end, { desc = "[R]eplace in file - word under cursor" })
