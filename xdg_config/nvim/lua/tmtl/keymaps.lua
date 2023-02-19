@@ -36,17 +36,6 @@ map("n", "<C-i>", "<C-i>zz", { desc = "Jump - forward" })
 -- Text search
 map("n", "n", "nzz", { desc = "Next search match" })
 map("n", "N", "Nzz", { desc = "Previous search match" })
--- TODO: also zz with g; and g, and also look into tab for getting out of closing pair
--- TODO: store qf movement into . operation
-
--- TODO: fix
--- map({ "n", "v" }, "*", function()
---   vim.fn.feedkeys("*")
---   -- vim.defer_fn(function()
---   --   vim.fn.feedkeys("zz")
---   -- end, 10)
--- end, { desc = "Previous search match" })
--- map({ "n", "v" }, "N", "Nzz", { desc = "Previous search match" })
 
 map("n", "Y", "yy", { desc = "Yank line" })
 map("n", "<leader>i", "i <ESC>i", { desc = "Enter insert mode with proceeding space" })
@@ -107,9 +96,9 @@ map("v", "<leader>gr", function()
 end, { desc = "[R]eplace in file - word under cursor" })
 
 map("n", "<leader>sii", function()
-	require("treesitter_indent_object.textobj").select_indent_inner()
-	vim.fn.feedkeys(":sort")
-	vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<Cr>"'), "n", true)
+  require("treesitter_indent_object.textobj").select_indent_inner()
+  vim.fn.feedkeys(":sort")
+  vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<Cr>"'), "n", true)
 end, { desc = "[S]ort [I]nside [I]ndent" })
 
 -- Buffers
