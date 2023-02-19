@@ -1,4 +1,4 @@
-local map = Utils.map
+local map = require("tmtl.utils").map
 
 map({ "x", "o" }, "ai", "<Cmd>lua require'treesitter_indent_object.textobj'.select_indent_outer()<CR>")
 -- ensure selecting entire line (or just use Vai)

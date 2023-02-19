@@ -1,4 +1,4 @@
-local map = Utils.map
+local map = require("tmtl.utils").map
 
 map("n", "<leader>fs", function()
   require("telescope").extensions.possession.list()

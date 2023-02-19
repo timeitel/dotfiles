@@ -52,7 +52,7 @@ nvim_lsp.lua_ls.setup({
         callSnippet = "Replace",
       },
       diagnostics = {
-        globals = { "vim", "hs", "Utils" },
+        globals = { "vim", "hs" },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files

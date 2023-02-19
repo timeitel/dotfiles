@@ -1,13 +1,13 @@
-Utils = {}
+local M = {}
 
-Utils.map = function(m, k, v, opts)
+M.map = function(m, k, v, opts)
   opts = opts or {}
   opts.silent = true
   opts.noremap = true
   vim.keymap.set(m, k, v, opts)
 end
 
-Utils.getVisualSelection = function()
+M.getVisualSelection = function()
   vim.cmd('noau normal! "vy"')
   local text = vim.fn.getreg("v")
   vim.fn.setreg("v", {})
@@ -20,7 +20,7 @@ Utils.getVisualSelection = function()
   end
 end
 
-Utils.shallow_copy = function(t)
+M.shallow_copy = function(t)
   local t2 = {}
   for k, v in pairs(t) do
     t2[k] = v
@@ -28,12 +28,14 @@ Utils.shallow_copy = function(t)
   return t2
 end
 
-Utils.assign_to_next_prev = function(next, prev)
-  Utils.map("n", "<tab>", next, { desc = "Next - special" })
-  Utils.map("n", "<S-tab>", prev, { desc = "Previous - special" })
+M.assign_to_next_prev = function(next, prev)
+  M.map("n", "<tab>", next, { desc = "Next - special" })
+  M.map("n", "<S-tab>", prev, { desc = "Previous - special" })
 end
 
 -- TODO: use like in hx
-Utils.assign_to_repeat_cmd = function(cmd)
-  Utils.map("n", "<C-.>", cmd, { desc = "Repeat command" })
+M.assign_to_repeat_cmd = function(cmd)
+  M.map("n", "<C-.>", cmd, { desc = "Repeat command" })
 end
+
+return M

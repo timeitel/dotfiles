@@ -1,8 +1,8 @@
 local ts = require("telescope.builtin")
 local fb = require("telescope").extensions.file_browser
 local notify_ext = require("telescope").extensions.notify
-local map = Utils.map
-local getVisualSelection = Utils.getVisualSelection
+local map = require("tmtl.utils").map
+local getVisualSelection = require("tmtl.utils").getVisualSelection
 
 map("n", "<C-p>", function()
   ts.find_files({ hidden = true })
