@@ -1,4 +1,4 @@
-local map = Utils.map
+local map = require("tmtl.utils").map
 local harpoon_ui = require("harpoon.ui")
 
 map("n", "<leader>ea", function()

@@ -1,7 +1,6 @@
-local assign_to_next_prev = Utils.assign_to_next_prev
-local getVisualSelection = Utils.getVisualSelection
-
-local map = Utils.map
+local assign_to_next_prev = require("tmtl.utils").assign_to_next_prev
+local getVisualSelection = require("tmtl.utils").getVisualSelection
+local map = require("tmtl.utils").map
 
 vim.g.mapleader = " "
 vim.g.camelcasemotion_key = "<leader>"

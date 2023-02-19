@@ -1,4 +1,4 @@
-local map = Utils.map
+local map = require("tmtl.utils").map
 
 map("n", "q", function()
   vim.cmd([[cclose]])

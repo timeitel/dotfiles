@@ -5,7 +5,7 @@ local actions = require("telescope.actions")
 local actions_layout = require("telescope.actions.layout")
 local notify = require("notify")
 local fb_actions = telescope.extensions.file_browser.actions
-local copy = Utils.shallow_copy
+local copy = require("tmtl.utils").shallow_copy
 
 -- Telescope defaults
 local default_insert_mappings = {

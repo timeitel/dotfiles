@@ -1,4 +1,4 @@
-local assign_to_next_prev = Utils.assign_to_next_prev
+local assign_to_next_prev = require("tmtl.utils").assign_to_next_prev
 
 local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 

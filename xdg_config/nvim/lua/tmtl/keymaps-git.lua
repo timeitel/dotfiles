@@ -1,4 +1,4 @@
-local map = Utils.map
+local map = require("tmtl.utils").map
 local ts = require("telescope.builtin")
 local diffview_actions = require("diffview.actions")
 local neogit = require("neogit")
