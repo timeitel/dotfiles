@@ -35,6 +35,8 @@ map("n", "<C-i>", "<C-i>zz", { desc = "Jump - forward" })
 -- Text search
 map("n", "n", "nzz", { desc = "Next search match" })
 map("n", "N", "Nzz", { desc = "Previous search match" })
+map("n", "*", "*zz", { desc = "Next search match" })
+map("n", "#", "#zz", { desc = "Next search match" })
 
 map("n", "Y", "yy", { desc = "Yank line" })
 map("n", "<leader>i", "i <ESC>i", { desc = "Enter insert mode with proceeding space" })
