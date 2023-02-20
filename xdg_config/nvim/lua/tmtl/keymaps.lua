@@ -1,5 +1,6 @@
 local assign_to_next_prev = require("tmtl.utils").assign_to_next_prev
 local get_visual_selection = require("tmtl.utils").get_visual_selection
+local assign_to_repeat_cmd = require("tmtl.utils").assign_to_repeat_cmd
 local map = require("tmtl.utils").map
 
 vim.g.mapleader = " "
@@ -34,9 +35,9 @@ map("n", "<C-i>", "<C-i>zz", { desc = "Jump - forward" })
 
 -- Text search
 map("n", "n", "nzz", { desc = "Next search match" })
-map("n", "N", "Nzz", { desc = "Previous search match" })
 map("n", "*", "*zz", { desc = "Next search match" })
-map("n", "#", "#zz", { desc = "Next search match" })
+map("n", "N", "Nzz", { desc = "Previous search match" })
+map("n", "#", "#zz", { desc = "Previous search match" })
 
 map("n", "Y", "yy", { desc = "Yank line" })
 map("n", "<leader>i", "i <ESC>i", { desc = "Enter insert mode with proceeding space" })
@@ -100,6 +101,12 @@ map("n", "<leader>sii", function()
   require("treesitter_indent_object.textobj").select_indent_inner()
   vim.fn.feedkeys(":sort")
   vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<Cr>"'), "n", true)
+
+	assign_to_repeat_cmd(function()
+		require("treesitter_indent_object.textobj").select_indent_inner()
+		vim.fn.feedkeys(":sort")
+		vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<Cr>"'), "n", true)
+	end)
 end, { desc = "[S]ort [I]nside [I]ndent" })
 
 -- Buffers
