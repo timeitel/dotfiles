@@ -153,4 +153,3 @@ map("n", "<leader>R", function()
   vim.api.nvim_feedkeys("gg/export\nWW", "n", true)
   vim.fn.feedkeys("<leader>r")
 end, { desc = "Lsp - [G]o to file [R]eferences" })
--- TODO: a repeat command / action like stage file -> also assign <C-.>
