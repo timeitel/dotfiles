@@ -33,9 +33,11 @@ M.assign_to_next_prev = function(next, prev)
   M.map("n", "<S-tab>", prev, { desc = "Previous - special" })
 end
 
--- TODO: use like in hx
+-- TODO: use like in hx, stage file
 M.assign_to_repeat_cmd = function(cmd)
   M.map("n", "<C-.>", cmd, { desc = "Repeat command" })
 end
 
 return M
+
+-- TODO: call either tsc or eslint . to populate qf list
