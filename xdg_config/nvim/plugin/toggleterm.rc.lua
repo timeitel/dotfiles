@@ -14,5 +14,5 @@ toggleterm.setup({
 })
 
 map("n", "<leader>rt", function()
-  vim.cmd([[TermExec cmd="npm run type-check"]])
+	vim.cmd([[TermExec cmd="npm run type-check && npm run lint-ts"]])
 end, { desc = "[R]un [T]ypecheck" })
