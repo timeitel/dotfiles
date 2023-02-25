@@ -64,6 +64,7 @@ cmp.setup({
   mapping = mapping,
   sources = cmp.config.sources({
     { name = "nvim_lsp", keyword_length = 2, max_item_count = 10 },
+    { name = "cmp_tabnine", max_item_count = 10 },
     { name = "nvim_lua", keyword_length = 2, max_item_count = 10 },
     { name = "path" },
     { name = "luasnip", keyword_length = 2, max_item_count = 10 },
@@ -82,6 +83,7 @@ cmp.setup({
         nvim_lua = "[api]",
         path = "[path]",
         luasnip = "[snip]",
+        cmp_tabnine = "[TN]",
       },
     }),
   },
