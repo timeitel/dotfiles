@@ -89,6 +89,12 @@ map("n", "<leader>T", function()
   vim.fn.feedkeys("gccA")
 end, { desc = "Insert - [T]ODO comment" })
 
+map("i", "<c-t>", function()
+  vim.fn.feedkeys("TODO: ")
+  vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<esc>"'), "n", true)
+  vim.fn.feedkeys("gccA")
+end, { desc = "Insert - [T]ODO comment" })
+
 map("n", "<leader>gr", function()
   vim.fn.feedkeys(":%s/")
   vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<c-r>\\<c-w>"'), "n", true)
