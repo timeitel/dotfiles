@@ -33,6 +33,9 @@ map("n", "<C-u>", "<C-u>zz", { desc = "Jump - up" })
 map("n", "<C-o>", "<C-o>zz", { desc = "Jump - back" })
 map("n", "<C-i>", "<C-i>zz", { desc = "Jump - forward" })
 
+map("n", "<leader>o", "o<esc>o", { desc = "Insert new lines" })
+map("n", "<leader>O", "O<esc>O", { desc = "Insert new lines" })
+
 -- Text search
 map("n", "n", "nzz", { desc = "Next search match" })
 map("n", "*", "*zz", { desc = "Next search match" })
@@ -102,11 +105,11 @@ map("n", "<leader>sii", function()
   vim.fn.feedkeys(":sort")
   vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<Cr>"'), "n", true)
 
-	assign_to_repeat_cmd(function()
-		require("treesitter_indent_object.textobj").select_indent_inner()
-		vim.fn.feedkeys(":sort")
-		vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<Cr>"'), "n", true)
-	end)
+  assign_to_repeat_cmd(function()
+    require("treesitter_indent_object.textobj").select_indent_inner()
+    vim.fn.feedkeys(":sort")
+    vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<Cr>"'), "n", true)
+  end)
 end, { desc = "[S]ort [I]nside [I]ndent" })
 
 -- Buffers
