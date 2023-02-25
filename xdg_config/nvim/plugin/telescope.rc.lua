@@ -63,7 +63,7 @@ local file_browser_normal_mappings = {
   ["x"] = fb_actions.remove,
   ["h"] = fb_actions.goto_parent_dir,
   ["H"] = fb_actions.goto_cwd,
-  ["l"] = actions.select_default + actions.center
+  ["l"] = actions.select_default,
 }
 
 telescope.setup({
