@@ -121,7 +121,7 @@ _G.packer_plugins = {
   },
   ["cmp-tabnine"] = {
     loaded = true,
-    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
+    path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
     url = "https://github.com/tzachar/cmp-tabnine"
   },
   ["cmp-zsh"] = {
