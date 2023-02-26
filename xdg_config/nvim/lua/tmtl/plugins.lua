@@ -70,7 +70,6 @@ return require("packer").startup(function(use)
   use("tpope/vim-commentary")
   use({
     "kylechui/nvim-surround",
-    tag = "*",
     config = function()
       require("nvim-surround").setup()
     end,
