@@ -30,7 +30,6 @@ default_normal_mappings["<leader>qf"] = function(bfnr)
 end
 default_normal_mappings["c"] = false
 default_normal_mappings["q"] = actions.close
-default_normal_mappings["l"] = actions.select_default + actions.center
 
 -- Telescope File-browser
 local file_browser_normal_mappings = {

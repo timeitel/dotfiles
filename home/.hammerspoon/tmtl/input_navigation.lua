@@ -90,6 +90,7 @@ enableHotkeyOutsideTerminal(
     hs.eventtap.keyStroke({}, "pagedown", 0)
   end)
 )
+-- TODO: only scroll half page
 enableHotkeyOutsideTerminal(
   wf,
   hs.hotkey.new({ "ctrl" }, "y", function()
