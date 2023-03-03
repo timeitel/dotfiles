@@ -89,3 +89,4 @@ require("diffview").setup({
 -- vim.api.nvim_set_hl(0, "DiffviewStatusAdded", { guibg = "#282c34" })
 -- vim.api.nvim_set_hl(0, "DiffviewStatusDeleted", { guibg = "#282c34" })
 vim.api.nvim_set_hl(0, "DiffChange", { bg = "#323a5a" })
+-- TODO: unable to jump to next diff when file is staged
