@@ -107,7 +107,7 @@ M.attach = function(bufnr)
   end, "Lsp - signature")
 
   buf_map("n", "gd", function()
-    require("telescope.builtin").lsp_definitions()
+		vim.lsp.buf.definition()
 
     vim.defer_fn(function()
       vim.fn.feedkeys("zz")
