@@ -215,6 +215,11 @@ _G.packer_plugins = {
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
   },
+  ["nvim-cheat.sh"] = {
+    loaded = true,
+    path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/nvim-cheat.sh",
+    url = "https://github.com/RishabhRD/nvim-cheat.sh"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -270,6 +275,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  popfix = {
+    loaded = true,
+    path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/popfix",
+    url = "https://github.com/RishabhRD/popfix"
   },
   ["possession.nvim"] = {
     loaded = true,

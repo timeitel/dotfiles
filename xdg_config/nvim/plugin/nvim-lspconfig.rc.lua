@@ -26,7 +26,7 @@ local tsHandlers = {
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-nvim_lsp.eslint.setup()
+nvim_lsp.eslint.setup({})
 
 nvim_lsp.tsserver.setup({
   on_attach = function(client, bufnr)
