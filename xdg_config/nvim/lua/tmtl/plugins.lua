@@ -85,6 +85,8 @@ return require("packer").startup(function(use)
     requires = { "nvim-lua/plenary.nvim" },
   })
   use("smjonas/live-command.nvim")
+  use("RishabhRD/popfix")
+  use("RishabhRD/nvim-cheat.sh")
 
   -- Styling
   use("kyazdani42/nvim-web-devicons")

@@ -14,29 +14,16 @@ end, { desc = "[F]ind in [F]iles - live grep" })
 
 map("v", "<leader>ff", function()
   local text = get_visual_selection()
-  ts.live_grep({ default_text = text })
+  ts.grep_string({ search = text })
 end, { desc = "[F]ind in [F]iles - live grep selection" })
 
 map("n", "<leader>ft", function()
   ts.grep_string({ search = "TODO" })
 end, { desc = "[F]ind - [T]ODOs" })
 
-map("n", "<leader>*", function()
-  ts.grep_string()
-end, { desc = "Find - word under cursor" })
-
-map("v", "<leader>*", function()
-  local text = get_visual_selection()
-  ts.grep_string({ search = text })
-end, { desc = "Find - word highlighted" })
-
 map("n", "<leader>fb", function()
   ts.buffers({ sort_mru = true, ignore_current_buffer = true })
 end, { desc = "[F]ind [B]uffers" })
-
-map("n", "<leader>fc", function()
-  ts.find_files({ cwd = "~/.dotfiles", hidden = true })
-end, { desc = "[F]ind files in [C]onfig" })
 
 map("n", "<leader>fk", function()
   ts.keymaps({ initial_mode = "insert" })
