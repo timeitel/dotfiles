@@ -27,6 +27,7 @@ end, { desc = "[F]ind [B]uffers" })
 
 map("n", "<leader>fk", function()
   ts.keymaps({ initial_mode = "insert" })
+  vim.fn.feedkeys("<Space>")
 end, { desc = "[F]ind [K]eymaps" })
 
 map("n", "<leader>fr", function()
@@ -52,7 +53,3 @@ end, { desc = "[B]rowse [P]roject" })
 map("n", "<leader>bw", function()
   fb.file_browser({ grouped = true, cwd = vim.fn.expand("%:p:h"), hidden = true })
 end, { desc = "[B]rowse buffer's [W]orking directory" })
-
-map("n", "<leader>bc", function()
-  fb.file_browser({ grouped = true, cwd = "~/.dotfiles", hidden = true })
-end, { desc = "[B]rowse [C]onfig" })

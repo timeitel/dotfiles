@@ -32,7 +32,7 @@ ts.setup({
   textobjects = {
     select = {
       enable = true,
-      lookahead = true,
+      lookahead = false,
       keymaps = {
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
@@ -40,6 +40,11 @@ ts.setup({
         ["ic"] = "@class.inner",
         ["aa"] = "@parameter.outer",
         ["ia"] = "@parameter.inner",
+      },
+      selection_modes = {
+        ["@parameter.outer"] = "v", -- charwise
+        ["@function.outer"] = "V", -- linewise
+        ["@class.outer"] = "<c-v>", -- blockwise
       },
       include_surrounding_whitespace = true,
     },
