@@ -19,6 +19,9 @@ local default_insert_mappings = {
   ["<C-w>"] = function()
     vim.api.nvim_input("<c-s-w>")
   end,
+  ["<C-u>"] = function()
+    vim.api.nvim_input("<Esc>cc")
+  end,
   ["<C-s>"] = actions.select_horizontal,
   ["<M-p>"] = actions_layout.toggle_preview,
 }
@@ -30,6 +33,7 @@ default_normal_mappings["<leader>qf"] = function(bfnr)
 end
 default_normal_mappings["c"] = false
 default_normal_mappings["q"] = actions.close
+default_normal_mappings["<C-u>"] = actions.preview_scrolling_up
 
 -- Telescope File-browser
 local file_browser_normal_mappings = {
