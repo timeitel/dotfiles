@@ -13,6 +13,15 @@ ts.setup({
     enable = true,
     disable = {},
   },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<CR>",
+      scope_incremental = "<CR>",
+      node_incremental = "<TAB>",
+      node_decremental = "<S-TAB>",
+    },
+  },
   ensure_installed = {
     "tsx",
     "typescript",
@@ -48,14 +57,8 @@ ts.setup({
       },
       include_surrounding_whitespace = true,
     },
-    move = {
-      enable = true,
-      set_jumps = false,
-      goto_next_start = {},
-      goto_next_end = {},
-      goto_previous_start = {},
-      goto_previous_end = {},
-    },
+
+    move = { enable = false },
     lsp_interop = {
       enable = true,
       border = "none",
