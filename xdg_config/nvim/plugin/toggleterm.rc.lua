@@ -16,3 +16,12 @@ toggleterm.setup({
 map("n", "<leader>rt", function()
   vim.cmd([[TermExec cmd="npm run type-check"]])
 end, { desc = "[R]un [T]ypecheck" })
+
+local group = vim.api.nvim_create_augroup("ToggleTermGroup", { clear = true })
+vim.api.nvim_create_autocmd("User", {
+  pattern = "UnceptionEditRequestReceived",
+  callback = function()
+    toggleterm.toggle()
+  end,
+  group = group,
+})

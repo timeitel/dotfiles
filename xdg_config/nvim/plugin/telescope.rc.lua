@@ -140,6 +140,7 @@ telescope.setup({
 
   extensions = {
     file_browser = {
+      hijack_netrw = true,
       mappings = {
         n = file_browser_normal_mappings,
       },
