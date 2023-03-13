@@ -256,6 +256,12 @@ _G.packer_plugins = {
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
   },
+  ["nvim-unception"] = {
+    loaded = true,
+    needs_bufread = false,
+    path = "/Users/timeitel/.local/share/nvim/site/pack/packer/opt/nvim-unception",
+    url = "https://github.com/samjwill/nvim-unception"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/Users/timeitel/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
@@ -324,14 +330,21 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: colorful-winsep.nvim
-time([[Config for colorful-winsep.nvim]], true)
-try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20colorful-winsep\frequire\0", "config", "colorful-winsep.nvim")
-time([[Config for colorful-winsep.nvim]], false)
+-- Setup for: nvim-unception
+time([[Setup for nvim-unception]], true)
+try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "setup", "nvim-unception")
+time([[Setup for nvim-unception]], false)
+time([[packadd for nvim-unception]], true)
+vim.cmd [[packadd nvim-unception]]
+time([[packadd for nvim-unception]], false)
 -- Config for: nvim-surround
 time([[Config for nvim-surround]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
 time([[Config for nvim-surround]], false)
+-- Config for: colorful-winsep.nvim
+time([[Config for colorful-winsep.nvim]], true)
+try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20colorful-winsep\frequire\0", "config", "colorful-winsep.nvim")
+time([[Config for colorful-winsep.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
