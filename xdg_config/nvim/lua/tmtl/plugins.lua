@@ -87,6 +87,12 @@ return require("packer").startup(function(use)
   use("smjonas/live-command.nvim")
   use("RishabhRD/popfix")
   use("RishabhRD/nvim-cheat.sh")
+  use({
+    "samjwill/nvim-unception",
+    setup = function()
+      vim.g.unception_open_buffer_in_new_tab = true
+    end,
+  })
 
   -- Styling
   use("kyazdani42/nvim-web-devicons")
