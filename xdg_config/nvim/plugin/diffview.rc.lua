@@ -18,15 +18,15 @@ local shared_maps = {
   ["<C-d>"] = actions.scroll_view(10),
   ["<C-u>"] = actions.scroll_view(-10),
   ["gf"] = actions.goto_file_edit,
-  ["<leader>sr"] = actions.unstage_all, -- stage reset
-  ["<leader>sf"] = actions.toggle_stage_entry,
-  ["<leader>sa"] = actions.stage_all,
-  ["<leader>x"] = function()
+  ["x"] = function()
     if vim.fn.confirm("", "Are you sure you'd like to discard changes? (&Yes\n&No)", 1) == 1 then
       actions.restore_entry()
       vim.cmd([[checktime]])
     end
   end,
+  ["<leader>sr"] = actions.unstage_all, -- stage reset
+  ["<leader>sf"] = actions.toggle_stage_entry,
+  ["<leader>sa"] = actions.stage_all,
   -- Commit staged files
   ["<leader>cs"] = function()
     actions.focus_files()
@@ -50,15 +50,15 @@ local merge_tool_maps = {
   ["<C-d>"] = actions.scroll_view(10),
   ["<C-u>"] = actions.scroll_view(-10),
   ["gf"] = actions.goto_file_edit,
-  ["<leader>sr"] = actions.unstage_all, -- stage reset
-  ["<leader>sf"] = actions.toggle_stage_entry,
-  ["<leader>sa"] = actions.stage_all,
-  ["<leader>x"] = function()
+  ["x"] = function()
     if vim.fn.confirm("", "Are you sure you'd like to discard changes? (&Yes\n&No)", 1) == 1 then
       actions.restore_entry()
       vim.cmd([[checktime]])
     end
   end,
+  ["<leader>sr"] = actions.unstage_all, -- stage reset
+  ["<leader>sf"] = actions.toggle_stage_entry,
+  ["<leader>sa"] = actions.stage_all,
   -- Commit staged files
   ["<leader>cs"] = function()
     actions.focus_files()
