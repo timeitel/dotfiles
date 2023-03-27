@@ -90,6 +90,7 @@ M.attach = function(bufnr)
     vim.cmd([[LspRestart]])
   end, "[L]sp - [R]estart")
 
+  -- TODO: change to toggle with ls, check if needing to stop or start
   buf_map("n", "<leader>ls", function()
     vim.cmd([[LspStop]])
   end, "[L]sp - [S]top")
@@ -107,7 +108,7 @@ M.attach = function(bufnr)
   end, "Lsp - signature")
 
   buf_map("n", "gd", function()
-		vim.lsp.buf.definition()
+    vim.lsp.buf.definition()
 
     vim.defer_fn(function()
       vim.fn.feedkeys("zz")

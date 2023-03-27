@@ -2,6 +2,7 @@ local assign_to_next_prev = require("tmtl.utils").assign_to_next_prev
 local get_visual_selection = require("tmtl.utils").get_visual_selection
 local assign_to_repeat_cmd = require("tmtl.utils").assign_to_repeat_cmd
 local map = require("tmtl.utils").map
+local notify = require("notify")
 
 vim.g.mapleader = " "
 vim.g.camelcasemotion_key = "<leader>"
@@ -144,7 +145,10 @@ local function goto_qf_item(opts)
   if prev then
     vim.cmd([[cprevious]])
   else
-    vim.cmd([[cnext]])
+    local ok, _ = pcall(vim.cmd, "cnext")
+    if not ok then
+      notify("No more qf items")
+    end
   end
 
   vim.fn.feedkeys("zz")
