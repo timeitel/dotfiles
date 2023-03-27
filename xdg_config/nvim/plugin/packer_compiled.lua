@@ -332,7 +332,7 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Setup for: nvim-unception
 time([[Setup for nvim-unception]], true)
-try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "setup", "nvim-unception")
+try_loadstring("\27LJ\2\nB\0\0\2\0\3\0\0056\0\0\0009\0\1\0+\1\2\0=\1\2\0K\0\1\0%unception_open_buffer_in_new_tab\6g\bvim\0", "setup", "nvim-unception")
 time([[Setup for nvim-unception]], false)
 time([[packadd for nvim-unception]], true)
 vim.cmd [[packadd nvim-unception]]
