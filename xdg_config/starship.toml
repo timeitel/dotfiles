@@ -4,5 +4,5 @@ disabled = true
 [gcloud]
 disabled = true
 
-[nodejs]
-disabled = true
+[cmd_duration]
+min_time = 0
