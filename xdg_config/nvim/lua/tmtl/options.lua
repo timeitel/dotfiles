@@ -7,7 +7,7 @@ o.wildignore:append("Cargo.lock")
 
 o.autoread = true
 o.backspace = { "eol", "start", "indent" }
-o.cmdheight = 1
+o.cmdheight = 0
 o.completeopt = { "menu", "menuone", "noinsert" }
 o.history = 500
 o.hlsearch = false
@@ -29,20 +29,17 @@ o.shortmess:append("c")
 
 -- Tabs
 o.autoindent = true
-o.expandtab = true
-o.tabstop = 4
-o.shiftwidth = 4
 o.cindent = true
-o.wrap = true
+o.expandtab = true
+o.shiftwidth = 2
 o.smartindent = true
+o.softtabstop = 2
+o.tabstop = 2
+o.wrap = true
 
 o.breakindent = true
 o.showbreak = string.rep(" ", 3) -- smart line wrapping
 o.linebreak = true
-
-o.foldmethod = "marker"
-o.foldlevel = 0
-o.modelines = 1
 
 o.belloff = "all"
 
@@ -86,14 +83,24 @@ vim.api.nvim_create_autocmd("VimResized", {
   group = group,
 })
 
+vim.api.nvim_create_autocmd("VimEnter", {
+  pattern = "*",
+  callback = function()
+    vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-o>"'))
+    vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-o>"'))
+  end,
+  desc = "Open to most recent file",
+  group = group,
+})
+
 o.laststatus = 3
 o.background = "dark"
 o.termguicolors = true
 o.signcolumn = "yes:1"
 
-o.foldmethod = "expr"
 o.foldexpr = "nvim_treesitter#foldexpr()"
-o.foldenable = false
+o.foldenable = true
+o.foldlevelstart = 99
 
 vim.api.nvim_command([[
 au FileType * set fo=cqrnj
