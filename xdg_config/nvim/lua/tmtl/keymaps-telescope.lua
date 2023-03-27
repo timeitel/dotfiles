@@ -58,3 +58,5 @@ end, { desc = "[B]rowse [P]roject" })
 map("n", "<leader>bw", function()
   fb.file_browser({ grouped = true, cwd = vim.fn.expand("%:p:h"), hidden = true })
 end, { desc = "[B]rowse buffer's [W]orking directory" })
+
+map("n", "<leader>fs", "<cmd>Navbuddy<cr>", { desc = "[F]ind - [S]ymbols in buffer" })

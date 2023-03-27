@@ -3,7 +3,14 @@ local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+    fn.system({
+      "git",
+      "clone",
+      "--depth",
+      "1",
+      "https://github.com/wbthomason/packer.nvim",
+      install_path,
+    })
     vim.cmd([[packadd packer.nvim]])
     return true
   end
@@ -61,7 +68,6 @@ return require("packer").startup(function(use)
 
   -- Notifications
   use("rcarriga/nvim-notify")
-  use("j-hui/fidget.nvim")
 
   -- 10000x developer
   use("lewis6991/impatient.nvim")
@@ -92,6 +98,14 @@ return require("packer").startup(function(use)
     setup = function()
       vim.g.unception_open_buffer_in_new_tab = true
     end,
+  })
+  use({
+    "SmiteshP/nvim-navbuddy",
+    requires = {
+      "neovim/nvim-lspconfig",
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim",
+    },
   })
 
   -- Styling
