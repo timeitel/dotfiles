@@ -145,11 +145,6 @@ _G.packer_plugins = {
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/diffview.nvim",
     url = "https://github.com/sindrets/diffview.nvim"
   },
-  ["fidget.nvim"] = {
-    loaded = true,
-    path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/fidget.nvim",
-    url = "https://github.com/j-hui/fidget.nvim"
-  },
   ["git-blame.nvim"] = {
     loaded = true,
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/git-blame.nvim",
@@ -180,11 +175,6 @@ _G.packer_plugins = {
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/live-command.nvim",
     url = "https://github.com/smjonas/live-command.nvim"
   },
-  ["lsp-format-modifications.nvim"] = {
-    loaded = true,
-    path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/lsp-format-modifications.nvim",
-    url = "https://github.com/joechrisellis/lsp-format-modifications.nvim"
-  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
@@ -204,6 +194,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
     url = "https://github.com/karb94/neoscroll.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -229,6 +224,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-navbuddy"] = {
+    loaded = true,
+    path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/nvim-navbuddy",
+    url = "https://github.com/SmiteshP/nvim-navbuddy"
+  },
+  ["nvim-navic"] = {
+    loaded = true,
+    path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/nvim-navic",
+    url = "https://github.com/SmiteshP/nvim-navic"
   },
   ["nvim-notify"] = {
     loaded = true,
@@ -260,6 +265,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
+  },
+  ["nvim-unception"] = {
+    loaded = true,
+    needs_bufread = false,
+    path = "/Users/eitelt/.local/share/nvim/site/pack/packer/opt/nvim-unception",
+    url = "https://github.com/samjwill/nvim-unception"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -329,14 +340,21 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-surround
-time([[Config for nvim-surround]], true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
-time([[Config for nvim-surround]], false)
+-- Setup for: nvim-unception
+time([[Setup for nvim-unception]], true)
+try_loadstring("\27LJ\2\nB\0\0\2\0\3\0\0056\0\0\0009\0\1\0+\1\2\0=\1\2\0K\0\1\0%unception_open_buffer_in_new_tab\6g\bvim\0", "setup", "nvim-unception")
+time([[Setup for nvim-unception]], false)
+time([[packadd for nvim-unception]], true)
+vim.cmd [[packadd nvim-unception]]
+time([[packadd for nvim-unception]], false)
 -- Config for: colorful-winsep.nvim
 time([[Config for colorful-winsep.nvim]], true)
 try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20colorful-winsep\frequire\0", "config", "colorful-winsep.nvim")
 time([[Config for colorful-winsep.nvim]], false)
+-- Config for: nvim-surround
+time([[Config for nvim-surround]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
+time([[Config for nvim-surround]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
