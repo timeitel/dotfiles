@@ -3,6 +3,7 @@ if not ok then
   return
 end
 
+-- TODO: use diffrent indent plugin than ts
 -- TODO: index ts not working in tsx
 ts.setup({
   highlight = {
