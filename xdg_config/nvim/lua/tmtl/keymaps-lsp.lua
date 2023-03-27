@@ -115,10 +115,14 @@ M.attach = function(bufnr)
     end, 10)
   end, "Lsp - [G]o to [D]efinition")
 
-  buf_map("n", "gD", function()
-    vim.lsp.buf.declaration()
-    vim.fn.feedkeys("zz")
-  end, "Lsp - [G]o to [D]eclaration")
+	buf_map("n", "gD", function()
+		vim.cmd([[vs]])
+		vim.lsp.buf.definition()
+
+		vim.defer_fn(function()
+			vim.fn.feedkeys("zz")
+		end, 10)
+	end, "Lsp - [G]o to [D]efinition in vertical split")
 
   buf_map("n", "K", function()
     vim.lsp.buf.hover()

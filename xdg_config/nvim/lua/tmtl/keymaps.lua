@@ -12,7 +12,7 @@ map({ "n", "v", "o" }, "L", "$", { desc = "Last character on line" })
 
 map("v", "p", "P", { desc = "Keep register on visual paste" })
 map("v", "P", "p", { desc = "Replace register on visual paste" })
-map("v", "<C-q>", "<Esc>", { desc = "Return to normal mode" })
+map({ "n", "v" }, "<C-q>", "<Esc>", { desc = "Return to normal mode" })
 
 map("c", "<C-q>", function()
   vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-u>\\<BS>"'))
@@ -132,8 +132,8 @@ map({ "n", "i" }, "<C-s>", "<cmd>w<cr>", { desc = "[B]uffer - save" })
 
 -- Tabs
 map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "[T]ab [N]ew" })
-map("n", "<leader>tj", "<cmd>tabnext<cr>", { desc = "[T]ab - next" })
-map("n", "<leader>tk", "<cmd>tabprevious<cr>", { desc = "[T]ab - previous" })
+map("n", "<leader><tab>j", "<cmd>tabnext<cr>", { desc = "[T]ab - next" })
+map("n", "<leader><tab>k", "<cmd>tabprevious<cr>", { desc = "[T]ab - previous" })
 map("n", "<leader>tq", "<cmd>tabclose<cr>", { desc = "[T]ab [Q]uit" })
 map("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "[T]ab - delete [O]thers" })
 
@@ -177,3 +177,8 @@ map("n", "<leader>R", function()
   vim.api.nvim_feedkeys("gg/export\nWW", "n", true)
   vim.fn.feedkeys("<leader>r")
 end, { desc = "Lsp - [G]o to file [R]eferences" })
+
+map("n", "<leader>lm", function()
+  vim.cmd([[vnew]])
+  vim.cmd([[:put =execute('messages')]])
+end, { desc = "Show [L]ast [M]essage" })
