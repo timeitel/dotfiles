@@ -102,7 +102,7 @@ telescope.setup({
     buffers = {
       mappings = {
         n = {
-          ["<leader>x"] = actions.delete_buffer,
+          ["x"] = actions.delete_buffer,
         },
       },
     },
@@ -140,7 +140,6 @@ telescope.setup({
 
   extensions = {
     file_browser = {
-      hijack_netrw = true,
       mappings = {
         n = file_browser_normal_mappings,
       },
