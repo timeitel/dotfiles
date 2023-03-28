@@ -72,11 +72,11 @@ cmp.setup({
   },
   mapping = mapping,
   sources = cmp.config.sources({
+    { name = "cmp_tabnine", max_item_count = 2 },
     { name = "nvim_lsp", keyword_length = 2, max_item_count = 5 },
-    { name = "cmp_tabnine", max_item_count = 5 },
+    { name = "luasnip", keyword_length = 2, max_item_count = 3 },
     { name = "nvim_lua", keyword_length = 2, max_item_count = 5 },
     { name = "path" },
-    { name = "luasnip", keyword_length = 2, max_item_count = 5 },
     { name = "buffer", keyword_length = 5, max_item_count = 5 },
   }),
   experimental = {

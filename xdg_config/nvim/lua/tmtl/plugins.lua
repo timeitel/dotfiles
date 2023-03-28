@@ -107,6 +107,7 @@ return require("packer").startup(function(use)
       "MunifTanjim/nui.nvim",
     },
   })
+  use("sQVe/sort.nvim")
 
   -- Styling
   use("kyazdani42/nvim-web-devicons")
