@@ -297,6 +297,11 @@ _G.packer_plugins = {
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/possession.nvim",
     url = "https://github.com/jedrzejboczar/possession.nvim"
   },
+  ["sort.nvim"] = {
+    loaded = true,
+    path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/sort.nvim",
+    url = "https://github.com/sQVe/sort.nvim"
+  },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
