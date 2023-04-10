@@ -31,7 +31,6 @@ M.attach = function(bufnr)
 
   -- TODO: 1. <leader>dh if no code actions
   -- TODO: 2. floating diag window max width
-  -- TODO: format the range after accepting code action
   -- Diagnostics
   buf_map("n", "<leader>dj", function()
     assign_to_next_prev(function()
@@ -115,14 +114,14 @@ M.attach = function(bufnr)
     end, 10)
   end, "Lsp - [G]o to [D]efinition")
 
-	buf_map("n", "gD", function()
-		vim.cmd([[vs]])
-		vim.lsp.buf.definition()
+  buf_map("n", "gD", function()
+    vim.cmd([[vs]])
+    vim.lsp.buf.definition()
 
-		vim.defer_fn(function()
-			vim.fn.feedkeys("zz")
-		end, 10)
-	end, "Lsp - [G]o to [D]efinition in vertical split")
+    vim.defer_fn(function()
+      vim.fn.feedkeys("zz")
+    end, 10)
+  end, "Lsp - [G]o to [D]efinition in vertical split")
 
   buf_map("n", "K", function()
     vim.lsp.buf.hover()
