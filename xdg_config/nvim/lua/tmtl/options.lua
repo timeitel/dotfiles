@@ -14,11 +14,6 @@ o.cursorline = true
 o.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal", "vertical" }
 o.expandtab = true
 o.fillchars = { eob = "~", diff = "╱" }
-o.foldenable = false
-o.foldexpr = "nvim_treesitter#foldexpr()"
-o.foldlevel = 0
-o.foldmethod = "expr"
-o.foldmethod = "marker"
 o.history = 500
 o.hlsearch = false
 o.ignorecase = true
@@ -111,6 +106,7 @@ o.background = "dark"
 o.termguicolors = true
 o.signcolumn = "yes:1"
 
+o.foldmethod = "expr"
 o.foldexpr = "nvim_treesitter#foldexpr()"
 o.foldenable = true
 o.foldlevelstart = 99
