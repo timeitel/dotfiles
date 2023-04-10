@@ -7,7 +7,7 @@ o.backspace = { "eol", "start", "indent" }
 o.belloff = "all"
 o.breakindent = true
 o.cindent = true
-o.cmdheight = 0
+o.cmdheight = 1
 o.completeopt = { "menu", "menuone", "noinsert" }
 o.conceallevel = 3
 o.cursorline = true
@@ -103,16 +103,6 @@ vim.api.nvim_create_autocmd("VimResized", {
     vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-w>="'))
   end,
   desc = "Resize windows on terminal resize",
-  group = group,
-})
-
-vim.api.nvim_create_autocmd("VimEnter", {
-  pattern = "*",
-  callback = function()
-    vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-o>"'))
-    vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-o>"'))
-  end,
-  desc = "Open to most recent file",
   group = group,
 })
 
