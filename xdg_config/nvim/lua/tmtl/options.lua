@@ -7,6 +7,9 @@ o.wildignore:append("Cargo.lock")
 
 o.autoread = true
 o.backspace = { "eol", "start", "indent" }
+o.belloff = "all"
+o.breakindent = true
+o.cindent = true
 o.cmdheight = 1
 o.completeopt = { "menu", "menuone", "noinsert" }
 o.history = 500
