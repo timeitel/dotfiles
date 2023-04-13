@@ -13,10 +13,6 @@ o.cindent = true
 o.cmdheight = 1
 o.completeopt = { "menu", "menuone", "noinsert" }
 o.conceallevel = 3
-o.cursorline = true
-o.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal", "vertical" }
-o.expandtab = true
-o.fillchars = { eob = "~", diff = "╱" }
 o.history = 500
 o.hlsearch = false
 o.ignorecase = true
