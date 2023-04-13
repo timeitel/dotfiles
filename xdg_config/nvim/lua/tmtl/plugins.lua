@@ -108,6 +108,7 @@ return require("packer").startup(function(use)
     },
   })
   use("sQVe/sort.nvim")
+  use("nat-418/boole.nvim")
 
   -- Styling
   use("kyazdani42/nvim-web-devicons")

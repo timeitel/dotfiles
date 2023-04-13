@@ -108,6 +108,7 @@ telescope.setup({
     },
     git_stash = {
       mappings = {
+        -- TODO: finish
         -- n = {
         --     ["d"] = function()
         --         local entry = action_state.get_selected_entry()
@@ -121,7 +122,7 @@ telescope.setup({
       previewer = false,
       mappings = {
         n = {
-          ["<leader>x"] = function(prompt_bufnr)
+          ["x"] = function(prompt_bufnr)
             actions.git_delete_branch(prompt_bufnr)
             require("telescope.builtin").git_branches()
           end,

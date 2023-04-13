@@ -1,1 +1,1 @@
-vim.notify = require("notify") -- set plugins to use 'notify'
+-- vim.notify = require("notify") -- set plugins to use 'notify'
