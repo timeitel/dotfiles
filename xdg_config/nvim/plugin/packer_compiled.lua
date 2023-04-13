@@ -84,11 +84,6 @@ _G.packer_plugins = {
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["boole.nvim"] = {
-    loaded = true,
-    path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/boole.nvim",
-    url = "https://github.com/nat-418/boole.nvim"
-  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/Users/eitelt/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
