@@ -32,14 +32,6 @@ local M = {
     end,
   },
   {
-    "SmiteshP/nvim-navbuddy",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-      "SmiteshP/nvim-navic",
-      "MunifTanjim/nui.nvim",
-    },
-  },
-  {
     "nat-418/boole.nvim",
     config = {
       mappings = {
