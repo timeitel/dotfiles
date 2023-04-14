@@ -4,13 +4,18 @@ local M = {
   "ThePrimeagen/harpoon",
   "akinsho/toggleterm.nvim",
   "bkad/CamelCaseMotion",
-  "ggandor/leap.nvim",
   "inkarkat/vim-ReplaceWithRegister",
   "rcarriga/nvim-notify",
   "sQVe/sort.nvim",
   "smjonas/live-command.nvim",
   "tpope/vim-commentary",
   "windwp/nvim-autopairs",
+  {
+    "ggandor/leap.nvim",
+    config = function()
+      require("leap").add_default_mappings()
+    end,
+  },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
