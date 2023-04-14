@@ -9,7 +9,12 @@ local M = {
   "sQVe/sort.nvim",
   "smjonas/live-command.nvim",
   "tpope/vim-commentary",
-  "windwp/nvim-autopairs",
+  {
+    "windwp/nvim-autopairs",
+    config = {
+      disable_filetype = { "TelescopePrompt", "vim" },
+    },
+  },
   {
     "ggandor/leap.nvim",
     config = function()
@@ -24,7 +29,18 @@ local M = {
       require("nvim-surround").setup({})
     end,
   },
-  { "jedrzejboczar/possession.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+  {
+    "jedrzejboczar/possession.nvim",
+    config = {
+      commands = {
+        save = "SSave",
+        load = "SLoad",
+        delete = "SDelete",
+        list = "SList",
+      },
+    },
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
   {
     "samjwill/nvim-unception",
     config = function()
