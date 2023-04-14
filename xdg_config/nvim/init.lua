@@ -15,7 +15,6 @@ vim.g.mapleader = " "
 vim.g.camelcasemotion_key = "<leader>"
 
 require("lazy").setup("tmtl.plugins")
-require("tmtl.utils")
 require("tmtl.options")
 require("tmtl.keymaps")
 require("tmtl.keymaps-telescope")
@@ -24,3 +23,4 @@ require("tmtl.keymaps-sessions")
 require("tmtl.keymaps-harpoon")
 require("tmtl.keymaps-cheatsheet")
 require("tmtl.keymaps-sort")
+require("tmtl.keymaps-neoscroll")

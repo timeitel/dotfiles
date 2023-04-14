@@ -1,11 +1,7 @@
 local assign_to_next_prev = require("tmtl.utils").assign_to_next_prev
 local get_visual_selection = require("tmtl.utils").get_visual_selection
-local assign_to_repeat_cmd = require("tmtl.utils").assign_to_repeat_cmd
 local map = require("tmtl.utils").map
 local notify = require("notify")
-
-vim.g.mapleader = " "
-vim.g.camelcasemotion_key = "<leader>"
 
 map({ "n", "v", "o" }, "H", "^", { desc = "First character on line" })
 map({ "n", "v", "o" }, "L", "$", { desc = "Last character on line" })
