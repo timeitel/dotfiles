@@ -6,7 +6,6 @@ local M = {
   "bkad/CamelCaseMotion",
   "ggandor/leap.nvim",
   "inkarkat/vim-ReplaceWithRegister",
-  "nat-418/boole.nvim",
   "rcarriga/nvim-notify",
   "sQVe/sort.nvim",
   "smjonas/live-command.nvim",
@@ -33,6 +32,15 @@ local M = {
       "neovim/nvim-lspconfig",
       "SmiteshP/nvim-navic",
       "MunifTanjim/nui.nvim",
+    },
+  },
+  {
+    "nat-418/boole.nvim",
+    config = {
+      mappings = {
+        increment = "<C-a>",
+        decrement = "<C-x>",
+      },
     },
   },
 }
