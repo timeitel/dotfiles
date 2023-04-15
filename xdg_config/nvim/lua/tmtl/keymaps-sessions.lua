@@ -10,6 +10,7 @@ map("n", "<leader>ss", function()
 end, { desc = "[S]ession [S]ave" })
 
 map("n", "<leader>sl", function()
+  vim.cmd([[%bd!|e#]])
   vim.cmd([[SLoad]])
 end, { desc = "[S]ession [L]oad - previous session" })
 
