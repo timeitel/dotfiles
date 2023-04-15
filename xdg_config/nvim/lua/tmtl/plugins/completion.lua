@@ -56,10 +56,9 @@ local M = {
 
       cmp.setup({
         window = {
-          completion = {
-            border = "rounded",
-            scrollbar = "║",
-          },
+          completion = cmp.config.window.bordered({
+            winhighlight = "Normal:transparentBG,FloatBorder:transparentBG,Search:None",
+          }),
           documentation = cmp.config.window.bordered(),
         },
         snippet = {
