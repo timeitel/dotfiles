@@ -111,6 +111,18 @@ local M = {
             end,
           },
         },
+        sections = {
+          stashes = false,
+          unpulled = {
+            folded = true,
+          },
+          unmerged = {
+            folded = false,
+          },
+          recent = {
+            folded = false,
+          },
+        },
       })
     end,
     dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
