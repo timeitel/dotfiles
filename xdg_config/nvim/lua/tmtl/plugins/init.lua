@@ -24,7 +24,7 @@ local M = {
 	},
 	{
 		"windwp/nvim-autopairs",
-		config = {
+		opts = {
 			disable_filetype = { "TelescopePrompt", "vim" },
 		},
 	},
@@ -44,7 +44,7 @@ local M = {
 	},
 	{
 		"jedrzejboczar/possession.nvim",
-		config = {
+		opts = {
 			commands = {
 				save = "SSave",
 				load = "SLoad",
@@ -62,7 +62,7 @@ local M = {
 	},
 	{
 		"nat-418/boole.nvim",
-		config = {
+		opts = {
 			mappings = {
 				increment = "<C-a>",
 				decrement = "<C-x>",
