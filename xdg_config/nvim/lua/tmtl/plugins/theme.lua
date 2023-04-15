@@ -10,7 +10,6 @@ local M = {
     },
   },
 
-  "nvim-lualine/lualine.nvim",
   {
     "akinsho/bufferline.nvim",
     version = "v3.*",
