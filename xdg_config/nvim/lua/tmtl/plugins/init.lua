@@ -4,13 +4,19 @@ local M = {
 	"bkad/CamelCaseMotion",
 	"inkarkat/vim-ReplaceWithRegister",
 	"rcarriga/nvim-notify",
-	"sQVe/sort.nvim",
 	"tpope/vim-commentary",
+	{
+		"sQVe/sort.nvim",
+		config = function()
+			local map = require("tmtl.utils").map
+			map("v", "go", "<Esc><Cmd>Sort<CR>", { desc = "Sort visual selection" })
+			map("n", "go", "vi{<Esc><Cmd>Sort<CR>", { desc = "Sort inside curly brace" })
+		end,
+	},
 	{
 		"RishabhRD/nvim-cheat.sh",
 		config = function()
 			local map = require("tmtl.utils").map
-
 			map("n", "<leader>cr", function()
 				vim.cmd([[Cheat rust ]])
 			end, { desc = "[C]heatsheet - [R]ust" })
