@@ -1,3 +1,4 @@
+-- put = execute('messages') --TODO: make keymap
 local M = {
   {
     "folke/tokyonight.nvim",
@@ -8,11 +9,19 @@ local M = {
         on_colors = function(colors)
           colors.bg = "#282c34" -- gunmetal
         end,
-        on_highlights = function(hl, c)
+        on_highlights = function(hl)
           hl.CursorLine = {
             bg = "#363c58",
           }
-          -- vim.print(hl, c)
+          hl.DiffAdd = {
+            bg = "#283c4e",
+          }
+          hl.DiffDelete = {
+            bg = "#38222c",
+          }
+          hl.DiffChange = {
+            bg = "#26324b",
+          }
         end,
       })
       vim.cmd([[colorscheme tokyonight-moon]])
