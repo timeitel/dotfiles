@@ -71,15 +71,6 @@ end, { desc = "Copy filename to clipboard" })
 map("v", "<leader>y", '"+y', { desc = "Copy to clipboard" })
 map("v", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
-map("n", "<leader>sp", function()
-  local inp = vim.fn.input("What would you like to name the current snapshot? ")
-  if inp == nil or inp == "" then
-    return
-  end
-  vim.cmd(string.format("PackerSnapshot %s", inp))
-  vim.cmd([[PackerSync]])
-end, { desc = "[S]ync [P]lugins" })
-
 map("n", "<leader>T", function()
   vim.fn.feedkeys("iTODO: ")
   vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<esc>"'), "n", true)
