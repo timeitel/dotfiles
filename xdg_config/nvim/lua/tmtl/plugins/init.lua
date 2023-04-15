@@ -2,7 +2,6 @@ local M = {
   "RishabhRD/nvim-cheat.sh",
   "RishabhRD/popfix",
   "ThePrimeagen/harpoon",
-  "akinsho/toggleterm.nvim",
   "bkad/CamelCaseMotion",
   "inkarkat/vim-ReplaceWithRegister",
   "rcarriga/nvim-notify",
