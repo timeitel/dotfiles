@@ -1,10 +1,7 @@
 local assign_to_next_prev = require("tmtl.utils").assign_to_next_prev
 local get_visual_selection = require("tmtl.utils").get_visual_selection
-local assign_to_repeat_cmd = require("tmtl.utils").assign_to_repeat_cmd
 local map = require("tmtl.utils").map
-
-vim.g.mapleader = " "
-vim.g.camelcasemotion_key = "<leader>"
+local notify = require("notify")
 
 map({ "n", "v", "o" }, "H", "^", { desc = "First character on line" })
 map({ "n", "v", "o" }, "L", "$", { desc = "Last character on line" })
@@ -74,15 +71,6 @@ end, { desc = "Copy filename to clipboard" })
 map("v", "<leader>y", '"+y', { desc = "Copy to clipboard" })
 map("v", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
-map("n", "<leader>sp", function()
-  local inp = vim.fn.input("What would you like to name the current snapshot? ")
-  if inp == nil or inp == "" then
-    return
-  end
-  vim.cmd(string.format("PackerSnapshot %s", inp))
-  vim.cmd([[PackerSync]])
-end, { desc = "[S]ync [P]lugins" })
-
 map("n", "<leader>T", function()
   vim.fn.feedkeys("iTODO: ")
   vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<esc>"'), "n", true)
@@ -110,18 +98,6 @@ map("v", "<leader>gr", function()
   vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<c-r>\\<c-w>"'), "n", true)
 end, { desc = "[R]eplace in file - word under cursor" })
 
-map("n", "<leader>sii", function()
-  require("treesitter_indent_object.textobj").select_indent_inner()
-  vim.fn.feedkeys(":sort")
-  vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<Cr>"'), "n", true)
-
-  assign_to_repeat_cmd(function()
-    require("treesitter_indent_object.textobj").select_indent_inner()
-    vim.fn.feedkeys(":sort")
-    vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<Cr>"'), "n", true)
-  end)
-end, { desc = "[S]ort [I]nside [I]ndent" })
-
 -- Buffers
 map("n", "<leader>ba", "<cmd>:%bd<cr>", { desc = "[B]uffer - delete [A]ll" })
 map("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>", { desc = "[B]uffer - delete [O]thers" })
@@ -144,7 +120,10 @@ local function goto_qf_item(opts)
   if prev then
     vim.cmd([[cprevious]])
   else
-    vim.cmd([[cnext]])
+    local ok, _ = pcall(vim.cmd, "cnext")
+    if not ok then
+      notify("No more qf items")
+    end
   end
 
   vim.fn.feedkeys("zz")

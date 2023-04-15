@@ -1,5 +1,6 @@
 local ts = require("telescope.builtin")
 local fb = require("telescope").extensions.file_browser
+local themes = require("telescope.themes")
 local notify_ext = require("telescope").extensions.notify
 local map = require("tmtl.utils").map
 local get_visual_selection = require("tmtl.utils").get_visual_selection
@@ -43,8 +44,12 @@ map("n", "<leader>fm", function()
 end, { desc = "[F]ind - harpoon [M]arks" })
 
 map("n", "<leader>fn", function()
-  notify_ext.notify(require("telescope.themes").get_dropdown({}))
+  notify_ext.notify(themes.get_dropdown({}))
 end, { desc = "[F]ind - [N]otifications" })
+
+map("n", "<leader>fd", function()
+  ts.diagnostics(themes.get_dropdown({ path_display = "hidden" }))
+end, { desc = "[F]ind - [D]iagnostics for workspace" })
 
 map("n", "<leader>bp", function()
   fb.file_browser({ grouped = true, hidden = true })

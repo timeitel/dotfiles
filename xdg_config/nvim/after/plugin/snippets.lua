@@ -87,11 +87,12 @@ ls.add_snippets(nil, {
       dscr = "TypeScript interface",
     }, {
       text("interface "),
-      insert(1, "Props"),
-      text({ " {", '' }),
+      insert(1, ""),
+      text("Props"),
+      text({ " {", "" }),
       text("    "),
       insert(2),
-      text({ "", "}"}),
+      text({ "", "}" }),
     }),
   },
 })

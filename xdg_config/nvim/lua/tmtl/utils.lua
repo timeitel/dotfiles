@@ -34,7 +34,7 @@ M.assign_to_next_prev = function(next, prev)
 end
 
 -- TODO: use like in hx, stage file
-M.assign_to_repeat_cmd = function(cmd)
+M.assign_to_repeat = function(cmd)
   M.map("n", "<C-.>", cmd, { desc = "Repeat command" })
 end
 
