@@ -113,4 +113,3 @@ vim.cmd([[
     autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=tsc
   augroup END
 ]])
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "#363c58" })
