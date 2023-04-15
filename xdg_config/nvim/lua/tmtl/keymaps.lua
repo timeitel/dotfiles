@@ -11,7 +11,7 @@ map("v", "P", "p", { desc = "Replace register on visual paste" })
 map({ "n", "v" }, "<C-q>", "<Esc>", { desc = "Return to normal mode" })
 
 map("c", "<C-q>", function()
-	vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-u>\\<BS>"'))
+  vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-u>\\<BS>"'))
 end, { desc = "Return to normal mode" })
 
 map("i", "kj", "<Esc>", { desc = "Return to normal mode" })
@@ -43,72 +43,60 @@ map("n", "Y", "yy", { desc = "Yank line" })
 map("n", "<leader>i", "i <ESC>i", { desc = "Enter insert mode with proceeding space" })
 
 map("n", "<leader>/", function()
-	vim.fn.feedkeys("/\\<\\>")
-	vim.fn.feedkeys(vim.api.nvim_eval('"\\<Left>\\<Left>"'))
+  vim.fn.feedkeys("/\\<\\>")
+  vim.fn.feedkeys(vim.api.nvim_eval('"\\<Left>\\<Left>"'))
 end, { desc = "Find - exact match" })
 
 map("v", "<leader>/", function()
-	local text = get_visual_selection()
-	local search = string.format("/\\<%s\\>", text)
-	vim.fn.feedkeys(search)
+  local text = get_visual_selection()
+  local search = string.format("/\\<%s\\>", text)
+  vim.fn.feedkeys(search)
 end, { desc = "Find - exact match" })
 
 map("n", "<leader>yd", function()
-	local copy_directory_cmd = string.format(':let @+="%s"', vim.fn.expand("%:h"))
-	vim.cmd(copy_directory_cmd)
-	print("Copied directory to clipboard")
+  local copy_directory_cmd = string.format(':let @+="%s"', vim.fn.expand("%:h"))
+  vim.cmd(copy_directory_cmd)
+  print("Copied directory to clipboard")
 end, { desc = "Copy file directory to clipboard" })
 map("n", "<leader>yp", function()
-	local copy_directory_cmd = string.format(':let @+="%s"', vim.fn.expand("%"))
-	vim.cmd(copy_directory_cmd)
-	print("Copied file path to clipboard")
+  local copy_directory_cmd = string.format(':let @+="%s"', vim.fn.expand("%"))
+  vim.cmd(copy_directory_cmd)
+  print("Copied file path to clipboard")
 end, { desc = "Copy file path to clipboard" })
 map("n", "<leader>yf", function()
-	local copy_directory_cmd = string.format(':let @+="%s"', vim.fn.expand("%:t"))
-	vim.cmd(copy_directory_cmd)
-	print("Copied filename to clipboard")
+  local copy_directory_cmd = string.format(':let @+="%s"', vim.fn.expand("%:t"))
+  vim.cmd(copy_directory_cmd)
+  print("Copied filename to clipboard")
 end, { desc = "Copy filename to clipboard" })
 map("v", "<leader>y", '"+y', { desc = "Copy to clipboard" })
 map("v", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
 map("n", "<leader>T", function()
-	vim.fn.feedkeys("iTODO: ")
-	vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<esc>"'), "n", true)
-	vim.fn.feedkeys("gccA")
+  vim.fn.feedkeys("iTODO: ")
+  vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<esc>"'), "n", true)
+  vim.fn.feedkeys("gccA")
 end, { desc = "Insert - [T]ODO comment" })
 
 map("i", "<c-t>", function()
-	vim.fn.feedkeys("TODO: ")
-	vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<esc>"'), "n", true)
-	vim.fn.feedkeys("gccA")
+  vim.fn.feedkeys("TODO: ")
+  vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<esc>"'), "n", true)
+  vim.fn.feedkeys("gccA")
 end, { desc = "Insert - [T]ODO comment" })
 
 map("n", "<leader>gr", function()
-	vim.fn.feedkeys(":%s/")
-	vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<c-r>\\<c-w>"'), "n", true)
-	vim.fn.feedkeys("/")
-	vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<c-r>\\<c-w>"'), "n", true)
+  vim.fn.feedkeys(":%s/")
+  vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<c-r>\\<c-w>"'), "n", true)
+  vim.fn.feedkeys("/")
+  vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<c-r>\\<c-w>"'), "n", true)
 end, { desc = "[R]eplace in file - word under cursor" })
 
 map("v", "<leader>gr", function()
-	local text = get_visual_selection()
-	vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<esc>"'), "n", true)
-	vim.fn.feedkeys(":%s/" .. text)
-	vim.fn.feedkeys("/")
-	vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<c-r>\\<c-w>"'), "n", true)
+  local text = get_visual_selection()
+  vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<esc>"'), "n", true)
+  vim.fn.feedkeys(":%s/" .. text)
+  vim.fn.feedkeys("/")
+  vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<c-r>\\<c-w>"'), "n", true)
 end, { desc = "[R]eplace in file - word under cursor" })
-
-map("n", "<leader>sii", function()
-	require("treesitter_indent_object.textobj").select_indent_inner()
-	vim.fn.feedkeys(":sort")
-	vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<Cr>"'), "n", true)
-
-	assign_to_repeat_cmd(function()
-		require("treesitter_indent_object.textobj").select_indent_inner()
-		vim.fn.feedkeys(":sort")
-		vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<Cr>"'), "n", true)
-	end)
-end, { desc = "[S]ort [I]nside [I]ndent" })
 
 -- Buffers
 map("n", "<leader>ba", "<cmd>:%bd<cr>", { desc = "[B]uffer - delete [A]ll" })
@@ -126,46 +114,46 @@ map("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "[T]ab - delete [O]thers" })
 
 -- Quickfix list
 local function goto_qf_item(opts)
-	opts = opts or {}
-	local prev = opts.prev or false
+  opts = opts or {}
+  local prev = opts.prev or false
 
-	if prev then
-		vim.cmd([[cprevious]])
-	else
-		local ok, _ = pcall(vim.cmd, "cnext")
-		if not ok then
-			notify("No more qf items")
-		end
-	end
+  if prev then
+    vim.cmd([[cprevious]])
+  else
+    local ok, _ = pcall(vim.cmd, "cnext")
+    if not ok then
+      notify("No more qf items")
+    end
+  end
 
-	vim.fn.feedkeys("zz")
+  vim.fn.feedkeys("zz")
 end
 
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "[Q]uickfix [L]ist - show" })
 
 map("n", "<leader>qj", function()
-	assign_to_next_prev(goto_qf_item, function()
-		goto_qf_item({ prev = true })
-	end)
+  assign_to_next_prev(goto_qf_item, function()
+    goto_qf_item({ prev = true })
+  end)
 
-	goto_qf_item()
+  goto_qf_item()
 end, { desc = "[Q]uickfix List - next" })
 map("n", "<leader>qk", function()
-	assign_to_next_prev(function()
-		goto_qf_item({ prev = true })
-	end, goto_qf_item)
+  assign_to_next_prev(function()
+    goto_qf_item({ prev = true })
+  end, goto_qf_item)
 
-	goto_qf_item({ prev = true })
+  goto_qf_item({ prev = true })
 end, { desc = "[Q]uickfix List - previous" })
 map("n", "<leader>qq", "<cmd>cclose<cr>", { desc = "[Q]uickfix List - [Q]uit" })
 
 -- TODO: find based on treesitter export node
 map("n", "<leader>R", function()
-	vim.api.nvim_feedkeys("gg/export\nWW", "n", true)
-	vim.fn.feedkeys("<leader>r")
+  vim.api.nvim_feedkeys("gg/export\nWW", "n", true)
+  vim.fn.feedkeys("<leader>r")
 end, { desc = "Lsp - [G]o to file [R]eferences" })
 
 map("n", "<leader>ml", function()
-	vim.cmd([[vnew]])
-	vim.cmd([[:put =execute('messages')]])
+  vim.cmd([[vnew]])
+  vim.cmd([[:put =execute('messages')]])
 end, { desc = "[M]essage [L]ist" })
