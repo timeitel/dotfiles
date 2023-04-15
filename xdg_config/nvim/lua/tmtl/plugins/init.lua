@@ -7,7 +7,6 @@ local M = {
   "inkarkat/vim-ReplaceWithRegister",
   "rcarriga/nvim-notify",
   "sQVe/sort.nvim",
-  "smjonas/live-command.nvim",
   "tpope/vim-commentary",
   {
     "windwp/nvim-autopairs",
