@@ -3,7 +3,6 @@ local M = {
 	"ThePrimeagen/harpoon",
 	"bkad/CamelCaseMotion",
 	"inkarkat/vim-ReplaceWithRegister",
-	"rcarriga/nvim-notify",
 	"tpope/vim-commentary",
 	{
 		"sQVe/sort.nvim",

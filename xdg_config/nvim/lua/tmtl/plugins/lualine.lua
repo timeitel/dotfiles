@@ -75,13 +75,13 @@ local M = {
       color = secondary_blue,
     }
 
-    local dia = {
+    local diagnostic_stats = {
       "diagnostics",
       colored = false,
       separator = { left = "", right = "" },
     }
 
-    function GetCurrentDiagnostic()
+    local function current_line_diagnostic()
       local bufnr = 0
       local line_nr = vim.api.nvim_win_get_cursor(0)[1] - 1
       local opts = { ["lnum"] = line_nr }
@@ -102,24 +102,26 @@ local M = {
       return best_diagnostic
     end
 
-    function GetCurrentDiagnosticString()
-      local diagnostic = GetCurrentDiagnostic()
+    local line_diagnostic = {
+      function()
+        local diagnostic = current_line_diagnostic()
 
-      if not diagnostic or not diagnostic.message then
-        return
-      end
+        if not diagnostic or not diagnostic.message then
+          return ""
+        end
 
-      local message = vim.split(diagnostic.message, "\n")[1]
-      local max_width = vim.api.nvim_win_get_width(0) - 35
+        local message = vim.split(diagnostic.message, "\n")[1]
+        local max_width = vim.api.nvim_win_get_width(0) - 35
 
-      if string.len(message) < max_width then
-        return message
-      else
-        return string.sub(message, 1, max_width) .. "..."
-      end
-    end
+        if string.len(message) < max_width then
+          return message
+        else
+          return string.sub(message, 1, max_width) .. "..."
+        end
+      end,
+    }
 
-    local function getLspName()
+    local function get_lsp_name()
       local msg = "No LSP"
       local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
       local clients = vim.lsp.get_active_clients()
@@ -137,7 +139,24 @@ local M = {
 
     local lsp = {
       function()
-        return getLspName()
+        return get_lsp_name()
+      end,
+      separator = { left = "", right = "" },
+      color = secondary_blue,
+    }
+
+    local search_count = {
+      function()
+        -- searchcount can fail e.g. if unbalanced braces in search pattern
+        if vim.v.hlsearch == 1 then
+          local ok, searchcount = pcall(vim.fn.searchcount)
+
+          if ok and searchcount["total"] > 0 then
+            return "⚲ " .. searchcount["current"] .. "/" .. searchcount["total"] .. " "
+          end
+        end
+
+        return ""
       end,
       separator = { left = "", right = "" },
       color = secondary_blue,
@@ -163,9 +182,9 @@ local M = {
       sections = {
         lualine_a = { branch },
         lualine_b = { filetype, global_line_filename },
-        lualine_c = { "GetCurrentDiagnosticString()" },
-        lualine_x = {},
-        lualine_y = { dia },
+        lualine_c = { line_diagnostic },
+        lualine_x = { search_count },
+        lualine_y = { diagnostic_stats },
         lualine_z = { lsp },
       },
       inactive_sections = {},
@@ -174,7 +193,7 @@ local M = {
         lualine_z = { winbar_filename },
       },
       inactive_winbar = {
-        lualine_x = { dia },
+        lualine_x = { diagnostic_stats },
         lualine_z = { winbar_inactive_filename },
       },
       extensions = {},
