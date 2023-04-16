@@ -1,18 +1,15 @@
 local o = vim.opt
 
--- Ignore compiled files
-o.wildignore = "__pycache__"
-o.wildignore:append({ "*.o", "*~", "*.pyc", "*pycache*" })
-o.wildignore:append("Cargo.lock")
-
 o.autoread = true
 o.backspace = { "eol", "start", "indent" }
 o.belloff = "all"
 o.breakindent = true
-o.cindent = true
 o.cmdheight = 1
 o.completeopt = { "menu", "menuone", "noinsert" }
 o.conceallevel = 3
+o.cursorline = true
+o.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal", "vertical" }
+o.fillchars = { eob = "~", diff = "╱" }
 o.history = 500
 o.hlsearch = false
 o.ignorecase = true
@@ -21,6 +18,8 @@ o.lazyredraw = true
 o.number = true
 o.relativenumber = true
 o.scrolloff = 10
+o.sessionoptions = o.sessionoptions - "buffers"
+o.showbreak = string.rep(" ", 3) -- smart line wrapping
 o.showcmd = true
 o.showmatch = true
 o.showmode = false
@@ -28,8 +27,13 @@ o.smartcase = true
 o.splitbelow = true
 o.splitright = true
 o.swapfile = false
+o.termguicolors = true
+o.undofile = true
 o.whichwrap:append("<,>,h,l")
-o.shortmess:append("c")
+o.wildignore = "__pycache__"
+o.wildignore:append("Cargo.lock")
+o.wildignore:append({ "*.o", "*~", "*.pyc", "*pycache*" })
+o.wrap = true
 
 -- Tabs
 o.autoindent = true
@@ -39,18 +43,18 @@ o.shiftwidth = 2
 o.smartindent = true
 o.softtabstop = 2
 o.tabstop = 2
-o.wrap = true
 
-o.breakindent = true
-o.showbreak = string.rep(" ", 3) -- smart line wrapping
-o.linebreak = true
+-- cmdheight = 0
+o.shortmess:append("C")
+o.shortmess:append("S") -- already have lualine search counter
+o.shortmess:append("c")
+o.shortmess:append("s")
 
-o.belloff = "all"
-
-o.joinspaces = false
-o.fillchars = { eob = "~", diff = "╱" }
-o.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal", "vertical" }
-o.undofile = true
+-- folding
+o.foldmethod = "expr"
+o.foldexpr = "nvim_treesitter#foldexpr()"
+o.foldenable = true
+o.foldlevelstart = 99
 
 local group = vim.api.nvim_create_augroup("Options", { clear = true })
 
@@ -87,16 +91,6 @@ vim.api.nvim_create_autocmd("VimResized", {
   group = group,
 })
 
-o.laststatus = 3
-o.background = "dark"
-o.termguicolors = true
-o.signcolumn = "yes:1"
-
-o.foldmethod = "expr"
-o.foldexpr = "nvim_treesitter#foldexpr()"
-o.foldenable = true
-o.foldlevelstart = 99
-
 vim.api.nvim_command([[
 au FileType * set fo=cqrnj
     ]])
@@ -107,7 +101,6 @@ o.sessionoptions = o.sessionoptions - "buffers"
 -- pipe tsc errors into qf list
 -- TODO: look into nvim -q <(flake8 .)
 -- passing tsc lint output into qf list
-
 vim.cmd([[
   augroup tsc
     autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=tsc
