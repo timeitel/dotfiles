@@ -13,7 +13,7 @@ keymap("s", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
 
 local get_filename = function()
   return f(function(_, snip)
-    local name = vim.split(snip.snippet.env.TM_FILENAME, ".", true)
+    local name = vim.split(snip.snippet.env.TM_FILENAME, ".")
     return name[1] or ""
   end)
 end
@@ -88,10 +88,10 @@ ls.add_snippets(nil, {
     }, {
       text("interface "),
       insert(1, "Props"),
-      text({ " {", '' }),
+      text({ " {", "" }),
       text("    "),
       insert(2),
-      text({ "", "}"}),
+      text({ "", "}" }),
     }),
   },
 })
