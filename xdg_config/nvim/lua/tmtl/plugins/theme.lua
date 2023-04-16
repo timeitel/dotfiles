@@ -8,8 +8,10 @@ local M = {
 			require("tokyonight").setup({
 				on_colors = function(colors)
 					colors.bg = gunmetal
+					colors.bg_float = gunmetal
+					colors.border_highlight = colors.fg
 				end,
-				on_highlights = function(hl, c)
+				on_highlights = function(hl)
 					hl.CursorLine = {
 						bg = "#363c58",
 					}
@@ -22,14 +24,6 @@ local M = {
 					hl.DiffChange = {
 						bg = "#283c4e",
 					}
-					local float_normal = { bg = c.bg, fg = c.fg }
-					hl.TelescopeNormal = float_normal
-					hl.TelescopeBorder = float_normal
-					hl.NormalFloat = float_normal
-					hl.NavbuddyNormalFloat = float_normal
-					hl.FloatBorder = float_normal
-					hl.NavbuddyFloatBorder = float_normal
-					hl.LspInfoBorder = float_normal
 				end,
 			})
 			vim.cmd([[colorscheme tokyonight-moon]])
