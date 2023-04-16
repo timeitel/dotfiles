@@ -29,6 +29,7 @@ local M = {
 					hl.NavbuddyNormalFloat = float_normal
 					hl.FloatBorder = float_normal
 					hl.NavbuddyFloatBorder = float_normal
+					hl.LspInfoBorder = float_normal
 				end,
 			})
 			vim.cmd([[colorscheme tokyonight-moon]])
