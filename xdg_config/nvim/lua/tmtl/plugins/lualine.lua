@@ -173,7 +173,7 @@ local M = {
 
     local test = {
       "lsp_progress",
-      display_components = { "lsp_client_name", { "title", "percentage", "message" } },
+      display_components = { { "title", "percentage" } },
       timer = { progress_enddelay = 500, lsp_client_name_enddelay = 1000 },
     }
 
