@@ -12,8 +12,9 @@ local M = {
           vim.cmd([[DiffviewClose]])
           require("neogit").open()
         end,
-        ["f"] = "<cmd>DiffviewToggleFiles<cr>",
         ["<leader>f"] = "<cmd>DiffviewFocusFiles<cr>",
+        ["<C-f>"] = "<cmd>DiffviewToggleFiles<cr>",
+        ["<C-l>"] = actions.listing_style,
         ["O"] = actions.focus_entry,
         ["<C-e>"] = actions.scroll_view(1),
         ["<C-y>"] = actions.scroll_view(-1),
