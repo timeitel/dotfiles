@@ -30,6 +30,8 @@ local M = {
           }
           hl.NotifyINFOBorder = float_border
           hl.NotifyTRACEBorder = float_border
+          hl.NotifyWARNBorder = float_border
+          hl.NotifyBorder = float_border
         end,
       })
       vim.cmd([[colorscheme tokyonight-moon]])
