@@ -57,6 +57,16 @@ o.foldexpr = "nvim_treesitter#foldexpr()"
 o.foldenable = true
 o.foldlevelstart = 99
 
+-- list chars
+o.list = true
+o.listchars = ""
+o.listchars:append({ extends = "#" })
+o.listchars:append({ tab = ">-" })
+o.listchars:append({ lead = "·" })
+o.listchars:append({ extends = "»" })
+o.listchars:append({ precedes = "«" })
+o.listchars:append({ nbsp = "⣿" })
+
 local group = vim.api.nvim_create_augroup("Options", { clear = true })
 
 o.cursorline = true -- Highlight the current line
