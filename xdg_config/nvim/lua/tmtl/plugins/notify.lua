@@ -1,36 +1,36 @@
 local started = false
 
 local M = {
-	"rcarriga/nvim-notify",
-	config = function()
-		vim.notify = function(msg, level, opts)
-			if not started then
-				require("notify").setup({
-					timeout = 1500,
-					render = "minimal",
-					stages = "static",
-				})
+  "rcarriga/nvim-notify",
+  config = function()
+    vim.notify = function(msg, level, opts)
+      if not started then
+        require("notify").setup({
+          timeout = 1500,
+          render = "minimal",
+          stages = "static",
+        })
 
-				started = true
-			end
+        started = true
+      end
 
-			msg = vim.trim(msg)
+      msg = vim.trim(msg)
 
-			if msg ~= "" then
-				local filename = vim.trim(vim.fn.expand("%:t"))
+      if msg ~= "" then
+        local filename = vim.trim(vim.fn.expand("%:t"))
 
-				if filename ~= "" then
-					filename = filename .. ": "
-				end
+        if filename ~= "" then
+          filename = filename .. ": "
+        end
 
-				msg = " " .. filename .. msg
+        msg = " " .. filename .. msg
 
-				require("notify")(msg, level, opts)
-			end
-		end
-	end,
-	version = "*",
-	event = "VeryLazy",
+        require("notify")(msg, level, opts)
+      end
+    end
+  end,
+  version = "*",
+  event = "VeryLazy",
 }
 
 return M
