@@ -15,6 +15,7 @@ o.hlsearch = false
 o.ignorecase = true
 o.incsearch = true
 o.signcolumn = "yes:1"
+o.laststatus = 3
 o.lazyredraw = true
 o.number = true
 o.relativenumber = true
