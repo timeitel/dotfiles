@@ -14,6 +14,7 @@ o.history = 500
 o.hlsearch = false
 o.ignorecase = true
 o.incsearch = true
+o.signcolumn = "yes:1"
 o.lazyredraw = true
 o.number = true
 o.relativenumber = true
@@ -32,13 +33,13 @@ o.undofile = true
 o.whichwrap:append("<,>,h,l")
 o.wildignore = "__pycache__"
 o.wildignore:append("Cargo.lock")
-o.wildignore:append({ "*.o", "*~", "*.pyc", "*pycache*" })
+o.wildignore:append({ "*.o", "*.pyc", "*pycache*", "*~" })
 o.wrap = true
 
 -- Tabs
 o.autoindent = true
 o.cindent = true
-o.expandtab = true
+o.expandtab = true -- `:retab` if any tab diff issues
 o.shiftwidth = 2
 o.smartindent = true
 o.softtabstop = 2
