@@ -77,6 +77,7 @@ local M = {
           ["h"] = fb_actions.goto_parent_dir,
           ["H"] = fb_actions.goto_cwd,
           ["l"] = actions.select_default,
+          ["o"] = fb_actions.open
         }
 
         telescope.setup({
