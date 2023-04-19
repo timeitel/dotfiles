@@ -15,12 +15,12 @@ local M = {
 
     map("n", "<leader>rt", function()
       -- TODO: add test script for cargo projects
-      vim.cmd([[TermExec cmd="npm run type-check"]])
+      require('toggleterm').exec("npm run type-check")
     end, { desc = "[R]un [T]est" })
 
     map("n", "<leader>ra", function()
       -- TODO: add run script default for npm projects
-      vim.cmd([[TermExec cmd="cargo run"]])
+      require('toggleterm').exec("cargo run")
     end, { desc = "[R]un [A]pp" })
 
     local group = vim.api.nvim_create_augroup("ToggleTermGroup", { clear = true })
