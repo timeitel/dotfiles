@@ -10,6 +10,9 @@ local M = {
           colors.bg = gunmetal
           colors.bg_float = gunmetal
           colors.border_highlight = colors.fg
+          colors.gitSigns.add = colors.green2
+          colors.gitSigns.change = "#B79361"
+          colors.gitSigns.delete = colors.red
         end,
         on_highlights = function(hl, c)
           hl.CursorLine = {
@@ -22,7 +25,10 @@ local M = {
             bg = "#38222c",
           }
           hl.DiffChange = {
-            bg = "#283c4e",
+            bg = "#54524F",
+          }
+          hl.DiffText = {
+            bg = "#70604A"
           }
           local float_border = {
             bg = c.bg,
