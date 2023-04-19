@@ -1,7 +1,7 @@
 local M = {}
 
-M.map = function(m, k, v, opts)
-  opts = opts or {}
+M.map = function(m, k, v, options)
+  local opts = options or {}
   opts.silent = true
   opts.noremap = true
   vim.keymap.set(m, k, v, opts)
@@ -36,6 +36,19 @@ end
 -- TODO: use like in hx
 M.assign_to_repeat_cmd = function(cmd)
   M.map("n", "<C-.>", cmd, { desc = "Repeat command" })
+end
+
+M.request_confirm = function(options)
+  local opts = options or {}
+  local on_confirm = opts.on_confirm
+  local on_reject = opts.on_reject
+  local prompt = "Are you sure you'd like to " .. opts.prompt .. "? (&Yes\n&No)"
+
+  if vim.fn.confirm("", prompt, 1) == 1 then
+    on_confirm()
+  elseif on_reject ~= nil then
+    on_reject()
+  end
 end
 
 return M

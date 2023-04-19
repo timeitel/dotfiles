@@ -4,6 +4,7 @@ local M = {
     "sindrets/diffview.nvim",
     config = function()
       local actions = require("diffview.actions")
+      local request_confirm = require("tmtl.utils").request_confirm
 
       local shared_maps = {
         ["L"] = false,
@@ -22,10 +23,10 @@ local M = {
         ["<C-u>"] = actions.scroll_view(-10),
         ["gf"] = actions.goto_file_edit,
         ["x"] = function()
-          if vim.fn.confirm("", "Are you sure you'd like to discard changes? (&Yes\n&No)", 1) == 1 then
+          request_confirm({ prompt = "discard changes", on_confirm = function()
             actions.restore_entry()
             vim.cmd([[checktime]])
-          end
+          end })
         end,
         ["<leader>sr"] = actions.unstage_all, -- stage reset
         ["<leader>sf"] = actions.toggle_stage_entry,
@@ -54,10 +55,10 @@ local M = {
         ["<C-u>"] = actions.scroll_view(-10),
         ["gf"] = actions.goto_file_edit,
         ["x"] = function()
-          if vim.fn.confirm("", "Are you sure you'd like to discard changes? (&Yes\n&No)", 1) == 1 then
+          request_confirm({ prompt = "discard changes", on_confirm = function()
             actions.restore_entry()
             vim.cmd([[checktime]])
-          end
+          end })
         end,
         ["<leader>sr"] = actions.unstage_all, -- stage reset
         ["<leader>sf"] = actions.toggle_stage_entry,
@@ -93,7 +94,15 @@ local M = {
   {
     "lewis6991/gitsigns.nvim",
     config = function()
-      require("gitsigns").setup()
+      require("gitsigns").setup({
+        preview_config = {
+          border = "rounded",
+          style = 'minimal',
+          relative = 'cursor',
+          row = 0,
+          col = 1
+        },
+      })
     end,
   },
   {

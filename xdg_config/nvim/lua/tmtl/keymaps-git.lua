@@ -1,4 +1,5 @@
 local map = require("tmtl.utils").map
+local request_confirm = require("tmtl.utils").request_confirm
 local ts = require("telescope.builtin")
 local diffview_actions = require("diffview.actions")
 local neogit = require("neogit")
@@ -67,15 +68,11 @@ map("n", "<leader>gu", function()
 end, { desc = "[G]it [U]ndo - last commit into working directory" })
 
 map("n", "<leader>gx", function()
-  if vim.fn.confirm("", "Are you sure you'd like to discard ALL working changes? (&Yes\n&No)", 1) == 1 then
-    vim.cmd([[TermExec cmd="git restore . && git clean -fd"]])
-
-    vim.defer_fn(function()
-      vim.cmd([[ToggleTerm]])
-    end, 30)
-  end
-  notify("Discarding all working changes", vim.log.levels.WARN)
-end, { desc = "[[G]]it [R]eset - discard all working changes" })
+  request_confirm({ prompt = "discard ALL working changes", on_confirm = function()
+    require('toggleterm').exec_command('cmd="git restore . && git clean -fd" open=0')
+    notify("Discarded ALL working changes", vim.log.levels.WARN)
+  end })
+end, { desc = "[[G]]it [R]eset - discard ALL working changes" })
 
 map("n", "<leader><leader>gb", function()
   require("git_blame").run()
