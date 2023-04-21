@@ -25,10 +25,10 @@ local M = {
             bg = "#38222c",
           }
           hl.DiffChange = {
-            bg = "#54524F",
+            bg = c.bg,
           }
           hl.DiffText = {
-            bg = "#70604A"
+            bg = "#877152"
           }
           local float_border = {
             bg = c.bg,
