@@ -22,6 +22,31 @@ local M = {
         ["<C-d>"] = actions.scroll_view(10),
         ["<C-u>"] = actions.scroll_view(-10),
         ["gf"] = actions.goto_file_edit,
+        ["<leader>sr"] = actions.unstage_all, -- stage reset
+        ["<leader>sf"] = actions.toggle_stage_entry,
+        ["<leader>sa"] = actions.stage_all,
+        ["<leader>cs"] = function()
+          actions.focus_files()
+          Open_Git_Commit()
+        end,
+      }
+
+      local file_panel_maps = {
+        ["L"] = false,
+        ["q"] = "<cmd>DiffviewClose<cr>",
+        ["s"] = function()
+          vim.cmd([[DiffviewClose]])
+          require("neogit").open()
+        end,
+        ["<leader>f"] = "<cmd>DiffviewFocusFiles<cr>",
+        ["<C-f>"] = "<cmd>DiffviewToggleFiles<cr>",
+        ["<C-l>"] = actions.listing_style,
+        ["O"] = actions.focus_entry,
+        ["<C-e>"] = actions.scroll_view(1),
+        ["<C-y>"] = actions.scroll_view(-1),
+        ["<C-d>"] = actions.scroll_view(10),
+        ["<C-u>"] = actions.scroll_view(-10),
+        ["gf"] = actions.goto_file_edit,
         ["x"] = function()
           request_confirm({ prompt = "discard changes", on_confirm = function()
             actions.restore_entry()
@@ -31,13 +56,11 @@ local M = {
         ["<leader>sr"] = actions.unstage_all, -- stage reset
         ["<leader>sf"] = actions.toggle_stage_entry,
         ["<leader>sa"] = actions.stage_all,
-        -- Commit staged files
         ["<leader>cs"] = function()
           actions.focus_files()
           Open_Git_Commit()
         end,
       }
-
       -- Not using shallow copy util as mappings seem to leak into other diffview contexts
       local merge_tool_maps = {
         ["L"] = false,
@@ -63,7 +86,6 @@ local M = {
         ["<leader>sr"] = actions.unstage_all, -- stage reset
         ["<leader>sf"] = actions.toggle_stage_entry,
         ["<leader>sa"] = actions.stage_all,
-        -- Commit staged files
         ["<leader>cs"] = function()
           actions.focus_files()
           Open_Git_Commit()
@@ -84,7 +106,7 @@ local M = {
         keymaps = {
           view = shared_maps,
           file_history_panel = shared_maps,
-          file_panel = shared_maps,
+          file_panel = file_panel_maps,
           diff_view = shared_maps,
           merge_tool = merge_tool_maps,
         },
