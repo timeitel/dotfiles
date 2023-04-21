@@ -66,7 +66,6 @@ local M = {
       capabilities = capabilities,
     })
 
-    -- TODO: only works in cargo package, not in standalone .rs files
     nvim_lsp.rust_analyzer.setup({
       on_attach = function(_, buffnr)
         lsp_maps.attach(buffnr)

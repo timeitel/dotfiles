@@ -5,11 +5,12 @@ local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 local function goto_diagnostic(opts)
   opts = opts or {}
   local prev = opts.prev or false
+  local diag_float = { border = border, width = 80 }
 
   if prev then
-    vim.diagnostic.goto_prev({ float = { border = border }, severity = opts.severity })
+    vim.diagnostic.goto_prev({ float = diag_float, severity = opts.severity })
   else
-    vim.diagnostic.goto_next({ float = { border = border }, severity = opts.severity })
+    vim.diagnostic.goto_next({ float = diag_float, severity = opts.severity })
   end
 
   vim.fn.feedkeys("zz")
@@ -29,8 +30,6 @@ M.attach = function(bufnr)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr, desc = d })
   end
 
-  -- TODO: 1. <leader>dh if no code actions
-  -- TODO: 2. floating diag window max width
   -- Diagnostics
   buf_map("n", "<leader>dj", function()
     assign_to_next_prev(function()
