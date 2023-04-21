@@ -120,13 +120,18 @@ local M = {
             git_stash = {
               mappings = {
                 -- TODO: finish
-                -- n = {
-                --     ["d"] = function()
-                --         local entry = action_state.get_selected_entry()
-                --         -- local stash_idx = entry.value.find(entry, "%d+")
-                --         -- print(vim.inspect(stash_idx))
-                --     end,
-                -- },
+                n = {
+                  ["x"] = function()
+                    local request_confirm = require("tmtl.utils").request_confirm
+                    request_confirm({ prompt = "delete stashk", on_confirm = function()
+                      local entry = action_state.get_selected_entry()
+                      local stash_idx = entry.value.find(entry, "%d+")
+                      print(vim.inspect(stash_idx))
+                      -- require('toggleterm').exec_command('cmd="git restore . && git clean -fd" open=0')
+                      notify("Deleted stash")
+                    end })
+                  end,
+                },
               },
             },
             git_branches = {

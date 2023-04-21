@@ -6,9 +6,6 @@ local M = {
     build = ":TSUpdate",
     config = function()
       local ts = require("nvim-treesitter.configs")
-
-      -- TODO: use diffrent indent plugin than ts
-      -- TODO: index ts not working in tsx
       ts.setup({
         highlight = {
           enable = true,
