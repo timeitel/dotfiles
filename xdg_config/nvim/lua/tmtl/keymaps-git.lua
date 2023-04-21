@@ -35,6 +35,7 @@ end, { desc = "[G]it [H]istory" })
 map("n", "<leader>gc", Open_Git_Commit, { desc = "[G]it [C]ommit" })
 
 map("n", "<leader><leader>gc", function()
+  -- TODO: fix / do
   diffview_actions.stage_all()
   vim.defer_fn(function()
     vim.cmd([[tabclose]])
