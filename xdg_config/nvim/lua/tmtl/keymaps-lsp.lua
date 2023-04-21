@@ -107,20 +107,22 @@ M.attach = function(bufnr)
   end, "Lsp - signature")
 
   buf_map("n", "gd", function()
+    -- TODO: look into awaiting definition before centering
     vim.lsp.buf.definition()
 
     vim.defer_fn(function()
       vim.fn.feedkeys("zz")
-    end, 10)
+    end, 100)
   end, "Lsp - [G]o to [D]efinition")
 
   buf_map("n", "gD", function()
+    -- TODO: look into awaiting definition before centering
     vim.cmd([[vs]])
     vim.lsp.buf.definition()
 
     vim.defer_fn(function()
       vim.fn.feedkeys("zz")
-    end, 10)
+    end, 100)
   end, "Lsp - [G]o to [D]efinition in vertical split")
 
   buf_map("n", "K", function()
