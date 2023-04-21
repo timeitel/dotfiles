@@ -6,31 +6,6 @@ local M = {
       local actions = require("diffview.actions")
       local request_confirm = require("tmtl.utils").request_confirm
 
-      local shared_maps = {
-        ["L"] = false,
-        ["q"] = "<cmd>DiffviewClose<cr>",
-        ["s"] = function()
-          vim.cmd([[DiffviewClose]])
-          require("neogit").open()
-        end,
-        ["<leader>f"] = "<cmd>DiffviewFocusFiles<cr>",
-        ["<C-f>"] = "<cmd>DiffviewToggleFiles<cr>",
-        ["<C-l>"] = actions.listing_style,
-        ["O"] = actions.focus_entry,
-        ["<C-e>"] = actions.scroll_view(1),
-        ["<C-y>"] = actions.scroll_view(-1),
-        ["<C-d>"] = actions.scroll_view(10),
-        ["<C-u>"] = actions.scroll_view(-10),
-        ["gf"] = actions.goto_file_edit,
-        ["<leader>sr"] = actions.unstage_all, -- stage reset
-        ["<leader>sf"] = actions.toggle_stage_entry,
-        ["<leader>sa"] = actions.stage_all,
-        ["<leader>cs"] = function()
-          actions.focus_files()
-          Open_Git_Commit()
-        end,
-      }
-
       local file_panel_maps = {
         ["L"] = false,
         ["q"] = "<cmd>DiffviewClose<cr>",
@@ -61,6 +36,32 @@ local M = {
           Open_Git_Commit()
         end,
       }
+
+      local shared_maps = {
+        ["L"] = false,
+        ["q"] = "<cmd>DiffviewClose<cr>",
+        ["s"] = function()
+          vim.cmd([[DiffviewClose]])
+          require("neogit").open()
+        end,
+        ["<leader>f"] = "<cmd>DiffviewFocusFiles<cr>",
+        ["<C-f>"] = "<cmd>DiffviewToggleFiles<cr>",
+        ["<C-l>"] = actions.listing_style,
+        ["O"] = actions.focus_entry,
+        ["<C-e>"] = actions.scroll_view(1),
+        ["<C-y>"] = actions.scroll_view(-1),
+        ["<C-d>"] = actions.scroll_view(10),
+        ["<C-u>"] = actions.scroll_view(-10),
+        ["gf"] = actions.goto_file_edit,
+        ["<leader>sr"] = actions.unstage_all, -- stage reset
+        ["<leader>sf"] = actions.toggle_stage_entry,
+        ["<leader>sa"] = actions.stage_all,
+        ["<leader>cs"] = function()
+          actions.focus_files()
+          Open_Git_Commit()
+        end,
+      }
+
       -- Not using shallow copy util as mappings seem to leak into other diffview contexts
       local merge_tool_maps = {
         ["L"] = false,
