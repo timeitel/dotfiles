@@ -9,8 +9,9 @@ local M = {
     "sQVe/sort.nvim",
     config = function()
       local map = require("tmtl.utils").map
-      map("v", "gos", "<Esc><Cmd>Sort<CR>", { desc = "Sort visual selection" })
-      map("n", "gos", "vi{<Esc><Cmd>Sort<CR>", { desc = "Sort inside curly brace" })
+      map("v", "gos", "<Esc><Cmd>Sort<CR>", { desc = "[S]ort visual selection" })
+      map("n", "gos", "vi{<Esc><Cmd>Sort<CR>", { desc = "[S]ort inside curly brace" })
+      map("n", "go[", "vi[<Esc><Cmd>Sort<CR>", { desc = "[S]ort inside bracket `[`" })
     end,
   },
   {

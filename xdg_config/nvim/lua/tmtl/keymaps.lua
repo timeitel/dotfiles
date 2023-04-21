@@ -165,3 +165,11 @@ map("n", "<leader>sc", function()
     vim.o.hlsearch = false
   end
 end, { desc = "Toggle [S]earch [C]ount and hlsearch" })
+
+map("n", "+", function()
+  vim.cmd([[vertical resize +2]])
+end, { desc = "Window resize - increase horizontal" })
+
+map("n", "_", function()
+  vim.cmd([[vertical resize -2]])
+end, { desc = "Window resize - increase horizontal" })
