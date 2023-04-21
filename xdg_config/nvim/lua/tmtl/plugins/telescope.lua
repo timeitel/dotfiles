@@ -124,11 +124,16 @@ local M = {
                   ["x"] = function()
                     local request_confirm = require("tmtl.utils").request_confirm
                     request_confirm({ prompt = "delete stashk", on_confirm = function()
-                      local entry = action_state.get_selected_entry()
-                      local stash_idx = entry.value.find(entry, "%d+")
-                      print(vim.inspect(stash_idx))
-                      -- require('toggleterm').exec_command('cmd="git restore . && git clean -fd" open=0')
-                      notify("Deleted stash")
+                      local pos = vim.api.nvim_win_get_cursor(0)
+                      local stash_num = pos[1] - 1
+                      local cmd = "'cmd=\"git stash drop " .. stash_num .. "\" " .. "open=0'"
+                      vim.fn.feedkeys('q')
+                      vim.schedule(function()
+                        require('toggleterm').exec_command(cmd)
+                        notify("Deleted stash")
+                        telescope.resume()
+                      end
+                      )
                     end })
                   end,
                 },
