@@ -25,7 +25,7 @@ local M = {
             bg = "#38222c",
           }
           hl.DiffChange = {
-            bg = c.bg,
+            bg = "#383739",
           }
           hl.DiffText = {
             bg = "#877152"
