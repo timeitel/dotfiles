@@ -28,7 +28,7 @@ local M = {
             bg = "#383739",
           }
           hl.DiffText = {
-            bg = "#877152"
+            bg = "#524A41"
           }
           local float_border = {
             bg = c.bg,
