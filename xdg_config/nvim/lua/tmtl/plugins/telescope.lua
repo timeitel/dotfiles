@@ -86,7 +86,10 @@ local M = {
             file_ignore_patterns = { ".DS_Store" },
             multi_icon = "<>",
             sorting_strategy = "ascending",
-            path_display = { truncate = 2 },
+            path_display = function(_, path)
+              local tail = require("telescope.utils").path_tail(path)
+              return string.format("%s (%s)", tail, path)
+            end,
             layout_config = {
               width = 0.95,
               height = 0.85,
