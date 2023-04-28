@@ -24,7 +24,6 @@ o.relativenumber = true
 o.scrollbind = false
 o.scrolloff = 10
 o.sessionoptions = o.sessionoptions - "buffers"
-o.showbreak = string.rep(" ", 3) -- smart line wrapping
 o.showcmd = true
 o.showmatch = true
 o.showmode = false
@@ -39,16 +38,15 @@ o.whichwrap:append("<,>,h,l")
 o.wildignore = "__pycache__"
 o.wildignore:append("Cargo.lock")
 o.wildignore:append({ "*.o", "*.pyc", "*pycache*", "*~" })
-o.wrap = true
+o.wrap = false
 
 -- Tabs
 o.autoindent = true
 o.cindent = true
 o.expandtab = true -- `:retab` if any tab diff issues
-o.shiftwidth = 2
 o.smartindent = true
-o.softtabstop = 2
 o.tabstop = 2
+o.shiftwidth = 2
 
 -- cmdheight = 0
 o.shortmess:append("C")
