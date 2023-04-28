@@ -18,6 +18,10 @@ map("v", "<leader>ff", function()
   ts.grep_string({ search = text })
 end, { desc = "[F]ind in [F]iles - live grep selection" })
 
+map("n", "<leader>fa", function()
+  ts.find_files({ no_ignore = true, hidden = true })
+end, { desc = "[F]ind - [A]ll - show hidden and gitignore files" })
+
 map("n", "<leader>ft", function()
   ts.grep_string({ search = "TODO" })
 end, { desc = "[F]ind - [T]ODOs" })
@@ -52,11 +56,11 @@ map("n", "<leader>fd", function()
 end, { desc = "[F]ind - [D]iagnostics for workspace" })
 
 map("n", "<leader>bp", function()
-  fb.file_browser({ grouped = true, hidden = true })
+  fb.file_browser({ grouped = true, hidden = true, respect_gitignore = false })
 end, { desc = "[B]rowse [P]roject" })
 
 map("n", "<leader>bw", function()
-  fb.file_browser({ grouped = true, cwd = vim.fn.expand("%:p:h"), hidden = true })
+  fb.file_browser({ grouped = true, cwd = vim.fn.expand("%:p:h"), hidden = true, respect_gitignore = false })
 end, { desc = "[B]rowse buffer's [W]orking directory" })
 
 map("n", "<leader>fs", "<cmd>Navbuddy<cr>", { desc = "[F]ind - [S]ymbols in buffer" })

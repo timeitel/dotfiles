@@ -77,7 +77,7 @@ local M = {
           ["h"] = fb_actions.goto_parent_dir,
           ["H"] = fb_actions.goto_cwd,
           ["l"] = actions.select_default,
-          ["o"] = fb_actions.open
+          ["O"] = fb_actions.open
         }
 
         telescope.setup({
@@ -165,6 +165,7 @@ local M = {
 
           extensions = {
             file_browser = {
+              path_display = { truncate = 2 },
               mappings = {
                 n = file_browser_normal_mappings,
               },

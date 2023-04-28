@@ -1,18 +1,18 @@
 local map = require("tmtl.utils").map
 
-map("n", "<leader><leader>fs", function()
+map("n", "<leader>sl", function()
   require("telescope").extensions.possession.list()
 end, { desc = "[S]ession - list" })
 
-map("n", "<leader>ss", function()
+map("n", "<leader>sa", function()
   vim.fn.feedkeys(":SSave ")
   vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-j>"'))
-end, { desc = "[S]ession [S]ave" })
+end, { desc = "[S]ession [A]dd - add current session, either new or override" })
 
-map("n", "<leader>sl", function()
+map("n", "<leader>so", function()
   vim.cmd([[%bd!|e#|bd#]])
   vim.cmd([[SLoad]])
-end, { desc = "[S]ession [L]oad - previous session" })
+end, { desc = "[S]ession [O]pen - previous session" })
 
 map("n", "<leader>sd", function()
   vim.fn.feedkeys(":SDelete ")
