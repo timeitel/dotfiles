@@ -83,7 +83,7 @@ local M = {
         telescope.setup({
           defaults = {
             initial_mode = "normal",
-            file_ignore_patterns = { ".DS_Store" },
+            file_ignore_patterns = { ".DS_Store", ".git" },
             multi_icon = "<>",
             sorting_strategy = "ascending",
             path_display = function(_, path)
@@ -165,6 +165,7 @@ local M = {
 
           extensions = {
             file_browser = {
+              path_display = { truncate = 2 },
               mappings = {
                 n = file_browser_normal_mappings,
               },
