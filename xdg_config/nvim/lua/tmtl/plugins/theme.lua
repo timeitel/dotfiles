@@ -1,46 +1,31 @@
 local gunmetal = "#282c34"
 local M = {
   {
-    "folke/tokyonight.nvim",
+    "rebelot/kanagawa.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      require("tokyonight").setup({
-        on_colors = function(colors)
-          colors.bg = gunmetal
-          colors.bg_float = gunmetal
-          colors.border_highlight = colors.fg
-          colors.gitSigns.add = colors.green2
-          colors.gitSigns.change = "#B79361"
-          colors.gitSigns.delete = colors.red
-        end,
-        on_highlights = function(hl, c)
-          hl.CursorLine = {
-            bg = "#363c58",
+      require('kanagawa').setup({
+        colors = { -- add/modify theme and palette colors
+          theme = {
+            wave = {
+              ui = {
+                bg = gunmetal,
+                bg_gutter = "none"
+              }
+            }
+          },
+        },
+        overrides = function(colors)
+          return {
+            DiffChange = {
+              bg = "#383739",
+            }
           }
-          hl.DiffAdd = {
-            bg = "#283c4e",
-          }
-          hl.DiffDelete = {
-            bg = "#38222c",
-          }
-          hl.DiffChange = {
-            bg = "#383739",
-          }
-          hl.DiffText = {
-            bg = "#524A41"
-          }
-          local float_border = {
-            bg = c.bg,
-            fg = c.fg,
-          }
-          hl.NotifyINFOBorder = float_border
-          hl.NotifyTRACEBorder = float_border
-          hl.NotifyWARNBorder = float_border
-          hl.NotifyBorder = float_border
         end,
       })
-      vim.cmd([[colorscheme tokyonight-moon]])
+
+      vim.cmd("colorscheme kanagawa")
     end,
   },
 
