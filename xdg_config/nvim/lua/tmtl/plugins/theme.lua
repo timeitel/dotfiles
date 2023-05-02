@@ -6,17 +6,15 @@ local M = {
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require('kanagawa').setup({
-        colors = { -- add/modify theme and palette colors
+        colors = {
           theme = {
             wave = {
-              ui = {
-                bg = gunmetal,
-                bg_gutter = "none"
+              ui = { bg = gunmetal, bg_gutter = "none", float = { bg = gunmetal, bg_border = gunmetal, },
               }
             }
           },
         },
-        overrides = function(colors)
+        overrides = function()
           return {
             DiffChange = {
               bg = "#383739",
