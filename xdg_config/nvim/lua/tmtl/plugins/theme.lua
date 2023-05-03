@@ -22,7 +22,7 @@ local M = {
             },
             DiagnosticError = { fg = colors.palette.peachRed },
             DiagnosticSignError = { fg = colors.palette.peachRed },
-            DiagnosticUnderlineError = { fg = colors.palette.peachRed }
+            DiagnosticUnderlineError = { sp = colors.palette.peachRed }
           }
         end,
       })
