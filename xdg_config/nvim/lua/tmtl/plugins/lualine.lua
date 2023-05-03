@@ -1,43 +1,48 @@
 local M = {
   "nvim-lualine/lualine.nvim",
   config = function()
+    local kanagawa_colors = require("kanagawa.colors").setup()
+    local palette_colors = kanagawa_colors.palette
+    local theme_colors = kanagawa_colors.theme
     local lualine = require("lualine")
 
     local colors = {
-      blue = "#313244",
-      gray = "#82aaff",
-      green = "41a6b5",
+      blue = palette_colors.crystalBlue,
+      gray = palette_colors.sumiInk3,
+      green = palette_colors.autumnGreen,
       gunmetal = "#282c34",
-      yellow = "#e0af68",
-      magenta = "#bb9af7",
-      cyan = "#7dcfff",
+      yellow = palette_colors.autumnYellow,
+      magenta = palette_colors.crystalBlue,
+      cyan = palette_colors.dragonBlue,
     }
     local secondary_blue = { bg = colors.blue, fg = colors.gray }
 
     local function get_normal_mode_colors(primary)
+      local color = { bg = colors.gray, fg = primary }
       return {
-        a = { bg = colors.gray, fg = primary },
-        b = { bg = colors.gray, fg = primary },
-        c = { bg = colors.gunmetal, fg = "#7a88cf" },
-        x = { bg = primary, fg = colors.gray },
-        y = { bg = colors.gray, fg = primary },
+        a = color,
+        b = color,
+        c = { bg = colors.gunmetal, fg = theme_colors.syn.comment },
+        x = color,
+        y = color,
         -- z = { bg = primary, fg = colors.gray },
       }
     end
 
     local function get_mode_colors(primary)
+      local color = { bg = colors.gunmetal, fg = primary }
       return {
-        a = { bg = colors.gunmetal, fg = primary },
-        b = { bg = colors.gunmetal, fg = primary },
-        x = { bg = colors.gunmetal, fg = primary },
-        y = { bg = primary, fg = colors.gunmetal },
+        a = color,
+        b = color,
+        x = color,
+        y = color,
         -- z = { bg = colors.gunmetal, fg = primary },
       }
     end
 
     local theme = {
       normal = get_normal_mode_colors(colors.blue),
-      insert = get_mode_colors(colors.green),
+      insert = get_mode_colors(colors.magenta),
       visual = get_mode_colors(colors.magenta),
       replace = get_mode_colors(colors.cyan),
       command = get_mode_colors(colors.yellow),
@@ -52,13 +57,14 @@ local M = {
       "filename",
       path = 1,
       separator = { left = "", right = "" },
+      color = secondary_blue,
     }
 
     local winbar_inactive_filename = {
       "filename",
       separator = { left = "", right = "" },
       path = 1,
-      color = secondary_blue,
+      color = { bg = colors.gray, fg = colors.blue },
     }
 
     local filetype = {

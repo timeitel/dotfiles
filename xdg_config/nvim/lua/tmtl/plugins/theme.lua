@@ -9,16 +9,20 @@ local M = {
         colors = {
           theme = {
             wave = {
-              ui = { bg = gunmetal, bg_gutter = "none", float = { bg = gunmetal, bg_border = gunmetal, },
+              ui = { bg = gunmetal, bg_gutter = "none",
+                float = { bg = gunmetal, bg_border = gunmetal, },
               }
             }
           },
         },
-        overrides = function()
+        overrides = function(colors)
           return {
             DiffChange = {
               bg = "#383739",
-            }
+            },
+            DiagnosticError = { fg = colors.palette.peachRed },
+            DiagnosticSignError = { fg = colors.palette.peachRed },
+            DiagnosticUnderlineError = { fg = colors.palette.peachRed }
           }
         end,
       })
