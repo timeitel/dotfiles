@@ -47,37 +47,20 @@ local M = {
 
         -- Telescope File-browser
         local file_browser_normal_mappings = {
-          ["<leader>yf"] = function()
-            local entry = action_state.get_selected_entry()
-            local copy_filename_cmd = string.format(':let @+="%s"', entry.ordinal)
-            vim.cmd(copy_filename_cmd)
-            notify(string.format("Yanked filename %s to clipboard", entry.ordinal))
-          end,
-          ["<leader>yd"] = function()
-            local entry = action_state.get_selected_entry()
-            local copy_directory_cmd = string.format(':let @+="%s"', entry.cwd)
-            vim.cmd(copy_directory_cmd)
-            notify(string.format("Yanked working directory %s to clipboard", entry.cwd))
-          end,
-          ["<leader>yp"] = function()
-            local entry = action_state.get_selected_entry()
-            local copy_path_cmd = string.format(':let @+="%s"', entry.Path.filename)
-            vim.cmd(copy_path_cmd)
-            notify(string.format("Yanked file path %s to clipboard", entry.Path.filename))
-          end,
           ["."] = fb_actions.toggle_hidden,
           ["n"] = fb_actions.create,
           ["t"] = fb_actions.change_cwd,
           ["f"] = function()
             local entry = action_state.get_selected_entry()
             local filename = entry.Path.filename
-            require("telescope.builtin").live_grep({ search_dirs = { filename }, results_title = filename })
+            require("telescope.builtin").live_grep({ search_dirs = { filename }, results_title = filename,
+              initial_mode = "insert" })
           end,
           ["x"] = fb_actions.remove,
           ["h"] = fb_actions.goto_parent_dir,
           ["H"] = fb_actions.goto_cwd,
           ["l"] = actions.select_default,
-          ["O"] = fb_actions.open
+          ["o"] = fb_actions.open
         }
 
         telescope.setup({
