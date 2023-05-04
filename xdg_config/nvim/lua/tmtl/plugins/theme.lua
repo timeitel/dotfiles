@@ -6,6 +6,7 @@ local M = {
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require('kanagawa').setup({
+        statementStyle = { bold = false },
         colors = {
           theme = {
             wave = {
@@ -17,12 +18,14 @@ local M = {
         },
         overrides = function(colors)
           return {
+            -- TODO: bold return keyword
             DiffChange = {
               bg = "#383739",
             },
             DiagnosticError = { fg = colors.palette.peachRed },
             DiagnosticSignError = { fg = colors.palette.peachRed },
-            DiagnosticUnderlineError = { sp = colors.palette.peachRed }
+            DiagnosticUnderlineError = { sp = colors.palette.peachRed },
+            ["@lsp.typemod.function.readonly"] = { bold = false },
           }
         end,
       })
