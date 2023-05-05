@@ -44,6 +44,7 @@ local M = {
         default_normal_mappings["q"] = actions.close
         default_normal_mappings["<C-u>"] = actions.preview_scrolling_up
         default_normal_mappings["o"] = actions.select_default + actions.center
+        default_normal_mappings["l"] = actions.select_default
 
         -- Telescope File-browser
         local file_browser_normal_mappings = {
@@ -59,7 +60,6 @@ local M = {
           ["x"] = fb_actions.remove,
           ["h"] = fb_actions.goto_parent_dir,
           ["H"] = fb_actions.goto_cwd,
-          ["l"] = actions.select_default,
           ["o"] = fb_actions.open
         }
 
@@ -148,8 +148,9 @@ local M = {
 
           extensions = {
             file_browser = {
+              display_stat = { date = true, size = true, },
               path_display = { truncate = 2 },
-              mappings = {
+              mappings     = {
                 n = file_browser_normal_mappings,
               },
             },
