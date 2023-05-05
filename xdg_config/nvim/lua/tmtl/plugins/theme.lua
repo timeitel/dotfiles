@@ -26,6 +26,8 @@ local M = {
             DiagnosticSignError = { fg = colors.palette.peachRed },
             DiagnosticUnderlineError = { sp = colors.palette.peachRed },
             ["@lsp.typemod.function.readonly"] = { bold = false },
+            Operator = { bold = true },
+            Boolean = { bold = false },
           }
         end,
       })
