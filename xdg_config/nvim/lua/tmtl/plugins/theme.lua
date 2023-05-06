@@ -18,7 +18,6 @@ local M = {
         },
         overrides = function(colors)
           return {
-            -- TODO: bold return keyword
             DiffChange = {
               bg = "#383739",
             },

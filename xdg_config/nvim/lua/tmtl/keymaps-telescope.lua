@@ -64,3 +64,7 @@ map("n", "<leader>bw", function()
 end, { desc = "[B]rowse buffer's [W]orking directory" })
 
 map("n", "<leader>fs", "<cmd>Navbuddy<cr>", { desc = "[F]ind - [S]ymbols in buffer" })
+
+map("n", "<leader>fu", function()
+  require("telescope").extensions.undo.undo()
+end, { desc = "[F]ind - [U]ndo history" })
