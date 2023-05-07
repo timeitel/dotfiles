@@ -34,3 +34,5 @@ bindkey '^d' kill-word
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/timeitel/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/timeitel/google-cloud-sdk/path.zsh.inc'; fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
