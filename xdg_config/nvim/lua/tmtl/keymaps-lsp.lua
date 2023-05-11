@@ -114,8 +114,9 @@ M.attach = function(bufnr)
     end, 100)
   end, "Lsp - [G]o to [D]efinition")
 
-  buf_map("n", "gD", function()
+  buf_map("n", "gov", function()
     -- TODO: look into awaiting definition before centering
+    vim.cmd([[only]])
     vim.cmd([[vs]])
     vim.lsp.buf.definition()
 
