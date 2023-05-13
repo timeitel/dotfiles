@@ -68,7 +68,7 @@ local M = {
       telescope.setup({
         defaults = {
           initial_mode = "normal",
-          file_ignore_patterns = { ".DS_Store", ".git" },
+          file_ignore_patterns = { ".DS_Store", "^.git/" },
           multi_icon = "<>",
           sorting_strategy = "ascending",
           path_display = function(_, path)

@@ -58,6 +58,17 @@ local M = {
       path = 1,
       separator = { left = "", right = "" },
       color = secondary_blue,
+      fmt = function(str)
+        if string.find(str, '.git/:3:/') ~= nil then
+          return "THEIRS"
+        end
+
+        if string.find(str, '.git/:2:/') ~= nil then
+          return "OURS"
+        end
+
+        return str
+      end
     }
 
     local winbar_inactive_filename = {
