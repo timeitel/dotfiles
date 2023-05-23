@@ -167,6 +167,7 @@ local M = {
       require("telescope").load_extension("possession")
       require("telescope").load_extension("notify")
       require("telescope").load_extension("undo")
+      require("telescope").load_extension("git_worktree")
     end,
   },
 }

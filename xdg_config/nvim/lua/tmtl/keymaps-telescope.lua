@@ -68,3 +68,7 @@ map("n", "<leader>fs", "<cmd>Navbuddy<cr>", { desc = "[F]ind - [S]ymbols in buff
 map("n", "<leader>fu", function()
   require("telescope").extensions.undo.undo()
 end, { desc = "[F]ind - [U]ndo history" })
+
+map("n", "<leader>fw", function()
+  require('telescope').extensions.git_worktree.git_worktrees()
+end, { desc = "[F]ind - [W]orktrees" })
