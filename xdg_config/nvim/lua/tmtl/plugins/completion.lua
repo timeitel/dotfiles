@@ -41,13 +41,22 @@ local M = {
             fallback()
           end
         end, { "i", "c" }),
-        ["<C-l>"] = cmp.mapping(function()
-          if cmp.visible() then
-            cmp.confirm({ select = true })
-          else
-            cmp.complete()
+        ["<C-l>"] = cmp.mapping({
+          i = function()
+            if cmp.visible() then
+              cmp.confirm({ select = true })
+            else
+              cmp.complete()
+            end
+          end,
+          c = function()
+            if cmp.visible() then
+              cmp.confirm({ select = true })
+            else
+              vim.fn.feedkeys(vim.api.nvim_eval('"\\<Cr>"'))
+            end
           end
-        end, { "i", "c" }),
+        }),
       })
 
       -- Insert `(` after select function or method item
