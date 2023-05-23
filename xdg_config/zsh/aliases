@@ -25,4 +25,5 @@ alias gco='git checkout'
 alias gmos='gf && git merge origin staging'
 alias gmod='gf && git merge origin dev'
 alias config='git -C $TMTL_CONFIG_PATH'
+alias gw='git worktree'
 
