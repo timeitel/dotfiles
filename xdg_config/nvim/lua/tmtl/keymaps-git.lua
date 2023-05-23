@@ -112,3 +112,7 @@ map("n", "<leader>hu", function()
   vim.cmd([[Gitsigns undo_stage_hunk]])
   notify("Unstaged the last staged hunk")
 end, { desc = "Git [H]unk [U]ndo - last staged hunk" })
+
+map("n", "<leader>gwc", function()
+  require('telescope').extensions.git_worktree.create_git_worktree()
+end, { desc = "[G]it [W]orktree [C]reate" })
