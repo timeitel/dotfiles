@@ -194,6 +194,13 @@ local M = {
       timer = { progress_enddelay = 1000, lsp_client_name_enddelay = 1000 },
     }
 
+    local worktree = {
+      function()
+        return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+      end,
+      color = secondary_blue,
+    }
+
     lualine.setup({
       options = {
         theme = theme,
@@ -212,7 +219,7 @@ local M = {
         },
       },
       sections = {
-        lualine_a = { branch },
+        lualine_a = { worktree, branch },
         lualine_b = { filetype, global_line_filename },
         lualine_c = { line_diagnostic },
         lualine_x = { search_count, macro_recording },
