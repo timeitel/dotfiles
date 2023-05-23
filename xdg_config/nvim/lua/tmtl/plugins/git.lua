@@ -1,5 +1,6 @@
 local M = {
   "bobrown101/git-blame.nvim",
+  'ThePrimeagen/git-worktree.nvim',
   {
     "sindrets/diffview.nvim",
     config = function()

@@ -14,6 +14,7 @@
   "colorful-winsep.nvim": { "branch": "main", "commit": "9e6496f88ea6926261f9373483c5117c5bf2ed00" },
   "diffview.nvim": { "branch": "main", "commit": "f9ddbe798cb92854a383e2377482a49139a52c3d" },
   "git-blame.nvim": { "branch": "master", "commit": "df1a2ee99843cbf114efa5d419a7c4138e58d372" },
+  "git-worktree.nvim": { "branch": "master", "commit": "d7f4e2584e81670154f07ca9fa5dd791d9c1b458" },
   "gitsigns.nvim": { "branch": "main", "commit": "7dfe4be94b4f84a9931098f0f0f618d055e50bd5" },
   "harpoon": { "branch": "master", "commit": "f7040fd0c44e7a4010369136547de5604b9c22a1" },
   "kanagawa.nvim": { "branch": "master", "commit": "172d858162c4fdeca9cb2cab56eb4b8237af5df1" },
