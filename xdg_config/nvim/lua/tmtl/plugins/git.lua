@@ -36,6 +36,7 @@ local M = {
           actions.focus_files()
           Open_Git_Commit()
         end,
+        ["<C-Space>"] = actions.listing_style,
       }
 
       local shared_maps = {

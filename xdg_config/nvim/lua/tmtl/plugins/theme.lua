@@ -27,6 +27,13 @@ local M = {
             ["@lsp.typemod.function.readonly"] = { bold = false },
             Operator = { bold = true },
             Boolean = { bold = false },
+            DiffviewFilePanelSelected = {
+              fg = colors.palette.sumiInk2,
+              bg = colors.palette.oldWhite
+            },
+            QuickFixLine = {
+              bg = colors.palette.sumiInk3
+            }
           }
         end,
       })
