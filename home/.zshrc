@@ -1,4 +1,5 @@
 # load nvm
+eval $(/opt/homebrew/bin/brew shellenv)
 export NVM_DIR="$HOME/.nvm"
     [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"
 
