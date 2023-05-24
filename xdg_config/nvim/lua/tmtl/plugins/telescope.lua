@@ -39,7 +39,7 @@ local M = {
 
       local default_normal_mappings = copy(default_insert_mappings)
       default_normal_mappings["<leader>qf"] = function(bfnr)
-        actions.send_to_qflist(bfnr)
+        actions.smart_send_to_qflist(bfnr)
         vim.cmd([[copen]])
       end
       default_normal_mappings["c"] = false
