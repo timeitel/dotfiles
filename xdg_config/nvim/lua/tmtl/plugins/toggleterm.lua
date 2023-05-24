@@ -11,6 +11,7 @@ local M = {
       float_opts = {
         border = "curved",
       },
+      autochdir = true, -- TODO: fix, cmd not being entered
     })
 
     map("n", "<leader>rt", function()
