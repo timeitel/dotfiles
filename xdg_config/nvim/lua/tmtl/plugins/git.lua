@@ -6,6 +6,13 @@ local M = {
     worktree.on_tree_change(function(op, metadata)
       if op == worktree.Operations.Switch then
         print("Switched from " .. metadata.prev_path .. " to " .. metadata.path)
+
+        -- local term = require("toggleterm.terminal").Terminal:new {
+        --   dir = vim.fn.expand('%:p:h'),
+        --   cmd = "pwd",
+        --   direction = "float",
+        --   count = 1
+        -- }
       end
     end)
   end },
