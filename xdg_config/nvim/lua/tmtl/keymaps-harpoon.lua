@@ -1,11 +1,11 @@
 local map = require("tmtl.utils").map
 local harpoon_ui = require("harpoon.ui")
 
-map("n", "<leader>ea", function()
+map("n", "<leader>a", function()
   require("harpoon.mark").add_file()
 end, { desc = "[E]dit List - [A]dd" })
 
-map("n", "<leader>el", function()
+map("n", "<leader>e", function()
   harpoon_ui.toggle_quick_menu()
 end, { desc = "[E]dit [L]ist - toggle" })
 
