@@ -71,7 +71,7 @@ end, { desc = "[G]it [U]ndo - last commit into working directory" })
 
 map("n", "<leader>gx", function()
   request_confirm({ prompt = "discard ALL working changes", on_confirm = function()
-    require('toggleterm').exec_command('cmd="git restore . && git clean -fd" open=0')
+    require('toggleterm').exec_command('cmd="git restore . && git clean -fd"')
     notify("Discarded ALL working changes", vim.log.levels.WARN)
   end })
 end, { desc = "[[G]]it [R]eset - discard ALL working changes" })

@@ -37,3 +37,4 @@ hs.hotkey.bind(modifiers, "l", open_app("kitty"))
 hs.hotkey.bind(modifiers, "n", open_app("Slack"))
 hs.hotkey.bind(modifiers, ";", open_app("Messenger"))
 hs.hotkey.bind(modifiers, "y", open_app("TickTick"))
+-- TODO: change cmd shift a to cmd-k to change tabs, and cmd shift HL for changing tabs

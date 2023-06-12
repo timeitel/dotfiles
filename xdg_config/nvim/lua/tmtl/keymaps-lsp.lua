@@ -84,22 +84,26 @@ M.attach = function(bufnr)
     vim.lsp.buf.rename()
   end, "[L]sp - [R]ename")
 
+  buf_map("n", "<leader>li", function()
+    vim.lsp.buf.execute_command({ command = "_typescript.organizeImports", arguments = { vim.fn.expand("%:p") } })
+  end, "[L]sp - organize [I]mports")
+
   buf_map("n", "<leader><leader>lr", function()
     vim.cmd([[LspRestart]])
   end, "[L]sp - [R]estart")
 
-  -- TODO: change to toggle with ls, check if needing to stop or start
-  buf_map("n", "<leader>ls", function()
+  buf_map("n", "<leader><leader>li", function()
+    vim.cmd([[LspInfo]])
+  end, "[L]sp - [I]nfo")
+
+  buf_map("n", "<leader><leader>ls", function()
+    -- TODO: change to toggle with ls, check if needing to stop or start
     vim.cmd([[LspStop]])
   end, "[L]sp - [S]top")
 
-  buf_map("n", "<leader><leader>ls", function()
-    vim.cmd([[LspStart]])
-  end, "[L]sp - [S]tart")
-
-  buf_map("n", "<leader>li", function()
-    vim.lsp.buf.execute_command({ command = "_typescript.organizeImports", arguments = { vim.fn.expand("%:p") } })
-  end, "[L]sp - organize [I]mports")
+  buf_map("n", "<leader><leader>lr", function()
+    vim.cmd([[LspRestart]])
+  end, "[L]sp - [R]estart")
 
   buf_map({ "i", "n" }, "<C-S-Space>", function()
     vim.lsp.buf.signature_help()
