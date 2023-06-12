@@ -50,7 +50,14 @@ local M = {
 
     local global_line_filename = {
       "filename",
+      -- TODO: either show cursor diff3rent in insert mode in terminal or add mode to lualine
       separator = { left = "", right = "" },
+      fmt = function(str)
+        if string.find(str, 'zsh;') ~= nil then
+          return "Terminal"
+        end
+        return str
+      end
     }
 
     local winbar_filename = {
@@ -67,6 +74,10 @@ local M = {
           return "OURS"
         end
 
+        if string.find(str, 'term://') ~= nil then
+          return ""
+        end
+
         return str
       end
     }
@@ -75,6 +86,21 @@ local M = {
       "filename",
       separator = { left = "", right = "" },
       path = 1,
+      fmt = function(str)
+        if string.find(str, '.git/') ~= nil and string.find(str, ':3:/') ~= nil then
+          return "THEIRS"
+        end
+
+        if string.find(str, '.git/') ~= nil and string.find(str, ':2:/') ~= nil then
+          return "OURS"
+        end
+
+        if string.find(str, 'term://') ~= nil then
+          return ""
+        end
+
+        return str
+      end,
       color = { bg = colors.gray, fg = colors.blue },
     }
 

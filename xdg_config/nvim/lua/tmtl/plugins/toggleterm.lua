@@ -11,6 +11,7 @@ local M = {
       float_opts = {
         border = "curved",
       },
+      autochdir = true,
     })
 
     map("n", "<leader>rt", function()
