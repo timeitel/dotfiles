@@ -53,7 +53,7 @@
   },
   "diffview.nvim": {
     "branch": "main",
-    "commit": "397ce240d3141b97067049fa3544f974d8b4d06d"
+    "commit": "6bebefbc4c90e6d2b8c65e65b055d284475d89f8"
   },
   "git-blame.nvim": {
     "branch": "master",
@@ -77,7 +77,7 @@
   },
   "lazy.nvim": {
     "branch": "main",
-    "commit": "678179543e0d27650c328d8659f2c2cab4d854ef"
+    "commit": "10d4371745f88837c78c8daab00c5be6e48abea4"
   },
   "leap.nvim": {
     "branch": "main",
@@ -149,11 +149,11 @@
   },
   "nvim-treesitter": {
     "branch": "master",
-    "commit": "9c9e12f0333a1686171a1315b237e9f6c49ff41d"
+    "commit": "111a3f46116516bc04fe5bbcbd6ec71d704b71f3"
   },
   "nvim-treesitter-context": {
     "branch": "master",
-    "commit": "e2ea37627c0681421ccf4a3cf19d68bb958e1817"
+    "commit": "66531e825ab6c790ccf8837cfad2b9fab1b39d0b"
   },
   "nvim-treesitter-textobjects": {
     "branch": "master",

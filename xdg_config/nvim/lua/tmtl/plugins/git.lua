@@ -18,6 +18,7 @@ local M = {
   end },
   {
     "sindrets/diffview.nvim",
+    commit = "6bebefbc4c90e6d2b8c65e65b055d284475d89f8",
     config = function()
       local actions = require("diffview.actions")
       local request_confirm = require("tmtl.utils").request_confirm
