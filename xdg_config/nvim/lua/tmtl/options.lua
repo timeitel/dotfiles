@@ -107,11 +107,5 @@ vim.api.nvim_command([[
 au FileType * set fo=cqrnj
     ]])
 
--- pipe tsc errors into qf list
--- TODO: look into nvim -q <(flake8 .)
--- passing tsc lint output into qf list
-vim.cmd([[
-  augroup tsc
-    autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=tsc
-  augroup END
-]])
+o.scrollbind = false
+o.sessionoptions = o.sessionoptions - "buffers"
