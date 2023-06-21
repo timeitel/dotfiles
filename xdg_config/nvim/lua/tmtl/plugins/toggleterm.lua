@@ -15,9 +15,9 @@ local M = {
     })
 
     map("n", "<leader>rt", function()
-      -- TODO: add test script for cargo projects
-      require('toggleterm').exec("npm run type-check")
-    end, { desc = "[R]un [T]est" })
+      -- TODO: add cargo test for rust projects
+      vim.cmd([[TSC]])
+    end, { desc = "[R]un [T]est / [T]ype check" })
 
     map("n", "<leader>ra", function()
       -- TODO: add run script default for npm projects
