@@ -85,7 +85,7 @@ M.attach = function(bufnr)
   end, "[L]sp - [R]ename")
 
   buf_map("n", "<leader>li", function()
-    vim.lsp.buf.execute_command({ command = "_typescript.organizeImports", arguments = { vim.fn.expand("%:p") } })
+    vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
   end, "[L]sp - organize [I]mports")
 
   buf_map("n", "<leader><leader>lr", function()
