@@ -77,25 +77,21 @@ local M = {
         },
         mapping = mapping,
         sources = cmp.config.sources({
-          { name = "nvim_lsp", keyword_length = 2, max_item_count = 10 },
+          { name = "nvim_lsp", keyword_length = 2, max_item_count = 15 },
           { name = "nvim_lua", keyword_length = 2, max_item_count = 10 },
           { name = "path" },
-          { name = "luasnip", keyword_length = 2, max_item_count = 10 },
+          { name = "luasnip", keyword_length = 2, max_item_count = 5 },
           { name = "buffer", keyword_length = 5, max_item_count = 10 },
         }),
-        experimental = {
-          native_menu = false,
-          ghost_text = true,
-        },
         formatting = {
           format = lspkind.cmp_format({
             with_text = true,
             menu = {
-              buffer = "[buf]",
+              buffer = "[BUF]",
               nvim_lsp = "[LSP]",
-              nvim_lua = "[api]",
-              path = "[path]",
-              luasnip = "[snip]",
+              nvim_lua = "[API]",
+              path = "[PATH]",
+              luasnip = "[SNIP]",
             },
           }),
         },
