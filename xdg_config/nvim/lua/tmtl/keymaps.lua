@@ -8,7 +8,10 @@ map({ "n", "v", "o" }, "L", "$", { desc = "Last character on line" })
 
 map("v", "p", "P", { desc = "Keep register on visual paste" })
 map("v", "P", "p", { desc = "Replace register on visual paste" })
-map({ "n", "v", "s" }, "<C-q>", "<Esc>", { desc = "Return to normal mode" })
+
+map({ "n", "v", }, "q", "<Esc>", { desc = "Return to normal mode" })
+map("s", "<C-q>", "<Esc>", { desc = "Return to normal mode" })
+map("n", "Q", "q", { desc = "Safer trigger for macro recording" })
 
 map("c", "<C-q>", function()
   vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-u>\\<BS>"'))

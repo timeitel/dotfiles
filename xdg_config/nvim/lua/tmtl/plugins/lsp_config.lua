@@ -27,6 +27,11 @@ local M = {
     local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
     nvim_lsp.eslint.setup({})
+    nvim_lsp.gopls.setup({
+      on_attach = function(_, bufnr)
+        lsp_maps.attach(bufnr)
+      end,
+    })
 
     nvim_lsp.tsserver.setup({
       on_attach = function(client, bufnr)
