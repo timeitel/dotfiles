@@ -207,6 +207,14 @@
     "branch": "master",
     "commit": "50c2301c3b3785430df77856be59dc9fec7347d8"
   },
+  "tsc.nvim": {
+    "branch": "main",
+    "commit": "a3661c71b7f5989885437af11c907bf760095350"
+  },
+  "typescript-tools.nvim": {
+    "branch": "master",
+    "commit": "9e6e50212e6a694e349523188686cdca96f8e93e"
+  },
   "vim-ReplaceWithRegister": {
     "branch": "master",
     "commit": "aad1e8fa31cb4722f20fe40679caa56e25120032"

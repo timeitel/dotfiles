@@ -104,6 +104,3 @@ vim.api.nvim_create_autocmd("VimResized", {
 vim.api.nvim_command([[
 au FileType * set fo=cqrnj
     ]])
-
-o.scrollbind = false
-o.sessionoptions = o.sessionoptions - "buffers"
