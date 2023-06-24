@@ -143,18 +143,8 @@ end
 
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "[Q]uickfix [L]ist - show" })
 
-map("n", "<leader>qj", function()
-  assign_to_next_prev(goto_qf_item, function()
-    goto_qf_item({ prev = true })
-  end)
-
-  goto_qf_item()
-end, { desc = "[Q]uickfix List - next" })
-map("n", "<leader>qk", function()
-  assign_to_next_prev(function()
-    goto_qf_item({ prev = true })
-  end, goto_qf_item)
-
+map("n", "]q", goto_qf_item, { desc = "[Q]uickfix List - next" })
+map("n", "[q", function()
   goto_qf_item({ prev = true })
 end, { desc = "[Q]uickfix List - previous" })
 map("n", "<leader>qq", "<cmd>cclose<cr>", { desc = "[Q]uickfix List - [Q]uit" })

@@ -30,6 +30,7 @@ M.attach = function(bufnr)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr or 0, desc = d })
   end
 
+  -- TODO: move to ]d
   -- Diagnostics
   buf_map("n", "<leader>dj", function()
     assign_to_next_prev(function()
