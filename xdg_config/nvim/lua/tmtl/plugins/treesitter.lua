@@ -1,4 +1,3 @@
--- TODO: disable enter TS highlight in cmd line as it errors
 local M = {
   "nvim-treesitter/nvim-treesitter-context",
   "nvim-treesitter/nvim-treesitter-textobjects",
