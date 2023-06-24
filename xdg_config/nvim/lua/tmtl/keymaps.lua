@@ -13,6 +13,17 @@ map({ "n", "v", }, "q", "<Esc>", { desc = "Return to normal mode" })
 map("s", "<C-q>", "<Esc>", { desc = "Return to normal mode" })
 map("n", "Q", "q", { desc = "Safer trigger for macro recording" })
 
+-- TODO: map S to xi and update leap to only use s
+map({ "o", "x" }, "iq", 'i"', { desc = "Operator mode syntax aliases" }) -- [q]uote
+map({ "o", "x" }, "aq", 'a"', { desc = "Operator mode syntax aliases" })
+map({ "o", "x" }, "is", "i'", { desc = "Operator mode syntax aliases" }) -- [s]ingle quote
+map({ "o", "x" }, "as", "a'", { desc = "Operator mode syntax aliases" })
+map({ "o", "x" }, "it", "i`", { desc = "Operator mode syntax aliases" }) -- [t]emplate string
+map({ "o", "x" }, "at", "a`", { desc = "Operator mode syntax aliases" })
+map({ "o", "x" }, "ir", "i[", { desc = "Operator mode syntax aliases" }) -- [r]ectangular brackets
+map({ "o", "x" }, "ar", "a[", { desc = "Operator mode syntax aliases" })
+-- b mapped to ( and B mapped to { in plugin
+
 map("c", "<C-q>", function()
   vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-u>\\<BS>"'))
 end, { desc = "Return to normal mode" })
@@ -102,16 +113,16 @@ end, { desc = "[R]eplace in file - word under cursor" })
 -- Buffers
 map("n", "<leader>ba", "<cmd>:%bd<cr>", { desc = "[B]uffer - delete [A]ll" })
 map("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>", { desc = "[B]uffer - delete [O]thers" })
-map("n", "<leader>bj", "<cmd>bnext<cr>", { desc = "[B]uffer - next" })
-map("n", "<leader>bk", "<cmd>bprevious<cr>", { desc = "[B]uffer - previous" })
+map("n", "]b", "<cmd>bnext<cr>", { desc = "[B]uffer - next" })
+map("n", "[b", "<cmd>bprevious<cr>", { desc = "[B]uffer - previous" })
 map({ "n", "i" }, "<C-s>", "<cmd>w<cr>", { desc = "[B]uffer - save" })
 
 -- Tabs
 map("n", "<leader><tab>n", "<cmd>tabnew<cr>", { desc = "[T]ab [N]ew" })
-map("n", "<leader><tab>j", "<cmd>tabnext<cr>", { desc = "[T]ab - next" })
-map("n", "<leader><tab>k", "<cmd>tabprevious<cr>", { desc = "[T]ab - previous" })
 map("n", "<leader><tab>q", "<cmd>tabclose<cr>", { desc = "[T]ab [Q]uit" })
 map("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "[T]ab - delete [O]thers" })
+map("n", "]<tab>", "<cmd>tabnext<cr>", { desc = "[T]ab - next" })
+map("n", "[<tab>", "<cmd>tabprevious<cr>", { desc = "[T]ab - previous" })
 
 -- Quickfix list
 local function goto_qf_item(opts)
