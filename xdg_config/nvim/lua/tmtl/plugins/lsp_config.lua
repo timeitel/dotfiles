@@ -33,22 +33,6 @@ local M = {
       end,
     })
 
-    nvim_lsp.tsserver.setup({
-      on_attach = function(client, bufnr)
-        lsp_maps.attach(bufnr)
-        client.server_capabilities.documentFormattingProvider = false -- done by prettierd
-      end,
-      handlers = tsHandlers,
-      filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
-      cmd = { "typescript-language-server", "--stdio" },
-      settings = {
-        completions = {
-          completeFunctionCalls = true,
-        },
-      },
-      capabilities = capabilities,
-    })
-
     nvim_lsp.lua_ls.setup({
       on_attach = function(_, bufnr)
         lsp_maps.attach(bufnr)

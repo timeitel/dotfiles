@@ -27,7 +27,7 @@ local M = {}
 
 M.attach = function(bufnr)
   local function buf_map(m, k, v, d)
-    vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr, desc = d })
+    vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr or 0, desc = d })
   end
 
   -- Diagnostics
