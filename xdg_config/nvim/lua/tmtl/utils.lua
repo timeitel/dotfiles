@@ -28,11 +28,6 @@ M.shallow_copy = function(t)
   return t2
 end
 
-M.assign_to_next_prev = function(next, prev)
-  M.map("n", "<tab>", next, { desc = "Next - special" })
-  M.map("n", "<S-tab>", prev, { desc = "Previous - special" })
-end
-
 -- TODO: use like in hx
 M.assign_to_repeat_cmd = function(cmd)
   M.map("n", "<C-.>", cmd, { desc = "Repeat command" })

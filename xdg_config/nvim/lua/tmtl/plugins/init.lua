@@ -1,4 +1,3 @@
--- TODO: change S to xi, sneak for unidirectional
 local M = {
   "RishabhRD/popfix",
   "ThePrimeagen/harpoon",

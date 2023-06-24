@@ -1,5 +1,3 @@
-local assign_to_next_prev = require("tmtl.utils").assign_to_next_prev
-
 local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 
 local function goto_diagnostic(opts)
@@ -16,13 +14,6 @@ local function goto_diagnostic(opts)
   vim.fn.feedkeys("zz")
 end
 
--- Default next_prev action to next_diagnostic
-assign_to_next_prev(function()
-  goto_diagnostic({ severity = vim.diagnostic.severity.ERROR })
-end, function()
-  goto_diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
-end)
-
 local M = {}
 
 M.attach = function(bufnr)
@@ -30,41 +21,20 @@ M.attach = function(bufnr)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr or 0, desc = d })
   end
 
-  -- TODO: move to ]d
   -- Diagnostics
-  buf_map("n", "<leader>dj", function()
-    assign_to_next_prev(function()
-      goto_diagnostic({ severity = vim.diagnostic.severity.ERROR })
-    end, function()
-      goto_diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
-    end)
-
+  buf_map("n", "]e", function()
     goto_diagnostic({ severity = vim.diagnostic.severity.ERROR })
   end, "[D]iagnostics - next error")
 
-  buf_map("n", "<leader><leader>dj", function()
-    assign_to_next_prev(goto_diagnostic, function()
-      goto_diagnostic({ prev = true })
-    end)
-
-    goto_diagnostic()
-  end, "[D]iagnostics - next diagnostic")
-
-  buf_map("n", "<leader>dk", function()
-    assign_to_next_prev(function()
-      goto_diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
-    end, function()
-      goto_diagnostic({ severity = vim.diagnostic.severity.ERROR })
-    end)
-
+  buf_map("n", "[e", function()
     goto_diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
   end, "[D]iagnostics - previous error")
 
-  buf_map("n", "<leader><leader>dk", function()
-    assign_to_next_prev(function()
-      goto_diagnostic({ prev = true })
-    end, goto_diagnostic)
+  buf_map("n", "]d", function()
+    goto_diagnostic()
+  end, "[D]iagnostics - next diagnostic")
 
+  buf_map("n", "[d", function()
     goto_diagnostic({ prev = true })
   end, "[D]iagnostics - previous diagnostic")
 

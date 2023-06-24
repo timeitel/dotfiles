@@ -1,4 +1,3 @@
-local assign_to_next_prev = require("tmtl.utils").assign_to_next_prev
 local get_visual_selection = require("tmtl.utils").get_visual_selection
 local map = require("tmtl.utils").map
 local notify = require("notify")
