@@ -12,7 +12,6 @@ map({ "n", "v", }, "q", "<Esc>", { desc = "Return to normal mode" })
 map("s", "<C-q>", "<Esc>", { desc = "Return to normal mode" })
 map("n", "Q", "q", { desc = "Safer trigger for macro recording" })
 
--- TODO: map S to xi and update leap to only use s
 map({ "o", "x" }, "iq", 'i"', { desc = "Operator mode syntax aliases" }) -- [q]uote
 map({ "o", "x" }, "aq", 'a"', { desc = "Operator mode syntax aliases" })
 map({ "o", "x" }, "is", "i'", { desc = "Operator mode syntax aliases" }) -- [s]ingle quote
@@ -21,7 +20,9 @@ map({ "o", "x" }, "it", "i`", { desc = "Operator mode syntax aliases" }) -- [t]e
 map({ "o", "x" }, "at", "a`", { desc = "Operator mode syntax aliases" })
 map({ "o", "x" }, "ir", "i[", { desc = "Operator mode syntax aliases" }) -- [r]ectangular brackets
 map({ "o", "x" }, "ar", "a[", { desc = "Operator mode syntax aliases" })
--- b mapped to ( and B mapped to { in plugin
+map({ "o", "x" }, "ic", "i{", { desc = "Operator mode syntax aliases" }) -- [c]urly brackets
+map({ "o", "x" }, "ac", "a{", { desc = "Operator mode syntax aliases" })
+-- b already mapped to (
 
 map("c", "<C-q>", function()
   vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-u>\\<BS>"'))
@@ -81,12 +82,6 @@ map("n", "<leader>yf", function()
 end, { desc = "Copy filename to clipboard" })
 map("v", "<leader>y", '"+y', { desc = "Copy to clipboard" })
 map("v", "<leader>p", '"+p', { desc = "Paste from clipboard" })
-
-map("n", "<leader>T", function()
-  vim.fn.feedkeys("iTODO: ")
-  vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<esc>"'), "n", true)
-  vim.fn.feedkeys("gccA")
-end, { desc = "Insert - [T]ODO comment" })
 
 map("i", "<c-t>", function()
   vim.fn.feedkeys("TODO: ")

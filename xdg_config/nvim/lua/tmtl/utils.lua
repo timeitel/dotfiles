@@ -28,11 +28,6 @@ M.shallow_copy = function(t)
   return t2
 end
 
--- TODO: use like in hx
-M.assign_to_repeat_cmd = function(cmd)
-  M.map("n", "<C-.>", cmd, { desc = "Repeat command" })
-end
-
 M.request_confirm = function(options)
   local opts = options or {}
   local on_confirm = opts.on_confirm
