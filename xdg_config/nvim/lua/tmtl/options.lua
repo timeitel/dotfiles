@@ -106,3 +106,12 @@ vim.api.nvim_create_autocmd("VimResized", {
 vim.api.nvim_command([[
 au FileType * set fo=cqrnj
     ]])
+
+-- Disable treesitter in command window
+vim.api.nvim_create_augroup("_cmd_win", { clear = true })
+vim.api.nvim_create_autocmd("CmdWinEnter", {
+  callback = function()
+    vim.keymap.del("n", "<CR>", { buffer = true })
+  end,
+  group = "_cmd_win",
+})
