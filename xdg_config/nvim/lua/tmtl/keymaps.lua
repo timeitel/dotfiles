@@ -4,6 +4,7 @@ local notify = require("notify")
 
 map({ "n", "v", "o" }, "H", "^", { desc = "First character on line" })
 map({ "n", "v", "o" }, "L", "$", { desc = "Last character on line" })
+map("n", "X", "xi", { desc = "Replacement for vanilla 's'" })
 
 map("v", "p", "P", { desc = "Keep register on visual paste" })
 map("v", "P", "p", { desc = "Replace register on visual paste" })
