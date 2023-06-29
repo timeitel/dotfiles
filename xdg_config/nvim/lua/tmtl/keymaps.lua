@@ -140,7 +140,6 @@ local function goto_qf_item(opts)
 end
 
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "[Q]uickfix [L]ist - show" })
-
 map("n", "]q", goto_qf_item, { desc = "[Q]uickfix List - next" })
 map("n", "[q", function()
   goto_qf_item({ prev = true })
