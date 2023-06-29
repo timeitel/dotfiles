@@ -14,12 +14,10 @@ local M = {
       local action_state = require("telescope.actions.state")
       local actions = require("telescope.actions")
       local actions_layout = require("telescope.actions.layout")
-      local notify = require("notify")
       local fb_actions = telescope.extensions.file_browser.actions
       local copy = require("tmtl.utils").shallow_copy
 
-      -- Telescope defaults
-      local default_insert_mappings = {
+      local insert_mappings = {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-q>"] = actions.close,
@@ -37,20 +35,18 @@ local M = {
         ["<M-p>"] = actions_layout.toggle_preview,
       }
 
-      local default_normal_mappings = copy(default_insert_mappings)
-      default_normal_mappings["<leader>qf"] = function(bfnr)
+      local normal_mappings = copy(insert_mappings)
+      normal_mappings["<leader>qf"] = function(bfnr)
         actions.smart_send_to_qflist(bfnr)
         vim.cmd([[copen]])
       end
-      default_normal_mappings["c"] = false
-      default_normal_mappings["q"] = actions.close
-      default_normal_mappings["<C-u>"] = actions.preview_scrolling_up
-      default_normal_mappings["o"] = actions.select_default + actions.center
-      default_normal_mappings["l"] = actions.select_default
+      normal_mappings["c"] = false
+      normal_mappings["q"] = actions.close
+      normal_mappings["<C-u>"] = actions.preview_scrolling_up
+      normal_mappings["o"] = actions.select_default + actions.center
+      normal_mappings["l"] = actions.select_default
 
-      -- Telescope File-browser
       local file_browser_normal_mappings = {
-        ["."] = fb_actions.toggle_hidden,
         ["n"] = fb_actions.create,
         ["t"] = fb_actions.change_cwd,
         ["f"] = function()
@@ -92,8 +88,8 @@ local M = {
           },
 
           mappings = {
-            i = default_insert_mappings,
-            n = default_normal_mappings,
+            i = insert_mappings,
+            n = normal_mappings,
           },
         },
 
@@ -105,28 +101,7 @@ local M = {
               },
             },
           },
-          git_stash = {
-            mappings = {
-              -- TODO: finish
-              n = {
-                ["x"] = function()
-                  local request_confirm = require("tmtl.utils").request_confirm
-                  request_confirm({ prompt = "delete stashk", on_confirm = function()
-                    local pos = vim.api.nvim_win_get_cursor(0)
-                    local stash_num = pos[1] - 1
-                    local cmd = "'cmd=\"git stash drop " .. stash_num .. "\" " .. "open=0'"
-                    vim.fn.feedkeys('q')
-                    vim.schedule(function()
-                      require('toggleterm').exec_command(cmd)
-                      notify("Deleted stash")
-                      telescope.resume()
-                    end
-                    )
-                  end })
-                end,
-              },
-            },
-          },
+          git_stash = {},
           git_branches = {
             previewer = false,
             mappings = {

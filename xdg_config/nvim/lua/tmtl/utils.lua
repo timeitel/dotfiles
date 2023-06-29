@@ -41,4 +41,16 @@ M.request_confirm = function(options)
   end
 end
 
+M.spread_table = function(target_table, source_table, source_table_2)
+  local source_2 = source_table_2 or {}
+  for k, v in pairs(source_table) do
+    target_table[k] = v
+  end
+
+  for k, v in pairs(source_2) do
+    target_table[k] = v
+  end
+  return target_table
+end
+
 return M

@@ -1,7 +1,6 @@
 local map = require("tmtl.utils").map
 local request_confirm = require("tmtl.utils").request_confirm
 local ts = require("telescope.builtin")
-local diffview_actions = require("diffview.actions")
 local neogit = require("neogit")
 local notify = require("notify")
 
@@ -24,7 +23,7 @@ map("n", "<leader>gd", function()
 end, { desc = "[G]it [D]iff" })
 
 map("n", "<leader><leader>gd", function()
-  -- TODO: fetch origin first
+  -- TODO: fetch origin first, toggleterm cmd and callbback
   vim.cmd([[DiffviewOpen origin/dev...HEAD]])
   notify('Opening diff: "origin/dev...HEAD"')
 end, { desc = "[[G]]it [D]iff - HEAD against staging" })
@@ -32,20 +31,6 @@ end, { desc = "[[G]]it [D]iff - HEAD against staging" })
 map("n", "<leader>gh", function()
   vim.cmd([[DiffviewFileHistory]])
 end, { desc = "[G]it [H]istory" })
-
-map("n", "<leader>gc", Open_Git_Commit, { desc = "[G]it [C]ommit" })
-
-map("n", "<leader><leader>gc", function()
-  -- TODO: fix / do
-  diffview_actions.stage_all()
-  vim.defer_fn(function()
-    vim.cmd([[tabclose]])
-    neogit.open()
-    neogit.open({ "commit" })
-    vim.fn.feedkeys("c")
-  end, 100)
-  notify("Staging all changes")
-end, { desc = "[[G]]it [C]ommit - stage all and commit" })
 
 map("n", "<leader>gfh", function()
   vim.cmd([[DiffviewFileHistory %]])
@@ -55,11 +40,6 @@ map("n", "<leader>gfx", function()
   vim.cmd([[Gitsigns reset_buffer]])
   notify("Discarded changes of current file", vim.log.levels.WARN)
 end, { desc = "[G]it [F]ile - discard changes" })
-
-map("n", "<leader><leader>gfs", function()
-  vim.cmd([[Gitsigns stage_buffer]])
-  notify("Staged current file")
-end, { desc = "[[G]]it [F]ile [S]tage" })
 
 map("n", "<leader>gb", function()
   ts.git_branches()
