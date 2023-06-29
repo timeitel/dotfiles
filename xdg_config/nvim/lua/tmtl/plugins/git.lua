@@ -50,8 +50,10 @@ local M = {
           end })
         end,
         ["C"] = function()
-          vim.cmd([[wincmd o]])
+          vim.cmd([[DiffviewClose]])
+          neogit.open()
           neogit.open({ "commit" })
+          vim.fn.feedkeys("c")
         end,
       }
 
