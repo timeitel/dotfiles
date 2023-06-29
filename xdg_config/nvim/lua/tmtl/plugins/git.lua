@@ -75,7 +75,7 @@ local M = {
         },
         keymaps = {
           view = common_maps,
-          file_history_panel = common_maps,
+          file_history_panel = file_panel_maps,
           file_panel = file_panel_maps,
           diff_view = common_maps,
           merge_tool = merge_tool_maps,
