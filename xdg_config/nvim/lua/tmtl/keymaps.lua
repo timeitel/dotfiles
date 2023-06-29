@@ -13,6 +13,7 @@ map({ "n", "v", }, "q", "<Esc>", { desc = "Return to normal mode" })
 map("s", "<C-q>", "<Esc>", { desc = "Return to normal mode" })
 map("n", "Q", "q", { desc = "Safer trigger for macro recording" })
 
+map({ "o", "x" }, "<C-q>", "<Esc>", { desc = "Exit operator mode" })
 map({ "o", "x" }, "iq", 'i"', { desc = "Operator mode syntax aliases" }) -- [q]uote
 map({ "o", "x" }, "aq", 'a"', { desc = "Operator mode syntax aliases" })
 map({ "o", "x" }, "is", "i'", { desc = "Operator mode syntax aliases" }) -- [s]ingle quote
@@ -23,7 +24,8 @@ map({ "o", "x" }, "ir", "i[", { desc = "Operator mode syntax aliases" }) -- [r]e
 map({ "o", "x" }, "ar", "a[", { desc = "Operator mode syntax aliases" })
 map({ "o", "x" }, "ic", "i{", { desc = "Operator mode syntax aliases" }) -- [c]urly brackets
 map({ "o", "x" }, "ac", "a{", { desc = "Operator mode syntax aliases" })
--- b already mapped to (
+map({ "o", "x" }, "ib", "i(", { desc = "Operator mode syntax aliases" }) -- brackets
+map({ "o", "x" }, "ab", "a(", { desc = "Operator mode syntax aliases" })
 
 map("c", "<C-q>", function()
   vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-u>\\<BS>"'))
