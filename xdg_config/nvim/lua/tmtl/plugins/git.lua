@@ -11,7 +11,6 @@ local M = {
   end },
   {
     "sindrets/diffview.nvim",
-    commit = "6bebefbc4c90e6d2b8c65e65b055d284475d89f8",
     config = function()
       local neogit = require("neogit")
       local actions = require("diffview.actions")
