@@ -18,14 +18,12 @@ map({ "o", "x" }, "iq", 'i"', { desc = "Operator mode syntax aliases" }) -- [q]u
 map({ "o", "x" }, "aq", 'a"', { desc = "Operator mode syntax aliases" })
 map({ "o", "x" }, "is", "i'", { desc = "Operator mode syntax aliases" }) -- [s]ingle quote
 map({ "o", "x" }, "as", "a'", { desc = "Operator mode syntax aliases" })
-map({ "o", "x" }, "it", "i`", { desc = "Operator mode syntax aliases" }) -- [t]emplate string
-map({ "o", "x" }, "at", "a`", { desc = "Operator mode syntax aliases" })
+map({ "o", "x" }, "il", "i`", { desc = "Operator mode syntax aliases" }) -- template [l]iteral string
+map({ "o", "x" }, "al", "a`", { desc = "Operator mode syntax aliases" })
 map({ "o", "x" }, "ir", "i[", { desc = "Operator mode syntax aliases" }) -- [r]ectangular brackets
 map({ "o", "x" }, "ar", "a[", { desc = "Operator mode syntax aliases" })
 map({ "o", "x" }, "ic", "i{", { desc = "Operator mode syntax aliases" }) -- [c]urly brackets
 map({ "o", "x" }, "ac", "a{", { desc = "Operator mode syntax aliases" })
-map({ "o", "x" }, "ib", "i(", { desc = "Operator mode syntax aliases" }) -- brackets
-map({ "o", "x" }, "ab", "a(", { desc = "Operator mode syntax aliases" })
 
 map("c", "<C-q>", function()
   vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-u>\\<BS>"'))
