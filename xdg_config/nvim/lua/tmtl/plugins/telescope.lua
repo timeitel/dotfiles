@@ -49,10 +49,16 @@ local M = {
       local file_browser_normal_mappings = {
         ["n"] = fb_actions.create,
         ["cd"] = fb_actions.change_cwd,
-        ["f"] = function()
+        ["gf"] = function()
           local entry = action_state.get_selected_entry()
           local filename = entry.Path.filename
           require("telescope.builtin").live_grep({ search_dirs = { filename }, results_title = filename,
+            initial_mode = "insert" })
+        end,
+        ["gp"] = function()
+          local entry = action_state.get_selected_entry()
+          local filename = entry.Path.filename
+          require("telescope.builtin").find_files({ search_dirs = { filename }, results_title = filename,
             initial_mode = "insert" })
         end,
         ["x"] = fb_actions.remove,
