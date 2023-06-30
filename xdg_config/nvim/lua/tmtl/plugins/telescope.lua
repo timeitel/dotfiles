@@ -126,9 +126,12 @@ local M = {
         extensions = {
           file_browser = {
             hijack_netrw = true,
+            grouped = true,
+            hidden = true,
+            respect_gitignore = false,
             display_stat = { date = true, size = true, },
             path_display = { truncate = 2 },
-            mappings     = {
+            mappings = {
               n = file_browser_normal_mappings,
             },
           },

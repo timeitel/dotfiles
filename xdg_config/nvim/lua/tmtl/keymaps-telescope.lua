@@ -56,11 +56,11 @@ map("n", "<leader>fd", function()
 end, { desc = "[F]ind - [D]iagnostics for workspace" })
 
 map("n", "<leader>bp", function()
-  fb.file_browser({ grouped = true, hidden = true, respect_gitignore = false })
+  fb.file_browser()
 end, { desc = "[B]rowse [P]roject" })
 
 map("n", "<leader>bw", function()
-  fb.file_browser({ grouped = true, cwd = vim.fn.expand("%:p:h"), hidden = true, respect_gitignore = false })
+  fb.file_browser({ cwd = vim.fn.expand("%:p:h"), })
 end, { desc = "[B]rowse buffer's [W]orking directory" })
 
 map("n", "<leader>fs", "<cmd>Navbuddy<cr>", { desc = "[F]ind - [S]ymbols in buffer" })
