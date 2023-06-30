@@ -48,7 +48,7 @@ local M = {
 
       local file_browser_normal_mappings = {
         ["n"] = fb_actions.create,
-        ["t"] = fb_actions.change_cwd,
+        ["cd"] = fb_actions.change_cwd,
         ["f"] = function()
           local entry = action_state.get_selected_entry()
           local filename = entry.Path.filename
