@@ -89,11 +89,13 @@ local M = {
       separator = { left = "", right = "" },
       path = 1,
       fmt = function(str)
-        if string.find(str, '.git/') ~= nil and string.find(str, ':3:/') ~= nil then
+        if (string.find(str, '.git/') ~= nil or string.find(str, '/worktrees/') ~= nil) and
+            string.find(str, ':3:/') ~= nil then
           return "THEIRS"
         end
 
-        if string.find(str, '.git/') ~= nil and string.find(str, ':2:/') ~= nil then
+        if (string.find(str, '.git/') ~= nil or string.find(str, '/worktrees/') ~= nil)
+            and string.find(str, ':2:/') ~= nil then
           return "OURS"
         end
 
