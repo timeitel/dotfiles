@@ -125,6 +125,7 @@ local M = {
 
         extensions = {
           file_browser = {
+            hijack_netrw = true,
             display_stat = { date = true, size = true, },
             path_display = { truncate = 2 },
             mappings     = {
