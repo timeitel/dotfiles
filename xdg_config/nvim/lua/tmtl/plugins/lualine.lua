@@ -5,6 +5,7 @@ local M = {
     local palette_colors = kanagawa_colors.palette
     local theme_colors = kanagawa_colors.theme
     local lualine = require("lualine")
+    local spread_table = require("tmtl.utils").spread_table
 
     local colors = {
       blue = palette_colors.crystalBlue,
@@ -25,7 +26,6 @@ local M = {
         c = { bg = colors.gunmetal, fg = theme_colors.syn.comment },
         x = color,
         y = color,
-        -- z = { bg = primary, fg = colors.gray },
       }
     end
 
@@ -36,7 +36,6 @@ local M = {
         b = color,
         x = color,
         y = color,
-        -- z = { bg = colors.gunmetal, fg = primary },
       }
     end
 
@@ -60,53 +59,34 @@ local M = {
       end
     }
 
+    local function winbar_title(str)
+      if (string.find(str, '.git/') ~= nil or string.find(str, '/worktrees/') ~= nil) and
+          string.find(str, ':3:/') ~= nil then
+        return "THEIRS"
+      end
+
+      if (string.find(str, '.git/') ~= nil or string.find(str, '/worktrees/') ~= nil)
+          and string.find(str, ':2:/') ~= nil then
+        return "OURS"
+      end
+
+      if string.find(str, 'term://') ~= nil then
+        return ""
+      end
+
+      return str
+    end
+
     local winbar_filename = {
       "filename",
-      path = 1,
-      separator = { left = "", right = "" },
       color = secondary_blue,
-      fmt = function(str)
-        if (string.find(str, '.git/') ~= nil or string.find(str, '/worktrees/') ~= nil) and
-            string.find(str, ':3:/') ~= nil then
-          return "THEIRS"
-        end
-
-        if (string.find(str, '.git/') ~= nil or string.find(str, '/worktrees/') ~= nil)
-            and string.find(str, ':2:/') ~= nil then
-          return "OURS"
-        end
-
-        if string.find(str, 'term://') ~= nil then
-          return ""
-        end
-
-        return str
-      end
-    }
-
-    local winbar_inactive_filename = {
-      "filename",
-      separator = { left = "", right = "" },
+      fmt = winbar_title,
       path = 1,
-      fmt = function(str)
-        if (string.find(str, '.git/') ~= nil or string.find(str, '/worktrees/') ~= nil) and
-            string.find(str, ':3:/') ~= nil then
-          return "THEIRS"
-        end
-
-        if (string.find(str, '.git/') ~= nil or string.find(str, '/worktrees/') ~= nil)
-            and string.find(str, ':2:/') ~= nil then
-          return "OURS"
-        end
-
-        if string.find(str, 'term://') ~= nil then
-          return ""
-        end
-
-        return str
-      end,
-      color = { bg = colors.gray, fg = colors.blue },
+      separator = { left = "", right = "" },
     }
+
+    local winbar_inactive_filename = spread_table({}, winbar_filename)
+    winbar_inactive_filename.color = { bg = colors.gray, fg = colors.blue }
 
     local filetype = {
       "filetype",
@@ -126,46 +106,6 @@ local M = {
       "diagnostics",
       colored = false,
       separator = { left = "", right = "" },
-    }
-
-    local function get_current_line_diagnostic()
-      local bufnr = 0
-      local line_nr = vim.api.nvim_win_get_cursor(0)[1] - 1
-      local opts = { ["lnum"] = line_nr }
-
-      local line_diagnostics = vim.diagnostic.get(bufnr, opts)
-      if vim.tbl_isempty(line_diagnostics) then
-        return
-      end
-
-      local best_diagnostic = nil
-
-      for _, diagnostic in ipairs(line_diagnostics) do
-        if best_diagnostic == nil or diagnostic.severity < best_diagnostic.severity then
-          best_diagnostic = diagnostic
-        end
-      end
-
-      return best_diagnostic
-    end
-
-    local line_diagnostic = {
-      function()
-        local diagnostic = get_current_line_diagnostic()
-
-        if not diagnostic or not diagnostic.message then
-          return ""
-        end
-
-        local message = vim.split(diagnostic.message, "\n")[1]
-        local max_width = vim.api.nvim_win_get_width(0) - 35
-
-        if string.len(message) < max_width then
-          return message
-        else
-          return string.sub(message, 1, max_width) .. "..."
-        end
-      end,
     }
 
     local lsp = {
@@ -251,7 +191,7 @@ local M = {
       sections = {
         lualine_a = { worktree, branch },
         lualine_b = { filetype, global_line_filename },
-        lualine_c = { line_diagnostic },
+        lualine_c = {},
         lualine_x = { search_count, macro_recording },
         lualine_y = { diagnostic_stats },
         lualine_z = { lsp, lsp_progress },
