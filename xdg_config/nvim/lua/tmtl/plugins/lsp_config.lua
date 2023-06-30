@@ -48,6 +48,7 @@ local M = {
       capabilities = capabilities,
     })
 
+    -- TODO: 5.1 to use unpack
     nvim_lsp.lua_ls.setup({
       on_attach = function(_, bufnr)
         lsp_maps.attach(bufnr)
