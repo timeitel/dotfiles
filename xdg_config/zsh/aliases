@@ -5,9 +5,10 @@ alias ...='cd ../..'
 alias cdg='cd $(git rev-parse --show-toplevel)'
 
 alias v=nvim
-alias vw='nvim -c "cd $TMTL_WORK_PATH"'
-alias vp='nvim -c "cd $TMTL_PERSONAL_PATH"'
-alias vc='nvim -c "cd $TMTL_CONFIG_PATH"'
+# env variables located in .zshenv
+alias vw='nvim -c "cd $TMTL_WORK_PATH" -c "silent Explore"'
+alias vp='nvim -c "cd $TMTL_PERSONAL_PATH" -c "silent Explore"'
+alias vc='nvim -c "cd $TMTL_CONFIG_PATH" -c "silent Explore"'
 
 # git aliases
 alias config='git -C $TMTL_CONFIG_PATH'

@@ -53,6 +53,7 @@ o.shortmess:append("C")
 o.shortmess:append("S") -- already have lualine search counter
 o.shortmess:append("c")
 o.shortmess:append("s")
+o.shortmess:append("I")
 
 -- folding
 o.foldmethod = "expr"
