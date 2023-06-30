@@ -55,12 +55,9 @@ local M = {
       end,
       settings = {
         Lua = {
-          completion = {
-            callSnippet = "Replace",
-          },
-          diagnostics = {
-            globals = { "vim", "hs", "require" },
-          },
+          runtime = { version = 'Lua 5.1' },
+          completion = { callSnippet = "Replace", },
+          diagnostics = { globals = { "vim", "hs", "require" }, },
           workspace = {
             -- Make the server aware of Neovim runtime files
             library = vim.api.nvim_get_runtime_file("", true),
