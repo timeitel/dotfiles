@@ -64,7 +64,11 @@ local M = {
         ["x"] = fb_actions.remove,
         ["h"] = fb_actions.goto_parent_dir,
         ["H"] = fb_actions.goto_cwd,
-        ["o"] = fb_actions.open
+        ["o"] = fb_actions.open,
+        ["<C-o>"] = function()
+          vim.fn.feedkeys(vim.api.nvim_eval('"\\<Esc>"'))
+          vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-o>"'))
+        end,
       }
 
       telescope.setup({
