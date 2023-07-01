@@ -20,8 +20,16 @@ local M = {
     end, { desc = "[R]un [T]est / [T]ype check" })
 
     map("n", "<leader>ra", function()
-      -- TODO: add run script default for npm projects
-      require('toggleterm').exec("cargo run")
+      local currentBufnr = vim.api.nvim_get_current_buf()
+      local filetype = vim.bo[currentBufnr].filetype
+
+      if filetype == "go" then
+        require('toggleterm').exec("go run .")
+      end
+
+      if filetype == "rust" then
+        require('toggleterm').exec("cargo run")
+      end
     end, { desc = "[R]un [A]pp" })
 
     local group = vim.api.nvim_create_augroup("ToggleTermGroup", { clear = true })
