@@ -9,7 +9,7 @@ local M = {
       "nvim-telescope/telescope-ui-select.nvim",
     },
     config = function()
-      -- TODO: C-O and C-I to go forward and back in file browser
+      -- TODO: current selection when browsing current folder or creating file
       local telescope = require("telescope")
       local action_state = require("telescope.actions.state")
       local actions = require("telescope.actions")

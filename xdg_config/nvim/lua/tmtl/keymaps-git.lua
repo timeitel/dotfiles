@@ -23,7 +23,6 @@ map("n", "<leader>gd", function()
 end, { desc = "[G]it [D]iff" })
 
 map("n", "<leader><leader>gd", function()
-  -- TODO: fetch origin first, toggleterm cmd and callbback
   vim.cmd([[DiffviewOpen origin/dev...HEAD]])
   notify('Opening diff: "origin/dev...HEAD"')
 end, { desc = "[[G]]it [D]iff - HEAD against staging" })
