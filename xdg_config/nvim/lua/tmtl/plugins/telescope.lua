@@ -9,7 +9,7 @@ local M = {
       "nvim-telescope/telescope-ui-select.nvim",
     },
     config = function()
-      -- TODO: current selection when browsing current folder or creating file
+      -- TODO: current selection when browsing current folder or creating filetelesc
       local telescope = require("telescope")
       local action_state = require("telescope.actions.state")
       local actions = require("telescope.actions")
@@ -74,7 +74,7 @@ local M = {
       telescope.setup({
         defaults = {
           initial_mode = "normal",
-          file_ignore_patterns = { "%.DS_Store", "%.git/", "node_modules/" },
+          file_ignore_patterns = { "%.DS_Store", "%.git/", "%.git", "node_modules/" },
           multi_icon = "<>",
           sorting_strategy = "ascending",
           path_display = function(_, path)
