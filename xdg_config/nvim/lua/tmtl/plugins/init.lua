@@ -18,8 +18,8 @@ local M = {
     "RishabhRD/nvim-cheat.sh",
     config = function()
       local map = require("tmtl.utils").map
-      map("n", "<leader>cr", function()
-        vim.cmd([[Cheat rust ]])
+      map("n", "<leader>ch", function()
+        vim.cmd([[Cheat]])
       end, { desc = "[C]heatsheet - [R]ust" })
     end,
   },
