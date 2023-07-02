@@ -62,8 +62,14 @@ local M = {
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local ts_utils = require("nvim-treesitter.ts_utils")
       cmp.event:on("confirm_done", function(evt)
-        local name = ts_utils.get_node_at_cursor():type()
-        if name ~= "named_imports" then
+        local node = ts_utils.get_node_at_cursor()
+        if node == nil then
+          cmp_autopairs.on_confirm_done()(evt)
+          return
+        end
+
+        local type = node:type()
+        if type ~= "named_imports" then
           cmp_autopairs.on_confirm_done()(evt)
         end
       end)
