@@ -1,10 +1,10 @@
 local M = {
   "RishabhRD/popfix",
   "ThePrimeagen/harpoon",
+  "arkav/lualine-lsp-progress",
   "bkad/CamelCaseMotion",
   "inkarkat/vim-ReplaceWithRegister",
   "tpope/vim-commentary",
-  "arkav/lualine-lsp-progress",
   {
     "sQVe/sort.nvim",
     config = function()
