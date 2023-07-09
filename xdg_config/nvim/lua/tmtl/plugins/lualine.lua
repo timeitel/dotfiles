@@ -1,6 +1,7 @@
 local M = {
   "nvim-lualine/lualine.nvim",
   config = function()
+    local parser = require("overseer.parser")
     local kanagawa_colors = require("kanagawa.colors").setup()
     local palette_colors = kanagawa_colors.palette
     local theme_colors = kanagawa_colors.theme
@@ -178,6 +179,14 @@ local M = {
       color = secondary_blue,
     }
 
+    local task_runner = {
+      "overseer",
+      colored = false,
+      status = { parser.STATUS.RUNNING },
+      color = secondary_blue,
+      separator = { left = "", right = "" },
+    }
+
     lualine.setup({
       options = {
         theme = theme,
@@ -199,7 +208,7 @@ local M = {
         lualine_a = { worktree, branch },
         lualine_b = { filetype, global_line_filename },
         lualine_c = {},
-        lualine_x = { search_count, macro_recording },
+        lualine_x = { search_count, macro_recording, task_runner },
         lualine_y = { diagnostic_stats },
         lualine_z = { lsp, lsp_progress },
       },
