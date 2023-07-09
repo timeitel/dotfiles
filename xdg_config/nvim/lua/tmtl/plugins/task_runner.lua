@@ -8,8 +8,11 @@ local M = {
 
     local function get_ft()
       local currentBufnr = vim.api.nvim_get_current_buf()
-      local filetype = vim.bo[currentBufnr].filetype
-      return filetype
+      local ft = vim.bo[currentBufnr].filetype
+      if ft == "typescript" or ft == "typescriptreact" or ft == "javascript" then
+        return "ts"
+      end
+      return ft
     end
 
     map("n", "gor", function()
@@ -21,12 +24,7 @@ local M = {
     end, { desc = "Task [R]unner - toggle task [L]ist" })
 
     map("n", "<leader>rt", function()
-      local ft = get_ft()
-      if ft == "typescript" then
-        vim.cmd([[TSC]]) -- TODO: move into this task runner and remove plugin
-      else
-        overseer.run_template({ name = "test:" .. get_ft() })
-      end
+      overseer.run_template({ name = "test:" .. get_ft() })
     end, { desc = "Task [R]unner - run [T]est" })
 
     map("n", "<leader>rb", function()
@@ -55,6 +53,7 @@ local M = {
           q = "<CMD>close<CR>",
         },
       },
+      -- TODO: show if job is running in lualine
       templates = {
         "builtin",
         "tasks.go-build",
@@ -62,7 +61,8 @@ local M = {
         "tasks.go-test",
         "tasks.rust-build",
         "tasks.rust-run",
-        "tasks.rust-test"
+        "tasks.rust-test",
+        "tasks.typescript-build"
       }
     })
   end

@@ -2,10 +2,9 @@ local run = {
   name = "run:go",
   builder = function()
     return {
-      cmd = { "go" },
-      args = { "run", "." },
+      cmd = { "go", "run", "." },
       name = "| go run .",
-      components = { { "on_result_diagnostics_quickfix", open = true }, "default", },
+      components = { { "on_output_quickfix", open = true }, "default", },
     }
   end,
   condition = {

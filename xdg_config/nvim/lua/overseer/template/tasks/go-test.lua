@@ -2,10 +2,9 @@ local test = {
   name = "test:go",
   builder = function()
     return {
-      cmd = { "go" },
-      args = { "test" },
+      cmd = { "go", "test" },
       name = "| go test",
-      components = { { "on_result_diagnostics_quickfix", open = true }, "default", },
+      components = { { "on_output_quickfix", open = true }, "default", },
     }
   end,
   condition = {

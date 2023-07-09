@@ -2,10 +2,9 @@ local test = {
   name = "test:rust",
   builder = function()
     return {
-      cmd = { "cargo" },
-      args = { "test" },
+      cmd = { "cargo", "test" },
       name = "| cargo test",
-      components = { { "on_result_diagnostics_quickfix", open = true }, "default", },
+      components = { { "on_output_quickfix", open = true }, "default", },
     }
   end,
   condition = {

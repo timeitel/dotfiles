@@ -2,8 +2,7 @@ local build = {
   name = "build:rust",
   builder = function()
     return {
-      cmd = { "cargo" },
-      args = { "build" },
+      cmd = { "cargo", "build" },
       name = "| cargo build",
     }
   end,

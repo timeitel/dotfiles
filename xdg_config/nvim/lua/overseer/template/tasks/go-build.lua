@@ -2,10 +2,9 @@ local build = {
   name = "build:go",
   builder = function()
     return {
-      cmd = { "go" },
-      args = { "build" },
+      cmd = { "go", "build" },
       name = "| go build",
-      components = { { "on_result_diagnostics_quickfix", open = true }, "default", },
+      components = { { "on_output_quickfix", open = true }, "default", },
     }
   end,
   condition = {
