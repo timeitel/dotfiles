@@ -53,7 +53,6 @@ local M = {
           q = "<CMD>close<CR>",
         },
       },
-      -- TODO: show if job is running in lualine
       templates = {
         "builtin",
         "tasks.go-build",
