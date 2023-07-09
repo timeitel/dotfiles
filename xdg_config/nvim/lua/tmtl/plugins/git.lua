@@ -84,49 +84,45 @@ local M = {
   },
   {
     "lewis6991/gitsigns.nvim",
-    config = function()
-      require("gitsigns").setup({
-        preview_config = {
-          border = "rounded",
-          style = 'minimal',
-          relative = 'cursor',
-          row = 0,
-          col = 1
-        },
-      })
-    end,
+    opts = {
+      preview_config = {
+        border = "rounded",
+        style = 'minimal',
+        relative = 'cursor',
+        row = 0,
+        col = 1
+      },
+    }
   },
   {
     "NeogitOrg/neogit",
-    config = function()
-      require("neogit").setup({
-        disable_commit_confirmation = true,
-        disable_insert_on_commit = false,
-        integrations = {
-          diffview = true,
+    opts = {
+      disable_commit_confirmation = true,
+      disable_insert_on_commit = false,
+      integrations = {
+        diffview = true,
+      },
+      mappings = {
+        status = {
+          ["b"] = false,
+          ["d"] = function()
+            vim.cmd([[ DiffviewOpen ]])
+          end,
         },
-        mappings = {
-          status = {
-            ["b"] = false,
-            ["d"] = function()
-              vim.cmd([[ DiffviewOpen ]])
-            end,
-          },
+      },
+      sections = {
+        stashes = false,
+        unpulled = {
+          folded = true,
         },
-        sections = {
-          stashes = false,
-          unpulled = {
-            folded = true,
-          },
-          unmerged = {
-            folded = false,
-          },
-          recent = {
-            folded = false,
-          },
+        unmerged = {
+          folded = false,
         },
-      })
-    end,
+        recent = {
+          folded = false,
+        },
+      },
+    },
     dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
   },
 }

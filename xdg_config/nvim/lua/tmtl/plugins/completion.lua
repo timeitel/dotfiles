@@ -7,7 +7,6 @@ local M = {
   "hrsh7th/cmp-nvim-lsp-document-symbol",
   "hrsh7th/cmp-cmdline",
   "saadparwaiz1/cmp_luasnip",
-  "tamago324/cmp-zsh",
   "onsails/lspkind-nvim",
   {
     "hrsh7th/nvim-cmp",
