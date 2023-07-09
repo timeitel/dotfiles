@@ -59,8 +59,10 @@ local M = {
         "builtin",
         "tasks.go-build",
         "tasks.go-run",
+        "tasks.go-test",
         "tasks.rust-build",
-        "tasks.rust-run"
+        "tasks.rust-run",
+        "tasks.rust-test"
       }
     })
   end
