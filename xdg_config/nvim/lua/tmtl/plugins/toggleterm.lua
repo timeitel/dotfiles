@@ -14,24 +14,6 @@ local M = {
       autochdir = true,
     })
 
-    map("n", "<leader>rt", function()
-      -- TODO: add cargo test for rust projects
-      vim.cmd([[TSC]])
-    end, { desc = "[R]un [T]est / [T]ype check" })
-
-    map("n", "<leader>ra", function()
-      local currentBufnr = vim.api.nvim_get_current_buf()
-      local filetype = vim.bo[currentBufnr].filetype
-
-      if filetype == "go" then
-        require('toggleterm').exec("go run .")
-      end
-
-      if filetype == "rust" then
-        require('toggleterm').exec("cargo run")
-      end
-    end, { desc = "[R]un [A]pp" })
-
     local group = vim.api.nvim_create_augroup("ToggleTermGroup", { clear = true })
     vim.api.nvim_create_autocmd("User", {
       pattern = "UnceptionEditRequestReceived",

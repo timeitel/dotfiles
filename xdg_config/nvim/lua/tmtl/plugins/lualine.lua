@@ -60,6 +60,13 @@ local M = {
     }
 
     local function winbar_title(str)
+      local currentBufnr = vim.api.nvim_get_current_buf()
+      local filetype = vim.bo[currentBufnr].filetype
+
+      if filetype == "OverseerList" then
+        return "Tasks"
+      end
+
       if (string.find(str, '.git/') ~= nil or string.find(str, '/worktrees/') ~= nil) and
           string.find(str, ':3:/') ~= nil then
         return "THEIRS"
