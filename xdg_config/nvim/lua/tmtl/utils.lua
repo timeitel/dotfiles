@@ -53,4 +53,14 @@ M.spread_table = function(target_table, source_table, source_table_2)
   return target_table
 end
 
+M.contains = function(table, value)
+  for _, table_value in ipairs(table) do
+    if table_value == value then
+      return true
+    end
+  end
+
+  return false
+end
+
 return M

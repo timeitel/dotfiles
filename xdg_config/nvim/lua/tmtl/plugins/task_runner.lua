@@ -5,11 +5,13 @@ local M = {
   config = function()
     local overseer = require("overseer")
     local map = require("tmtl.utils").map
+    local contains = require("tmtl.utils").contains
 
     local function get_ft()
       local currentBufnr = vim.api.nvim_get_current_buf()
       local ft = vim.bo[currentBufnr].filetype
-      if ft == "typescript" or ft == "typescriptreact" or ft == "javascript" then
+
+      if contains({ "typescript", "typescriptreact", "javascript", "json" }, ft) then
         return "ts"
       end
       return ft
@@ -46,6 +48,11 @@ local M = {
       end
     end, { desc = "Task [R]unner - [R]erun last task" })
 
+    map("n", "<leader>rd", function()
+      overseer.run_template()
+      vim.fn.feedkeys("ideploykj")
+    end, { desc = "Task [R]unner - [D]eploy tasks" })
+
     overseer.setup({
       task_list = {
         default_detail = 2,
@@ -61,7 +68,9 @@ local M = {
         "tasks.rust-build",
         "tasks.rust-run",
         "tasks.rust-test",
-        "tasks.typescript-build"
+        "tasks.typescript-build",
+        "tasks.git-discard-all",
+        "tasks.git-undo-last-commit",
       }
     })
   end

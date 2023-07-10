@@ -3,12 +3,11 @@ local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 local function goto_diagnostic(opts)
   opts = opts or {}
   local prev = opts.prev or false
-  local diag_float = { border = border, width = 80 }
 
   if prev then
-    vim.diagnostic.goto_prev({ float = diag_float, severity = opts.severity })
+    vim.diagnostic.goto_prev({ float = false, severity = opts.severity })
   else
-    vim.diagnostic.goto_next({ float = diag_float, severity = opts.severity })
+    vim.diagnostic.goto_next({ float = false, severity = opts.severity })
   end
 
   vim.fn.feedkeys("zz")
@@ -32,6 +31,14 @@ M.attach = function(bufnr)
 
   buf_map("n", "]d", function()
     goto_diagnostic()
+  end, "[D]iagnostics - next diagnostic")
+
+  buf_map("n", "<Tab>", function()
+    goto_diagnostic()
+  end, "[D]iagnostics - next diagnostic")
+
+  buf_map("n", "<S-Tab>", function()
+    goto_diagnostic({ prev = true })
   end, "[D]iagnostics - next diagnostic")
 
   buf_map("n", "[d", function()
