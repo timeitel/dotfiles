@@ -67,8 +67,7 @@ local M = {
           return
         end
 
-        local type = node:type()
-        if type ~= "named_imports" then
+        if node:type() ~= "named_imports" then
           cmp_autopairs.on_confirm_done()(evt)
         end
       end)
@@ -100,6 +99,7 @@ local M = {
 
         sorting = {
           comparators = {
+            cmp.config.compare.sort_text,
             cmp.config.compare.offset,
             cmp.config.compare.exact,
             cmp.config.compare.score,
