@@ -6,6 +6,10 @@ local M = {
   "inkarkat/vim-ReplaceWithRegister",
   "tpope/vim-commentary",
   {
+    'dgagn/diagflow.nvim',
+    opts = {}
+  },
+  {
     "sQVe/sort.nvim",
     config = function()
       local map = require("tmtl.utils").map
