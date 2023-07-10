@@ -130,12 +130,14 @@ local function goto_qf_item(opts)
   if prev then
     local ok, _ = pcall(vim.cmd, "cprevious")
     if not ok then
+      vim.cmd("cfirst")
       notify("No previous qf items")
     end
 
   else
     local ok, _ = pcall(vim.cmd, "cnext")
     if not ok then
+      vim.cmd("clast")
       notify("No more qf items")
     end
   end
