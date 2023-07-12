@@ -6,10 +6,6 @@ local M = {
   "inkarkat/vim-ReplaceWithRegister",
   "tpope/vim-commentary",
   {
-    'dgagn/diagflow.nvim',
-    opts = {}
-  },
-  {
     "sQVe/sort.nvim",
     config = function()
       local map = require("tmtl.utils").map
@@ -65,12 +61,6 @@ local M = {
       },
     },
     dependencies = { "nvim-lua/plenary.nvim" },
-  },
-  {
-    "samjwill/nvim-unception",
-    config = function()
-      vim.g.unception_open_buffer_in_new_tab = true
-    end,
   },
 }
 

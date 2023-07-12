@@ -4,7 +4,13 @@ local test = {
     return {
       cmd = { "go", "test" },
       name = "| go test",
-      components = { { "on_output_quickfix", open = true }, "default", },
+      metadata = {
+        on_failure = function(task)
+          vim.cmd([[wincmd o]])
+          vim.cmd([[vs]])
+          require('overseer').run_action(task, 'open')
+        end,
+      },
     }
   end,
   condition = {

@@ -1,16 +1,36 @@
 local build = {
   name = "build:ts",
   builder = function()
-    local spread_table = require("tmtl.utils").spread_table
     local path = vim.fs.find("tsconfig.json", { upward = true, type = "file", path = vim.fn.expand("%:h") })[1]
     local dir = vim.fs.dirname(path)
 
-    local components = { "default", { "on_output_parse", problem_matcher = "$tsc" } }
-    -- TODO: passing cwd not working for qf items when in subproject
+    local components
     if dir == "." then
-      spread_table(components, { { "on_result_diagnostics_quickfix", open = true } })
+      components = {
+        { "on_output_parse", problem_matcher = "$tsc" },
+        { "on_result_diagnostics_quickfix", open = true },
+        "default"
+      }
     else
-      spread_table(components, { { "on_output_quickfix", open = true } })
+      components = {
+        { "on_output_parse", problem_matcher = {
+          owner = 'typescript',
+          fileLocation = { "relative", "${cwd}" .. "/" .. dir },
+          pattern = {
+            regexp = "^([^\\s].*)[\\(:](\\d+)[,:](\\d+)(?:\\):\\s+|\\s+-\\s+)(error|warning|info)\\s+TS(\\d+)\\s*:\\s*(.*)$",
+            vim_regexp = "\\v^([^[:space:]].*)[\\(:](\\d+)[,:](\\d+)(\\):\\s+|\\s+-\\s+)(error|warning|info)\\s+TS(\\d+)\\s*:\\s*(.*)$",
+            lua_pat = "^([^%s].*)[\\(:](%d+)[,:](%d+)[^%a]*(%a+)%s+TS(%d+)%s*:%s*(.*)$",
+            file = 1,
+            line = 2,
+            column = 3,
+            severity = 5,
+            code = 6,
+            message = 7,
+          },
+        } },
+        { "on_result_diagnostics_quickfix", open = true },
+        "default"
+      }
     end
 
     return {
