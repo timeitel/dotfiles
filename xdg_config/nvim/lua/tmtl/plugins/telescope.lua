@@ -1,3 +1,4 @@
+-- TODO: file_browser copy name of file, <leader>yf
 local M = {
   {
     "nvim-telescope/telescope.nvim",
@@ -44,7 +45,14 @@ local M = {
       normal_mappings["q"] = actions.close
       normal_mappings["<C-u>"] = actions.preview_scrolling_up
       normal_mappings["o"] = actions.select_default + actions.center
-      normal_mappings["l"] = actions.select_default
+      normal_mappings["<leader>gd"] = function(bfnr)
+        actions.close(bfnr)
+        vim.cmd([[DiffviewOpen]])
+      end
+      normal_mappings["<leader>gh"] = function(bfnr)
+        actions.close(bfnr)
+        vim.cmd([[DiffviewFileHistory]])
+      end
 
       local file_browser_normal_mappings = {
         ["n"] = fb_actions.create,
@@ -61,10 +69,11 @@ local M = {
           require("telescope.builtin").find_files({ search_dirs = { filename }, results_title = filename,
             initial_mode = "insert" })
         end,
-        ["x"] = fb_actions.remove,
         ["h"] = fb_actions.goto_parent_dir,
         ["H"] = fb_actions.goto_cwd,
         ["o"] = fb_actions.open,
+        ["l"] = actions.select_default,
+        ["<C-x>"] = fb_actions.remove,
         ["<C-o>"] = function()
           vim.fn.feedkeys(vim.api.nvim_eval('"\\<Esc>"'))
           vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-o>"'))
@@ -107,7 +116,7 @@ local M = {
           buffers = {
             mappings = {
               n = {
-                ["x"] = actions.delete_buffer,
+                ["<C-x>"] = actions.delete_buffer,
               },
             },
           },
@@ -116,7 +125,7 @@ local M = {
             previewer = false,
             mappings = {
               n = {
-                ["x"] = function(prompt_bufnr)
+                ["<C-x>"] = function(prompt_bufnr)
                   actions.git_delete_branch(prompt_bufnr)
                   require("telescope.builtin").git_branches()
                 end,
