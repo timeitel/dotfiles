@@ -1,4 +1,3 @@
--- TODO: problem matchers / error formats
 local M = {
   'stevearc/overseer.nvim',
   opts = {},
@@ -60,7 +59,6 @@ local M = {
       end
     end, { desc = "Task [R]unner - [R]erun last task" })
 
-    -- TODO: create bundle?
     map("n", "<leader>rd", function()
       overseer.run_template()
       vim.fn.feedkeys("ideploykj")
@@ -70,9 +68,24 @@ local M = {
       task_list = {
         default_detail = 2,
         bindings = {
-          q = "<CMD>close<CR>",
+          ["[t"] = "PrevTask",
+          ["]t"] = "NextTask",
+          ["p"] = "TogglePreview",
+          ["q"] = "<CMD>close<CR>",
+          ["<C-y>"] = "ScrollOutputUp",
+          ["<C-e>"] = "ScrollOutputDown",
+          ["<C-x>"] = "<CMD>OverseerQuickAction Dispose<CR>",
         },
       },
+
+      actions = {
+        ["Dispose"] = {
+          run = function(task)
+            task:dispose(true)
+          end,
+        },
+      },
+
       templates = {
         "builtin",
         "tasks.go-build",
@@ -85,6 +98,7 @@ local M = {
         "tasks.git-discard-all",
         "tasks.git-undo-last-commit",
       },
+
       component_aliases = {
         default = {
           { "display_duration", detail_level = 2 },
