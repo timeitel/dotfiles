@@ -4,12 +4,6 @@ local ts = require("telescope.builtin")
 local neogit = require("neogit")
 local notify = require("notify")
 
-function Open_Git_Commit()
-  neogit.open()
-  neogit.open({ "commit" })
-  vim.fn.feedkeys("c")
-end
-
 map("n", "<leader>gs", function()
   neogit.open()
 end, { desc = "[G]it [S]tatus" })
