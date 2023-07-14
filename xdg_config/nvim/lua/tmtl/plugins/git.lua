@@ -31,8 +31,11 @@ local M = {
         ["<C-u>"] = actions.scroll_view(-10),
         ["<leader>sf"] = actions.toggle_stage_entry,
         ["<leader>cs"] = function()
-          actions.focus_files()
-          Open_Git_Commit()
+          vim.cmd([[Neogit commit]])
+          vim.fn.feedkeys("c")
+          vim.defer_fn(function()
+            vim.cmd([[wincmd J]])
+          end, 100)
         end,
         ["<leader>gs"] = function()
           vim.cmd([[DiffviewClose]])
@@ -49,10 +52,11 @@ local M = {
           end })
         end,
         ["C"] = function()
-          vim.cmd([[DiffviewClose]])
-          neogit.open()
-          neogit.open({ "commit" })
+          vim.cmd([[Neogit commit]])
           vim.fn.feedkeys("c")
+          vim.defer_fn(function()
+            vim.cmd([[wincmd J]])
+          end, 100)
         end,
       }
 
