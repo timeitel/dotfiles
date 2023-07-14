@@ -102,7 +102,7 @@ local M = {
     "NeogitOrg/neogit",
     opts = {
       disable_commit_confirmation = true,
-      disable_insert_on_commit = false,
+      disable_insert_on_commit = "auto",
       integrations = {
         diffview = true,
       },
@@ -123,7 +123,7 @@ local M = {
           folded = false,
         },
         recent = {
-          folded = false,
+          folded = true,
         },
       },
     },
