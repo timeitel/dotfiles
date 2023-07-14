@@ -34,11 +34,11 @@ M.attach = function(bufnr)
   end, "[D]iagnostics - next diagnostic")
 
   buf_map("n", "<Tab>", function()
-    goto_diagnostic()
+    goto_diagnostic({ severity = { min = vim.diagnostic.severity.HINT } })
   end, "[D]iagnostics - next diagnostic")
 
   buf_map("n", "<S-Tab>", function()
-    goto_diagnostic({ prev = true })
+    goto_diagnostic({ prev = true, severity = { min = vim.diagnostic.severity.HINT } })
   end, "[D]iagnostics - next diagnostic")
 
   buf_map("n", "[d", function()
