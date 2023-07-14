@@ -7,7 +7,8 @@ local M = {
     end
 
     require('notify').setup({
-      timeout = 1000
+      timeout = 1000,
+      stages = "fade",
     })
   end,
   event = "VeryLazy",

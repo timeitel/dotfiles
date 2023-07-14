@@ -1,6 +1,12 @@
 local M = {
-  "nvim-treesitter/nvim-treesitter-context",
   "nvim-treesitter/nvim-treesitter-textobjects",
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    opts = {
+      separator = "-",
+      max_lines = 3,
+    }
+  },
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",

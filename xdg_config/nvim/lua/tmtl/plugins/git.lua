@@ -45,7 +45,7 @@ local M = {
 
       local panel_maps = {
         ["o"] = actions.focus_entry,
-        ["x"] = function()
+        ["<C-x>"] = function()
           request_confirm({ prompt = "discard changes", on_confirm = function()
             actions.restore_entry()
             vim.cmd([[checktime]])

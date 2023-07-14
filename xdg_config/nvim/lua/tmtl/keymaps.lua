@@ -130,12 +130,14 @@ local function goto_qf_item(opts)
   if prev then
     local ok, _ = pcall(vim.cmd, "cprevious")
     if not ok then
+      vim.cmd("cfirst")
       notify("No previous qf items")
     end
 
   else
     local ok, _ = pcall(vim.cmd, "cnext")
     if not ok then
+      vim.cmd("clast")
       notify("No more qf items")
     end
   end
@@ -177,3 +179,9 @@ end, { desc = "Window resize - increase horizontal" })
 map("n", "_", function()
   vim.cmd([[vertical resize -2]])
 end, { desc = "Window resize - increase horizontal" })
+
+map("n", "gof", function()
+  vim.cmd([[only]])
+  vim.cmd([[vs]])
+  vim.fn.feedkeys("gf")
+end, { desc = "[G]o to [F]ile in vertical split" })
