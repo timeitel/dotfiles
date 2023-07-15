@@ -184,3 +184,8 @@ map("n", "gof", function()
   vim.cmd([[vs]])
   vim.fn.feedkeys("gf")
 end, { desc = "[G]o to [F]ile in vertical split" })
+
+map("n", "<leader>hl", function()
+  local hl = vim.treesitter.get_captures_at_cursor(0)
+  vim.print(hl)
+end, { desc = "[H]igh[L]ight group under curor" })
