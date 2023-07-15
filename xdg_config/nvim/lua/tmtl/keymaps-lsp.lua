@@ -1,6 +1,7 @@
 local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 
 local function goto_diagnostic(opts)
+  local table_length = require("tmtl.utils").table_length
   opts = opts or {}
   local prev = opts.prev or false
 
@@ -10,7 +11,12 @@ local function goto_diagnostic(opts)
     vim.diagnostic.goto_next({ float = false, severity = opts.severity })
   end
 
-  vim.fn.feedkeys("zz")
+  local diagnostic_count = table_length(vim.diagnostic.get(0))
+  if (diagnostic_count == 0) then
+    require("notify")('No more diagnostics')
+  else
+    vim.fn.feedkeys("zz")
+  end
 end
 
 local M = {}
