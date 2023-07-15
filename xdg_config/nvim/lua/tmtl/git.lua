@@ -6,6 +6,6 @@ vim.api.nvim_create_autocmd('User', {
   callback = function()
     vim.defer_fn(function()
       vim.cmd([[DiffviewClose]])
-    end, 50)
+    end, 100)
   end
 })

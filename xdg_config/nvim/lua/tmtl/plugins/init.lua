@@ -1,5 +1,4 @@
 local M = {
-  "RishabhRD/popfix",
   "ThePrimeagen/harpoon",
   "arkav/lualine-lsp-progress",
   "bkad/CamelCaseMotion",
