@@ -33,6 +33,7 @@ local M = {
         ensure_installed = {
           "css",
           "gitcommit",
+          "go",
           "html",
           "javascript",
           "json",
