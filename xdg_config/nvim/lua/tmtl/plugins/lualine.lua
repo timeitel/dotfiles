@@ -193,7 +193,7 @@ local M = {
         icons_enabled = true,
         disabled_filetypes = {
           statusline = { "DiffviewFiles", "DiffviewFileHistory" },
-          winbar = { "DiffviewFiles", "DiffviewFileHistory", "qf" },
+          winbar = { "DiffviewFiles", "DiffviewFileHistory", "qf", "NeogitStatus" },
         },
         ignore_focus = {},
         always_divide_middle = false,
