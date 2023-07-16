@@ -101,6 +101,7 @@ local M = {
   {
     "NeogitOrg/neogit",
     opts = {
+      disable_hint = true,
       disable_commit_confirmation = true,
       disable_insert_on_commit = "auto",
       integrations = {
