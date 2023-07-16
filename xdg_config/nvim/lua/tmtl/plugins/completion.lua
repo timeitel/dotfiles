@@ -140,8 +140,8 @@ local M = {
       cmp.setup.cmdline(":", {
         mapping = mapping,
         sources = {
-          { name = "cmdline", keyword_length = 3 },
-          { name = "nvim_lua", keyword_length = 3 },
+          { name = "cmdline", keyword_length = 2 },
+          { name = "nvim_lua", keyword_length = 2 },
         },
       })
 
