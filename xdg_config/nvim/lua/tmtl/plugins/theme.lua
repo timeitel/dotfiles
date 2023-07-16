@@ -8,6 +8,9 @@ local M = {
       require('kanagawa').setup({
         statementStyle = { bold = false },
         colors = {
+          palette = {
+            sumiInk4 = "#33343D"
+          },
           theme = {
             wave = {
               ui = { bg = gunmetal, bg_gutter = "none",
