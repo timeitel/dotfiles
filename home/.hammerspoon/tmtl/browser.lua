@@ -6,7 +6,7 @@ local function hard_refresh()
   win:focus()
 end
 
--- function applicationWatcher(appName, eventType, appObject)
+-- local function applicationWatcher(appName, eventType, appObject)
 --   if eventType == hs.application.watcher.activated then
 --     if appName == "YourAppNameHere" then
 --       hs.eventtap.event.newScrollEvent({ 0, vertical }, {}):post()
