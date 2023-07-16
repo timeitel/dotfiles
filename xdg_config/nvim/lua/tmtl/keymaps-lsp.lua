@@ -35,16 +35,16 @@ M.attach = function(bufnr)
     goto_diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
   end, "[D]iagnostics - previous error")
 
-  buf_map("n", "]d", function()
-    goto_diagnostic()
-  end, "[D]iagnostics - next diagnostic")
-
   buf_map("n", "<Tab>", function()
     goto_diagnostic({ severity = { min = vim.diagnostic.severity.HINT } })
   end, "[D]iagnostics - next diagnostic")
 
   buf_map("n", "<S-Tab>", function()
     goto_diagnostic({ prev = true, severity = { min = vim.diagnostic.severity.HINT } })
+  end, "[D]iagnostics - next diagnostic")
+
+  buf_map("n", "]d", function()
+    goto_diagnostic()
   end, "[D]iagnostics - next diagnostic")
 
   buf_map("n", "[d", function()
@@ -58,10 +58,6 @@ M.attach = function(bufnr)
   buf_map("n", "<leader>dh", function()
     vim.diagnostic.open_float(0, { border = border })
   end, "[D]iagnostics - [H]over")
-
-  buf_map("n", "<leader>dl", function()
-    vim.cmd("Telescope diagnostics")
-  end, "[D]iagnostics [L]ist - show")
 
   -- LSP
   buf_map("n", "<leader>lr", function()

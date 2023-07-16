@@ -36,7 +36,8 @@ local M = {
             },
             QuickFixLine = {
               bg = colors.palette.sumiInk3
-            }
+            },
+            CursorLine = { bg = "#33343D" }
           }
         end,
       })

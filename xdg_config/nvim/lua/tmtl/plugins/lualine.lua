@@ -24,7 +24,7 @@ local M = {
       return {
         a = color,
         b = color,
-        c = { bg = colors.gunmetal, fg = theme_colors.syn.comment },
+        c = { bg = "NONE", fg = theme_colors.syn.comment },
         x = color,
         y = color,
       }
