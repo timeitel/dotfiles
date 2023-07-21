@@ -45,6 +45,15 @@ local M = {
       normal_mappings["q"] = actions.close
       normal_mappings["<C-u>"] = actions.preview_scrolling_up
       normal_mappings["o"] = actions.select_default + actions.center
+      normal_mappings["l"] = function(bufnr)
+        local picker = action_state.get_current_picker(bufnr)
+        local prompt_text = picker.sorter["_discard_state"].prompt
+        if prompt_text == '' then
+          actions.select_default(bufnr)
+        else
+          vim.fn.feedkeys(vim.api.nvim_eval('"\\<Right>"'))
+        end
+      end
       normal_mappings["<leader>gd"] = function(bfnr)
         actions.close(bfnr)
         vim.cmd([[DiffviewOpen]])
@@ -72,7 +81,6 @@ local M = {
         ["h"] = fb_actions.goto_parent_dir,
         ["H"] = fb_actions.goto_cwd,
         ["o"] = fb_actions.open,
-        ["l"] = actions.select_default,
         ["<C-x>"] = fb_actions.remove,
         ["<C-o>"] = function()
           vim.fn.feedkeys(vim.api.nvim_eval('"\\<Esc>"'))
