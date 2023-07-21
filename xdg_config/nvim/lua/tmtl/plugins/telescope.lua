@@ -50,6 +50,7 @@ local M = {
         local prompt_text = picker.sorter["_discard_state"].prompt
         if prompt_text == '' then
           actions.select_default(bufnr)
+          actions.center()
         else
           vim.fn.feedkeys(vim.api.nvim_eval('"\\<Right>"'))
         end
@@ -96,7 +97,9 @@ local M = {
           sorting_strategy = "ascending",
           path_display = function(_, path)
             local tail = require("telescope.utils").path_tail(path)
-            return string.format("%s (%s)", tail, path)
+            local path_from_project_root = string.gsub(path, vim.fn.getcwd() .. "/", "")
+            -- TODO: add highlight groups to tail / path
+            return string.format("%s  (%s)", tail, path_from_project_root), { { { 1, #tail }, "Constant" } }
           end,
           layout_config = {
             width = 0.95,
@@ -128,7 +131,7 @@ local M = {
               },
             },
           },
-          git_stash = {},
+
           git_branches = {
             previewer = false,
             mappings = {
@@ -140,12 +143,23 @@ local M = {
               },
             },
           },
+
           find_files = { initial_mode = "insert" },
+
           registers = {
             mappings = {
               n = {
                 ["<leader>e"] = actions.edit_register,
               },
+            },
+          },
+
+          lsp_references = {
+            layout_strategy = "vertical",
+            layout_config = {
+              width = 0.9,
+              height = 0.9,
+              preview_cutoff = 1,
             },
           },
         },
