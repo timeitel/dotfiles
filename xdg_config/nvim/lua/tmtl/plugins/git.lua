@@ -124,7 +124,7 @@ local M = {
           folded = false,
         },
         recent = {
-          folded = true,
+          folded = false,
         },
       },
     },

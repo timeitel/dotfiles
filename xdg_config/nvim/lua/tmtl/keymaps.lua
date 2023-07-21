@@ -189,3 +189,11 @@ map("n", "<leader>hl", function()
   local hl = vim.treesitter.get_captures_at_cursor(0)
   vim.print(hl)
 end, { desc = "[H]igh[L]ight group under curor" })
+
+-- add word under cursor to search without moving
+map("n", "<leader>*", function()
+  local fn = vim.fn
+  fn.setreg("/", [[\V\<]] .. fn.escape(fn.expand("<cword>"), [[/\]]) .. [[\>]])
+  fn.histadd("/", fn.getreg("/"))
+  vim.o.hlsearch = true
+end, { desc = "[H]igh[L]ight group under curor" })
