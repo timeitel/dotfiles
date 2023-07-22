@@ -83,6 +83,7 @@ map("n", "<leader>yf", function()
 end, { desc = "Copy filename to clipboard" })
 map("v", "<leader>y", '"+y', { desc = "Copy to clipboard" })
 map("v", "<leader>p", '"+p', { desc = "Paste from clipboard" })
+map("v", "<leader>d", '"_d', { desc = "Delete contents to black hole register" })
 
 map("i", "<c-t>", function()
   vim.fn.feedkeys("TODO: ")
