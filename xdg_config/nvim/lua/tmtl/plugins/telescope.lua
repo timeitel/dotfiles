@@ -17,10 +17,23 @@ local M = {
       local actions_layout = require("telescope.actions.layout")
       local fb_actions = telescope.extensions.file_browser.actions
       local copy = require("tmtl.utils").shallow_copy
+      local state = require("telescope.state")
+
+      local slow_scroll = function(prompt_bufnr, direction)
+        local previewer = action_state.get_current_picker(prompt_bufnr).previewer
+        local status = state.get_status(prompt_bufnr)
+        -- Check if we actually have a previewer and a preview window
+        if type(previewer) ~= "table" or previewer.scroll_fn == nil or status.preview_win == nil then
+          return
+        end
+        previewer:scroll_fn(1 * direction)
+      end
 
       local insert_mappings = {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
+        ["<C-e>"] = function(bufnr) slow_scroll(bufnr, 1) end,
+        ["<C-y>"] = function(bufnr) slow_scroll(bufnr, -1) end,
         ["<C-q>"] = actions.close,
         ["<C-l>"] = actions.select_default + actions.center,
         ["<C-h>"] = function()
