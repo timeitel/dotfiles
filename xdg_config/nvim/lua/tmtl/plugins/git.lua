@@ -110,6 +110,7 @@ local M = {
       mappings = {
         status = {
           ["b"] = false,
+          ["v"] = false,
           ["d"] = function()
             vim.cmd([[ DiffviewOpen ]])
           end,

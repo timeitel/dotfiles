@@ -110,8 +110,8 @@ map("v", "<leader>gr", function()
 end, { desc = "[R]eplace in file - word under cursor" })
 
 -- Buffers
-map("n", "<leader>ba", "<cmd>:%bd<cr>", { desc = "[B]uffer - delete [A]ll" })
-map("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>", { desc = "[B]uffer - delete [O]thers" })
+map("n", "<leader>ba", "<cmd>:%bd<cr>", { desc = "[B]uffer delete [A]ll" })
+map("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>", { desc = "[B]uffer delete [O]thers" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "[B]uffer - next" })
 map("n", "[b", "<cmd>bprevious<cr>", { desc = "[B]uffer - previous" })
 map({ "n", "i" }, "<C-s>", "<cmd>w<cr>", { desc = "[B]uffer - save" })

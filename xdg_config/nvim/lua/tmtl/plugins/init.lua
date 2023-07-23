@@ -1,7 +1,6 @@
 local M = {
   "ThePrimeagen/harpoon",
   "arkav/lualine-lsp-progress",
-  "bkad/CamelCaseMotion",
   "inkarkat/vim-ReplaceWithRegister",
   "tpope/vim-commentary",
   {
@@ -11,7 +10,9 @@ local M = {
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
-    opts = {}
+    opts = {
+      triggers_nowait = {},
+    }
   },
   {
     "sQVe/sort.nvim",
