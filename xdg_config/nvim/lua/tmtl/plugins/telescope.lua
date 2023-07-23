@@ -76,6 +76,13 @@ local M = {
         actions.close(bfnr)
         vim.cmd([[DiffviewFileHistory]])
       end
+      normal_mappings["<leader>yp"] = function()
+        local entry = action_state.get_selected_entry()
+        local filename = entry.Path.filename
+        local copy_cmd = string.format(':let @+="%s"', filename)
+        vim.cmd(copy_cmd)
+        require("notify")("Copied file path to clipboard")
+      end
 
       local file_browser_normal_mappings = {
         ["n"] = fb_actions.create,
