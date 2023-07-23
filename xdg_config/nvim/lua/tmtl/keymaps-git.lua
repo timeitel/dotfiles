@@ -10,7 +10,7 @@ end, { desc = "[G]it [S]tatus" })
 
 map("n", "<leader><leader>gs", function()
   ts.git_stash()
-end, { desc = "[[G]]it [S]tash" })
+end, { desc = "[G]it [S]tash" })
 
 map("n", "<leader>gd", function()
   vim.cmd([[DiffviewOpen]])
@@ -59,7 +59,7 @@ map("n", "<leader>gx", function()
       end
     end)
   end })
-end, { desc = "[[G]]it [R]eset - discard ALL working changes" })
+end, { desc = "[G]it [R]eset: discard ALL working changes" })
 
 map("n", "<leader><leader>gb", function()
   require("git_blame").run()
