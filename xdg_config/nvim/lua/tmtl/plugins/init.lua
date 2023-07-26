@@ -6,6 +6,20 @@ local M = {
   "inkarkat/vim-ReplaceWithRegister",
   "tpope/vim-commentary",
   {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {
+      triggers_nowait = {},
+      plugins = {
+        presets = false
+      },
+    }
+  },
+  {
     "sQVe/sort.nvim",
     config = function()
       local map = require("tmtl.utils").map

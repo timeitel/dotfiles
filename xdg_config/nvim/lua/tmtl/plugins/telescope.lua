@@ -41,6 +41,7 @@ local M = {
         actions.smart_send_to_qflist(bfnr)
         vim.cmd([[copen]])
       end
+      normal_mappings["g"] = false
       normal_mappings["c"] = false
       normal_mappings["q"] = actions.close
       normal_mappings["<C-u>"] = actions.preview_scrolling_up

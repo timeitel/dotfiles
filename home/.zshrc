@@ -36,3 +36,6 @@ bindkey '^d' kill-word
 if [ -f '/Users/timeitel/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/timeitel/google-cloud-sdk/path.zsh.inc'; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# nvim-dap rust
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"

@@ -63,4 +63,15 @@ M.contains = function(table, value)
   return false
 end
 
+<<<<<<< HEAD
+=======
+M.table_length = function(table)
+  local count = 0
+  for _ in pairs(table) do count = count + 1 end
+  return count
+end
+
+M.border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
+
+>>>>>>> 83c9493 (feat: nvim-dap and rust-tools)
 return M

@@ -1,15 +1,12 @@
+local map = require("tmtl.utils").map
 local ls = require("luasnip")
 local snippet = ls.snippet
 local f = ls.function_node
 local text = ls.text_node
 local insert = ls.insert_node
-local keymap = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
 
-keymap("i", "<Tab>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
-keymap("s", "<Tab>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
-keymap("i", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
-keymap("s", "<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
+map({ "i", "s" }, "<C-f>", "<cmd>lua require'luasnip'.jump(1)<CR>", { desc = "Snippet - jump forwards" })
+map({ "i", "s" }, "<C-b>", "<cmd>lua require'luasnip'.jump(-1)<CR>", { desc = "Snippet - jump backwards" })
 
 local get_filename = function()
   return f(function(_, snip)
