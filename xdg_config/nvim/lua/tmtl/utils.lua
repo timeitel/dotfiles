@@ -69,4 +69,6 @@ M.table_length = function(table)
   return count
 end
 
+M.border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
+
 return M

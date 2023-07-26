@@ -12,6 +12,9 @@ local M = {
     end,
     opts = {
       triggers_nowait = {},
+      plugins = {
+        presets = false
+      },
     }
   },
   {

@@ -31,6 +31,7 @@ end, { desc = "Return to normal mode" })
 
 map("i", "kj", "<Esc>", { desc = "Return to normal mode" })
 map("t", "kj", "<C-\\><C-n>", { desc = "Return to normal mode" })
+map("i", "<Tab>", "<Right>", { desc = "Cursor right" })
 map("i", "<C-f>", "<Right>", { desc = "Cursor right" })
 map("i", "<C-b>", "<Left>", { desc = "Cursor left" })
 map("i", "<C-d>", "<Esc>lcw", { desc = "Delete word right" })
