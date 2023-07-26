@@ -1,8 +1,6 @@
 local M = {
-  "RishabhRD/popfix",
   "ThePrimeagen/harpoon",
   "arkav/lualine-lsp-progress",
-  "bkad/CamelCaseMotion",
   "inkarkat/vim-ReplaceWithRegister",
   "tpope/vim-commentary",
   {

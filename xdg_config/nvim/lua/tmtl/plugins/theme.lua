@@ -1,5 +1,7 @@
 local gunmetal = "#282c34"
+
 local M = {
+  "nvim-tree/nvim-web-devicons",
   {
     "rebelot/kanagawa.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -8,6 +10,9 @@ local M = {
       require('kanagawa').setup({
         statementStyle = { bold = false },
         colors = {
+          palette = {
+            sumiInk4 = "#33343D"
+          },
           theme = {
             wave = {
               ui = { bg = gunmetal, bg_gutter = "none",
@@ -33,28 +38,14 @@ local M = {
             },
             QuickFixLine = {
               bg = colors.palette.sumiInk3
-            }
+            },
+            CursorLine = { bg = "#33343D" }
           }
         end,
       })
 
       vim.cmd("colorscheme kanagawa")
     end,
-  },
-
-  {
-    "akinsho/bufferline.nvim",
-    version = "v3.*",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    opts = {
-      options = {
-        mode = "tabs",
-        buffer_close_icon = "",
-        show_duplicate_prefix = false,
-        max_name_length = 30,
-        always_show_bufferline = false,
-      },
-    },
   },
   {
     "nvim-zh/colorful-winsep.nvim",

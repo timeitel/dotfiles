@@ -27,6 +27,7 @@ o.sessionoptions = o.sessionoptions - "buffers"
 o.showcmd = true
 o.showmatch = true
 o.showmode = false
+o.showtabline = 0
 o.signcolumn = "yes:1"
 o.smartcase = true
 o.splitbelow = true

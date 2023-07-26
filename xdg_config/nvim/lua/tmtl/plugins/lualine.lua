@@ -24,7 +24,7 @@ local M = {
       return {
         a = color,
         b = color,
-        c = { bg = colors.gunmetal, fg = theme_colors.syn.comment },
+        c = { bg = "NONE", fg = theme_colors.syn.comment },
         x = color,
         y = color,
       }
@@ -193,7 +193,7 @@ local M = {
         icons_enabled = true,
         disabled_filetypes = {
           statusline = { "DiffviewFiles", "DiffviewFileHistory" },
-          winbar = { "DiffviewFiles", "DiffviewFileHistory", "qf" },
+          winbar = { "DiffviewFiles", "DiffviewFileHistory", "qf", },
         },
         ignore_focus = {},
         always_divide_middle = false,

@@ -84,6 +84,7 @@ map("n", "<leader>yf", function()
 end, { desc = "Copy filename to clipboard" })
 map("v", "<leader>y", '"+y', { desc = "Copy to clipboard" })
 map("v", "<leader>p", '"+p', { desc = "Paste from clipboard" })
+map("v", "<leader>d", '"_d', { desc = "Delete contents to black hole register" })
 
 map("i", "<c-t>", function()
   vim.fn.feedkeys("TODO: ")
@@ -110,8 +111,8 @@ map("v", "<leader>gr", function()
 end, { desc = "[R]eplace in file - word under cursor" })
 
 -- Buffers
-map("n", "<leader>ba", "<cmd>:%bd<cr>", { desc = "[B]uffer - delete [A]ll" })
-map("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>", { desc = "[B]uffer - delete [O]thers" })
+map("n", "<leader>ba", "<cmd>:%bd<cr>", { desc = "[B]uffer delete [A]ll" })
+map("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>", { desc = "[B]uffer delete [O]thers" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "[B]uffer - next" })
 map("n", "[b", "<cmd>bprevious<cr>", { desc = "[B]uffer - previous" })
 map({ "n", "i" }, "<C-s>", "<cmd>w<cr>", { desc = "[B]uffer - save" })
@@ -154,10 +155,10 @@ end, { desc = "[Q]uickfix List - previous" })
 map("n", "<leader>qq", "<cmd>cclose<cr>", { desc = "[Q]uickfix List - [Q]uit" })
 
 -- TODO: find based on treesitter export node
-map("n", "<leader>R", function()
-  -- vim.api.nvim_feedkeys("gg/export\nWW", "n", true)
-  -- vim.fn.feedkeys("<leader>r")
-end, { desc = "Lsp - [G]o to file [R]eferences" })
+-- map("n", "<leader>R", function()
+-- vim.api.nvim_feedkeys("gg/export\nWW", "n", true)
+-- vim.fn.feedkeys("<leader>r")
+-- end, { desc = "Lsp - [G]o to file [R]eferences" })
 
 map("n", "<leader>ml", function()
   vim.cmd([[vnew]])
@@ -185,3 +186,16 @@ map("n", "gof", function()
   vim.cmd([[vs]])
   vim.fn.feedkeys("gf")
 end, { desc = "[G]o to [F]ile in vertical split" })
+
+map("n", "<leader>hl", function()
+  local hl = vim.treesitter.get_captures_at_cursor(0)
+  vim.print(hl)
+end, { desc = "[H]igh[L]ight group under curor" })
+
+-- add word under cursor to search without moving
+map("n", "<leader>*", function()
+  local fn = vim.fn
+  fn.setreg("/", [[\V\<]] .. fn.escape(fn.expand("<cword>"), [[/\]]) .. [[\>]])
+  fn.histadd("/", fn.getreg("/"))
+  vim.o.hlsearch = true
+end, { desc = "[H]igh[L]ight group under curor" })

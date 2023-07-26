@@ -1,8 +1,10 @@
 local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 
 local function goto_diagnostic(opts)
+  local table_length = require("tmtl.utils").table_length
   opts = opts or {}
   local prev = opts.prev or false
+  local float = opts.float or false
 
   if prev then
     vim.diagnostic.goto_prev({ float = false, severity = opts.severity })
@@ -10,7 +12,16 @@ local function goto_diagnostic(opts)
     vim.diagnostic.goto_next({ float = false, severity = opts.severity })
   end
 
-  vim.fn.feedkeys("zz")
+  if float then
+    vim.defer_fn(function() vim.diagnostic.open_float(0, { severity_sort = true, border = border }) end, 50)
+  end
+
+  local diagnostic_count = table_length(vim.diagnostic.get(0))
+  if (diagnostic_count == 0) then
+    require("notify")('No more diagnostics')
+  else
+    vim.fn.feedkeys("zz")
+  end
 end
 
 local M = {}
@@ -29,16 +40,16 @@ M.attach = function(bufnr)
     goto_diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
   end, "[D]iagnostics - previous error")
 
-  buf_map("n", "]d", function()
-    goto_diagnostic()
-  end, "[D]iagnostics - next diagnostic")
-
   buf_map("n", "<Tab>", function()
-    goto_diagnostic({ severity = { min = vim.diagnostic.severity.HINT } })
+    goto_diagnostic({ float = true, severity = { min = vim.diagnostic.severity.HINT } })
   end, "[D]iagnostics - next diagnostic")
 
   buf_map("n", "<S-Tab>", function()
-    goto_diagnostic({ prev = true, severity = { min = vim.diagnostic.severity.HINT } })
+    goto_diagnostic({ prev = true, float = true, severity = { min = vim.diagnostic.severity.HINT } })
+  end, "[D]iagnostics - next diagnostic")
+
+  buf_map("n", "]d", function()
+    goto_diagnostic()
   end, "[D]iagnostics - next diagnostic")
 
   buf_map("n", "[d", function()
@@ -52,10 +63,6 @@ M.attach = function(bufnr)
   buf_map("n", "<leader>dh", function()
     vim.diagnostic.open_float(0, { border = border })
   end, "[D]iagnostics - [H]over")
-
-  buf_map("n", "<leader>dl", function()
-    vim.cmd("Telescope diagnostics")
-  end, "[D]iagnostics [L]ist - show")
 
   -- LSP
   buf_map("n", "<leader>lr", function()

@@ -17,10 +17,23 @@ local M = {
       local actions_layout = require("telescope.actions.layout")
       local fb_actions = telescope.extensions.file_browser.actions
       local copy = require("tmtl.utils").shallow_copy
+      local state = require("telescope.state")
+
+      local slow_scroll = function(prompt_bufnr, direction)
+        local previewer = action_state.get_current_picker(prompt_bufnr).previewer
+        local status = state.get_status(prompt_bufnr)
+        -- Check if we actually have a previewer and a preview window
+        if type(previewer) ~= "table" or previewer.scroll_fn == nil or status.preview_win == nil then
+          return
+        end
+        previewer:scroll_fn(1 * direction)
+      end
 
       local insert_mappings = {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
+        ["<C-e>"] = function(bufnr) slow_scroll(bufnr, 1) end,
+        ["<C-y>"] = function(bufnr) slow_scroll(bufnr, -1) end,
         ["<C-q>"] = actions.close,
         ["<C-l>"] = actions.select_default + actions.center,
         ["<C-h>"] = function()
@@ -46,6 +59,16 @@ local M = {
       normal_mappings["q"] = actions.close
       normal_mappings["<C-u>"] = actions.preview_scrolling_up
       normal_mappings["o"] = actions.select_default + actions.center
+      normal_mappings["l"] = function(bufnr)
+        local picker = action_state.get_current_picker(bufnr)
+        local prompt_text = picker.sorter["_discard_state"].prompt
+        if prompt_text == '' then
+          actions.select_default(bufnr)
+          actions.center()
+        else
+          vim.fn.feedkeys(vim.api.nvim_eval('"\\<Right>"'))
+        end
+      end
       normal_mappings["<leader>gd"] = function(bfnr)
         actions.close(bfnr)
         vim.cmd([[DiffviewOpen]])
@@ -53,6 +76,13 @@ local M = {
       normal_mappings["<leader>gh"] = function(bfnr)
         actions.close(bfnr)
         vim.cmd([[DiffviewFileHistory]])
+      end
+      normal_mappings["<leader>yp"] = function()
+        local entry = action_state.get_selected_entry()
+        local filename = entry.Path.filename
+        local copy_cmd = string.format(':let @+="%s"', filename)
+        vim.cmd(copy_cmd)
+        require("notify")("Copied file path to clipboard")
       end
 
       local file_browser_normal_mappings = {
@@ -73,7 +103,6 @@ local M = {
         ["h"] = fb_actions.goto_parent_dir,
         ["H"] = fb_actions.goto_cwd,
         ["o"] = fb_actions.open,
-        ["l"] = actions.select_default,
         ["<C-x>"] = fb_actions.remove,
         ["<C-o>"] = function()
           vim.fn.feedkeys(vim.api.nvim_eval('"\\<Esc>"'))
@@ -89,7 +118,9 @@ local M = {
           sorting_strategy = "ascending",
           path_display = function(_, path)
             local tail = require("telescope.utils").path_tail(path)
-            return string.format("%s (%s)", tail, path)
+            local path_from_project_root = string.gsub(path, vim.fn.getcwd() .. "/", "")
+            -- TODO: add highlight groups to tail / path
+            return string.format("%s  (%s)", tail, path_from_project_root), { { { 1, #tail }, "Constant" } }
           end,
           layout_config = {
             width = 0.95,
@@ -121,7 +152,7 @@ local M = {
               },
             },
           },
-          git_stash = {},
+
           git_branches = {
             previewer = false,
             mappings = {
@@ -133,12 +164,23 @@ local M = {
               },
             },
           },
+
           find_files = { initial_mode = "insert" },
+
           registers = {
             mappings = {
               n = {
                 ["<leader>e"] = actions.edit_register,
               },
+            },
+          },
+
+          lsp_references = {
+            layout_strategy = "vertical",
+            layout_config = {
+              width = 0.9,
+              height = 0.9,
+              preview_cutoff = 1,
             },
           },
         },
