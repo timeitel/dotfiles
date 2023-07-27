@@ -34,65 +34,65 @@ M.attach = function(bufnr)
   -- Diagnostics
   buf_map("n", "]e", function()
     goto_diagnostic({ severity = vim.diagnostic.severity.ERROR })
-  end, "[D]iagnostics - next error")
+  end, "[D]iagnostics next error")
 
   buf_map("n", "[e", function()
     goto_diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
-  end, "[D]iagnostics - previous error")
+  end, "[D]iagnostics previous error")
 
   buf_map("n", "<Tab>", function()
     goto_diagnostic({ float = true, severity = { min = vim.diagnostic.severity.HINT } })
-  end, "[D]iagnostics - next diagnostic")
+  end, "[D]iagnostics next diagnostic")
 
   buf_map("n", "<S-Tab>", function()
     goto_diagnostic({ prev = true, float = true, severity = { min = vim.diagnostic.severity.HINT } })
-  end, "[D]iagnostics - next diagnostic")
+  end, "[D]iagnostics previous diagnostic")
 
   buf_map("n", "]d", function()
     goto_diagnostic()
-  end, "[D]iagnostics - next diagnostic")
+  end, "[D]iagnostics next [D]iagnostic")
 
   buf_map("n", "[d", function()
     goto_diagnostic({ prev = true })
-  end, "[D]iagnostics - previous diagnostic")
+  end, "[D]iagnostics previous [D]iagnostic")
 
   buf_map("n", "<leader>da", function()
     vim.lsp.buf.code_action()
-  end, "[D]iagnostics - code [A]ctions")
+  end, "[D]iagnostics code [A]ctions")
 
   buf_map("n", "<leader>dh", function()
     vim.diagnostic.open_float(0, { border = border })
-  end, "[D]iagnostics - [H]over")
+  end, "[D]iagnostics [H]over")
 
   -- LSP
   buf_map("n", "<leader>lr", function()
     vim.lsp.buf.rename()
-  end, "[L]sp - [R]ename")
+  end, "[L]sp [R]ename")
 
   buf_map("n", "<leader>li", function()
     vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
-  end, "[L]sp - organize [I]mports")
+  end, "[L]sp organize [I]mports")
 
   buf_map("n", "<leader><leader>lr", function()
     vim.cmd([[LspRestart]])
-  end, "[L]sp - [R]estart")
+  end, "[L]sp [R]estart")
 
   buf_map("n", "<leader><leader>li", function()
     vim.cmd([[LspInfo]])
-  end, "[L]sp - [I]nfo")
+  end, "[L]sp [I]nfo")
 
   buf_map("n", "<leader><leader>ls", function()
     -- TODO: change to toggle with ls, check if needing to stop or start
     vim.cmd([[LspStop]])
-  end, "[L]sp - [S]top")
+  end, "[L]sp [S]top")
 
   buf_map("n", "<leader><leader>lr", function()
     vim.cmd([[LspRestart]])
-  end, "[L]sp - [R]estart")
+  end, "[L]sp [R]estart")
 
   buf_map({ "i", "n" }, "<C-S-Space>", function()
     vim.lsp.buf.signature_help()
-  end, "Lsp - signature")
+  end, "Lsp signature")
 
   buf_map("n", "gd", function()
     -- TODO: look into awaiting definition before centering
@@ -101,7 +101,7 @@ M.attach = function(bufnr)
     vim.defer_fn(function()
       vim.fn.feedkeys("zz")
     end, 100)
-  end, "Lsp - [G]o to [D]efinition")
+  end, "Lsp [G]o to [D]efinition")
 
   buf_map("n", "gov", function()
     -- TODO: look into awaiting definition before centering
@@ -112,25 +112,25 @@ M.attach = function(bufnr)
     vim.defer_fn(function()
       vim.fn.feedkeys("zz")
     end, 100)
-  end, "Lsp - [G]o to [D]efinition in vertical split")
+  end, "Lsp [G]o to [D]efinition in vertical split")
 
   buf_map("n", "K", function()
     vim.lsp.buf.hover()
-  end, "Lsp - Hover")
+  end, "Lsp Hover")
 
   buf_map("n", "R", function()
     require("telescope.builtin").lsp_references({ show_line = false, include_declaration = false })
-  end, "Lsp - [R]eferences")
+  end, "Lsp [R]eferences")
 
   buf_map("n", "gt", function()
     vim.lsp.buf.type_definition()
     vim.fn.feedkeys("zz")
-  end, "Lsp - [G]o to [T]ype definition")
+  end, "Lsp [G]o to [T]ype definition")
 
   buf_map("n", "gI", function()
     vim.lsp.buf.implementation()
     vim.fn.feedkeys("zz")
-  end, "Lsp - [G]o to [I]mplementation")
+  end, "Lsp [G]o to [I]mplementation")
 end
 
 return M
