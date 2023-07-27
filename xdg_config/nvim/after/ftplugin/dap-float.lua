@@ -1,5 +1,5 @@
 local map = require("tmtl.utils").map
 
-map("n", "q", function()
-  vim.cmd([[close]])
-end, { desc = "Close", buffer = true })
+map("n", "<C-l>", function()
+  vim.fn.feedkeys(vim.api.nvim_eval('"\\<cr>"'))
+end, { desc = "Toggle node", buffer = true })
