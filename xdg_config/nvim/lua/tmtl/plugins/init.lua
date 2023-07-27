@@ -28,6 +28,7 @@ local M = {
   },
   {
     "RishabhRD/nvim-cheat.sh",
+    dependencies = "RishabhRD/popfix",
     config = function()
       local map = require("tmtl.utils").map
       map("n", "<leader>ch", function()
@@ -72,7 +73,7 @@ local M = {
         list = "SList",
       },
     },
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = "nvim-lua/plenary.nvim",
   },
 }
 

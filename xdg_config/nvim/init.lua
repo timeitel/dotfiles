@@ -16,6 +16,7 @@ vim.g.camelcasemotion_key = "<leader>"
 
 require("lazy").setup("tmtl.plugins")
 require("tmtl.options")
+require("tmtl.autocmds")
 require("tmtl.keymaps")
 require("tmtl.keymaps-telescope")
 require("tmtl.keymaps-git")
