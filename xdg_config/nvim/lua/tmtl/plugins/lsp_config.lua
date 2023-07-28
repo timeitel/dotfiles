@@ -2,7 +2,7 @@ local M = {
   "mfussenegger/nvim-dap",
   {
     "theHamsta/nvim-dap-virtual-text",
-    config = function() require("nvim-dap-virtual-text").setup() end
+    config = function() require("nvim-dap-virtual-text").setup({}) end
   },
   {
     "simrat39/rust-tools.nvim",

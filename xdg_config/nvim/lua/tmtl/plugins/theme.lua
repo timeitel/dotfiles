@@ -39,7 +39,8 @@ local M = {
             QuickFixLine = {
               bg = colors.palette.sumiInk3
             },
-            CursorLine = { bg = "#33343D" }
+            CursorLine = { bg = "#33343D" },
+            DapBreakpoint = { fg = colors.palette.peachRed },
           }
         end,
       })
