@@ -187,6 +187,19 @@ local M = {
       separator = { left = "", right = "" },
     }
 
+    local dap = {
+      function()
+        local session = require('dap').session()
+        if session ~= nil then
+          return "● DEBUGGING"
+        else
+          return ""
+        end
+      end,
+      color = { bg = palette_colors.winterRed, fg = palette_colors.fujiWhite },
+      separator = { left = "", right = "" },
+    }
+
     lualine.setup({
       options = {
         theme = theme,
@@ -210,7 +223,7 @@ local M = {
         lualine_c = {},
         lualine_x = { search_count, macro_recording, task_runner },
         lualine_y = { diagnostic_stats },
-        lualine_z = { lsp, lsp_progress },
+        lualine_z = { lsp, lsp_progress, dap },
       },
       inactive_sections = {},
       tabline = {},
