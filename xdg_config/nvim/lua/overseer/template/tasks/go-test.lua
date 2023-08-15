@@ -8,7 +8,7 @@ local test = {
         on_failure = function(task)
           vim.cmd([[wincmd o]])
           vim.cmd([[vs]])
-          require('overseer').run_action(task, 'open')
+          require("overseer").run_action(task, "open")
         end,
       },
     }

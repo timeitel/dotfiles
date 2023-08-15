@@ -13,9 +13,9 @@ local M = {
     opts = {
       triggers_nowait = {},
       plugins = {
-        presets = false
+        presets = false,
       },
-    }
+    },
   },
   {
     "sQVe/sort.nvim",
@@ -24,6 +24,7 @@ local M = {
       map("v", "gos", "<Esc><Cmd>Sort<CR>", { desc = "[S]ort visual selection" })
       map("n", "gos", "vi{<Esc><Cmd>Sort<CR>", { desc = "[S]ort inside curly brace" })
       map("n", "go[", "vi[<Esc><Cmd>Sort<CR>", { desc = "[S]ort inside bracket `[`" })
+      map("n", "goq", "vi\"<Esc><Cmd>Sort<CR>", { desc = "[S]ort inside quotes `\"`" })
     end,
   },
   {
@@ -58,10 +59,10 @@ local M = {
         ["c"] = "}",
         ["r"] = "]",
         ["q"] = '"',
-        ["l"] = '`',
+        ["l"] = "`",
         ["s"] = { "}", "]", ")", ">", '"', "'", "`" },
       },
-    }
+    },
   },
   {
     "jedrzejboczar/possession.nvim",

@@ -1,14 +1,17 @@
 local M = {
   "bobrown101/git-blame.nvim",
-  { 'ThePrimeagen/git-worktree.nvim', config = function()
-    local worktree = require("git-worktree")
+  {
+    "ThePrimeagen/git-worktree.nvim",
+    config = function()
+      local worktree = require("git-worktree")
 
-    worktree.on_tree_change(function(op, metadata)
-      if op == worktree.Operations.Switch then
-        print("Switched from " .. metadata.prev_path .. " to " .. metadata.path)
-      end
-    end)
-  end },
+      worktree.on_tree_change(function(op, metadata)
+        if op == worktree.Operations.Switch then
+          print("Switched from " .. metadata.prev_path .. " to " .. metadata.path)
+        end
+      end)
+    end,
+  },
   {
     "sindrets/diffview.nvim",
     config = function()
@@ -46,10 +49,13 @@ local M = {
       local panel_maps = {
         ["o"] = actions.focus_entry,
         ["<C-x>"] = function()
-          request_confirm({ prompt = "discard changes", on_confirm = function()
-            actions.restore_entry()
-            vim.cmd([[checktime]])
-          end })
+          request_confirm({
+            prompt = "discard changes",
+            on_confirm = function()
+              actions.restore_entry()
+              vim.cmd([[checktime]])
+            end,
+          })
         end,
         ["C"] = function()
           vim.cmd([[Neogit commit]])
@@ -92,12 +98,12 @@ local M = {
     opts = {
       preview_config = {
         border = "rounded",
-        style = 'minimal',
-        relative = 'cursor',
+        style = "minimal",
+        relative = "cursor",
         row = 0,
-        col = 1
+        col = 1,
       },
-    }
+    },
   },
   {
     "NeogitOrg/neogit",

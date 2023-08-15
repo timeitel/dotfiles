@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
   pattern = { "*.lua", "*.rs", "*.go", "*.ts", "*.tsx", "*.js", "*.json", "*.toml", "*.yaml", "*.yml" },
   command = "normal! mI",
   desc = "Update global last insert mark",
-  group = group
+  group = group,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end, { desc = "Close window", buffer = true })
   end,
   desc = "Close window",
-  group = group
+  group = group,
 })
 
 -- Comments

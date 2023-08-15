@@ -13,12 +13,14 @@ local function goto_diagnostic(opts)
   end
 
   if float then
-    vim.defer_fn(function() vim.diagnostic.open_float(0, { severity_sort = true, border = border }) end, 50)
+    vim.defer_fn(function()
+      vim.diagnostic.open_float(0, { severity_sort = true, border = border })
+    end, 50)
   end
 
   local diagnostic_count = table_length(vim.diagnostic.get(0))
-  if (diagnostic_count == 0) then
-    require("notify")('No more diagnostics')
+  if diagnostic_count == 0 then
+    require("notify")("No more diagnostics")
   else
     vim.fn.feedkeys("zz")
   end
@@ -70,7 +72,7 @@ M.attach = function(bufnr)
   end, "[L]sp [R]ename")
 
   buf_map("n", "<leader>li", function()
-    vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
+    vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
   end, "[L]sp organize [I]mports")
 
   buf_map("n", "<leader><leader>lr", function()

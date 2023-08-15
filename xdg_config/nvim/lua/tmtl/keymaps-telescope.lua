@@ -60,7 +60,7 @@ map("n", "<leader>bp", function()
 end, { desc = "[B]rowse [P]roject" })
 
 map("n", "<leader>bw", function()
-  fb.file_browser({ cwd = vim.fn.expand("%:p:h"), })
+  fb.file_browser({ cwd = vim.fn.expand("%:p:h") })
 end, { desc = "[B]rowse [W]orking directory of buffer" })
 
 -- TODO: check if working
@@ -70,9 +70,10 @@ map("n", "<leader>fu", function()
   require("telescope").extensions.undo.undo()
 end, { desc = "[F]ind [U]ndo history" })
 
-map("n", "<leader>fw", function()
-  require('telescope').extensions.git_worktree.git_worktrees()
-end, { desc = "[F]ind [W]orktrees" })
+-- TODO: fix
+-- map("n", "<leader>fw", function()
+--   require('telescope').extensions.git_worktree.git_worktrees()
+-- end, { desc = "[F]ind [W]orktrees" })
 
 map("n", "<leader>fc", function()
   ts.commands({ initial_mode = "insert" })

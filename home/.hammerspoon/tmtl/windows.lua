@@ -1,7 +1,6 @@
 local grid = require("hs.grid")
 local total_height = 20
 local total_width = 20
-local half_total_width = total_width / 2
 
 hs.window.animationDuration = 0.2
 grid.MARGINX = 0
@@ -9,6 +8,7 @@ grid.MARGINY = 0
 grid.GRIDHEIGHT = total_height
 grid.GRIDWIDTH = total_width
 
+<<<<<<< HEAD
 local function resize_window(direction)
   return function()
     if direction == "smaller" then
@@ -88,6 +88,8 @@ local function dev_layout()
   hs.layout.apply(windowLayout)
 end
 
+=======
+>>>>>>> 54c66cc (feat: format and rectangle app)
 local function move_to_screen_maximized(screen_number)
   return function()
     local win = hs.window.focusedWindow()
@@ -101,16 +103,9 @@ local function move_to_screen_maximized(screen_number)
 end
 
 local modifiers = { "ctrl", "shift" }
-hs.hotkey.bind(modifiers, "d", dev_layout)
-hs.hotkey.bind(modifiers, "h", move_window_half_left)
-hs.hotkey.bind(modifiers, "l", move_window_half_right)
-hs.hotkey.bind(modifiers, "return", maximize_window)
-hs.hotkey.bind(modifiers, "c", center_window)
-hs.hotkey.bind(modifiers, "-", resize_window("smaller"))
-hs.hotkey.bind(modifiers, "=", resize_window("larger"))
+
+-- Left / right halves are moved to Rectangle app for better support of different work stations
 hs.hotkey.bind(modifiers, "Right", grid.resizeWindowWider)
 hs.hotkey.bind(modifiers, "Left", grid.resizeWindowThinner)
-hs.hotkey.bind(modifiers, "Up", grid.resizeWindowTaller)
-hs.hotkey.bind(modifiers, "Down", grid.resizeWindowShorter)
 hs.hotkey.bind(modifiers, "[", move_to_screen_maximized(1))
 hs.hotkey.bind(modifiers, "]", move_to_screen_maximized(2))

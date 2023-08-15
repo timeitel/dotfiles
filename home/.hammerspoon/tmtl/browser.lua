@@ -23,3 +23,4 @@ hs.hotkey.bind(modifiers, "h", hard_refresh)
 -- TODO: filter for browser
 -- hs.hotkey.bind("ctrl", "d", scroll(-10))
 -- hs.hotkey.bind("ctrl", "u", scroll(10))
+-- TODO: move tab to window, forward and back browse

@@ -3,15 +3,15 @@ local border = require("tmtl.utils").border
 local M = {}
 
 M.attach = function(bufnr)
-  local dap = require('dap')
-  local widgets = require('dap.ui.widgets')
+  local dap = require("dap")
+  local widgets = require("dap.ui.widgets")
   local win_width = vim.fn.winwidth(0) / 2
   local sidebar = widgets.sidebar(widgets.scopes, { width = math.floor(win_width) })
   local function buf_map(m, k, v, d)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr or 0, desc = d })
   end
 
-  dap.defaults.fallback.terminal_win_cmd = 'tabnew'
+  dap.defaults.fallback.terminal_win_cmd = "tabnew"
 
   local function start_or_continue()
     if dap.session() ~= nil then
@@ -47,18 +47,20 @@ M.attach = function(bufnr)
   local inlay_hints = true
   buf_map("n", "<leader>lh", function()
     if inlay_hints then
-      require('rust-tools').inlay_hints.unset()
+      require("rust-tools").inlay_hints.unset()
       inlay_hints = false
     else
-      require('rust-tools').inlay_hints.set()
+      require("rust-tools").inlay_hints.set()
       inlay_hints = true
     end
   end, "[L]SP [H]ints")
 
   -- UI
-  buf_map({ 'n', 'v' }, '<Leader>dl', sidebar.open, "[D]ebugger scope [List]")
-  buf_map('n', '<Leader>df', function() widgets.centered_float(widgets.scopes) end, "[D]ebugger [F]loat")
-  buf_map("n", "<leader>de", function() widgets.hover(nil, { border = border }) end, "[D]ebugger [E]xpression")
+  buf_map({ "n", "v" }, "<Leader>dl", sidebar.open, "[D]ebugger scope [List]")
+  buf_map("n", "<Leader>df", function() widgets.centered_float(widgets.scopes) end, "[D]ebugger [F]loat")
+  buf_map("n", "<leader>de", function()
+    widgets.hover(nil, { border = border })
+  end, "[D]ebugger [E]xpression")
 end
 
 return M

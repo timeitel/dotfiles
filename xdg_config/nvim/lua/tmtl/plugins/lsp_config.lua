@@ -2,26 +2,29 @@ local M = {
   "mfussenegger/nvim-dap",
   {
     "theHamsta/nvim-dap-virtual-text",
-    config = function() require("nvim-dap-virtual-text").setup({}) end
+    config = function()
+      require("nvim-dap-virtual-text").setup({})
+    end,
   },
   {
     "simrat39/rust-tools.nvim",
     dependencies = "neovim/nvim-lspconfig",
     config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities =
+      require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
       local lsp_maps = require("tmtl.keymaps-lsp")
       local rt = require("rust-tools")
       local rust_maps = require("tmtl.keymaps-rust")
-      local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.9.2/'
-      local codelldb_path = extension_path .. 'adapter/codelldb'
-      local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
-      local dap = require('dap')
+      local extension_path = vim.env.HOME .. "/.vscode/extensions/vadimcn.vscode-lldb-1.9.2/"
+      local codelldb_path = extension_path .. "adapter/codelldb"
+      local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
+      local dap = require("dap")
 
-      dap.listeners.before['event_initialized']['tmtl_handler'] = function(session, body)
-        require('rust-tools').inlay_hints.disable()
+      dap.listeners.before["event_initialized"]["tmtl_handler"] = function(session, body)
+        require("rust-tools").inlay_hints.disable()
       end
-      dap.listeners.before['event_terminated']['tmtl_handler'] = function(session, body)
-        require('rust-tools').inlay_hints.enable()
+      dap.listeners.before["event_terminated"]["tmtl_handler"] = function(session, body)
+        require("rust-tools").inlay_hints.enable()
       end
 
       rt.setup({
@@ -33,11 +36,10 @@ local M = {
           capabilities = capabilities,
         },
         dap = {
-          adapter = require('rust-tools.dap').get_codelldb_adapter(
-            codelldb_path, liblldb_path)
-        }
+          adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
+        },
       })
-    end
+    end,
   },
   {
     "neovim/nvim-lspconfig",
@@ -65,7 +67,8 @@ local M = {
       }
 
       -- Set up completion using nvim_cmp with LSP source
-      local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities =
+      require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
       nvim_lsp.eslint.setup({})
 
@@ -134,7 +137,8 @@ local M = {
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
         border = border,
       })
-      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      vim.lsp.handlers["textDocument/publishDiagnostics"] =
+      vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
         underline = true,
         update_in_insert = false,
         virtual_text = { spacing = 4, prefix = "●" },
@@ -168,7 +172,7 @@ local M = {
         "ﬦ", -- Operator
         "", -- TypeParameter
       }
-    end
+    end,
   },
 }
 
