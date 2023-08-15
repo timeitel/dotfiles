@@ -53,11 +53,11 @@ local M = {
       -- TODO: either show cursor diff3rent in insert mode in terminal or add mode to lualine
       separator = { left = "", right = "" },
       fmt = function(str)
-        if string.find(str, 'zsh;') ~= nil then
+        if string.find(str, "zsh;") ~= nil then
           return "Terminal"
         end
         return str
-      end
+      end,
     }
 
     local function winbar_title(str)
@@ -68,17 +68,19 @@ local M = {
         return "Tasks"
       end
 
-      if (string.find(str, '.git/') ~= nil or string.find(str, '/worktrees/') ~= nil) and
-          string.find(str, ':3:/') ~= nil then
+      if (string.find(str, ".git/") ~= nil or string.find(str, "/worktrees/") ~= nil)
+          and string.find(str, ":3:/") ~= nil
+      then
         return "THEIRS"
       end
 
-      if (string.find(str, '.git/') ~= nil or string.find(str, '/worktrees/') ~= nil)
-          and string.find(str, ':2:/') ~= nil then
+      if (string.find(str, ".git/") ~= nil or string.find(str, "/worktrees/") ~= nil)
+          and string.find(str, ":2:/") ~= nil
+      then
         return "OURS"
       end
 
-      if string.find(str, 'term://') ~= nil then
+      if string.find(str, "term://") ~= nil then
         return ""
       end
 
@@ -189,7 +191,7 @@ local M = {
 
     local dap = {
       function()
-        local session = require('dap').session()
+        local session = require("dap").session()
         if session ~= nil then
           return "● DEBUGGING"
         else
@@ -206,7 +208,7 @@ local M = {
         icons_enabled = true,
         disabled_filetypes = {
           statusline = { "DiffviewFiles", "DiffviewFileHistory" },
-          winbar = { "DiffviewFiles", "DiffviewFileHistory", "qf", },
+          winbar = { "DiffviewFiles", "DiffviewFileHistory", "qf" },
         },
         ignore_focus = {},
         always_divide_middle = false,

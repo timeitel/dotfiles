@@ -9,7 +9,7 @@ map("n", "X", "xi", { desc = "Replacement for vanilla 's'" })
 map("v", "p", "P", { desc = "Keep register on visual paste" })
 map("v", "P", "p", { desc = "Replace register on visual paste" })
 
-map({ "n", "v", }, "q", "<Esc>", { desc = "Return to normal mode" })
+map({ "n", "v" }, "q", "<Esc>", { desc = "Return to normal mode" })
 map("s", "<C-q>", "<Esc>", { desc = "Return to normal mode" })
 map("n", "Q", "q", { desc = "Safer trigger for macro recording" })
 
@@ -135,7 +135,6 @@ local function goto_qf_item(opts)
       vim.cmd("cfirst")
       notify("No previous qf items")
     end
-
   else
     local ok, _ = pcall(vim.cmd, "cnext")
     if not ok then

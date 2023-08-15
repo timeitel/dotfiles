@@ -32,8 +32,12 @@ local M = {
       local insert_mappings = {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
-        ["<C-e>"] = function(bufnr) slow_scroll(bufnr, 1) end,
-        ["<C-y>"] = function(bufnr) slow_scroll(bufnr, -1) end,
+        ["<C-e>"] = function(bufnr)
+          slow_scroll(bufnr, 1)
+        end,
+        ["<C-y>"] = function(bufnr)
+          slow_scroll(bufnr, -1)
+        end,
         ["<C-q>"] = actions.close,
         ["<C-l>"] = actions.select_default + actions.center,
         ["<C-h>"] = function()
@@ -59,12 +63,12 @@ local M = {
       normal_mappings["q"] = actions.close
       normal_mappings["<C-u>"] = actions.preview_scrolling_up
       normal_mappings["o"] = actions.select_default + actions.center
-      normal_mappings["l"] = function(bufnr)
+      normal_mappings["l"] = function(bufnr) -- do the same for h since it's used in file_browser
         local picker = action_state.get_current_picker(bufnr)
         local prompt_text = picker.sorter["_discard_state"].prompt
-        if prompt_text == '' then
+        if prompt_text == "" then
           actions.select_default(bufnr)
-          actions.center()
+          actions.center(bufnr)
         else
           vim.fn.feedkeys(vim.api.nvim_eval('"\\<Right>"'))
         end
@@ -91,16 +95,31 @@ local M = {
         ["gf"] = function()
           local entry = action_state.get_selected_entry()
           local filename = entry.Path.filename
-          require("telescope.builtin").live_grep({ search_dirs = { filename }, results_title = filename,
-            initial_mode = "insert" })
+          require("telescope.builtin").live_grep({
+            search_dirs = { filename },
+            results_title = filename,
+            initial_mode = "insert",
+          })
         end,
         ["gp"] = function()
           local entry = action_state.get_selected_entry()
           local filename = entry.Path.filename
-          require("telescope.builtin").find_files({ search_dirs = { filename }, results_title = filename,
-            initial_mode = "insert" })
+          require("telescope.builtin").find_files({
+            search_dirs = { filename },
+            results_title = filename,
+            initial_mode = "insert",
+          })
         end,
-        ["h"] = fb_actions.goto_parent_dir,
+        ["h"] = function(bufnr)
+          local picker = action_state.get_current_picker(bufnr)
+          local prompt_text = picker.sorter["_discard_state"].prompt
+          if prompt_text == "" then
+            fb_actions.goto_parent_dir(bufnr)
+          else
+            vim.fn.feedkeys(vim.api.nvim_eval('"\\<Left>"'))
+          end
+        end,
+        ["<C-h>"] = fb_actions.goto_parent_dir,
         ["H"] = fb_actions.goto_cwd,
         ["o"] = fb_actions.open,
         ["<C-x>"] = fb_actions.remove,
@@ -113,7 +132,7 @@ local M = {
       telescope.setup({
         defaults = {
           initial_mode = "normal",
-          file_ignore_patterns = { "%.DS_Store", "%.git/", "node_modules/" },
+          file_ignore_patterns = { "%.DS_Store", "%.git/" },
           multi_icon = "<>",
           sorting_strategy = "ascending",
           path_display = function(_, path)
@@ -122,6 +141,7 @@ local M = {
             -- TODO: add highlight groups to tail / path
             return string.format("%s  (%s)", tail, path_from_project_root), { { { 1, #tail }, "Constant" } }
           end,
+          layout_strategy = "vertical",
           layout_config = {
             width = 0.95,
             height = 0.85,
@@ -191,7 +211,7 @@ local M = {
             grouped = true,
             hidden = true,
             respect_gitignore = false,
-            display_stat = { date = true, size = true, },
+            display_stat = { date = true, size = true },
             path_display = { truncate = 2 },
             mappings = {
               n = file_browser_normal_mappings,
@@ -208,7 +228,7 @@ local M = {
       require("telescope").load_extension("possession")
       require("telescope").load_extension("notify")
       require("telescope").load_extension("undo")
-      require("telescope").load_extension("git_worktree")
+      -- require("telescope").load_extension("git_worktree") -- TODO: doesn't seem to work
     end,
   },
 }

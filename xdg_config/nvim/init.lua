@@ -12,7 +12,8 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
-vim.g.camelcasemotion_key = "<leader>"
+
+require("tmtl.env")
 
 require("lazy").setup("tmtl.plugins")
 require("tmtl.options")

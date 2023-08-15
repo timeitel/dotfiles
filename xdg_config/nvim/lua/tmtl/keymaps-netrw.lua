@@ -26,10 +26,10 @@ autocmd("filetype", {
     map("l", "<CR>") -- open file or dir
     map(".", "gh") -- toggle dotfiles
     map("s", function()
-      require('leap').leap({ opts = { labels = {} } })
+      require("leap").leap({ opts = { labels = {} } })
     end) -- toggle dotfiles
     map("S", function()
-      require('leap').leap({ backward = true })
+      require("leap").leap({ backward = true })
     end) -- toggle dotfiles
     map("H", ":e .<CR>") -- home / cwd
     map("t", ":cd %<CR>") -- set cwd to current folder

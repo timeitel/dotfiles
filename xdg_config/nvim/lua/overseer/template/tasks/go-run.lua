@@ -7,11 +7,11 @@ local run = {
       metadata = {
         on_failure = function(task)
           vim.cmd([[vs]])
-          require('overseer').run_action(task, 'open')
+          require("overseer").run_action(task, "open")
         end,
         on_success = function()
-          require('overseer').open()
-        end
+          require("overseer").open()
+        end,
       },
     }
   end,

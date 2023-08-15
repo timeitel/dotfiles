@@ -5,7 +5,7 @@ local M = {
     opts = {
       separator = "-",
       max_lines = 3,
-    }
+    },
   },
   {
     "nvim-treesitter/nvim-treesitter",

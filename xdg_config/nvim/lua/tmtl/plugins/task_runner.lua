@@ -1,5 +1,5 @@
 local M = {
-  'stevearc/overseer.nvim',
+  "stevearc/overseer.nvim",
   opts = {},
   config = function()
     local overseer = require("overseer")
@@ -107,9 +107,9 @@ local M = {
           { "on_complete_notify", statuses = { "SUCCESS" } },
           "on_complete_dispose",
         },
-      }
+      },
     })
-  end
+  end,
 }
 
 return M

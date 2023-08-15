@@ -21,8 +21,12 @@ map("n", "<leader><leader>gd", function()
   notify('Opening diff: "origin/dev...HEAD"')
 end, { desc = "[G]it [D]iff - HEAD against origin/dev" })
 
-map("n", "<leader><leader><leader>gd", ":DiffviewOpen origin/{target}...HEAD",
-  { desc = "[G]it [D]iff - Choose target comparison against HEAD" })
+map(
+  "n",
+  "<leader><leader><leader>gd",
+  ":DiffviewOpen origin/{target}...HEAD",
+  { desc = "[G]it [D]iff - Choose target comparison against HEAD" }
+)
 
 map("n", "<leader>gh", function()
   vim.cmd([[DiffviewFileHistory]])
@@ -42,23 +46,29 @@ map("n", "<leader>gb", function()
 end, { desc = "[G]it [B]ranches" })
 
 map("n", "<leader>gu", function()
-  request_confirm({ prompt = "undo last commit", on_confirm = function()
-    require('overseer').run_template({ name = "git:undo_last_commit" })
-  end })
+  request_confirm({
+    prompt = "undo last commit",
+    on_confirm = function()
+      require("overseer").run_template({ name = "git:undo_last_commit" })
+    end,
+  })
 end, { desc = "[G]it [U]ndo - last commit into working directory" })
 
 map("n", "<leader>gx", function()
-  request_confirm({ prompt = "discard ALL working changes", on_confirm = function()
-    require('overseer').run_template({ name = "git:discard_all" }, function(_, err)
-      if err == nil then
-        vim.defer_fn(function()
-          vim.cmd([[checktime]])
-        end, 100)
-      else
-        notify("Error discarding all changes", vim.log.levels.ERROR)
-      end
-    end)
-  end })
+  request_confirm({
+    prompt = "discard ALL working changes",
+    on_confirm = function()
+      require("overseer").run_template({ name = "git:discard_all" }, function(_, err)
+        if err == nil then
+          vim.defer_fn(function()
+            vim.cmd([[checktime]])
+          end, 100)
+        else
+          notify("Error discarding all changes", vim.log.levels.ERROR)
+        end
+      end)
+    end,
+  })
 end, { desc = "[G]it [R]eset: discard ALL working changes" })
 
 map("n", "<leader><leader>gb", function()

@@ -44,15 +44,7 @@ enableHotkeyOutsideTerminal(
   end)
 )
 
--- <C-q> to escape
-enableHotkeyOutsideTerminal(
-  wf,
-  hs.hotkey.new({ "ctrl" }, "q", function()
-    hs.eventtap.keyStroke({}, "escape", 0)
-  end)
-)
-
--- Up & down, enter: terminal / vim bindings for homerow
+-- Up & down, mostly used for navigating browser suggestions and accepting
 enableHotkeyOutsideTerminal(
   wf,
   hs.hotkey.new({ "ctrl" }, "k", function()
@@ -71,19 +63,6 @@ enableHotkeyOutsideTerminal(
     hs.eventtap.keyStroke({}, "return", 0)
   end)
 )
-enableHotkeyOutsideTerminal(
-  wf,
-  hs.hotkey.new({ "alt" }, "l", function()
-    hs.eventtap.keyStroke({ "alt" }, "right", 0)
-  end)
-)
-enableHotkeyOutsideTerminal(
-  wf,
-  hs.hotkey.new({ "alt" }, "h", function()
-    hs.eventtap.keyStroke({ "alt" }, "left", 0)
-  end)
-)
--- TODO: scroll
 enableHotkeyOutsideTerminal(
   wf,
   hs.hotkey.new({ "ctrl" }, "e", function()
