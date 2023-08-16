@@ -40,7 +40,9 @@ M.attach = function(bufnr)
       vim.cmd([[RustDebuggables]])
     end
   end, "[D]ebugger [S]tart / [S]top")
-  buf_map("n", "<leader>db", function() dap.clear_breakpoints() end, "[D]ebugger clear [B]reakpoints")
+  buf_map("n", "<leader>dbc", function() dap.clear_breakpoints() end, "[D]ebugger [B]reakpoints [C]lear")
+  buf_map("n", "<leader>dbs", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
+    "[D]ebugger [B]reakpoints [S]et")
   buf_map("n", "<leader>dc", function() dap.run_to_cursor() end, "[D]ebugger run to [C]ursor")
   local inlay_hints = true
   buf_map("n", "<leader>lh", function()
