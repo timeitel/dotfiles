@@ -113,7 +113,7 @@ local M = {
         capabilities = capabilities,
       })
 
-      local diagnostic_column_signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+      local diagnostic_column_signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
       for type, icon in pairs(diagnostic_column_signs) do
         local hl = "DiagnosticSign" .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })

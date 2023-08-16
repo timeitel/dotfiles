@@ -62,6 +62,7 @@ local M = {
 
       local file_panel_maps = spread_table({}, common_maps, panel_maps)
       file_panel_maps["s"] = actions.toggle_stage_entry
+      file_panel_maps["<C-f>"] = actions.toggle_files
 
       local merge_tool_maps = spread_table({}, common_maps, panel_maps)
       merge_tool_maps["<C-j>"] = actions.next_conflict
