@@ -1,5 +1,4 @@
-require("tmtl.windows")
 require("tmtl.apps")
 require("tmtl.browser")
 require("tmtl.input_navigation")
-require("tmtl.spotify")
+require("tmtl.windows")

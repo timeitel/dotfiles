@@ -6,21 +6,5 @@ local function hard_refresh()
   win:focus()
 end
 
--- local function applicationWatcher(appName, eventType, appObject)
---   if eventType == hs.application.watcher.activated then
---     if appName == "YourAppNameHere" then
---       hs.eventtap.event.newScrollEvent({ 0, vertical }, {}):post()
---     end
---   end
--- end
-
--- local appWatcher = hs.application.watcher.new(applicationWatcher)
--- appWatcher:start()
-
 local modifiers = { "ctrl", "alt" }
 hs.hotkey.bind(modifiers, "h", hard_refresh)
-
--- TODO: filter for browser
--- hs.hotkey.bind("ctrl", "d", scroll(-10))
--- hs.hotkey.bind("ctrl", "u", scroll(10))
--- TODO: move tab to window, forward and back browse

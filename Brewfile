@@ -1,8 +1,9 @@
 brew "ticktick"
-brew "brave-browser"
+brew install --cask brave-browser
 brew "obsidian"
 brew "hammerspoon"
 brew "Rectangle"
+brew install --cask yt-music
 
 brew "postman"
 brew "zsh"
