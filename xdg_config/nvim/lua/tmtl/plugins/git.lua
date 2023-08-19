@@ -19,6 +19,7 @@ local M = {
       local actions = require("diffview.actions")
       local spread_table = require("tmtl.utils").spread_table
       local request_confirm = require("tmtl.utils").request_confirm
+      local map = require("tmtl.utils").map
 
       local common_maps = {
         ["L"] = false,
@@ -84,6 +85,21 @@ local M = {
           diff_view = common_maps,
           merge_tool = merge_tool_maps,
         },
+        hooks = {
+          view_closed = function()
+            local function reassign_tab()
+              map("n", "<Tab>", function()
+                Goto_Diagnostic({ float = true, severity = { min = vim.diagnostic.severity.HINT } })
+              end, "[D]iagnostics next diagnostic")
+
+              map("n", "<S-Tab>", function()
+                Goto_Diagnostic({ prev = true, float = true, severity = { min = vim.diagnostic.severity.HINT } })
+              end, "[D]iagnostics previous diagnostic")
+            end
+
+            pcall(reassign_tab)
+          end
+        }
       })
     end,
   },

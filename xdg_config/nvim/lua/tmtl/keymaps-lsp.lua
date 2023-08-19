@@ -1,6 +1,6 @@
 local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 
-local function goto_diagnostic(opts)
+function Goto_Diagnostic(opts)
   local table_length = require("tmtl.utils").table_length
   opts = opts or {}
   local prev = opts.prev or false
@@ -35,27 +35,27 @@ M.attach = function(bufnr)
 
   -- Diagnostics
   buf_map("n", "]e", function()
-    goto_diagnostic({ severity = vim.diagnostic.severity.ERROR })
+    Goto_Diagnostic({ severity = vim.diagnostic.severity.ERROR })
   end, "[D]iagnostics next error")
 
   buf_map("n", "[e", function()
-    goto_diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
+    Goto_Diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
   end, "[D]iagnostics previous error")
 
   buf_map("n", "<Tab>", function()
-    goto_diagnostic({ float = true, severity = { min = vim.diagnostic.severity.HINT } })
+    Goto_Diagnostic({ float = true, severity = { min = vim.diagnostic.severity.HINT } })
   end, "[D]iagnostics next diagnostic")
 
   buf_map("n", "<S-Tab>", function()
-    goto_diagnostic({ prev = true, float = true, severity = { min = vim.diagnostic.severity.HINT } })
+    Goto_Diagnostic({ prev = true, float = true, severity = { min = vim.diagnostic.severity.HINT } })
   end, "[D]iagnostics previous diagnostic")
 
   buf_map("n", "]d", function()
-    goto_diagnostic()
+    Goto_Diagnostic()
   end, "[D]iagnostics next [D]iagnostic")
 
   buf_map("n", "[d", function()
-    goto_diagnostic({ prev = true })
+    Goto_Diagnostic({ prev = true })
   end, "[D]iagnostics previous [D]iagnostic")
 
   buf_map("n", "<leader>da", function()
