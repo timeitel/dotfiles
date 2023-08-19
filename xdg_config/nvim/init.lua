@@ -13,7 +13,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 
-require("tmtl.env")
+local ok, _ = pcall(require, "tmtl.env")
+if not ok then print("Unable to find env file") end
 
 require("lazy").setup("tmtl.plugins")
 require("tmtl.options")
