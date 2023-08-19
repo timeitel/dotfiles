@@ -6,5 +6,7 @@ local function hard_refresh()
   win:focus()
 end
 
-local modifiers = { "ctrl", "alt" }
-hs.hotkey.bind(modifiers, "h", hard_refresh)
+local global_modifiers = { "ctrl", "alt" }
+-- local modifiers = { "cmd", "shift" }
+
+hs.hotkey.bind(global_modifiers, "h", hard_refresh)

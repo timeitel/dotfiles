@@ -36,9 +36,6 @@ local M = {
         ["<leader>cs"] = function()
           vim.cmd([[Neogit commit]])
           vim.fn.feedkeys("c")
-          vim.defer_fn(function()
-            vim.cmd([[wincmd J]])
-          end, 100)
         end,
         ["<leader>gs"] = function()
           vim.cmd([[DiffviewClose]])
@@ -60,9 +57,6 @@ local M = {
         ["C"] = function()
           vim.cmd([[Neogit commit]])
           vim.fn.feedkeys("c")
-          vim.defer_fn(function()
-            vim.cmd([[wincmd J]])
-          end, 100)
         end,
       }
 
