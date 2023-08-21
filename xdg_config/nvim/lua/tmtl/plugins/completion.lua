@@ -62,6 +62,7 @@ local M = {
       local ts_utils = require("nvim-treesitter.ts_utils")
       cmp.event:on("confirm_done", function(evt)
         local node = ts_utils.get_node_at_cursor()
+        vim.print(node)
         if node == nil then
           cmp_autopairs.on_confirm_done()(evt)
           return

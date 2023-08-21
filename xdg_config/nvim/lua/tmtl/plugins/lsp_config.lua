@@ -20,8 +20,8 @@ local M = {
       local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
       local dap = require("dap")
 
-      dap.listeners.before["event_initialized"]["tmtl_handler"] = function() require("rust-tools").inlay_hints.disable() end
-      dap.listeners.before["event_terminated"]["tmtl_handler"] = function() require("rust-tools").inlay_hints.enable() end
+      dap.listeners.before["event_initialized"]["tmtl_handler"] = require("rust-tools").inlay_hints.disable
+      dap.listeners.before["event_terminated"]["tmtl_handler"] = require("rust-tools").inlay_hints.enable
 
       rt.setup({
         server = {
