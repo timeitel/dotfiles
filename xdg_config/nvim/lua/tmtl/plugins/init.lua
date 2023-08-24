@@ -26,6 +26,17 @@ local M = {
       map("n", "go[", "vi[<Esc><Cmd>Sort<CR>", { desc = "[S]ort inside bracket `[`" })
       map("n", "go\"", "vi\"<Esc><Cmd>Sort<CR>", { desc = "[S]ort inside quotes `\"`" })
       map("n", "go'", "vi'<Esc><Cmd>Sort<CR>", { desc = "[S]ort inside single quotes `'`" })
+
+      require("sort").setup({
+        delimiters = {
+          ',',
+          '|',
+          ';',
+          -- ':', -- used for tailwind psuedo classes
+          's', -- Space
+          't' -- Tab
+        }
+      })
     end,
   },
   {
