@@ -7,9 +7,10 @@ local M = {
     null_ls.setup({
       sources = {
         null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.rustfmt,
         null_ls.builtins.formatting.gofmt,
+        null_ls.builtins.formatting.rustywind,
+        null_ls.builtins.formatting.prettier
       },
       on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
