@@ -32,10 +32,10 @@ bindkey '^r' history-incremental-search-backward
 # delete forward word
 bindkey '^d' kill-word
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/timeitel/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/timeitel/google-cloud-sdk/path.zsh.inc'; fi
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 # nvim-dap rust
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"

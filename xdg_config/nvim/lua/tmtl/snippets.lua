@@ -1,4 +1,3 @@
--- TODO: accept function without auto compelting arguments / parenths
 local map = require("tmtl.utils").map
 local ls = require("luasnip")
 local snippet = ls.snippet

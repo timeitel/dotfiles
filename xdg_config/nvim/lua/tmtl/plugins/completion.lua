@@ -40,6 +40,13 @@ local M = {
             fallback()
           end
         end, { "i", "c" }),
+        ["<CR>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.confirm({ select = true })
+          else
+            fallback()
+          end
+        end, { "i" }),
         ["<C-l>"] = cmp.mapping({
           i = function()
             if cmp.visible() then
