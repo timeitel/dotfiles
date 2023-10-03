@@ -6,24 +6,25 @@ local map = require("tmtl.utils").map
 local get_visual_selection = require("tmtl.utils").get_visual_selection
 
 map("n", "<C-p>", function()
-  ts.find_files({ hidden = true })
+  require('tmtl.telescope-pickers').prettyFilesPicker({ picker = 'find_files', options = { hidden = true } })
 end, { desc = "Find - files" })
 
 map("n", "<leader>ff", function()
-  ts.live_grep({ initial_mode = "insert" })
+  require('tmtl.telescope-pickers').prettyGrepPicker({ picker = 'live_grep', options = { initial_mode = "insert" } })
 end, { desc = "[F]ind [F]iles: live grep" })
 
 map("v", "<leader>ff", function()
   local text = get_visual_selection()
-  ts.grep_string({ search = text })
+  require('tmtl.telescope-pickers').prettyGrepPicker({ picker = 'grep_string', options = { search = text } })
 end, { desc = "[F]ind [F]iles: live grep selection" })
 
 map("n", "<leader>fa", function()
-  ts.find_files({ no_ignore = true, hidden = true })
+  require('tmtl.telescope-pickers').prettyFilesPicker({ picker = 'find_files',
+    options = { no_ignore = true, hidden = true } })
 end, { desc = "[F]ind [A]ll: incl hidden and gitignore" })
 
 map("n", "<leader>ft", function()
-  ts.grep_string({ search = "TODO" })
+  require('tmtl.telescope-pickers').prettyGrepPicker({ picker = 'grep_string', options = { search = "TODO" } })
 end, { desc = "[F]ind [T]ODOs" })
 
 map("n", "<leader>fb", function()
@@ -77,4 +78,4 @@ end, { desc = "[F]ind [U]ndo history" })
 
 map("n", "<leader>fc", function()
   ts.commands({ initial_mode = "insert" })
-end, { desc = "[F]ind [W]orktrees" })
+end, { desc = "[F]ind [C]ommands" })
