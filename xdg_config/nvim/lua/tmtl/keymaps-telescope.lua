@@ -28,8 +28,16 @@ map("n", "<leader>ft", function()
 end, { desc = "[F]ind [T]ODOs" })
 
 map("n", "<leader>fb", function()
-  ts.buffers({ sort_mru = true, ignore_current_buffer = true })
+  require('tmtl.telescope-pickers').prettyBuffersPicker({ sort_mru = true, ignore_current_buffer = true })
 end, { desc = "[F]ind [B]uffers" })
+
+map("n", "<leader>fs", function()
+  require('tmtl.telescope-pickers').prettyDocumentSymbols({ initial_mode = "insert" })
+end, { desc = "[F]ind [S]ymbols" })
+
+map("n", "<leader>fw", function()
+  require('tmtl.telescope-pickers').prettyWorkspaceSymbols({ initial_mode = "insert" })
+end, { desc = "[F]ind [W]orkspace symbols" })
 
 map("n", "<leader>fk", function()
   ts.keymaps({ initial_mode = "insert" })
@@ -64,15 +72,12 @@ map("n", "<leader>bw", function()
   fb.file_browser({ cwd = vim.fn.expand("%:p:h") })
 end, { desc = "[B]rowse [W]orking directory of buffer" })
 
--- TODO: check if working
--- map("n", "<leader>fs", "<cmd>Navbuddy<cr>", { desc = "[F]ind [S]ymbols in buffer" })
-
 map("n", "<leader>fu", function()
   require("telescope").extensions.undo.undo()
 end, { desc = "[F]ind [U]ndo history" })
 
 -- TODO: fix
--- map("n", "<leader>fw", function()
+-- map("n", "<leader>fgw", function()
 --   require('telescope').extensions.git_worktree.git_worktrees()
 -- end, { desc = "[F]ind [W]orktrees" })
 
