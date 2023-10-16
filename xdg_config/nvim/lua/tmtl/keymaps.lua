@@ -9,7 +9,13 @@ map("n", "X", "xi", { desc = "Replacement for vanilla 's'" })
 map("v", "p", "P", { desc = "Keep register on visual paste" })
 map("v", "P", "p", { desc = "Replace register on visual paste" })
 
-map({ "n", "v" }, "q", "<Esc>", { desc = "Return to normal mode" })
+map({ "n", "v" }, "q", function()
+  if vim.b.overseer_task == 1 then
+    vim.cmd([[close]])
+  else
+    vim.api.nvim_input("<Esc>")
+  end
+end, { desc = "Return to normal mode" })
 map("s", "<C-q>", "<Esc>", { desc = "Return to normal mode" })
 map("n", "Q", "q", { desc = "Safer trigger for macro recording" })
 
