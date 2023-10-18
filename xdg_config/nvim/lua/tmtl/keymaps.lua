@@ -31,9 +31,7 @@ map({ "o", "x" }, "ar", "a[", { desc = "Operator mode syntax aliases" })
 map({ "o", "x" }, "ic", "i{", { desc = "Operator mode syntax aliases" }) -- [c]urly brackets
 map({ "o", "x" }, "ac", "a{", { desc = "Operator mode syntax aliases" })
 
-map("c", "<C-q>", function()
-  vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-u>\\<BS>"'))
-end, { desc = "Return to normal mode" })
+map("c", "<C-q>", function() vim.api.nvim_input("<Esc>") end, { desc = "Return to normal mode" })
 
 map("i", "kj", "<Esc>", { desc = "Return to normal mode" })
 map("t", "kj", "<C-\\><C-n>", { desc = "Return to normal mode" })
@@ -64,7 +62,8 @@ map("n", "<leader>i", "i <ESC>i", { desc = "Enter insert mode with proceeding sp
 
 map("n", "<leader>/", function()
   vim.fn.feedkeys("/\\<\\>")
-  vim.fn.feedkeys(vim.api.nvim_eval('"\\<Left>\\<Left>"'))
+  vim.api.nvim_input("<Left>")
+  vim.api.nvim_input("<Left>")
 end, { desc = "Find - exact match" })
 
 map("v", "<leader>/", function()

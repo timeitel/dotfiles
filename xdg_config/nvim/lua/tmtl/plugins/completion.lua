@@ -59,7 +59,7 @@ local M = {
             if cmp.visible() then
               cmp.confirm({ select = true })
             else
-              vim.fn.feedkeys(vim.api.nvim_eval('"\\<Cr>"'))
+              vim.api.nvim_input("<cr>")
             end
           end,
         }),
