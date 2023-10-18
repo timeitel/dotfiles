@@ -51,6 +51,8 @@ vim.api.nvim_create_autocmd("FileType", {
   group = group,
 })
 
+vim.api.nvim_create_autocmd("WinNew", { command = "wincmd L" })
+
 -- Comments
 vim.api.nvim_command([[
 au FileType * set fo=cqrnj
