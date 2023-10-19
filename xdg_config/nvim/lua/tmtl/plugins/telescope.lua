@@ -60,7 +60,7 @@ local M = {
           actions.select_default(bufnr)
           actions.center(bufnr)
         else
-          vim.fn.feedkeys(vim.api.nvim_eval('"\\<Right>"'))
+          vim.api.nvim_input("<Right>")
         end
       end
       normal_mappings["<leader>gd"] = function(bfnr)
@@ -106,7 +106,7 @@ local M = {
           if prompt_text == "" then
             fb_actions.goto_parent_dir(bufnr)
           else
-            vim.fn.feedkeys(vim.api.nvim_eval('"\\<Left>"'))
+            vim.api.nvim_input("<Left>")
           end
         end,
         ["<C-h>"] = fb_actions.goto_parent_dir,
@@ -114,8 +114,8 @@ local M = {
         ["o"] = fb_actions.open,
         ["<C-x>"] = fb_actions.remove,
         ["<C-o>"] = function()
-          vim.fn.feedkeys(vim.api.nvim_eval('"\\<Esc>"'))
-          vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-o>"'))
+          vim.api.nvim_input("<Esc>")
+          vim.api.nvim_input("<C-o>")
         end,
       }
 

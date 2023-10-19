@@ -23,7 +23,17 @@ local M = {
 
       local common_maps = {
         ["L"] = false,
-        ["q"] = "<cmd>DiffviewClose<cr>",
+        ["q"] = function()
+          vim.cmd("DiffviewClose")
+
+          vim.keymap.set("n", "<Tab>",
+            function() Goto_Diagnostic({ float = true, severity = { min = vim.diagnostic.severity.HINT } }) end,
+            { noremap = true, silent = true, buffer = 0 })
+
+          vim.keymap.set("n", "<S-Tab>",
+            function() Goto_Diagnostic({ prev = true, float = true, severity = { min = vim.diagnostic.severity.HINT } }) end
+            , { noremap = true, silent = true, buffer = 0, })
+        end,
         ["[f"] = actions.focus_files,
         ["]f"] = actions.focus_files,
         ["gf"] = actions.goto_file_edit,
@@ -40,7 +50,7 @@ local M = {
         end,
         ["<leader>gs"] = function()
           vim.cmd([[DiffviewClose]])
-          neogit.open()
+          neogit.open({})
         end,
       }
 

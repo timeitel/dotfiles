@@ -63,7 +63,6 @@ o.foldmethod = "expr"
 -- list chars
 o.list = true
 o.listchars = ""
-o.listchars:append({ extends = "#" })
 o.listchars:append({ extends = "»" })
 o.listchars:append({ lead = "·" })
 o.listchars:append({ nbsp = "⣿" })

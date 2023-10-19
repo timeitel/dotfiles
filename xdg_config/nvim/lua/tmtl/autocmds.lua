@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.api.nvim_create_autocmd("VimResized", {
   pattern = "*",
   callback = function()
-    vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-w>="'))
+    vim.cmd([[wincmd =]])
   end,
   desc = "Resize windows on terminal resize",
   group = group,
@@ -50,6 +50,8 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Close window",
   group = group,
 })
+
+vim.api.nvim_create_autocmd("WinNew", { command = "wincmd L" })
 
 -- Comments
 vim.api.nvim_command([[

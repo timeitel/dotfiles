@@ -2,6 +2,7 @@ local gunmetal = "#282c34"
 
 local M = {
   "nvim-tree/nvim-web-devicons",
+  "EdenEast/nightfox.nvim",
   {
     "rebelot/kanagawa.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -48,6 +49,7 @@ local M = {
       })
 
       vim.cmd("colorscheme kanagawa")
+      -- vim.cmd("colorscheme carbonfox")
     end,
   },
   {
