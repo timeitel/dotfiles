@@ -32,23 +32,13 @@ local M = {
       local insert_mappings = {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
-        ["<C-e>"] = function(bufnr)
-          slow_scroll(bufnr, 1)
-        end,
-        ["<C-y>"] = function(bufnr)
-          slow_scroll(bufnr, -1)
-        end,
+        ["<C-e>"] = function(bufnr) slow_scroll(bufnr, 1) end,
+        ["<C-y>"] = function(bufnr) slow_scroll(bufnr, -1) end,
         ["<C-q>"] = actions.close,
         ["<C-l>"] = actions.select_default + actions.center,
-        ["<C-h>"] = function()
-          vim.api.nvim_input("<BS>")
-        end,
-        ["<C-w>"] = function()
-          vim.api.nvim_input("<c-s-w>")
-        end,
-        ["<C-u>"] = function()
-          vim.api.nvim_input("<Esc>cc")
-        end,
+        ["<C-h>"] = function() vim.api.nvim_input("<BS>") end,
+        ["<C-w>"] = function() vim.api.nvim_input("<c-s-w>") end,
+        ["<C-u>"] = function() vim.api.nvim_input("<Esc>cc") end,
         ["<C-s>"] = actions.select_horizontal,
         ["<M-p>"] = actions_layout.toggle_preview,
       }
