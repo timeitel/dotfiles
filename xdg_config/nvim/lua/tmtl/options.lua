@@ -35,9 +35,7 @@ o.swapfile = false
 o.termguicolors = true
 o.undofile = true
 o.whichwrap:append("<,>,h,l")
-o.wildignore = "__pycache__"
-o.wildignore:append("Cargo.lock")
-o.wildignore:append({ "*.o", "*.pyc", "*pycache*", "*~" })
+o.wildignore:append({ "__pycache__", "*.o", "*.pyc", "*pycache*", "*~", "Cargo.lock" })
 o.wrap = false
 
 -- Tabs
@@ -64,6 +62,7 @@ o.foldmethod = "expr"
 o.list = true
 o.listchars = ""
 o.listchars:append({ extends = "»" })
+o.listchars:append({ leadmultispace = "┊ " })
 o.listchars:append({ lead = "·" })
 o.listchars:append({ nbsp = "⣿" })
 o.listchars:append({ precedes = "«" })
