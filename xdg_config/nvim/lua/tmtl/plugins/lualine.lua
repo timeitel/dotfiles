@@ -89,14 +89,14 @@ local M = {
 
     local winbar_filename = {
       "filename",
-      color = secondary_blue,
+      color = { bg = "NONE", fg = colors.blue },
       fmt = winbar_title,
       path = 1,
-      separator = { left = "", right = "" },
+      separator = { left = "", right = "" },
     }
 
     local winbar_inactive_filename = spread_table({}, winbar_filename)
-    winbar_inactive_filename.color = { bg = colors.gray, fg = colors.blue }
+    winbar_inactive_filename.color = { bg = "NONE", fg = "#727169" }
 
     local filetype = {
       "filetype",
@@ -233,7 +233,7 @@ local M = {
         lualine_z = { winbar_filename },
       },
       inactive_winbar = {
-        lualine_x = { diagnostic_stats },
+        lualine_x = {},
         lualine_z = { winbar_inactive_filename },
       },
       extensions = {},
