@@ -18,13 +18,14 @@ local M = {
       cyan = palette_colors.dragonBlue,
     }
     local secondary_blue = { bg = colors.blue, fg = colors.gray }
+    local inactive = { bg = "NONE", fg = theme_colors.syn.comment }
 
     local function get_normal_mode_colors(primary)
       local color = { bg = colors.gray, fg = primary }
       return {
         a = color,
         b = color,
-        c = { bg = "NONE", fg = theme_colors.syn.comment },
+        c = inactive,
         x = color,
         y = color,
       }
@@ -96,7 +97,7 @@ local M = {
     }
 
     local winbar_inactive_filename = spread_table({}, winbar_filename)
-    winbar_inactive_filename.color = { bg = "NONE", fg = "#727169" }
+    winbar_inactive_filename.color = inactive
 
     local filetype = {
       "filetype",
@@ -234,7 +235,12 @@ local M = {
       },
       inactive_winbar = {
         lualine_x = {},
-        lualine_z = { winbar_inactive_filename },
+        lualine_z = { {
+          "diagnostics",
+          colored = false,
+          color = inactive
+        },
+          winbar_inactive_filename },
       },
       extensions = {},
     })
