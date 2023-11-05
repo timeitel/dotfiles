@@ -53,10 +53,10 @@ local M = {
             enable = true,
             lookahead = false,
             keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["aa"] = "@parameter.outer",
-              ["ia"] = "@parameter.inner",
+              ["af"] = { query = "@function.outer", desc = "Select function outer" },
+              ["if"] = { query = "@function.inner", desc = "Select function inner" },
+              ["aa"] = { query = "@parameter.outer", desc = "Select parameter outer" },
+              ["ia"] = { query = "@parameter.inner", desc = "Select parameter inner" }
             },
             selection_modes = {
               ["@parameter.outer"] = "v", -- charwise
@@ -66,13 +66,19 @@ local M = {
             include_surrounding_whitespace = true,
           },
 
-          move = { enable = false },
-          lsp_interop = {
+          move = {
             enable = true,
-            border = "none",
-            peek_definition_code = {
-              ["<leader>pf"] = "@function.outer", -- preview function
+            set_jumps = true,
+            goto_next_start = {
+              ["]a"] = "@parameter.inner",
             },
+            goto_previous_start = {
+              ["[a"] = "@parameter.inner",
+            },
+          },
+
+          lsp_interop = {
+            enable = false,
           },
         },
       })
