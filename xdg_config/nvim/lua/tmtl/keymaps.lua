@@ -21,6 +21,7 @@ end, { desc = "Return to normal mode" })
 map("s", "<C-q>", "<Esc>", { desc = "Return to normal mode" })
 map("n", "Q", "q", { desc = "Safer trigger for macro recording" })
 
+Last_Motion = 'ac'
 map({ "o", "x" }, "<C-q>", "<Esc>", { desc = "Exit operator mode" })
 map({ "o", "x" }, "iq", 'i"', { desc = "Operator mode syntax aliases" }) -- [q]uote
 map({ "o", "x" }, "aq", 'a"', { desc = "Operator mode syntax aliases" })
@@ -32,6 +33,10 @@ map({ "o", "x" }, "ir", "i[", { desc = "Operator mode syntax aliases" }) -- [r]e
 map({ "o", "x" }, "ar", "a[", { desc = "Operator mode syntax aliases" })
 map({ "o", "x" }, "ic", "i{", { desc = "Operator mode syntax aliases" }) -- [c]urly brackets
 map({ "o", "x" }, "ac", "a{", { desc = "Operator mode syntax aliases" })
+map("n", "ga", function()
+  local keys = "v" .. Last_Motion
+  vim.fn.feedkeys(keys)
+end, { desc = "Replace with last motion" })
 
 map("c", "<C-q>", function() vim.api.nvim_input("<Esc>") end, { desc = "Return to normal mode" })
 
