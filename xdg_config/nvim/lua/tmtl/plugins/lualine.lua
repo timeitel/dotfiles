@@ -55,7 +55,9 @@ local M = {
       separator = { left = "", right = "" },
       fmt = function(str)
         if string.find(str, "zsh;") ~= nil then
-          return "Terminal"
+          local mode = vim.fn.mode()
+          local formatted_mode = mode == "n" and "NORMAL" or "INSERT"
+          return "Terminal" .. " [" .. formatted_mode .. "]"
         end
         return str
       end,
