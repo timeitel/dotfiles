@@ -18,14 +18,27 @@ end
 ls.add_snippets(nil, {
   all = {
     snippet({
+      trig = "fun",
+      namr = "Function",
+      dscr = "JavaScript",
+    }, {
+      text("function "),
+      insert(1, "name"),
+      text({ "(" }),
+      insert(2),
+      text({ ") {" }),
+      insert(3),
+      text({ "};" }),
+    }),
+    snippet({
       trig = "fc",
       namr = "Functional component",
       dscr = "React functional component",
     }, {
-      text("export const "),
+      text("export default function "),
       get_filename(),
       insert(1),
-      text({ " : FC = () => {" }),
+      text({ "() {" }),
       text({ "return (" }),
       text({ "<>" }),
       insert(2),

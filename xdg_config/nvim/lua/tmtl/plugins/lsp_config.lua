@@ -68,6 +68,8 @@ local M = {
 
       nvim_lsp.eslint.setup({})
 
+      nvim_lsp.tailwindcss.setup({})
+
       nvim_lsp.gopls.setup({
         on_attach = function(_, bufnr)
           lsp_maps.attach(bufnr)
