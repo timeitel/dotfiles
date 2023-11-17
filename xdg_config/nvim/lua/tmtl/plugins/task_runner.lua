@@ -35,7 +35,12 @@ local M = {
     end, { desc = "Task [R]unner - toggle running tasks" })
 
     map("n", "<leader>rl", function()
-      overseer.run_template()
+      overseer.run_template({}, function(task)
+        if string.find(task.cmd[3], "deploy") then
+          overseer.run_action(task, 'open float')
+        end
+      end
+      )
     end, { desc = "Task [R]unner - toggle task [L]ist" })
 
     map("n", "<leader>rt", function()
@@ -60,7 +65,12 @@ local M = {
     end, { desc = "Task [R]unner - [R]erun last task" })
 
     map("n", "<leader>rd", function()
-      overseer.run_template()
+      overseer.run_template({}, function(task)
+        if task then
+          overseer.run_action(task, 'open float')
+        end
+      end)
+
       vim.fn.feedkeys("ideploykj")
     end, { desc = "Task [R]unner - [D]eploy tasks" })
 
