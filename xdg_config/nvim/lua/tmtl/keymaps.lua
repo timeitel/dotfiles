@@ -21,22 +21,31 @@ end, { desc = "Return to normal mode" })
 map("s", "<C-q>", "<Esc>", { desc = "Return to normal mode" })
 map("n", "Q", "q", { desc = "Safer trigger for macro recording" })
 
-Last_Motion = 'ac'
+--- operator aliases
+
+Last_Motion = ''
+local opts = { desc = "Operator mode syntax aliases", expr = true }
+local function set_motion_and_feed(str)
+  return function()
+    Last_Motion = str
+    return str
+  end
+end
+
 map({ "o", "x" }, "<C-q>", "<Esc>", { desc = "Exit operator mode" })
-map({ "o", "x" }, "iq", 'i"', { desc = "Operator mode syntax aliases" }) -- [q]uote
-map({ "o", "x" }, "aq", 'a"', { desc = "Operator mode syntax aliases" })
-map({ "o", "x" }, "is", "i'", { desc = "Operator mode syntax aliases" }) -- [s]ingle quote
-map({ "o", "x" }, "as", "a'", { desc = "Operator mode syntax aliases" })
-map({ "o", "x" }, "il", "i`", { desc = "Operator mode syntax aliases" }) -- template [l]iteral string
-map({ "o", "x" }, "al", "a`", { desc = "Operator mode syntax aliases" })
-map({ "o", "x" }, "ir", "i[", { desc = "Operator mode syntax aliases" }) -- [r]ectangular brackets
-map({ "o", "x" }, "ar", "a[", { desc = "Operator mode syntax aliases" })
-map({ "o", "x" }, "ic", "i{", { desc = "Operator mode syntax aliases" }) -- [c]urly brackets
-map({ "o", "x" }, "ac", "a{", { desc = "Operator mode syntax aliases" })
-map("n", "ga", function()
-  local keys = "v" .. Last_Motion
-  vim.fn.feedkeys(keys)
-end, { desc = "Replace with last motion" })
+map({ "o", "x" }, "iq", set_motion_and_feed('i"'), opts) -- [q]uote
+map({ "o", "x" }, "aq", set_motion_and_feed('a"'), opts)
+map({ "o", "x" }, "is", set_motion_and_feed("i'"), opts) -- [s]ingle quote
+map({ "o", "x" }, "as", set_motion_and_feed("a'"), opts)
+map({ "o", "x" }, "il", set_motion_and_feed("i`"), opts) -- template [l]iteral string
+map({ "o", "x" }, "al", set_motion_and_feed("a`"), opts)
+map({ "o", "x" }, "ir", set_motion_and_feed("i["), opts) -- [r]ectangular brackets
+map({ "o", "x" }, "ar", set_motion_and_feed("a["), opts)
+map({ "o", "x" }, "ic", set_motion_and_feed("i{"), opts) -- [c]urly brackets
+map({ "o", "x" }, "ac", set_motion_and_feed("a{"), opts)
+map("n", "ga", function() return "v" .. Last_Motion .. "p" end, { desc = "Replace with last motion", expr = true }) -- all wrapping is done for this shortcut map
+
+--- / operator aliases
 
 map("c", "<C-q>", function() vim.api.nvim_input("<Esc>") end, { desc = "Return to normal mode" })
 
