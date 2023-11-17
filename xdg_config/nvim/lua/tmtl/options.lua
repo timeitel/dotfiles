@@ -22,6 +22,7 @@ o.number = true
 o.relativenumber = true
 o.scrollbind = false
 o.scrolloff = 10
+o.sidescrolloff = 5
 o.sessionoptions = o.sessionoptions - "buffers"
 o.showcmd = true
 o.showmatch = true
