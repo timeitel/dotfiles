@@ -33,6 +33,10 @@ local function set_motion_and_feed(str)
 end
 
 map({ "o", "x" }, "<C-q>", "<Esc>", { desc = "Exit operator mode" })
+map({ "o", "x" }, "aW", set_motion_and_feed('aW'), opts) -- [q]uote
+map({ "o", "x" }, "iW", set_motion_and_feed('iW'), opts) -- [q]uote
+map({ "o", "x" }, "aw", set_motion_and_feed('aw'), opts) -- [q]uote
+map({ "o", "x" }, "iw", set_motion_and_feed('iw'), opts) -- [q]uote
 map({ "o", "x" }, "iq", set_motion_and_feed('i"'), opts) -- [q]uote
 map({ "o", "x" }, "aq", set_motion_and_feed('a"'), opts)
 map({ "o", "x" }, "is", set_motion_and_feed("i'"), opts) -- [s]ingle quote
@@ -43,7 +47,7 @@ map({ "o", "x" }, "ir", set_motion_and_feed("i["), opts) -- [r]ectangular bracke
 map({ "o", "x" }, "ar", set_motion_and_feed("a["), opts)
 map({ "o", "x" }, "ic", set_motion_and_feed("i{"), opts) -- [c]urly brackets
 map({ "o", "x" }, "ac", set_motion_and_feed("a{"), opts)
-map("n", "ga", function() return "v" .. Last_Motion .. "p" end, { desc = "Replace with last motion", expr = true }) -- all wrapping is done for this shortcut map
+map("n", "ga", function() return "v" .. Last_Motion .. "P" end, { desc = "Replace with last motion", expr = true }) -- all wrapping is done for this shortcut map
 
 --- / operator aliases
 
@@ -61,8 +65,8 @@ map({ "n", "v" }, "k", "gk", { desc = "Up one line, including wrapped lines" })
 map("n", "<C-b>", "<C-^>", { desc = "Jump - previous file" })
 map("n", "<C-d>", "<C-d>zz", { desc = "Jump - down" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Jump - up" })
-map("n", "<C-o>", "<C-o>zz", { desc = "Jump - back" })
-map("n", "<C-i>", "<C-i>zz", { desc = "Jump - forward" })
+-- map("n", "<C-o>", "<C-o>zz", { desc = "Jump - back" })
+-- map("n", "<C-i>", "<C-i>zz", { desc = "Jump - forward" })
 
 map("n", "<leader>o", "o<esc>o", { desc = "Insert new lines" })
 map("n", "<leader>O", "O<esc>O", { desc = "Insert new lines" })
