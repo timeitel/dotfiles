@@ -13,9 +13,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 
-local ok, _ = pcall(require, "tmtl.env")
-if not ok then print("Unable to find env file") end
-
 require("lazy").setup("tmtl.plugins")
 require("tmtl.options")
 require("tmtl.autocmds")
@@ -30,3 +27,5 @@ require("tmtl.keymaps-netrw")
 require("tmtl.snippets")
 require("tmtl.git")
 require("tmtl.dap")
+-- TODO: use when v0.10
+-- require("tmtl.lsp-progress")
