@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "NeogitPopup", "NeogitCommitMessage" },
   group = group,
   callback = function()
-    vim.cmd([[wincmd J]])
+    vim.cmd.wincmd("J")
   end,
 })
 

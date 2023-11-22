@@ -6,8 +6,8 @@ local test = {
       name = "| go test",
       metadata = {
         on_failure = function(task)
-          vim.cmd([[wincmd o]])
-          vim.cmd([[vs]])
+          vim.cmd.wincmd("o")
+          vim.cmd("vs")
           require("overseer").run_action(task, "open")
         end,
       },
