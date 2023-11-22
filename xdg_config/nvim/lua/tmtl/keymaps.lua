@@ -136,6 +136,7 @@ end, { desc = "[R]eplace in selection - word under cursor" })
 
 -- Buffers
 map("n", "<leader>ba", "<cmd>:%bd<cr>", { desc = "[B]uffer delete [A]ll" })
+map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "[B]uffer [N]ew" })
 map("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>", { desc = "[B]uffer delete [O]thers" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "[B]uffer - next" })
 map("n", "[b", "<cmd>bprevious<cr>", { desc = "[B]uffer - previous" })
@@ -172,9 +173,7 @@ end
 
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "[Q]uickfix [L]ist - show" })
 map("n", "]q", goto_qf_item, { desc = "[Q]uickfix List - next" })
-map("n", "[q", function()
-  goto_qf_item({ prev = true })
-end, { desc = "[Q]uickfix List - previous" })
+map("n", "[q", function() goto_qf_item({ prev = true }) end, { desc = "[Q]uickfix List - previous" })
 map("n", "<leader>qq", "<cmd>cclose<cr>", { desc = "[Q]uickfix List - [Q]uit" })
 
 -- TODO: find based on treesitter export node
