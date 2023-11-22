@@ -1,3 +1,13 @@
+local map = require("tmtl.utils").map
+
+Task = nil
+map("n", "<c-f>", function()
+  if Task == nil then
+    return
+  end
+  require("overseer").run_action(Task, 'open float')
+end, { desc = "Toggle last task runner float" })
+
 local M = {
   "stevearc/overseer.nvim",
   opts = {},
@@ -10,6 +20,7 @@ local M = {
       if task == nil then
         return
       end
+      Task = task
 
       task:subscribe("on_complete", function(_, status)
         if status == "SUCCESS" and task.metadata.on_success ~= nil then
@@ -37,6 +48,7 @@ local M = {
     map("n", "<leader>rl", function()
       overseer.run_template({}, function(task)
         if string.find(task.cmd[3], "deploy") then
+          Task = task
           overseer.run_action(task, 'open float')
         end
       end
@@ -67,6 +79,7 @@ local M = {
     map("n", "<leader>rd", function()
       overseer.run_template({}, function(task)
         if task then
+          Task = task
           overseer.run_action(task, 'open float')
         end
       end)
