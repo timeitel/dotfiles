@@ -4,6 +4,10 @@ local notify = require("notify")
 
 map({ "n", "v", "o" }, "H", "^", { desc = "First character on line" })
 map({ "n", "v", "o" }, "L", "$", { desc = "Last character on line" })
+
+map("v", ">", ">gv", { desc = "Re-highlight visual selection after bumping indent" })
+map("v", "<", "<gv", { desc = "Re-highlight visual selection after bumping indent" })
+
 map("n", "X", "xi", { desc = "Replacement for vanilla 's'" })
 
 map("v", "p", "P", { desc = "Keep register on visual paste" })
@@ -65,6 +69,7 @@ map({ "n", "v" }, "k", "gk", { desc = "Up one line, including wrapped lines" })
 map("n", "<C-b>", "<C-^>", { desc = "Jump - previous file" })
 map("n", "<C-d>", "<C-d>zz", { desc = "Jump - down" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Jump - up" })
+map("n", "<C-i>", "<C-i>", { desc = "Re-map since mapping <Tab> loses <C-i>" })
 -- map("n", "<C-o>", "<C-o>zz", { desc = "Jump - back" })
 -- map("n", "<C-i>", "<C-i>zz", { desc = "Jump - forward" })
 
