@@ -41,6 +41,8 @@ local M = {
         ["<C-u>"] = function() vim.api.nvim_input("<Esc>cc") end,
         ["<C-s>"] = actions.select_horizontal,
         ["<M-p>"] = actions_layout.toggle_preview,
+        ["<C-n>"] = actions.cycle_history_next,
+        ["<C-p>"] = actions.cycle_history_prev,
       }
 
       local normal_mappings = copy(insert_mappings)

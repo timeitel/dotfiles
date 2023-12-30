@@ -32,3 +32,7 @@ end, { desc = "[E]dit List - file 3" })
 map("n", "<A-l>", function()
   harpoon_ui.nav_file(4)
 end, { desc = "[E]dit List - file 4" })
+
+map("n", "<A-;>", function()
+  harpoon_ui.nav_file(5)
+end, { desc = "[E]dit List - file 5" })

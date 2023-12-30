@@ -84,3 +84,7 @@ end, { desc = "[F]ind [U]ndo history" })
 map("n", "<leader>fc", function()
   ts.commands({ initial_mode = "insert" })
 end, { desc = "[F]ind [C]ommands" })
+
+map("n", "<leader>fh", function()
+  ts.help_tags()
+end, { desc = "[F]ind [H]elp - docs" })
