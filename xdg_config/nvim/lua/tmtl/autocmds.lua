@@ -16,7 +16,7 @@ set_cursorline("FileType", false, "TelescopePrompt")
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   callback = function()
-    require("vim.highlight").on_yank({ timeout = 200 })
+    require("vim.highlight").on_yank({ timeout = 150 })
   end,
   desc = "Highlight yank",
   group = group,
