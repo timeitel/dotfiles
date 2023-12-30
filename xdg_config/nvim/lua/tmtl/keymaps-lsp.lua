@@ -72,7 +72,7 @@ M.attach = function(bufnr)
   end, "[L]sp [R]ename")
 
   buf_map("n", "<leader>li", function()
-    vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
+    vim.cmd([[OrganizeImports]])
   end, "[L]sp organize [I]mports")
 
   buf_map("n", "<leader><leader>lr", function()

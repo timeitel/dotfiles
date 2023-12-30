@@ -76,6 +76,15 @@ local M = {
         end,
       })
 
+      local function organize_imports()
+        local params = {
+          command = "_typescript.organizeImports",
+          arguments = { vim.api.nvim_buf_get_name(0) },
+          title = ""
+        }
+        vim.lsp.buf.execute_command(params)
+      end
+
       nvim_lsp.tsserver.setup({
         on_attach = function(client, bufnr)
           lsp_maps.attach(bufnr)
@@ -90,6 +99,12 @@ local M = {
           },
         },
         capabilities = capabilities,
+        commands = {
+          OrganizeImports = {
+            organize_imports,
+            description = "Organize Imports"
+          }
+        }
       })
 
       nvim_lsp.lua_ls.setup({
