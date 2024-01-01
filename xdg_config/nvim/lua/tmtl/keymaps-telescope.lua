@@ -6,37 +6,36 @@ local map = require("tmtl.utils").map
 local get_visual_selection = require("tmtl.utils").get_visual_selection
 
 map("n", "<C-p>", function()
-  require('tmtl.telescope-pickers').prettyFilesPicker({ picker = 'find_files', options = { hidden = true } })
+  ts.find_files({ hidden = true })
 end, { desc = "Find - files" })
 
 map("n", "<leader>ff", function()
-  require('tmtl.telescope-pickers').prettyGrepPicker({ picker = 'live_grep', options = { initial_mode = "insert" } })
+  ts.live_grep({ initial_mode = "insert" })
 end, { desc = "[F]ind [F]iles: live grep" })
 
 map("v", "<leader>ff", function()
   local text = get_visual_selection()
-  require('tmtl.telescope-pickers').prettyGrepPicker({ picker = 'grep_string', options = { search = text } })
+  ts.grep_string({ search = text })
 end, { desc = "[F]ind [F]iles: live grep selection" })
 
 map("n", "<leader>fa", function()
-  require('tmtl.telescope-pickers').prettyFilesPicker({ picker = 'find_files',
-    options = { no_ignore = true, hidden = true } })
+  ts.find_files({ no_ignore = true, hidden = true })
 end, { desc = "[F]ind [A]ll: incl hidden and gitignore" })
 
 map("n", "<leader>ft", function()
-  require('tmtl.telescope-pickers').prettyGrepPicker({ picker = 'grep_string', options = { search = "TODO" } })
+  ts.grep_string({ search = "TODO" })
 end, { desc = "[F]ind [T]ODOs" })
 
 map("n", "<leader>fb", function()
-  require('tmtl.telescope-pickers').prettyBuffersPicker({ sort_mru = true, ignore_current_buffer = true })
+  ts.buffers({ sort_mru = true, ignore_current_buffer = true })
 end, { desc = "[F]ind [B]uffers" })
 
 map("n", "<leader>fs", function()
-  require('tmtl.telescope-pickers').prettyDocumentSymbols({ initial_mode = "insert" })
+  ts.lsp_document_symbols({ initial_mode = "insert" })
 end, { desc = "[F]ind [S]ymbols" })
 
 map("n", "<leader>fw", function()
-  require('tmtl.telescope-pickers').prettyWorkspaceSymbols({ initial_mode = "insert" })
+  ts.lsp_dynamic_workspace_symbols({ initial_mode = "insert" })
 end, { desc = "[F]ind [W]orkspace symbols" })
 
 map("n", "<leader>fk", function()

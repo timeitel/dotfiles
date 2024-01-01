@@ -1,3 +1,10 @@
+local function filename_first(_, path)
+  local tail = vim.fs.basename(path)
+  local parent = vim.fs.dirname(path)
+  if parent == "." then return tail end
+  return string.format("%s\t\t%s", tail, parent)
+end
+
 -- TODO: file_browser copy name of file, <leader>yf
 local M = {
   {
@@ -127,12 +134,7 @@ local M = {
           file_ignore_patterns = { "%.DS_Store", "%.git/" },
           multi_icon = "<>",
           sorting_strategy = "ascending",
-          path_display = function(_, path)
-            local tail = require("telescope.utils").path_tail(path)
-            local path_from_project_root = string.gsub(path, vim.fn.getcwd() .. "/", "")
-            -- TODO: add highlight groups to tail / path
-            return string.format("%s  (%s)", tail, path_from_project_root), { { { 1, #tail }, "Constant" } }
-          end,
+          path_display = filename_first,
           layout_strategy = "vertical",
           layout_config = {
             width = 0.95,
