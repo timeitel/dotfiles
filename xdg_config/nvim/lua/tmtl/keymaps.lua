@@ -82,6 +82,8 @@ map("n", "*", "*zz", { desc = "Next search match" })
 map("n", "N", "Nzz", { desc = "Previous search match" })
 map("n", "#", "#zz", { desc = "Previous search match" })
 
+map("n", "<leader>cc", function() require('tmtl.utils').change_case() end, { desc = "[C]hange [C]ase" })
+
 map("n", "Y", "yy", { desc = "Yank line" })
 map("n", "<leader>i", "i <ESC>i", { desc = "Enter insert mode with proceeding space" })
 
