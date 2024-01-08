@@ -74,9 +74,11 @@ local M = {
           return
         end
 
-        if node:type() ~= "named_imports" then
-          cmp_autopairs.on_confirm_done()(evt)
+        if node:type() == "named_imports" or node:type() == "jsx_self_closing_element" then
+          return
         end
+
+        cmp_autopairs.on_confirm_done()(evt)
       end)
 
       cmp.setup({
