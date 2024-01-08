@@ -1,5 +1,5 @@
-local get_visual_selection = require("tmtl.utils").get_visual_selection
-local map = require("tmtl.utils").map
+local utils = require("tmtl.utils")
+local map = utils.map
 local notify = require("notify")
 
 map({ "n", "v", "o" }, "H", "^", { desc = "First character on line" })
@@ -82,7 +82,7 @@ map("n", "*", "*zz", { desc = "Next search match" })
 map("n", "N", "Nzz", { desc = "Previous search match" })
 map("n", "#", "#zz", { desc = "Previous search match" })
 
-map("n", "<leader>cc", function() require('tmtl.utils').change_case() end, { desc = "[C]hange [C]ase" })
+map("n", "<leader>cc", function() utils.change_case() end, { desc = "[C]hange [C]ase" })
 
 map("n", "Y", "yy", { desc = "Yank line" })
 map("n", "<leader>i", "i <ESC>i", { desc = "Enter insert mode with proceeding space" })
@@ -94,7 +94,7 @@ map("n", "<leader>/", function()
 end, { desc = "Find - exact match" })
 
 map("v", "<leader>/", function()
-  local text = get_visual_selection()
+  local text = utils.get_visual_selection()
   local search = string.format("/\\<%s\\>", text)
   vim.fn.feedkeys(search)
 end, { desc = "Find - exact match" })
