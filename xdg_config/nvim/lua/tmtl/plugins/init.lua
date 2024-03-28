@@ -89,6 +89,17 @@ local M = {
     },
     dependencies = "nvim-lua/plenary.nvim",
   },
+  {
+    'bloznelis/before.nvim',
+    config = function()
+      local map = require("tmtl.utils").map
+      local before = require('before')
+      before.setup()
+
+      map("n", "[c", before.jump_to_last_edit, { desc = "Jump to last [C]hange" })
+      map("n", "]c", before.jump_to_next_edit, { desc = "Jump to next [C]hange" })
+    end
+  }
 }
 
 return M
