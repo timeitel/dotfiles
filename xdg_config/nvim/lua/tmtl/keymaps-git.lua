@@ -77,16 +77,10 @@ end, { desc = "[G]it [B]lame" })
 
 map("n", "<C-j>", function()
   vim.cmd([[Gitsigns next_hunk]])
-  vim.defer_fn(function()
-    vim.fn.feedkeys("zz")
-  end, 10)
 end, { desc = "Git [H]unk - next" })
 
 map("n", "<C-k>", function()
   vim.cmd([[Gitsigns prev_hunk]])
-  vim.defer_fn(function()
-    vim.fn.feedkeys("zz")
-  end, 10)
 end, { desc = "Git [H]unk - previous" })
 
 map({ "n", "v" }, "<leader>hp", function()
