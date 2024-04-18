@@ -1,25 +1,19 @@
-local gunmetal = "#282c34"
-
 local M = {
   "nvim-tree/nvim-web-devicons",
-  "EdenEast/nightfox.nvim",
   {
     "rebelot/kanagawa.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require("kanagawa").setup({
-        statementStyle = { bold = false },
+        background = {
+          dark = "dragon",
+        },
         colors = {
-          palette = {
-            sumiInk4 = "#33343D",
-          },
           theme = {
-            wave = {
+            all = {
               ui = {
-                bg = gunmetal,
                 bg_gutter = "none",
-                float = { bg = gunmetal, bg_border = gunmetal },
               },
             },
           },
@@ -39,17 +33,12 @@ local M = {
               fg = colors.palette.sumiInk2,
               bg = colors.palette.oldWhite,
             },
-            QuickFixLine = {
-              bg = colors.palette.sumiInk3,
-            },
-            CursorLine = { bg = "#33343D" },
             DapBreakpoint = { fg = colors.palette.peachRed },
           }
         end,
       })
 
       vim.cmd("colorscheme kanagawa")
-      -- vim.cmd("colorscheme carbonfox")
     end,
   },
   {
