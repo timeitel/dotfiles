@@ -13,7 +13,8 @@ local M = {
           theme = {
             all = {
               ui = {
-                bg_gutter = "none",
+                bg_gutter = "NONE",
+                float = { bg = "NONE", bg_border = "NONE" },
               },
             },
           },
