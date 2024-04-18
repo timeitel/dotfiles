@@ -7,11 +7,18 @@ local M = {
     local palette = kanagawa_colors.palette
     local lualine = require("lualine")
     local spread_table = require("tmtl.utils").spread_table
+    local custom_theme = require("lualine.themes.auto")
+
+    custom_theme.insert.a.bg = palette.dragonBlue
+    custom_theme.insert.b.fg = palette.dragonBlue
+    custom_theme.normal.c.bg = "NONE"
+    custom_theme.inactive.c.bg = "NONE"
+
+    local BG_NONE = { bg = "NONE" }
 
     local global_line_filename = {
       "filename",
       -- TODO: either show cursor diff3rent in insert mode in terminal or add mode to lualine
-      separator = { left = "", right = "" },
       fmt = function(str)
         if string.find(str, "zsh;") ~= nil then
           local mode = vim.fn.mode()
@@ -20,6 +27,7 @@ local M = {
         end
         return str
       end,
+      color = BG_NONE
     }
 
     local function winbar_title(str)
@@ -51,10 +59,9 @@ local M = {
 
     local winbar_filename = {
       "filename",
-      color = { bg = "NONE", fg = palette.dragonBlue },
+      color = { bg = "NONE", fg = palette.dragonBlue2 },
       fmt = winbar_title,
       path = 1,
-      separator = { left = "", right = "" },
     }
 
     local winbar_inactive_filename = spread_table({}, winbar_filename)
@@ -65,7 +72,7 @@ local M = {
       icon_only = true,
       colored = false,
       padding = { right = 0, left = 2 },
-      separator = { left = "", right = "" },
+      color = BG_NONE
     }
 
     local branch = {
@@ -76,7 +83,7 @@ local M = {
     local diagnostic_stats = {
       "diagnostics",
       colored = false,
-      separator = { left = "", right = "" },
+      color = BG_NONE
     }
 
     local lsp = {
@@ -111,7 +118,6 @@ local M = {
 
         return ""
       end,
-      separator = { left = "", right = "" },
     }
 
     local macro_recording = {
@@ -124,7 +130,6 @@ local M = {
           return "rec @" .. recording_register .. " "
         end
       end,
-      separator = { left = "", right = "" },
     }
 
     local lsp_progress = {
@@ -137,14 +142,12 @@ local M = {
       function()
         return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
       end,
-      separator = { left = "", right = "" },
     }
 
     local task_runner = {
       "overseer",
       colored = false,
       status = { parser.STATUS.RUNNING },
-      separator = { left = "", right = "" },
     }
 
     local dap = {
@@ -162,6 +165,9 @@ local M = {
 
     lualine.setup({
       options = {
+        theme = custom_theme,
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
         icons_enabled = true,
         disabled_filetypes = {
           statusline = { "DiffviewFiles", "DiffviewFileHistory" },
@@ -187,7 +193,6 @@ local M = {
       inactive_sections = {},
       tabline = {},
       winbar = {
-        lualine_x = { color = { bg = "NONE", fg = theme_colors.syn.comment } },
         lualine_z = { winbar_filename },
       },
       inactive_winbar = {
@@ -195,8 +200,7 @@ local M = {
         lualine_z = { {
           "diagnostics",
           colored = false,
-          color = { bg = "NONE", fg = theme_colors.syn.comment },
-          separator = { left = "", right = "" },
+          color = { bg = "NONE", fg = theme_colors.syn.comment }
         },
           winbar_inactive_filename },
       },
