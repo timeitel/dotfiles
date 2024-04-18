@@ -3,51 +3,10 @@ local M = {
   config = function()
     local parser = require("overseer.parser")
     local kanagawa_colors = require("kanagawa.colors").setup()
-    local palette_colors = kanagawa_colors.palette
     local theme_colors = kanagawa_colors.theme
+    local palette = kanagawa_colors.palette
     local lualine = require("lualine")
     local spread_table = require("tmtl.utils").spread_table
-
-    local colors = {
-      blue = palette_colors.crystalBlue,
-      gray = palette_colors.sumiInk3,
-      green = palette_colors.autumnGreen,
-      gunmetal = "#282c34",
-      yellow = palette_colors.autumnYellow,
-      magenta = palette_colors.crystalBlue,
-      cyan = palette_colors.dragonBlue,
-    }
-    local secondary_blue = { bg = colors.blue, fg = colors.gray }
-    local inactive = { bg = "NONE", fg = theme_colors.syn.comment }
-
-    local function get_normal_mode_colors(primary)
-      local color = { bg = colors.gray, fg = primary }
-      return {
-        a = color,
-        b = color,
-        c = inactive,
-        x = color,
-        y = color,
-      }
-    end
-
-    local function get_mode_colors(primary)
-      local color = { bg = colors.gunmetal, fg = primary }
-      return {
-        a = color,
-        b = color,
-        x = color,
-        y = color,
-      }
-    end
-
-    local theme = {
-      normal = get_normal_mode_colors(colors.blue),
-      insert = get_mode_colors(colors.magenta),
-      visual = get_mode_colors(colors.magenta),
-      replace = get_mode_colors(colors.cyan),
-      command = get_mode_colors(colors.yellow),
-    }
 
     local global_line_filename = {
       "filename",
@@ -92,14 +51,14 @@ local M = {
 
     local winbar_filename = {
       "filename",
-      color = { bg = "NONE", fg = colors.blue },
+      color = { bg = "NONE", fg = palette.dragonBlue },
       fmt = winbar_title,
       path = 1,
       separator = { left = "", right = "" },
     }
 
     local winbar_inactive_filename = spread_table({}, winbar_filename)
-    winbar_inactive_filename.color = inactive
+    winbar_inactive_filename.color = { bg = "NONE", fg = theme_colors.syn.comment }
 
     local filetype = {
       "filetype",
@@ -112,7 +71,6 @@ local M = {
     local branch = {
       "branch",
       separator = { left = "", right = "" },
-      color = secondary_blue,
     }
 
     local diagnostic_stats = {
@@ -138,7 +96,6 @@ local M = {
         return "  " .. msg
       end,
       separator = { left = "", right = "" },
-      color = secondary_blue,
     }
 
     local search_count = {
@@ -155,7 +112,6 @@ local M = {
         return ""
       end,
       separator = { left = "", right = "" },
-      color = secondary_blue,
     }
 
     local macro_recording = {
@@ -181,14 +137,13 @@ local M = {
       function()
         return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
       end,
-      color = secondary_blue,
+      separator = { left = "", right = "" },
     }
 
     local task_runner = {
       "overseer",
       colored = false,
       status = { parser.STATUS.RUNNING },
-      color = secondary_blue,
       separator = { left = "", right = "" },
     }
 
@@ -201,13 +156,12 @@ local M = {
           return ""
         end
       end,
-      color = { bg = palette_colors.winterRed, fg = palette_colors.fujiWhite },
+      color = { bg = palette.winterRed, fg = palette.fujiWhite },
       separator = { left = "", right = "" },
     }
 
     lualine.setup({
       options = {
-        theme = theme,
         icons_enabled = true,
         disabled_filetypes = {
           statusline = { "DiffviewFiles", "DiffviewFileHistory" },
@@ -233,6 +187,7 @@ local M = {
       inactive_sections = {},
       tabline = {},
       winbar = {
+        lualine_x = { color = { bg = "NONE", fg = theme_colors.syn.comment } },
         lualine_z = { winbar_filename },
       },
       inactive_winbar = {
@@ -240,7 +195,8 @@ local M = {
         lualine_z = { {
           "diagnostics",
           colored = false,
-          color = inactive
+          color = { bg = "NONE", fg = theme_colors.syn.comment },
+          separator = { left = "", right = "" },
         },
           winbar_inactive_filename },
       },
