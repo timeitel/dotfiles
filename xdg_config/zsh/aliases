@@ -4,7 +4,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias cdg='cd $(git rev-parse --show-toplevel)'
 
-alias v=nvim
+alias v='nvim -c "Telescope file_browser"'
 # env variables located in .zshenv
 alias vw='nvim -c "cd $TMTL_WORK_PATH" -c "Telescope file_browser"'
 alias vp='nvim -c "cd $TMTL_PERSONAL_PATH" -c "Telescope file_browser"'
