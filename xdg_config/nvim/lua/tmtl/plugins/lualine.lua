@@ -142,6 +142,7 @@ local M = {
       function()
         return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
       end,
+      separator = { left = "", right = "" },
     }
 
     local task_runner = {
