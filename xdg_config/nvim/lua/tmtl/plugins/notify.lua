@@ -13,7 +13,7 @@ local M = {
     end
 
     require("notify").setup({
-      timeout = 1000,
+      timeout = 400,
       stages = "fade",
     })
   end,
