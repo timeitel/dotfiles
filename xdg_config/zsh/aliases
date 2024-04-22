@@ -1,5 +1,5 @@
 alias ls='ls --color=auto'
-alias lsl='ls -al --color=auto'
+alias lsl='ls -alF --color=auto'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias cdg='cd $(git rev-parse --show-toplevel)'
