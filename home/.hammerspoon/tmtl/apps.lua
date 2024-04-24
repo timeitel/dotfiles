@@ -7,4 +7,4 @@
 -- hs.hotkey.bind(modifiers, "n", open_app("Slack"))
 -- hs.hotkey.bind(modifiers, ";", open_app("Messenger"))
 -- hs.hotkey.bind(modifiers, "y", open_app("TickTick"))
--- hs.hotkey.bind(modifiers, "m", open_app("Postman"))
+-- hs.hotkey.bind(modifiers, "m", open_app("Mail"))
