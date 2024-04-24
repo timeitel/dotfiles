@@ -18,7 +18,7 @@ map("v", "P", "p", { desc = "Replace register on visual paste" })
 map("n", "'i", "'.", { desc = "Jump to line of last edit - alias" })
 
 map({ "n", "v" }, "q", function()
-  if vim.b.overseer_task == 1 then
+  if vim.b.overseer_task == 1 or vim.api.nvim_win_get_config(0).relative ~= '' then
     vim.cmd([[close]])
   else
     vim.api.nvim_input("<Esc>")
