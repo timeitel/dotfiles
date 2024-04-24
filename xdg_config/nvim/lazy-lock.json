@@ -7,6 +7,10 @@
     "branch": "master",
     "commit": "4772995f3bc0d1e754b8a9c00c01965d5c1592aa"
   },
+  "blame.nvim": {
+    "branch": "main",
+    "commit": "dedbcdce857f708c63f261287ac7491a893912d0"
+  },
   "cmp-buffer": {
     "branch": "main",
     "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa"
@@ -42,10 +46,6 @@
   "diffview.nvim": {
     "branch": "main",
     "commit": "e91110d2a7f8e2f667666aba6ea089ff823f8748"
-  },
-  "git-blame.nvim": {
-    "branch": "master",
-    "commit": "df1a2ee99843cbf114efa5d419a7c4138e58d372"
   },
   "git-worktree.nvim": {
     "branch": "master",
@@ -94,10 +94,6 @@
   "neoscroll.nvim": {
     "branch": "master",
     "commit": "d7601c26c8a183fa8994ed339e70c2d841253e93"
-  },
-  "nightfox.nvim": {
-    "branch": "main",
-    "commit": "fe2fc7b93d66349eff2c5baa6cec922ee3958f56"
   },
   "null-ls.nvim": {
     "branch": "main",
