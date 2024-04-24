@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd("VimResized", {
   group = group,
 })
 
--- TODO: saving file removes mark?
+-- TODO: fix, formatters will replace text which removes mark
 vim.api.nvim_create_autocmd("InsertEnter", {
   pattern = { "*.lua", "*.rs", "*.go", "*.ts", "*.tsx", "*.js", "*.json", "*.toml", "*.yaml", "*.yml" },
   command = "normal! mI",

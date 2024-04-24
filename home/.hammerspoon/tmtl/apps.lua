@@ -1,4 +1,4 @@
--- moved to macos shortcuts since it's faster
+-- kept to document shortucts but moved to native shortcuts app since it's faster than hammerspoon
 
 -- hs.hotkey.bind(modifiers, "h", open_app("Brave Browser"))
 -- hs.hotkey.bind(modifiers, "j", open_app("YT Music"))

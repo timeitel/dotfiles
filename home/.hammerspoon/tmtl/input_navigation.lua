@@ -9,7 +9,6 @@ local enableHotkeyOutsideTerminal = function(windowFilter, hotkey)
 end
 
 local wf = hs.window.filter.new():setFilters({ kitty = false, Terminal = false })
-local wfIncludingObsidian = hs.window.filter.new():setFilters({ kitty = false, Terminal = false, Obsidian = false })
 
 -- Up & down, mostly used for navigating browser suggestions and accepting
 enableHotkeyOutsideTerminal(
