@@ -230,3 +230,15 @@ map("n", "<leader>*", function()
   fn.histadd("/", fn.getreg("/"))
   vim.o.hlsearch = true
 end, { desc = "[H]igh[L]ight group under curor" })
+
+map("n", "<C-a>", function()
+  local word = vim.fn.expand('<cword>')
+
+  if word == "false" then
+    return "ciwtrue<esc>"
+  elseif word == "true" then
+    return "ciwfalse<esc>"
+  else
+    return "<C-a>"
+  end
+end, { desc = "Improved increment", expr = true })
