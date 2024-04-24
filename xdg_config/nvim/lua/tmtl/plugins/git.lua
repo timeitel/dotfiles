@@ -1,5 +1,10 @@
 local M = {
-  "bobrown101/git-blame.nvim",
+  {
+    "FabijanZulj/blame.nvim",
+    config = function()
+      require("blame").setup()
+    end
+  },
   {
     "ThePrimeagen/git-worktree.nvim",
     config = function()

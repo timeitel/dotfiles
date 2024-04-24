@@ -71,9 +71,7 @@ map("n", "<leader>gx", function()
   })
 end, { desc = "[G]it [R]eset: discard ALL working changes" })
 
-map("n", "<leader><leader>gb", function()
-  require("git_blame").run()
-end, { desc = "[G]it [B]lame" })
+map("n", "<leader><leader>gb", ":BlameToggle virtual<cr>", { desc = "[G]it [B]lame" })
 
 map("n", "<C-j>", function()
   vim.cmd([[Gitsigns next_hunk]])
