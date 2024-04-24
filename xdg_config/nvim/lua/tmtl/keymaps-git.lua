@@ -12,9 +12,7 @@ map("n", "<leader><leader>gs", function()
   ts.git_stash()
 end, { desc = "[G]it [S]tash" })
 
-map("n", "<leader>gd", function()
-  vim.cmd([[DiffviewOpen]])
-end, { desc = "[G]it [D]iff" })
+map("n", "<leader>gd", ":DiffviewOpen<cr>", { desc = "[G]it [D]iff" })
 
 map("n", "<leader><leader>gd", function()
   vim.cmd([[DiffviewOpen origin/dev...HEAD]])
@@ -28,13 +26,9 @@ map(
   { desc = "[G]it [D]iff - Choose target comparison against HEAD" }
 )
 
-map("n", "<leader>gh", function()
-  vim.cmd([[DiffviewFileHistory]])
-end, { desc = "[G]it [H]istory" })
+map("n", "<leader>gh", ":DiffviewFileHistory<cr>", { desc = "[G]it [H]istory" })
 
-map("n", "<leader>gfh", function()
-  vim.cmd([[DiffviewFileHistory %]])
-end, { desc = "[G]it [F]ile [H]istory" })
+map("n", "<leader>gfh", ":DiffviewFileHistory %<cr>", { desc = "[G]it [F]ile [H]istory" })
 
 map("n", "<leader>gfx", function()
   vim.cmd([[Gitsigns reset_buffer]])
@@ -69,21 +63,15 @@ map("n", "<leader>gx", function()
       end)
     end,
   })
-end, { desc = "[G]it [R]eset: discard ALL working changes" })
+end, { desc = "[G]it Reset: discard ALL working changes" })
 
 map("n", "<leader><leader>gb", ":BlameToggle virtual<cr>", { desc = "[G]it [B]lame" })
 
-map("n", "<C-j>", function()
-  vim.cmd([[Gitsigns next_hunk]])
-end, { desc = "Git [H]unk - next" })
+map("n", "<C-j>", ":Gitsigns next_hunk<cr>", { desc = "Git [H]unk - next" })
 
-map("n", "<C-k>", function()
-  vim.cmd([[Gitsigns prev_hunk]])
-end, { desc = "Git [H]unk - previous" })
+map("n", "<C-k>", ":Gitsigns prev_hunk<cr>", { desc = "Git [H]unk - previous" })
 
-map({ "n", "v" }, "<leader>hp", function()
-  vim.cmd([[Gitsigns preview_hunk]])
-end, { desc = "Git [H]unk [P]review" })
+map({ "n", "v" }, "<leader>hp", ":Gitsigns preview_hunk<cr>", { desc = "Git [H]unk [P]review" })
 
 map({ "n", "v" }, "<leader>hs", function()
   vim.cmd([[Gitsigns stage_hunk]])
