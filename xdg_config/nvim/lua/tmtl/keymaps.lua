@@ -71,9 +71,6 @@ map({ "n", "v" }, "k", "gk", { desc = "Up one line, including wrapped lines" })
 map("n", "<C-b>", "<C-^>", { desc = "Jump - previous file" })
 map("n", "<C-d>", "<C-d>zz", { desc = "Jump - down" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Jump - up" })
-map("n", "<C-i>", "<C-i>", { desc = "Re-map since mapping <Tab> loses <C-i>" })
--- map("n", "<C-o>", "<C-o>zz", { desc = "Jump - back" })
--- map("n", "<C-i>", "<C-i>zz", { desc = "Jump - forward" })
 
 map("n", "<leader>o", "o<esc>o", { desc = "Insert new lines" })
 map("n", "<leader>O", "O<esc>O", { desc = "Insert new lines" })
@@ -91,8 +88,7 @@ map("n", "<leader>i", "i <ESC>i", { desc = "Enter insert mode with proceeding sp
 
 map("n", "<leader>/", function()
   vim.fn.feedkeys("/\\<\\>")
-  vim.api.nvim_input("<Left>")
-  vim.api.nvim_input("<Left>")
+  vim.api.nvim_input("<Left><Left>")
 end, { desc = "Find - exact match" })
 
 map("v", "<leader>/", function()
@@ -106,18 +102,23 @@ map("n", "<leader>yd", function()
   vim.cmd(copy_directory_cmd)
   print("Copied directory to clipboard")
 end, { desc = "Copy file directory to clipboard" })
+
 map("n", "<leader>yp", function()
   local copy_directory_cmd = string.format(':let @+="%s"', vim.fn.expand("%"))
   vim.cmd(copy_directory_cmd)
   print("Copied file path to clipboard")
 end, { desc = "Copy file path to clipboard" })
+
 map("n", "<leader>yf", function()
   local copy_directory_cmd = string.format(':let @+="%s"', vim.fn.expand("%:t"))
   vim.cmd(copy_directory_cmd)
   print("Copied filename to clipboard")
 end, { desc = "Copy filename to clipboard" })
+
 map("v", "<leader>y", '"+y', { desc = "Copy to clipboard" })
+
 map("v", "<leader>p", '"+p', { desc = "Paste from clipboard" })
+
 map("v", "<leader>d", '"_d', { desc = "Delete contents to black hole register" })
 
 map("i", "<c-t>", "iTODO: <esc>gccA", { desc = "Insert - [T]ODO comment", remap = true })
