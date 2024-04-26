@@ -18,12 +18,12 @@ map("v", "P", "p", { desc = "Replace register on visual paste" })
 map("n", "'i", "'.", { desc = "Jump to line of last edit - alias" })
 
 map({ "n", "v" }, "q", function()
-  if vim.b.overseer_task == 1 or vim.api.nvim_win_get_config(0).relative ~= '' then
-    vim.cmd([[close]])
+  if vim.b.overseer_task ~= nil or vim.api.nvim_win_get_config(0).relative ~= '' then
+    return "<cmd>close<cr>"
   else
-    vim.api.nvim_input("<Esc>")
+    return "<esc>"
   end
-end, { desc = "Return to normal mode" })
+end, { desc = "Return to normal mode", expr = true })
 map("s", "<C-q>", "<Esc>", { desc = "Return to normal mode" })
 map("n", "Q", "q", { desc = "Safer trigger for macro recording" })
 
@@ -84,7 +84,7 @@ map("n", "*", "*zz", { desc = "Next search match" })
 map("n", "N", "Nzz", { desc = "Previous search match" })
 map("n", "#", "#zz", { desc = "Previous search match" })
 
-map("n", "<leader>cc", function() utils.change_case() end, { desc = "[C]hange [C]ase" })
+map("n", "<leader>cc", utils.change_case, { desc = "[C]hange [C]ase" })
 
 map("n", "Y", "yy", { desc = "Yank line" })
 map("n", "<leader>i", "i <ESC>i", { desc = "Enter insert mode with proceeding space" })
@@ -120,11 +120,7 @@ map("v", "<leader>y", '"+y', { desc = "Copy to clipboard" })
 map("v", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 map("v", "<leader>d", '"_d', { desc = "Delete contents to black hole register" })
 
-map("i", "<c-t>", function()
-  vim.fn.feedkeys("TODO: ")
-  vim.api.nvim_feedkeys(vim.api.nvim_eval('"\\<esc>"'), "n", true)
-  vim.fn.feedkeys("gccA")
-end, { desc = "Insert - [T]ODO comment" })
+map("i", "<c-t>", "iTODO: <esc>gccA", { desc = "Insert - [T]ODO comment", remap = true })
 
 map("n", "<leader>gr", function()
   vim.fn.feedkeys(":%s/")
@@ -204,13 +200,9 @@ map("n", "<leader>sc", function()
   end
 end, { desc = "Toggle [S]earch [C]ount and hlsearch" })
 
-map("n", "+", function()
-  vim.cmd([[vertical resize +2]])
-end, { desc = "Window resize - increase horizontal" })
+map("n", "+", "<cmd>vertical resize +2<cr>", { desc = "Window resize - increase horizontal" })
 
-map("n", "_", function()
-  vim.cmd([[vertical resize -2]])
-end, { desc = "Window resize - increase horizontal" })
+map("n", "_", "<cmd>vertical resize -2<cr>", { desc = "Window resize - increase horizontal" })
 
 map("n", "gof", function()
   vim.cmd([[only]])
