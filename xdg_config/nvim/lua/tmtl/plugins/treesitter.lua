@@ -65,7 +65,15 @@ local M = {
             },
             include_surrounding_whitespace = true,
           },
-
+          swap = {
+            enable = true,
+            swap_next = {
+              ["<leader>sn"] = "@parameter.inner",
+            },
+            swap_previous = {
+              ["<leader>sp"] = "@parameter.inner",
+            },
+          },
           move = {
             enable = true,
             set_jumps = true,
@@ -76,7 +84,6 @@ local M = {
               ["[a"] = "@parameter.inner",
             },
           },
-
           lsp_interop = {
             enable = false,
           },
