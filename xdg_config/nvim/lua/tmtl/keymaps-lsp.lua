@@ -36,61 +36,61 @@ M.attach = function(bufnr)
   -- Diagnostics
   buf_map("n", "]e", function()
     Goto_Diagnostic({ severity = vim.diagnostic.severity.ERROR })
-  end, "[D]iagnostics next error")
+  end, "Next [E]rror")
 
   buf_map("n", "[e", function()
     Goto_Diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
-  end, "[D]iagnostics previous error")
+  end, "Previous [E]rror")
 
   buf_map("n", "<Tab>", function()
     Goto_Diagnostic({ float = true, severity = { min = vim.diagnostic.severity.HINT } })
-  end, "[D]iagnostics next diagnostic")
+  end, "Next [D]iagnostic")
 
   buf_map("n", "<S-Tab>", function()
     Goto_Diagnostic({ prev = true, float = true, severity = { min = vim.diagnostic.severity.HINT } })
-  end, "[D]iagnostics previous diagnostic")
+  end, "Previous [D]iagnostic")
 
   buf_map("n", "]d", function()
     Goto_Diagnostic()
-  end, "[D]iagnostics next [D]iagnostic")
+  end, "Next [D]iagnostic")
 
   buf_map("n", "[d", function()
     Goto_Diagnostic({ prev = true })
-  end, "[D]iagnostics previous [D]iagnostic")
+  end, "Previous [D]iagnostic")
 
-  buf_map("n", "<leader>da", function()
+  buf_map("n", "<leader>la", function()
     vim.lsp.buf.code_action()
-  end, "[D]iagnostics code [A]ctions")
+  end, "[L]SP code [A]ctions")
 
-  buf_map("n", "<leader>dh", function()
+  buf_map("n", "<leader>lh", function()
     vim.diagnostic.open_float(0, { border = border })
-  end, "[D]iagnostics [H]over")
+  end, "[L]SP [H]over")
 
   -- LSP
   buf_map("n", "<leader>lr", function()
     vim.lsp.buf.rename()
-  end, "[L]sp [R]ename")
+  end, "[L]SP [R]ename")
 
   buf_map("n", "<leader>li", function()
     vim.cmd([[OrganizeImports]])
-  end, "[L]sp organize [I]mports")
+  end, "[L]SP organize [I]mports")
 
   buf_map("n", "<leader><leader>lr", function()
     vim.cmd([[LspRestart]])
-  end, "[L]sp [R]estart")
+  end, "[L]SP [R]estart")
 
   buf_map("n", "<leader><leader>li", function()
     vim.cmd([[LspInfo]])
-  end, "[L]sp [I]nfo")
+  end, "[L]SP [I]nfo")
 
   buf_map("n", "<leader><leader>ls", function()
     -- TODO: change to toggle with ls, check if needing to stop or start
     vim.cmd([[LspStop]])
-  end, "[L]sp [S]top")
+  end, "[L]SP [S]top")
 
   buf_map("n", "<leader><leader>lr", function()
     vim.cmd([[LspRestart]])
-  end, "[L]sp [R]estart")
+  end, "[L]SP [R]estart")
 
   buf_map({ "i", "n" }, "<C-S-Space>", function()
     vim.lsp.buf.signature_help()
