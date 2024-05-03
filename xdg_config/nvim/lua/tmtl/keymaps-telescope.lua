@@ -9,14 +9,14 @@ map("n", "<C-p>", function()
   ts.find_files({ hidden = true })
 end, { desc = "Find - files" })
 
-map("n", "<leader>ff", function()
+map("n", "<leader>fg", function()
   ts.live_grep({ initial_mode = "insert" })
-end, { desc = "[F]ind [F]iles: live grep" })
+end, { desc = "[F]ind - live [G]rep" })
 
-map("v", "<leader>ff", function()
+map("v", "<leader>fg", function()
   local text = get_visual_selection()
   ts.grep_string({ search = text })
-end, { desc = "[F]ind [F]iles: live grep selection" })
+end, { desc = "[F]ind - live [G]rep selection" })
 
 map("n", "<leader>fa", function()
   ts.find_files({ no_ignore = true, hidden = true })
