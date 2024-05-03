@@ -8,7 +8,7 @@ local enableHotkeyOutsideTerminal = function(windowFilter, hotkey)
   end)
 end
 
-local wf = hs.window.filter.new():setFilters({ kitty = false, Terminal = false })
+local wf = hs.window.filter.new():setFilters({ kitty = false, Terminal = false, Obsidian = false })
 
 -- Up & down, mostly used for navigating browser suggestions and accepting
 enableHotkeyOutsideTerminal(
@@ -29,5 +29,20 @@ enableHotkeyOutsideTerminal(
   wf,
   hs.hotkey.new({ "ctrl" }, "l", function()
     hs.eventtap.keyStroke({}, "return", 0)
+  end)
+)
+
+enableHotkeyOutsideTerminal(
+  wf,
+  hs.hotkey.new({ "ctrl" }, "w", function()
+    hs.eventtap.keyStroke({ "alt" }, "delete", 0)
+  end)
+)
+
+enableHotkeyOutsideTerminal(
+  wf,
+  hs.hotkey.new({ "ctrl" }, "u", function()
+    hs.eventtap.keyStroke({ "cmd" }, "right", 0)
+    hs.eventtap.keyStroke({ "cmd" }, "delete", 0)
   end)
 )
