@@ -21,7 +21,6 @@ local M = {
       local telescope = require("telescope")
       local action_state = require("telescope.actions.state")
       local actions = require("telescope.actions")
-      local actions_layout = require("telescope.actions.layout")
       local fb_actions = telescope.extensions.file_browser.actions
       local copy = require("tmtl.utils").shallow_copy
       local state = require("telescope.state")

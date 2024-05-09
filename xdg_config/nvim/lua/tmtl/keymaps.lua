@@ -62,9 +62,8 @@ map("c", "<C-q>", function() vim.api.nvim_input("<Esc>") end, { desc = "Return t
 map("i", "kj", "<Esc>", { desc = "Return to normal mode" })
 map("t", "kj", "<C-\\><C-n>", { desc = "Return to normal mode" })
 map("i", "<Tab>", "<Right>", { desc = "Cursor right" })
-map("i", "<C-f>", "<Right>", { desc = "Cursor right" })
-map("i", "<C-b>", "<Left>", { desc = "Cursor left" })
-map("i", "<C-d>", "<Esc>lcw", { desc = "Delete word right" })
+map("i", "<C-d>", "<Esc>lcw", { desc = "Same input navigation as terminal - delete word right" })
+map("i", "<C-u>", "<Esc>cc", { desc = "Same input navigation as terminal - delete line" })
 
 map({ "n", "v" }, "j", "gj", { desc = "Down one line, including wrapped lines" })
 map({ "n", "v" }, "k", "gk", { desc = "Up one line, including wrapped lines" })
