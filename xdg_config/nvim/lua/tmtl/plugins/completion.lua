@@ -63,6 +63,13 @@ local M = {
             end
           end,
         }),
+
+        ["<C-n>"] = cmp.mapping(function(fallback)
+          fallback()
+        end, { "i" }),
+        ["<C-p>"] = cmp.mapping(function(fallback)
+          fallback()
+        end, { "i" }),
       })
 
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
