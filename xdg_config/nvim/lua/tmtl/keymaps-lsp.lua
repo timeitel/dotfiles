@@ -42,13 +42,9 @@ M.attach = function(bufnr)
     Goto_Diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
   end, "Previous [E]rror")
 
-  buf_map("n", "<M-n>", function()
+  buf_map("n", "<C-n>", function()
     Goto_Diagnostic({ float = true, severity = { min = vim.diagnostic.severity.HINT } })
   end, "Next [D]iagnostic")
-
-  buf_map("n", "<M-p>", function()
-    Goto_Diagnostic({ prev = true, float = true, severity = { min = vim.diagnostic.severity.HINT } })
-  end, "Previous [D]iagnostic")
 
   buf_map("n", "]d", function()
     Goto_Diagnostic()
