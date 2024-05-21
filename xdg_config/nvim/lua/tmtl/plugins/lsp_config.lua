@@ -74,6 +74,15 @@ local M = {
         on_attach = function(_, bufnr)
           lsp_maps.attach(bufnr)
         end,
+        settings = {
+          gopls = {
+            ["ui.inlayhint.hints"] = {
+              compositeLiteralFields = true,
+              constantValues = true,
+              parameterNames = true
+            },
+          },
+        },
       })
 
       local function organize_imports()
@@ -104,7 +113,19 @@ local M = {
             organize_imports,
             description = "Organize Imports"
           }
-        }
+        },
+        init_options = {
+          preferences = {
+            includeInlayParameterNameHints = 'all',
+            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayEnumMemberValueHints = true,
+            importModuleSpecifierPreference = 'non-relative',
+          },
+        },
       })
 
       nvim_lsp.lua_ls.setup({
@@ -113,6 +134,9 @@ local M = {
         end,
         settings = {
           Lua = {
+            hint = {
+              enable = true
+            },
             completion = {
               callSnippet = "Replace",
             },
@@ -141,7 +165,7 @@ local M = {
         },
         update_in_insert = true,
         float = {
-          source = "always", -- Or "if_many"
+          source = true
         },
       })
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

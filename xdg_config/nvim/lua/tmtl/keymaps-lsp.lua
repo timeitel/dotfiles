@@ -1,5 +1,3 @@
-local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
-
 local function goto_diagnostic(opts)
   local table_length = require("tmtl.utils").table_length
   opts = opts or {}
@@ -14,7 +12,7 @@ local function goto_diagnostic(opts)
 
   if float then
     vim.defer_fn(function()
-      vim.diagnostic.open_float(0, { severity_sort = true, border = border })
+      vim.diagnostic.open_float({ severity_sort = true, border = "rounded" })
     end, 50)
   end
 
@@ -58,11 +56,18 @@ M.attach = function(bufnr)
     vim.lsp.buf.code_action()
   end, "[L]SP code [A]ctions")
 
-  buf_map("n", "<leader>lh", function()
-    vim.diagnostic.open_float(0, { border = border })
+  buf_map("n", "<C-w><C-d>", function()
+    vim.diagnostic.open_float({ border = "rounded" })
   end, "[L]SP [H]over")
 
-  -- LSP
+  buf_map("n", "<C-w>d", function()
+    vim.diagnostic.open_float({ border = "rounded" })
+  end, "[L]SP [H]over")
+
+  buf_map("n", "<leader>lh", function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+  end, "[L]SP [H]ints toggle")
+
   buf_map("n", "<leader>lr", function()
     vim.lsp.buf.rename()
   end, "[L]SP [R]ename")
@@ -111,10 +116,6 @@ M.attach = function(bufnr)
       vim.fn.feedkeys("zz")
     end, 100)
   end, "Lsp [G]o to [D]efinition in vertical split")
-
-  buf_map("n", "K", function()
-    vim.lsp.buf.hover()
-  end, "Lsp Hover")
 
   buf_map("n", "R", function()
     require("telescope.builtin").lsp_references({ show_line = false, include_declaration = false })
