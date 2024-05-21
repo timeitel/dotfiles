@@ -9,13 +9,13 @@ map("n", "<leader>e", function()
   harpoon_ui.toggle_quick_menu()
 end, { desc = "[E]dit [L]ist - toggle" })
 
-map("n", "<M-n>", function()
+map("n", "]f", function()
   harpoon_ui.nav_next()
-end, { desc = "[E]dit List - [N]ext" })
+end, { desc = "[E]dit List - next [F]ile" })
 
-map("n", "<M-p>", function()
+map("n", "[f", function()
   harpoon_ui.nav_prev()
-end, { desc = "[E]dit List - [P]revious" })
+end, { desc = "[E]dit List - previous [F]ile" })
 
 map("n", "<A-h>", function()
   harpoon_ui.nav_file(1)

@@ -132,12 +132,6 @@ local M = {
       end,
     }
 
-    local lsp_progress = {
-      "lsp_progress",
-      display_components = { { "title", "percentage" } },
-      timer = { progress_enddelay = 1000, lsp_client_name_enddelay = 1000 },
-    }
-
     local worktree = {
       function()
         return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
@@ -189,7 +183,7 @@ local M = {
         lualine_c = {},
         lualine_x = { search_count, macro_recording, task_runner },
         lualine_y = { diagnostic_stats },
-        lualine_z = { lsp, lsp_progress, dap },
+        lualine_z = { lsp, dap },
       },
       inactive_sections = {},
       tabline = {},

@@ -1,8 +1,6 @@
 local M = {
   "ThePrimeagen/harpoon",
-  "arkav/lualine-lsp-progress",
   "inkarkat/vim-ReplaceWithRegister",
-  "tpope/vim-commentary",
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
@@ -40,16 +38,6 @@ local M = {
     end,
   },
   {
-    "RishabhRD/nvim-cheat.sh",
-    dependencies = "RishabhRD/popfix",
-    config = function()
-      local map = require("tmtl.utils").map
-      map("n", "<leader>ch", function()
-        vim.cmd([[Cheat]])
-      end, { desc = "[C]heatsheet - [R]ust" })
-    end,
-  },
-  {
     "windwp/nvim-autopairs",
     opts = {
       disable_filetype = { "TelescopePrompt", "vim" },
@@ -76,18 +64,6 @@ local M = {
         ["s"] = { "}", "]", ")", ">", '"', "'", "`" },
       },
     },
-  },
-  {
-    "jedrzejboczar/possession.nvim",
-    opts = {
-      commands = {
-        save = "SSave",
-        load = "SLoad",
-        delete = "SDelete",
-        list = "SList",
-      },
-    },
-    dependencies = "nvim-lua/plenary.nvim",
   },
   {
     'bloznelis/before.nvim',

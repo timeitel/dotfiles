@@ -1,11 +1,10 @@
 local map = require("tmtl.utils").map
 local request_confirm = require("tmtl.utils").request_confirm
 local ts = require("telescope.builtin")
-local neogit = require("neogit")
 local notify = require("notify")
 
 map("n", "<leader>gs", function()
-  neogit.open()
+  require("neogit").open()
 end, { desc = "[G]it [S]tatus" })
 
 map("n", "<leader><leader>gs", function()

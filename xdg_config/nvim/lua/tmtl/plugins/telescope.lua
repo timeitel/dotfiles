@@ -9,7 +9,6 @@ end
 local M = {
   {
     "nvim-telescope/telescope.nvim",
-    version = "0.1.1",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "debugloop/telescope-undo.nvim",
@@ -217,7 +216,6 @@ local M = {
 
       require("telescope").load_extension("file_browser")
       require("telescope").load_extension("ui-select")
-      require("telescope").load_extension("possession")
       require("telescope").load_extension("notify")
       require("telescope").load_extension("undo")
       -- require("telescope").load_extension("git_worktree") -- TODO: doesn't seem to work

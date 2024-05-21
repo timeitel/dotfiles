@@ -60,6 +60,7 @@ local M = {
       }
 
       local panel_maps = {
+        ["O"] = actions.goto_file_edit,
         ["o"] = actions.focus_entry,
         ["<C-x>"] = function()
           request_confirm({
@@ -71,8 +72,7 @@ local M = {
           })
         end,
         ["C"] = function()
-          vim.cmd([[Neogit commit]])
-          vim.fn.feedkeys("c")
+          require('neogit').open({ "commit" })
         end,
       }
 
@@ -132,36 +132,20 @@ local M = {
   },
   {
     "NeogitOrg/neogit",
-    opts = {
-      disable_hint = true,
-      disable_commit_confirmation = true,
-      disable_insert_on_commit = "auto",
-      integrations = {
-        diffview = true,
-      },
-      mappings = {
-        status = {
-          ["b"] = false,
-          ["v"] = false,
-          ["d"] = function()
-            vim.cmd([[ DiffviewOpen ]])
-          end,
+    config = function()
+      require("neogit").setup({
+        commit_editor = {
+          kind = "split",
+          show_staged_diff = false,
         },
-      },
-      sections = {
-        stashes = false,
-        unpulled = {
-          folded = true,
+        disable_hint = true,
+        graph_style = "unicode",
+        integrations = {
+          diffview = true,
         },
-        unmerged = {
-          folded = false,
-        },
-        recent = {
-          folded = false,
-        },
-      },
-    },
-    dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
+      })
+    end,
+    dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "nvim-telescope/telescope.nvim" },
   },
 }
 

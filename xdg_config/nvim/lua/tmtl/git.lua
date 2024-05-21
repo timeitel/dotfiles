@@ -7,5 +7,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.cmd.wincmd("J")
   end,
 })
-
--- TODO: on diffview close, reattach tab mapping
