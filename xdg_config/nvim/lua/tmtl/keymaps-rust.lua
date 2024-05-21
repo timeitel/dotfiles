@@ -1,5 +1,3 @@
-local border = require("tmtl.utils").border
-
 local M = {}
 
 M.attach = function(bufnr)
@@ -59,7 +57,7 @@ M.attach = function(bufnr)
   buf_map({ "n", "v" }, "<Leader>dl", sidebar.open, "[D]ebugger scope [List]")
   buf_map("n", "<Leader>df", function() widgets.centered_float(widgets.scopes) end, "[D]ebugger [F]loat")
   buf_map("n", "<leader>de", function()
-    widgets.hover(nil, { border = border })
+    widgets.hover(nil, { border = "rounded" })
   end, "[D]ebugger [E]xpression")
 end
 

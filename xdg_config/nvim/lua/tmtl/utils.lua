@@ -69,8 +69,6 @@ M.table_length = function(table)
   return count
 end
 
-M.border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
-
 M.change_case = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   local word = vim.fn.expand('<cword>')

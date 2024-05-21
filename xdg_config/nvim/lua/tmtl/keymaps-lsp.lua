@@ -19,8 +19,6 @@ local function goto_diagnostic(opts)
   local diagnostic_count = table_length(vim.diagnostic.get(0))
   if diagnostic_count == 0 then
     require("notify")("No more diagnostics")
-  else
-    vim.fn.feedkeys("zz")
   end
 end
 
@@ -31,7 +29,6 @@ M.attach = function(bufnr)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = bufnr or 0, desc = d })
   end
 
-  -- Diagnostics
   buf_map("n", "]e", function()
     goto_diagnostic({ severity = vim.diagnostic.severity.ERROR })
   end, "Next [E]rror")
@@ -44,28 +41,12 @@ M.attach = function(bufnr)
     goto_diagnostic({ float = true, severity = { min = vim.diagnostic.severity.HINT } })
   end, "[N]ext diagnostic")
 
-  buf_map("n", "]d", function()
-    goto_diagnostic()
-  end, "Next [D]iagnostic")
-
-  buf_map("n", "[d", function()
-    goto_diagnostic({ prev = true })
-  end, "Previous [D]iagnostic")
-
   buf_map("n", "<leader>la", function()
     vim.lsp.buf.code_action()
   end, "[L]SP code [A]ctions")
 
-  buf_map("n", "<C-w><C-d>", function()
-    vim.diagnostic.open_float({ border = "rounded" })
-  end, "[L]SP [H]over")
-
-  buf_map("n", "<C-w>d", function()
-    vim.diagnostic.open_float({ border = "rounded" })
-  end, "[L]SP [H]over")
-
   buf_map("n", "<leader>lh", function()
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
   end, "[L]SP [H]ints toggle")
 
   buf_map("n", "<leader>lr", function()

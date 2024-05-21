@@ -42,9 +42,8 @@ local M = {
     config = function()
       local lsp_maps = require("tmtl.keymaps-lsp")
       local nvim_lsp = require("lspconfig")
-      local border = require("tmtl.utils").border
 
-      require("lspconfig.ui.windows").default_options.border = border
+      require("lspconfig.ui.windows").default_options.border = "rounded"
       local protocol = require("vim.lsp.protocol")
       local tsHandlers = {
         ["textDocument/definition"] = function(_, result, params)
@@ -165,14 +164,15 @@ local M = {
         },
         update_in_insert = true,
         float = {
-          source = true
+          source = true,
+          border = 'rounded'
         },
       })
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = border,
+        border = 'rounded',
       })
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-        border = border,
+        border = 'rounded',
       })
       vim.lsp.handlers["textDocument/publishDiagnostics"] =
       vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
