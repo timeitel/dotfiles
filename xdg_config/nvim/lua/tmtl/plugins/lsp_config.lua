@@ -165,7 +165,8 @@ local M = {
         update_in_insert = true,
         float = {
           source = true,
-          border = 'rounded'
+          border = 'rounded',
+          header = ''
         },
       })
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
