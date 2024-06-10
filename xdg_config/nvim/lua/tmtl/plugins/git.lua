@@ -109,6 +109,7 @@ local M = {
     config = function()
       require("neogit").setup({
         auto_show_console = false,
+        console_timeout = 5000,
         commit_editor = {
           kind = "split",
           show_staged_diff = false,
