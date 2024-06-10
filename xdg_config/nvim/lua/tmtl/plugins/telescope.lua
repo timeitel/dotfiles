@@ -211,6 +211,9 @@ local M = {
           ["ui-select"] = {
             require("telescope.themes").get_cursor({}),
           },
+          smart_open = {
+            match_algorithm = "fzy",
+          },
         },
       })
 
