@@ -15,6 +15,7 @@ o.history = 500
 o.hlsearch = false
 o.ignorecase = true
 o.incsearch = true
+o.jumpoptions = "stack,view"
 o.laststatus = 3
 o.lazyredraw = true
 o.modelines = 1
