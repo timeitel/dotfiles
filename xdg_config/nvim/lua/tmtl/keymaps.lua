@@ -5,6 +5,9 @@ local notify = require("notify")
 map({ "n", "v", "o" }, "H", "^", { desc = "First character on line" })
 map({ "n", "v", "o" }, "L", "$", { desc = "Last character on line" })
 
+map("n", "{", "[{^", { desc = "Jump to start of enclosing function" })
+map("n", "}", "]}", { desc = "Jump to end of enclosing function" })
+
 map("n", "'", "`", { desc = "Jump to mark - always go to column instead of just first non-blank" })
 
 map("v", ">", ">gv", { desc = "Re-highlight visual selection after bumping indent" })
