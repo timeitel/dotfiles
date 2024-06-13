@@ -239,3 +239,16 @@ map("n", "<C-a>", function()
     return "<C-a>"
   end
 end, { desc = "Improved increment", expr = true })
+
+local function open_git_remote()
+  local result = vim.fn.systemlist('git config --get remote.origin.url')
+
+  if result and #result > 0 then
+    local url = result[1]:gsub("%.git$", "") .. "/pulls"
+    return vim.fn.jobstart({ "open", url })
+  else
+    return print("Unable to open git remote")
+  end
+end
+
+map("n", "gop", open_git_remote, { desc = "[Go] to pull requests" })
