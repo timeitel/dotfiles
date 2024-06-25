@@ -108,7 +108,6 @@ local M = {
     "NeogitOrg/neogit",
     config = function()
       require("neogit").setup({
-        auto_show_console = false,
         console_timeout = 5000,
         commit_editor = {
           kind = "split",
@@ -119,6 +118,12 @@ local M = {
         integrations = {
           diffview = true,
         },
+        sections = {
+          recent = {
+            folded = false,
+            hidden = false,
+          },
+        }
       })
     end,
     dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "nvim-telescope/telescope.nvim" },
