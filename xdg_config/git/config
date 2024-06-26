@@ -10,7 +10,7 @@
 [credential "https://dev.azure.com"]
   useHttpPath = true
 [alias]
-  staash = stash --all
+  stasha = stash --all
 [rerere]
   enabled = true
 [column]
