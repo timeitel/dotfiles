@@ -6,7 +6,10 @@ local map = require("tmtl.utils").map
 local get_visual_selection = require("tmtl.utils").get_visual_selection
 
 map("n", "<C-p>", function()
-  require("telescope").extensions.smart_open.smart_open({ initial_mode = "insert" })
+  require("telescope").extensions.smart_open.smart_open({
+    initial_mode = "insert",
+    cwd_only = true,
+  })
   -- ts.find_files({ hidden = true })
 end, { desc = "Find - files" })
 
