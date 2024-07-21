@@ -37,5 +37,7 @@ bindkey '^d' kill-word
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
-# nvim-dap rust
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+PATH="/opt/homebrew/opt/llvm/bin:$PATH" # nvim-dap rust
+PATH="$HOME/go/bin:$PATH"
+export PATH
+
