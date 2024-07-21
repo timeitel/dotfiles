@@ -67,6 +67,10 @@ local M = {
 
       lspconfig.eslint.setup({})
 
+      lspconfig.templ.setup({
+        on_attach = lsp_maps.attach
+      })
+
       lspconfig.tailwindcss.setup({
         capabilities = capabilities,
         filetypes = { "templ", "javascript", "typescript", "react" },
@@ -80,9 +84,7 @@ local M = {
       })
 
       lspconfig.gopls.setup({
-        on_attach = function(_, bufnr)
-          lsp_maps.attach(bufnr)
-        end,
+        on_attach = lsp_maps.attach,
         settings = {
           gopls = {
             ["ui.inlayhint.hints"] = {
@@ -105,7 +107,7 @@ local M = {
 
       lspconfig.tsserver.setup({
         on_attach = function(client, bufnr)
-          lsp_maps.attach(bufnr)
+          lsp_maps.attach(client, bufnr)
           client.server_capabilities.documentFormattingProvider = false -- done by prettierd
         end,
         handlers = tsHandlers,
@@ -138,9 +140,7 @@ local M = {
       })
 
       lspconfig.lua_ls.setup({
-        on_attach = function(_, bufnr)
-          lsp_maps.attach(bufnr)
-        end,
+        on_attach = lsp_maps.attach,
         settings = {
           Lua = {
             hint = {
