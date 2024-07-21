@@ -41,7 +41,7 @@ local M = {
     "neovim/nvim-lspconfig",
     config = function()
       local lsp_maps = require("tmtl.keymaps-lsp")
-      local nvim_lsp = require("lspconfig")
+      local lspconfig = require("lspconfig")
 
       require("lspconfig.ui.windows").default_options.border = "rounded"
       local protocol = require("vim.lsp.protocol")
@@ -65,11 +65,21 @@ local M = {
       local capabilities =
       require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-      nvim_lsp.eslint.setup({})
+      lspconfig.eslint.setup({})
 
-      nvim_lsp.tailwindcss.setup({})
+      lspconfig.tailwindcss.setup({
+        capabilities = capabilities,
+        filetypes = { "templ", "javascript", "typescript", "react" },
+        settings = {
+          tailwindCSS = {
+            includeLanguages = {
+              templ = "html",
+            },
+          },
+        },
+      })
 
-      nvim_lsp.gopls.setup({
+      lspconfig.gopls.setup({
         on_attach = function(_, bufnr)
           lsp_maps.attach(bufnr)
         end,
@@ -93,7 +103,7 @@ local M = {
         vim.lsp.buf.execute_command(params)
       end
 
-      nvim_lsp.tsserver.setup({
+      lspconfig.tsserver.setup({
         on_attach = function(client, bufnr)
           lsp_maps.attach(bufnr)
           client.server_capabilities.documentFormattingProvider = false -- done by prettierd
@@ -127,7 +137,7 @@ local M = {
         },
       })
 
-      nvim_lsp.lua_ls.setup({
+      lspconfig.lua_ls.setup({
         on_attach = function(_, bufnr)
           lsp_maps.attach(bufnr)
         end,
