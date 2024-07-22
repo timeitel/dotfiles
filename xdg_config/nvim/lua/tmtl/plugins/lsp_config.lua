@@ -10,8 +10,7 @@ local M = {
     "simrat39/rust-tools.nvim",
     dependencies = "neovim/nvim-lspconfig",
     config = function()
-      local capabilities =
-      require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
       local lsp_maps = require("tmtl.keymaps-lsp")
       local rt = require("rust-tools")
       local rust_maps = require("tmtl.keymaps-rust")
@@ -64,10 +63,8 @@ local M = {
       -- Set up completion using nvim_cmp with LSP source
       local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-      lspconfig.eslint.setup({})
-
       lspconfig.templ.setup({
-        on_attach = lsp_maps.attach
+        on_attach = lsp_maps.attach,
       })
 
       lspconfig.tailwindcss.setup({
@@ -89,20 +86,11 @@ local M = {
             ["ui.inlayhint.hints"] = {
               compositeLiteralFields = true,
               constantValues = true,
-              parameterNames = true
+              parameterNames = true,
             },
           },
         },
       })
-
-      local function organize_imports()
-        local params = {
-          command = "_typescript.organizeImports",
-          arguments = { vim.api.nvim_buf_get_name(0) },
-          title = ""
-        }
-        vim.lsp.buf.execute_command(params)
-      end
 
       lspconfig.tsserver.setup({
         on_attach = function(client, bufnr)
@@ -120,20 +108,26 @@ local M = {
         capabilities = capabilities,
         commands = {
           OrganizeImports = {
-            organize_imports,
-            description = "Organize Imports"
-          }
+            function()
+              vim.lsp.buf.execute_command({
+                command = "_typescript.organizeImports",
+                arguments = { vim.api.nvim_buf_get_name(0) },
+                title = "",
+              })
+            end,
+            description = "Organize Imports",
+          },
         },
         init_options = {
           preferences = {
-            includeInlayParameterNameHints = 'all',
+            includeInlayParameterNameHints = "all",
             includeInlayParameterNameHintsWhenArgumentMatchesName = true,
             includeInlayFunctionParameterTypeHints = true,
             includeInlayVariableTypeHints = true,
             includeInlayPropertyDeclarationTypeHints = true,
             includeInlayFunctionLikeReturnTypeHints = true,
             includeInlayEnumMemberValueHints = true,
-            importModuleSpecifierPreference = 'non-relative',
+            importModuleSpecifierPreference = "non-relative",
           },
         },
       })
@@ -143,7 +137,7 @@ local M = {
         settings = {
           Lua = {
             hint = {
-              enable = true
+              enable = true,
             },
             completion = {
               callSnippet = "Replace",
@@ -174,18 +168,17 @@ local M = {
         update_in_insert = true,
         float = {
           source = true,
-          border = 'rounded',
-          header = ''
+          border = "rounded",
+          header = "",
         },
       })
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = 'rounded',
+        border = "rounded",
       })
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-        border = 'rounded',
+        border = "rounded",
       })
-      vim.lsp.handlers["textDocument/publishDiagnostics"] =
-      vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
         underline = true,
         update_in_insert = false,
         virtual_text = { spacing = 4, prefix = "●" },
