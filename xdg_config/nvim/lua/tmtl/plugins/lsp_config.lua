@@ -53,7 +53,7 @@ local M = {
             return nil
           end
 
-          if vim.tbl_islist(result) then
+          if vim.islist(result) then
             util.jump_to_location(result[1], "utf-8", true)
           else
             util.jump_to_location(result, "utf-8", true)
@@ -62,8 +62,7 @@ local M = {
       }
 
       -- Set up completion using nvim_cmp with LSP source
-      local capabilities =
-      require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
       lspconfig.eslint.setup({})
 
