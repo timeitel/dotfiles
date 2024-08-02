@@ -1,11 +1,7 @@
 local M = {
   "akinsho/toggleterm.nvim",
   config = function()
-    local toggleterm = require("toggleterm")
-    local map = require("tmtl.utils").map
-
-    -- prefix terminal number befor toggle open for multiple terminals
-    toggleterm.setup({
+    require("toggleterm").setup({
       open_mapping = [[<C-;>]],
       direction = "float",
       float_opts = {
@@ -14,14 +10,11 @@ local M = {
       autochdir = true,
     })
 
-    local group = vim.api.nvim_create_augroup("ToggleTermGroup", { clear = true })
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "UnceptionEditRequestReceived",
-      callback = function()
-        toggleterm.toggle()
-      end,
-      group = group,
-    })
+    local map = require("tmtl.utils").map
+
+    map("n", "<leader>rw", function()
+      vim.cmd([[ TermExec cmd="docker compose -f compose.dev.yml up --watch" name="Docker Watcher" ]])
+    end, { desc = "[R]un [W]atcher" })
   end,
 }
 

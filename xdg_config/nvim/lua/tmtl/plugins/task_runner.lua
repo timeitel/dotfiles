@@ -7,7 +7,7 @@ map("n", "<c-f>", function()
   if Task == nil then
     return
   end
-  require("overseer").run_action(Task, 'open float')
+  require("overseer").run_action(Task, "open float")
 end, { desc = "Toggle last task runner float" })
 
 local M = {
@@ -15,7 +15,6 @@ local M = {
   opts = {},
   config = function()
     local overseer = require("overseer")
-    local map = require("tmtl.utils").map
     local contains = require("tmtl.utils").contains
 
     local function on_complete_subscribe(task)
@@ -51,10 +50,9 @@ local M = {
       overseer.run_template({}, function(task)
         if string.find(task.cmd[3], "deploy") then
           Task = task
-          overseer.run_action(task, 'open float')
+          overseer.run_action(task, "open float")
         end
-      end
-      )
+      end)
     end, { desc = "Task [R]unner - toggle task [L]ist" })
 
     map("n", "<leader>rt", function()
@@ -82,7 +80,7 @@ local M = {
       overseer.run_template({}, function(task)
         if task then
           Task = task
-          overseer.run_action(task, 'open float')
+          overseer.run_action(task, "open float")
         end
       end)
 

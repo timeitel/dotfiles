@@ -91,3 +91,7 @@ end, { desc = "[F]ind [C]ommands" })
 map("n", "<leader>fh", function()
   ts.help_tags()
 end, { desc = "[F]ind [H]elp - docs" })
+
+map("n", "<leader>f;", function()
+  vim.cmd([[TermSelect]])
+end, { desc = "[F]ind terminals" })
