@@ -283,10 +283,16 @@ map("n", "gop", open_git_pr_list, { desc = "[GO] to PRs" })
 
 local function open_git_pr_create()
   local result = vim.fn.systemlist("git config --get remote.origin.url")
-  local branch = vim.fn.systemlist("git rev-parse --abbrev-ref HEAD")
+  local branch = vim.fn.systemlist("git rev-parse --abbrev-ref HEAD")[1]
+  local branch_type = string.sub(branch, string.find(branch, "/") + 1)
+  local branch_type_clean = string.gsub(branch_type, "-", "+")
 
   if result and #result > 0 then
-    local url = result[1]:gsub("%.git$", "") .. "/compare/main..." .. branch[1] .. "?quick_pull=1&title=feat:"
+    local url = result[1]:gsub("%.git$", "")
+      .. "/compare/dev..."
+      .. branch
+      .. "?quick_pull=1&title=feat:+"
+      .. branch_type_clean
     return vim.fn.jobstart({ "open", url })
   else
     return print("Unable to open git remote")
