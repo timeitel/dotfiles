@@ -15,93 +15,90 @@ local get_filename = function()
   end)
 end
 
+local js_snips = {
+  snippet("fn", {
+    text("function "),
+    insert(1, "name"),
+    text({ "(" }),
+    insert(2),
+    text({ ") {" }),
+    insert(3),
+    text({ "};" }),
+  }),
+  snippet({
+    trig = "fc",
+    namr = "Functional component",
+    dscr = "React functional component",
+  }, {
+    text("export default function "),
+    get_filename(),
+    insert(1),
+    text({ "() {" }),
+    text({ "return (" }),
+    text({ "<>" }),
+    insert(2),
+    text({ "</>" }),
+    text({ ");" }),
+    text({ "};" }),
+  }),
+  snippet({
+    trig = "dar",
+    namr = "Destructured array",
+    dscr = "JS destructured array",
+  }, {
+    text("const ["),
+    insert(1, "state"),
+    text(",  set"),
+    insert(2, "State"),
+    text("] = "),
+    insert(3, "Object"),
+  }),
+  snippet({
+    trig = "dob",
+    namr = "Destructured object",
+    dscr = "JS destructured object",
+  }, {
+    text("const {"),
+    insert(2),
+    text("}"),
+    text(" = "),
+    insert(1, "Object"),
+  }),
+  snippet("clg", {
+    text("console.log("),
+    insert(1),
+    text(")"),
+  }),
+  snippet("int", {
+    text("interface "),
+    insert(1, "Props"),
+    text({ " {", "" }),
+    text("    "),
+    insert(2),
+    text({ "", "}" }),
+  }),
+}
+
 ls.add_snippets(nil, {
-  all = {
-    snippet({
-      trig = "fun",
-      namr = "Function",
-      dscr = "JavaScript",
-    }, {
-      text("function "),
-      insert(1, "name"),
+  javascript = js_snips,
+  typescript = js_snips,
+  typescriptreact = js_snips,
+  go = {
+    snippet("fn", {
+      text("func "),
+      insert(1, "funcName"),
       text({ "(" }),
       insert(2),
-      text({ ") {" }),
+      text(") "),
       insert(3),
-      text({ "};" }),
+      text({ " {", "	" }),
+      insert(4),
+      text({ "", "};" }),
     }),
-    snippet({
-      trig = "fc",
-      namr = "Functional component",
-      dscr = "React functional component",
-    }, {
-      text("export default function "),
-      get_filename(),
-      insert(1),
-      text({ "() {" }),
-      text({ "return (" }),
-      text({ "<>" }),
-      insert(2),
-      text({ "</>" }),
-      text({ ");" }),
-      text({ "};" }),
-    }),
-    snippet({
-      trig = "dar",
-      namr = "Destructured array",
-      dscr = "JS destructured array",
-    }, {
-      text("const ["),
-      insert(1, "state"),
-      text(",  set"),
-      insert(2, "State"),
-      text("] = "),
-      insert(3, "Object"),
-    }),
-    snippet({
-      trig = "dob",
-      namr = "Destructured object",
-      dscr = "JS destructured object",
-    }, {
-      text("const {"),
-      insert(2),
-      text("}"),
-      text(" = "),
-      insert(1, "Object"),
-    }),
-    snippet({
-      trig = "clg",
-      namr = "Console log",
-      dscr = "JS console log",
-    }, {
-      text("console.log("),
-      insert(1),
-      text(")"),
-    }),
-    snippet({
-      trig = "nfn",
-      namr = "Named function",
-      dscr = "JS named function",
-    }, {
-      text("const "),
-      insert(1, "name"),
-      text(" = ("),
-      insert(2, "arg"),
-      text(") => {"),
-      insert(3),
-      text("}"),
-    }),
-    snippet({
-      trig = "int",
-      namr = "Interface",
-      dscr = "TypeScript interface",
-    }, {
-      text("interface "),
-      insert(1, "Props"),
-      text({ " {", "" }),
-      text("    "),
-      insert(2),
-      text({ "", "}" }),
+    snippet("err", {
+      text({ "if err != nil {", "" }),
+      text({ "	log.Fatal(err)", "" }),
+      text({ "}", "" }),
     }),
   },
 })
