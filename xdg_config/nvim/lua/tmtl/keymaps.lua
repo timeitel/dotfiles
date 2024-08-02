@@ -1,3 +1,5 @@
+-- TODO: extend harpoon to save ts file browser view / folder
+
 local utils = require("tmtl.utils")
 local map = utils.map
 local notify = require("notify")
@@ -21,7 +23,7 @@ map("v", "P", "p", { desc = "Replace register on visual paste" })
 map("n", "'i", "'.", { desc = "Jump to line of last edit - alias" })
 
 map({ "n", "v" }, "q", function()
-  if vim.b.overseer_task ~= nil or vim.api.nvim_win_get_config(0).relative ~= '' then
+  if vim.b.overseer_task ~= nil or vim.api.nvim_win_get_config(0).relative ~= "" then
     return "<cmd>close<cr>"
   else
     return "<esc>"
@@ -32,7 +34,7 @@ map("n", "Q", "q", { desc = "Safer trigger for macro recording" })
 
 --- operator aliases
 
-Last_Motion = ''
+Last_Motion = ""
 local opts = { desc = "Operator mode syntax aliases", expr = true }
 local function set_motion_and_feed(str)
   return function()
@@ -42,10 +44,10 @@ local function set_motion_and_feed(str)
 end
 
 map({ "o", "x" }, "<C-q>", "<Esc>", { desc = "Exit operator mode" })
-map({ "o", "x" }, "aW", set_motion_and_feed('aW'), opts) -- [q]uote
-map({ "o", "x" }, "iW", set_motion_and_feed('iW'), opts) -- [q]uote
-map({ "o", "x" }, "aw", set_motion_and_feed('aw'), opts) -- [q]uote
-map({ "o", "x" }, "iw", set_motion_and_feed('iw'), opts) -- [q]uote
+map({ "o", "x" }, "aW", set_motion_and_feed("aW"), opts) -- [q]uote
+map({ "o", "x" }, "iW", set_motion_and_feed("iW"), opts) -- [q]uote
+map({ "o", "x" }, "aw", set_motion_and_feed("aw"), opts) -- [q]uote
+map({ "o", "x" }, "iw", set_motion_and_feed("iw"), opts) -- [q]uote
 map({ "o", "x" }, "iq", set_motion_and_feed('i"'), opts) -- [q]uote
 map({ "o", "x" }, "aq", set_motion_and_feed('a"'), opts)
 map({ "o", "x" }, "is", set_motion_and_feed("i'"), opts) -- [s]ingle quote
@@ -56,7 +58,9 @@ map({ "o", "x" }, "ir", set_motion_and_feed("i["), opts) -- [r]ectangular bracke
 map({ "o", "x" }, "ar", set_motion_and_feed("a["), opts)
 map({ "o", "x" }, "ic", set_motion_and_feed("i{"), opts) -- [c]urly brackets
 map({ "o", "x" }, "ac", set_motion_and_feed("a{"), opts)
-map("n", "ga", function() return "v" .. Last_Motion .. "P" end, { desc = "Replace with last motion", expr = true }) -- all wrapping is done for this shortcut map
+map("n", "ga", function()
+  return "v" .. Last_Motion .. "P"
+end, { desc = "Replace with last motion", expr = true }) -- all wrapping is done for this shortcut map
 
 --- / operator aliases
 
@@ -154,7 +158,7 @@ map("v", "<leader>p", '"+p', { desc = "Paste from clipboard" })
 
 map("v", "<leader>d", '"_d', { desc = "Delete contents to black hole register" })
 
-map("i", "<c-t>", "iTODO: <esc>gccA", { desc = "Insert - [T]ODO comment", remap = true })
+map("i", "<c-t>", "TODO: <esc>gccA", { desc = "Insert - [T]ODO comment", remap = true })
 
 map("n", "<leader>gr", function()
   vim.fn.feedkeys(":%s/")
@@ -205,7 +209,9 @@ end
 
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "[Q]uickfix [L]ist - show" })
 map("n", "]q", goto_qf_item, { desc = "[Q]uickfix List - next" })
-map("n", "[q", function() goto_qf_item({ prev = true }) end, { desc = "[Q]uickfix List - previous" })
+map("n", "[q", function()
+  goto_qf_item({ prev = true })
+end, { desc = "[Q]uickfix List - previous" })
 map("n", "<leader>qq", "<cmd>cclose<cr>", { desc = "[Q]uickfix List - [Q]uit" })
 
 -- TODO: find based on treesitter export node
@@ -251,7 +257,7 @@ map("n", "<leader>*", function()
 end, { desc = "[H]igh[L]ight group under curor" })
 
 map("n", "<C-a>", function()
-  local word = vim.fn.expand('<cword>')
+  local word = vim.fn.expand("<cword>")
 
   if word == "false" then
     return "ciwtrue<esc>"
@@ -262,8 +268,8 @@ map("n", "<C-a>", function()
   end
 end, { desc = "Improved increment", expr = true })
 
-local function open_git_remote()
-  local result = vim.fn.systemlist('git config --get remote.origin.url')
+local function open_git_pr_list()
+  local result = vim.fn.systemlist("git config --get remote.origin.url")
 
   if result and #result > 0 then
     local url = result[1]:gsub("%.git$", "") .. "/pulls"
@@ -273,4 +279,18 @@ local function open_git_remote()
   end
 end
 
-map("n", "gop", open_git_remote, { desc = "[Go] to pull requests" })
+map("n", "gop", open_git_pr_list, { desc = "[GO] to PRs" })
+
+local function open_git_pr_create()
+  local result = vim.fn.systemlist("git config --get remote.origin.url")
+  local branch = vim.fn.systemlist("git rev-parse --abbrev-ref HEAD")
+
+  if result and #result > 0 then
+    local url = result[1]:gsub("%.git$", "") .. "/compare/main..." .. branch[1] .. "?quick_pull=1&title=feat:"
+    return vim.fn.jobstart({ "open", url })
+  else
+    return print("Unable to open git remote")
+  end
+end
+
+map("n", "goc", open_git_pr_create, { desc = "[GO] to PR create" })

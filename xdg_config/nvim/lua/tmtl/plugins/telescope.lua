@@ -1,7 +1,9 @@
 local function filename_first(_, path)
   local tail = vim.fs.basename(path)
   local parent = vim.fs.dirname(path)
-  if parent == "." then return tail end
+  if parent == "." then
+    return tail
+  end
   return string.format("%s\t\t%s", tail, parent)
 end
 
@@ -37,13 +39,23 @@ local M = {
       local insert_mappings = {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
-        ["<C-e>"] = function(bufnr) slow_scroll(bufnr, 1) end,
-        ["<C-y>"] = function(bufnr) slow_scroll(bufnr, -1) end,
+        ["<C-e>"] = function(bufnr)
+          slow_scroll(bufnr, 1)
+        end,
+        ["<C-y>"] = function(bufnr)
+          slow_scroll(bufnr, -1)
+        end,
         ["<C-q>"] = actions.close,
         ["<C-l>"] = actions.select_default + actions.center,
-        ["<C-h>"] = function() vim.api.nvim_input("<BS>") end,
-        ["<C-w>"] = function() vim.api.nvim_input("<c-s-w>") end,
-        ["<C-u>"] = function() vim.api.nvim_input("<Esc>cc") end,
+        ["<C-h>"] = function()
+          vim.api.nvim_input("<BS>")
+        end,
+        ["<C-w>"] = function()
+          vim.api.nvim_input("<c-s-w>")
+        end,
+        ["<C-u>"] = function()
+          vim.api.nvim_input("<Esc>cc")
+        end,
         ["<C-s>"] = actions.select_horizontal,
         ["<M-n>"] = actions.cycle_history_next,
         ["<M-p>"] = actions.cycle_history_prev,
