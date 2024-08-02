@@ -60,7 +60,29 @@ map("n", "ga", function() return "v" .. Last_Motion .. "P" end, { desc = "Replac
 
 --- / operator aliases
 
-map("c", "<C-q>", function() vim.api.nvim_input("<Esc>") end, { desc = "Return to normal mode" })
+map("c", "<C-q>", function()
+  vim.api.nvim_input("<Esc>")
+end, { desc = "Return to normal mode" })
+map("c", "<M-b>", function()
+  local k = vim.keycode
+  vim.fn.feedkeys(k("<S-Left>"))
+  vim.cmd("redraws")
+end)
+map("c", "<M-f>", function()
+  local k = vim.keycode
+  vim.fn.feedkeys(k("<S-Right>"))
+  vim.cmd("redraws")
+end)
+map("c", "<M-h>", function()
+  local k = vim.keycode
+  vim.fn.feedkeys(k("<Left>"))
+  vim.cmd("redraws")
+end)
+map("c", "<M-l>", function()
+  local k = vim.keycode
+  vim.fn.feedkeys(k("<Right>"))
+  vim.cmd("redraws")
+end)
 
 map("i", "kj", "<Esc>", { desc = "Return to normal mode" })
 map("t", "kj", "<C-\\><C-n>", { desc = "Return to normal mode" })
