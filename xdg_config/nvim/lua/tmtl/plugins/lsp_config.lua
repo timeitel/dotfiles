@@ -63,20 +63,9 @@ local M = {
       -- Set up completion using nvim_cmp with LSP source
       local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-      lspconfig.templ.setup({
-        on_attach = lsp_maps.attach,
-      })
-
       lspconfig.tailwindcss.setup({
         capabilities = capabilities,
-        filetypes = { "templ", "javascript", "typescript", "react" },
-        settings = {
-          tailwindCSS = {
-            includeLanguages = {
-              templ = "html",
-            },
-          },
-        },
+        filetypes = { "html", "javascript", "typescript", "react" },
       })
 
       lspconfig.gopls.setup({
