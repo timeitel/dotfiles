@@ -36,6 +36,13 @@ local M = {
         previewer:scroll_fn(1 * direction)
       end
 
+      local function close_and_harpoon(map)
+        return function()
+          vim.fn.feedkeys("q")
+          vim.fn.feedkeys(vim.keycode(map))
+        end
+      end
+
       local insert_mappings = {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
@@ -62,6 +69,11 @@ local M = {
       }
 
       local normal_mappings = copy(insert_mappings)
+      normal_mappings["<M-h>"] = close_and_harpoon("<M-h>")
+      normal_mappings["<M-j>"] = close_and_harpoon("<M-j>")
+      normal_mappings["<M-k>"] = close_and_harpoon("<M-k>")
+      normal_mappings["<M-l>"] = close_and_harpoon("<M-l>")
+
       normal_mappings["<leader>qf"] = function(bfnr)
         actions.smart_send_to_qflist(bfnr)
         vim.cmd([[copen]])
