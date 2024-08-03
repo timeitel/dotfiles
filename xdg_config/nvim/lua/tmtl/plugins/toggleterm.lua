@@ -17,7 +17,16 @@ local M = {
     end, { desc = "[R]un [W]atcher" })
 
     map("n", "<leader>gp", function()
-      vim.cmd([[ 10TermExec cmd="git push" name="Git Push" ]])
+      local unpushed_commits = vim.fn.systemlist("git cherry")
+      local notify = require("notify")
+      local commits = table.getn(unpushed_commits)
+
+      if commits == 0 then
+        return notify("No commits to push")
+      end
+
+      notify("Pushing commits: " .. commits)
+      vim.cmd([[ 10TermExec cmd="git push" name="Git Push" open="0" ]])
     end, { desc = "[G]it [P]ush" })
   end,
 }
