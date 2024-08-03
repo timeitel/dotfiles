@@ -15,6 +15,10 @@ local M = {
     map("n", "<leader>rw", function()
       vim.cmd([[ TermExec cmd="docker compose -f compose.dev.yml up --watch" name="Docker Watcher" ]])
     end, { desc = "[R]un [W]atcher" })
+
+    map("n", "<leader>gp", function()
+      vim.cmd([[ 10TermExec cmd="git push" name="Git Push" ]])
+    end, { desc = "[G]it [P]ush" })
   end,
 }
 
