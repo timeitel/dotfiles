@@ -26,7 +26,7 @@ local M = {
       end
 
       notify("Pushing commits: " .. commits)
-      vim.cmd([[ 10TermExec cmd="git push" name="Git Push" open="0" ]])
+      vim.cmd([[ 10TermExec cmd="git push" name="Git Push" open=0 ]])
     end, { desc = "[G]it [P]ush" })
   end,
 }
