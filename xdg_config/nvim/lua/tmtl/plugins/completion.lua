@@ -102,7 +102,7 @@ local M = {
           { name = "nvim_lua" },
           { name = "path" },
           { name = "luasnip" },
-          { name = "buffer", keyword_length = 5 },
+          { name = "buffer", keyword_length = 5, max_item_count = 5 },
         }),
 
         sorting = {
