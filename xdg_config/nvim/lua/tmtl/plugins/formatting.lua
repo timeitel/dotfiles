@@ -12,6 +12,7 @@ local M = {
       go = { "goimports", "gofmt" },
       html = { "djlint", "rustywind" },
       yaml = { "yamlfix" },
+      sql = { "pg_format" },
     },
 
     format_on_save = {
