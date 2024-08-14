@@ -2,7 +2,7 @@ local build = {
   name = "build:go",
   builder = function()
     return {
-      cmd = { "go", "build" },
+      cmd = { "go", "build", "-o", "./cmd/web/main", "./cmd/web" },
       name = "| go build",
       metadata = {
         on_failure = function(task)
