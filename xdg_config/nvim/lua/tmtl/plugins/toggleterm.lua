@@ -13,7 +13,7 @@ local M = {
     local map = require("tmtl.utils").map
 
     map("n", "<leader>rw", function()
-      vim.cmd([[ TermExec cmd="docker compose -f compose.dev.yml up --watch" name="Docker Watcher" ]])
+      vim.cmd([[ TermExec cmd="docker compose up --watch" name="Docker Watcher" ]])
     end, { desc = "[R]un [W]atcher" })
 
     map("n", "<leader>gp", function()

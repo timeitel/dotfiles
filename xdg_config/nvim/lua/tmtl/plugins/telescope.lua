@@ -222,7 +222,6 @@ local M = {
 
         extensions = {
           file_browser = {
-            hijack_netrw = true,
             grouped = true,
             hidden = true,
             respect_gitignore = false,
