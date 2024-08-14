@@ -86,14 +86,24 @@ ls.add_snippets(nil, {
   go = {
     snippet("fn", {
       text("func "),
-      insert(1, "funcName"),
+      insert(1),
+      text(" "),
+      insert(2, "funcName"),
       text({ "(" }),
-      insert(2),
-      text(") "),
       insert(3),
-      text({ " {", "	" }),
+      text(") "),
       insert(4),
+      text({ " {", "	" }),
+      insert(5),
       text({ "", "};" }),
+    }),
+    snippet("int", {
+      text("type "),
+      insert(1, "Interface"),
+      text({ " interface {", "" }),
+      text("	"),
+      insert(2, ""),
+      text({ "", "}" }),
     }),
     snippet("err", {
       text({ "if err != nil {", "" }),
