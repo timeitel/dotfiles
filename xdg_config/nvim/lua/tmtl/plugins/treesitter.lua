@@ -38,11 +38,14 @@ local M = {
           "javascript",
           "json",
           "lua",
+          "luadoc",
           "markdown",
           "rust",
           "toml",
           "tsx",
           "typescript",
+          "vim",
+          "vimdoc",
           "yaml",
         },
         autotag = {
@@ -56,7 +59,7 @@ local M = {
               ["af"] = { query = "@function.outer", desc = "Select function outer" },
               ["if"] = { query = "@function.inner", desc = "Select function inner" },
               ["aa"] = { query = "@parameter.outer", desc = "Select parameter outer" },
-              ["ia"] = { query = "@parameter.inner", desc = "Select parameter inner" }
+              ["ia"] = { query = "@parameter.inner", desc = "Select parameter inner" },
             },
             selection_modes = {
               ["@parameter.outer"] = "v", -- charwise
@@ -95,10 +98,9 @@ local M = {
 
       vim.filetype.add({
         extension = {
-          mdx = 'jsx'
-        }
+          mdx = "jsx",
+        },
       })
-
     end,
   },
   {
