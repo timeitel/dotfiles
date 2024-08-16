@@ -63,9 +63,18 @@ local M = {
       -- Set up completion using nvim_cmp with LSP source
       local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+      local html_caps = capabilities
+      html_caps.textDocument.completion.completionItem.snippetSupport = true
+      lspconfig.html.setup({
+        on_attach = lsp_maps.attach,
+        capabilities = html_caps,
+      })
+
+      lspconfig.templ.setup({ on_attach = lsp_maps.attach })
+
       lspconfig.tailwindcss.setup({
         capabilities = capabilities,
-        filetypes = { "html", "javascript", "typescript", "react" },
+        filetypes = { "html", "javascript", "typescript", "react", "templ" },
       })
 
       lspconfig.gopls.setup({

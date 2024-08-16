@@ -107,8 +107,9 @@ ls.add_snippets(nil, {
     }),
     snippet("err", {
       text({ "if err != nil {", "" }),
-      text({ "	log.Fatal(err)", "" }),
-      text({ "}", "" }),
+      text({ "	" }),
+      insert(1, "return err"),
+      text({ "", "}", "" }),
     }),
   },
 })
