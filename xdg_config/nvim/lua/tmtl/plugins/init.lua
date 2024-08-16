@@ -32,6 +32,7 @@ local M = {
         keymaps = {
           ["-"] = "actions.open_cwd",
           ["<CR>"] = "actions.select",
+          ["m"] = "actions.select",
           ["<C-l>"] = "actions.select",
           ["<C-h>"] = "actions.parent",
           ["<C-j>"] = "<down>",

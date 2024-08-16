@@ -82,17 +82,7 @@ local M = {
       normal_mappings["c"] = false
       normal_mappings["q"] = actions.close
       normal_mappings["<C-u>"] = actions.preview_scrolling_up
-      normal_mappings["o"] = actions.select_default + actions.center
-      normal_mappings["l"] = function(bufnr) -- do the same for h since it's used in file_browser
-        local picker = action_state.get_current_picker(bufnr)
-        local prompt_text = picker.sorter["_discard_state"].prompt
-        if prompt_text == "" then
-          actions.select_default(bufnr)
-          actions.center(bufnr)
-        else
-          vim.api.nvim_input("<Right>")
-        end
-      end
+      normal_mappings["m"] = actions.select_default + actions.center
       normal_mappings["<leader>gd"] = function(bfnr)
         actions.close(bfnr)
         vim.cmd([[DiffviewOpen]])
@@ -129,15 +119,6 @@ local M = {
             results_title = filename,
             initial_mode = "insert",
           })
-        end,
-        ["h"] = function(bufnr)
-          local picker = action_state.get_current_picker(bufnr)
-          local prompt_text = picker.sorter["_discard_state"].prompt
-          if prompt_text == "" then
-            fb_actions.goto_parent_dir(bufnr)
-          else
-            vim.api.nvim_input("<Left>")
-          end
         end,
         ["<C-h>"] = fb_actions.goto_parent_dir,
         ["H"] = fb_actions.goto_cwd,
