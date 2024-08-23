@@ -6,8 +6,6 @@ alias cdg='cd $(git rev-parse --show-toplevel)'
 
 alias v='nvim -c "OilFloat"'
 # env variables located in .zshenv
-alias vw='nvim -c "cd $TMTL_WORK_PATH" -c "OilFloat"'
-alias vp='nvim -c "cd $TMTL_PERSONAL_PATH" -c "OilFloat"'
 alias vc='nvim -c "cd $TMTL_CONFIG_PATH" -c "OilFloat"'
 alias vl='nvim -c "normal '\''0"' # open last file edited
 

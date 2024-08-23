@@ -16,8 +16,8 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 source ~/.config/zsh/aliases
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # starship prompt
 eval "$(starship init zsh)"
@@ -29,15 +29,8 @@ bindkey '^K' up-history
 bindkey '^J' down-history
 bindkey '^r' history-incremental-search-backward
 
-# delete forward word
-bindkey '^d' kill-word
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
-PATH="/opt/homebrew/opt/llvm/bin:$PATH" # nvim-dap rust
 PATH="$HOME/go/bin:$PATH"
 export PATH
 
