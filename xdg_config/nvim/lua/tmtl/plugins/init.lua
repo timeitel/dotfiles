@@ -43,11 +43,14 @@ local M = {
           ["q"] = "actions.close",
           ["gs"] = "actions.change_sort",
           ["gx"] = "actions.open_external",
-          ["g."] = "actions.toggle_hidden",
+          ["gh"] = "actions.toggle_hidden",
         },
         use_default_keymaps = false,
         view_options = {
-          show_hidden = true,
+          show_hidden = false,
+          is_hidden_file = function(name, _)
+            return vim.endswith(name, "_templ.go") or vim.endswith(name, "_templ.txt")
+          end,
           is_always_hidden = function(name)
             return vim.startswith(name, ".DS_Store")
           end,
