@@ -43,3 +43,7 @@ do
   create_symlink $FILE ~/.config
 done
 
+cd ..
+echo "\nSymlinking Rectangle config\n"
+create_symlink RectangleConfig.json ~/Library/Application Support/Rectangle/
+
