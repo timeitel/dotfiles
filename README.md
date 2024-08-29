@@ -17,5 +17,5 @@
   - home files to ~
     > `ln -s ~/absolute-path-to-this/home/a ~/`
 
-- Run brew install over Brewfile for all software to be installed
+- `brew tap Homebrew/bundle` && `brew bundle`
 - Set environment variables in ~/.zshenv: TMTL_CONFIG_PATH, TMTL_START_PATH
