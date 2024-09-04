@@ -4,9 +4,9 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias cdg='cd $(git rev-parse --show-toplevel)'
 
-alias v='nvim -c "OilFloat"'
+alias v='nvim -c Oil'
 # env variables located in .zshenv
-alias vc='nvim -c "cd $TMTL_CONFIG_PATH" -c "OilFloat"'
+alias vc='nvim -c "cd $TMTL_CONFIG_PATH" -c Oil'
 alias vl='nvim -c "normal '\''0"' # open last file edited
 
 # git aliases

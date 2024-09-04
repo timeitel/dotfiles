@@ -74,7 +74,7 @@ local M = {
 
       lspconfig.tailwindcss.setup({
         capabilities = capabilities,
-        filetypes = { "html", "javascript", "typescript", "react", "templ" },
+        filetypes = { "html", "javascript", "typescript", "typescriptreact", "react", "templ" },
       })
 
       lspconfig.gopls.setup({

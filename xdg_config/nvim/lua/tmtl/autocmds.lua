@@ -31,14 +31,6 @@ vim.api.nvim_create_autocmd("VimResized", {
   group = group,
 })
 
--- TODO: fix, formatters will replace text which removes mark
-vim.api.nvim_create_autocmd("InsertEnter", {
-  pattern = { "*.lua", "*.rs", "*.go", "*.ts", "*.tsx", "*.js", "*.json", "*.toml", "*.yaml", "*.yml" },
-  command = "normal! mI",
-  desc = "Update global last insert mark",
-  group = group,
-})
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "help", "dap-float", "dap-repl", "notify", "qf", "toggleterm" },
   callback = function()

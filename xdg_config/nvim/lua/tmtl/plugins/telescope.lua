@@ -7,7 +7,6 @@ local function filename_first(_, path)
   return string.format("%s\t\t%s", tail, parent)
 end
 
--- TODO: file_browser copy name of file, <leader>yf
 local M = {
   {
     "nvim-telescope/telescope.nvim",
@@ -18,7 +17,6 @@ local M = {
       "nvim-telescope/telescope-ui-select.nvim",
     },
     config = function()
-      -- TODO: current selection when browsing current folder or creating filetelesc
       local telescope = require("telescope")
       local action_state = require("telescope.actions.state")
       local actions = require("telescope.actions")

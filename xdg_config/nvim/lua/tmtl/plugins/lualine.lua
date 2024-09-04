@@ -27,7 +27,7 @@ local M = {
         end
         return str
       end,
-      color = BG_NONE
+      color = BG_NONE,
     }
 
     local function winbar_title(str)
@@ -38,14 +38,16 @@ local M = {
         return "Tasks"
       end
 
-      if (string.find(str, ".git/") ~= nil or string.find(str, "/worktrees/") ~= nil)
-          and string.find(str, ":3:/") ~= nil
+      if
+        (string.find(str, ".git/") ~= nil or string.find(str, "/worktrees/") ~= nil)
+        and string.find(str, ":3:/") ~= nil
       then
         return "THEIRS"
       end
 
-      if (string.find(str, ".git/") ~= nil or string.find(str, "/worktrees/") ~= nil)
-          and string.find(str, ":2:/") ~= nil
+      if
+        (string.find(str, ".git/") ~= nil or string.find(str, "/worktrees/") ~= nil)
+        and string.find(str, ":2:/") ~= nil
       then
         return "OURS"
       end
@@ -72,7 +74,7 @@ local M = {
       icon_only = true,
       colored = false,
       padding = { right = 0, left = 2 },
-      color = BG_NONE
+      color = BG_NONE,
     }
 
     local branch = {
@@ -83,7 +85,7 @@ local M = {
     local diagnostic_stats = {
       "diagnostics",
       colored = false,
-      color = BG_NONE
+      color = BG_NONE,
     }
 
     local lsp = {
@@ -97,10 +99,10 @@ local M = {
         for _, client in ipairs(clients) do
           local filetypes = client.config.filetypes
           if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-            return "  " .. client.name
+            return " " .. client.name
           end
         end
-        return "  " .. msg
+        return " " .. msg
       end,
       separator = { left = "", right = "" },
     }
@@ -134,7 +136,7 @@ local M = {
 
     local worktree = {
       function()
-        return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+        return "  " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
       end,
       separator = { left = "", right = "" },
     }
@@ -192,12 +194,14 @@ local M = {
       },
       inactive_winbar = {
         lualine_x = {},
-        lualine_z = { {
-          "diagnostics",
-          colored = false,
-          color = { bg = "NONE", fg = theme_colors.syn.comment }
+        lualine_z = {
+          {
+            "diagnostics",
+            colored = false,
+            color = { bg = "NONE", fg = theme_colors.syn.comment },
+          },
+          winbar_inactive_filename,
         },
-          winbar_inactive_filename },
       },
       extensions = {},
     })

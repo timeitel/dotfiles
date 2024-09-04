@@ -1,5 +1,3 @@
--- TODO: extend harpoon to save ts file browser view / folder
-
 local utils = require("tmtl.utils")
 local map = utils.map
 local notify = require("notify")

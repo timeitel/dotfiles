@@ -59,12 +59,6 @@ local M = {
         prompt_save_on_select_new_entry = false,
       })
 
-      vim.api.nvim_create_user_command("OilFloat", function()
-        vim.cmd("Oil")
-        vim.defer_fn(function()
-          require("oil.actions").preview.callback()
-        end, 100)
-      end, {})
       vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open directory" })
       vim.keymap.set("n", "<leader>-f", function()
         vim.cmd("Oil --float")
