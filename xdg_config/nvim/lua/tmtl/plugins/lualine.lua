@@ -28,6 +28,7 @@ local M = {
         return str
       end,
       color = BG_NONE,
+      padding = { left = 0 },
     }
 
     local function winbar_title(str)
@@ -73,7 +74,7 @@ local M = {
       "filetype",
       icon_only = true,
       colored = false,
-      padding = { right = 0, left = 2 },
+      padding = { left = 2 },
       color = BG_NONE,
     }
 
@@ -136,9 +137,8 @@ local M = {
 
     local worktree = {
       function()
-        return "  " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+        return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
       end,
-      separator = { left = "", right = "" },
     }
 
     local task_runner = {
