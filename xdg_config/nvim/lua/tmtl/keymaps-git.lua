@@ -11,23 +11,18 @@ map("n", "<leader><leader>gs", function()
   ts.git_stash()
 end, { desc = "[G]it [S]tash" })
 
-map("n", "<leader>gd", ":DiffviewOpen<cr>", { desc = "[G]it [D]iff" })
-
-map("n", "<leader><leader>gd", function()
-  vim.cmd([[DiffviewOpen origin/dev...HEAD]])
-  notify('Opening diff: "origin/dev...HEAD"')
-end, { desc = "[G]it [D]iff - HEAD against origin/dev" })
+map("n", "<leader>gd", "<CMD>DiffviewOpen<CR>", { desc = "[G]it [D]iff" })
 
 map(
   "n",
-  "<leader><leader><leader>gd",
-  ":DiffviewOpen origin/{target}...HEAD",
-  { desc = "[G]it [D]iff - Choose target comparison against HEAD" }
+  "<leader><leader>gd",
+  "<CMD>DiffviewOpen origin/dev...HEAD<CR>",
+  { desc = "[G]it [D]iff - HEAD against origin/dev" }
 )
 
-map("n", "<leader>gh", ":DiffviewFileHistory<cr>", { desc = "[G]it [H]istory" })
+map("n", "<leader>gh", "<CMD>DiffviewFileHistory<CR>", { desc = "[G]it [H]istory" })
 
-map("n", "<leader>gfh", ":DiffviewFileHistory %<cr>", { desc = "[G]it [F]ile [H]istory" })
+map("n", "<leader>gfh", "<CMD>DiffviewFileHistory %<CR>", { desc = "[G]it [F]ile [H]istory" })
 
 map("n", "<leader>gfx", function()
   vim.cmd([[Gitsigns reset_buffer]])
@@ -70,7 +65,7 @@ map("n", "<C-j>", ":Gitsigns next_hunk<cr>", { desc = "Git [H]unk - next" })
 
 map("n", "<C-k>", ":Gitsigns prev_hunk<cr>", { desc = "Git [H]unk - previous" })
 
-map({ "n", "v" }, "<leader>hp", ":Gitsigns preview_hunk<cr>", { desc = "Git [H]unk [P]review" })
+map({ "n", "v" }, "<leader>hp", "<CMD>Gitsigns preview_hunk<CR>", { desc = "Git [H]unk [P]review" })
 
 map({ "n", "v" }, "<leader>hs", function()
   vim.cmd([[Gitsigns stage_hunk]])
