@@ -44,6 +44,7 @@ local M = {
           ["gs"] = "actions.change_sort",
           ["gx"] = "actions.open_external",
           ["gh"] = "actions.toggle_hidden",
+          ["gd"] = "actions.cd",
         },
         use_default_keymaps = false,
         view_options = {
