@@ -29,7 +29,7 @@ bindkey '^K' up-history
 bindkey '^J' down-history
 bindkey '^r' history-incremental-search-backward
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 PATH="$HOME/go/bin:$PATH"
 export PATH
