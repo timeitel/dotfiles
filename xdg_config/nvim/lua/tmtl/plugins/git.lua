@@ -3,7 +3,7 @@ local M = {
     "FabijanZulj/blame.nvim",
     config = function()
       require("blame").setup()
-    end
+    end,
   },
   {
     "ThePrimeagen/git-worktree.nvim",
@@ -20,54 +20,48 @@ local M = {
   {
     "sindrets/diffview.nvim",
     config = function()
-      local neogit = require("neogit")
       local actions = require("diffview.actions")
-      local spread_table = require("tmtl.utils").spread_table
       local request_confirm = require("tmtl.utils").request_confirm
+      local function request_restore_entry()
+        request_confirm({
+          prompt = "discard changes",
+          on_confirm = function()
+            actions.restore_entry()
+            vim.cmd([[checktime]])
+          end,
+        })
+      end
+      local spread_table = require("tmtl.utils").spread_table
 
       local common_maps = {
         ["L"] = false,
-        ["q"] = function() vim.cmd("DiffviewClose") end,
+        ["l"] = false,
+        ["h"] = false,
+        ["q"] = function()
+          vim.cmd("DiffviewClose")
+        end,
         ["[f"] = actions.focus_files,
-        ["]f"] = actions.focus_files,
         ["gf"] = actions.goto_file_edit,
+        ["gl"] = actions.listing_style,
         ["<C-f>"] = actions.toggle_files,
-        ["<C-l>"] = actions.listing_style,
         ["<C-e>"] = actions.scroll_view(1),
         ["<C-y>"] = actions.scroll_view(-1),
         ["<C-d>"] = actions.scroll_view(10),
         ["<C-u>"] = actions.scroll_view(-10),
-        ["<leader>sf"] = actions.toggle_stage_entry,
-        ["<leader>cs"] = function()
-          vim.cmd([[Neogit commit]])
-          vim.fn.feedkeys("c")
-        end,
-        ["<leader>gs"] = function()
-          vim.cmd([[DiffviewClose]])
-          neogit.open({})
-        end,
       }
 
       local panel_maps = {
-        ["O"] = actions.goto_file_edit,
-        ["o"] = actions.focus_entry,
-        ["<C-x>"] = function()
-          request_confirm({
-            prompt = "discard changes",
-            on_confirm = function()
-              actions.restore_entry()
-              vim.cmd([[checktime]])
-            end,
-          })
-        end,
+        ["<C-f>"] = actions.toggle_files,
+        ["gf"] = actions.goto_file_edit,
+        ["m"] = actions.focus_entry,
+        ["<C-x>"] = request_restore_entry,
         ["C"] = function()
-          require('neogit').open({ "commit" })
+          require("neogit").open({ "commit" })
         end,
       }
 
       local file_panel_maps = spread_table({}, common_maps, panel_maps)
       file_panel_maps["s"] = actions.toggle_stage_entry
-      file_panel_maps["<C-f>"] = actions.toggle_files
 
       local merge_tool_maps = spread_table({}, common_maps, panel_maps)
       merge_tool_maps["<C-j>"] = actions.next_conflict
@@ -123,7 +117,7 @@ local M = {
             folded = false,
             hidden = false,
           },
-        }
+        },
       })
     end,
     dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "nvim-telescope/telescope.nvim" },
