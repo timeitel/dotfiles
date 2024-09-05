@@ -79,11 +79,6 @@ map("n", "<leader>fu", function()
   require("telescope").extensions.undo.undo()
 end, { desc = "[F]ind [U]ndo history" })
 
--- TODO: fix
--- map("n", "<leader>fgw", function()
---   require('telescope').extensions.git_worktree.git_worktrees()
--- end, { desc = "[F]ind [W]orktrees" })
-
 map("n", "<leader>fc", function()
   ts.commands({ initial_mode = "insert" })
 end, { desc = "[F]ind [C]ommands" })

@@ -89,7 +89,6 @@ map("n", "<leader>hu", function()
 end, { desc = "Git [H]unk [U]ndo - last staged hunk" })
 
 map("n", "<leader>gwc", function()
-  vim.fn.feedkeys(":lua require('git-worktree').create_worktree('../{folder}', '{branch}', 'origin')")
-  vim.fn.feedkeys(vim.api.nvim_eval('"\\<C-f>"'))
-  vim.fn.feedkeys("F/a")
+  -- TODO: convert to cli command
+  -- create_worktree('../{folder}', '{branch}', 'origin')")
 end, { desc = "[G]it [W]orktree [C]reate" })

@@ -142,7 +142,7 @@ local M = {
       end,
     }
 
-    local worktree = {
+    local cwd = {
       function()
         return " " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
       end,
@@ -187,7 +187,7 @@ local M = {
         },
       },
       sections = {
-        lualine_a = { worktree, branch },
+        lualine_a = { cwd, branch },
         lualine_b = { padding, filetype, global_line_filename },
         lualine_c = {},
         lualine_x = { search_count, macro_recording, task_runner },
