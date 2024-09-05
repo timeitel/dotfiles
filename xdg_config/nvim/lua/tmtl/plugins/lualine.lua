@@ -18,7 +18,6 @@ local M = {
 
     local global_line_filename = {
       "filename",
-      -- TODO: either show cursor diff3rent in insert mode in terminal or add mode to lualine
       fmt = function(str)
         if string.find(str, "zsh;") ~= nil then
           local mode = vim.fn.mode()
@@ -74,13 +73,21 @@ local M = {
       "filetype",
       icon_only = true,
       colored = false,
-      padding = { left = 2 },
+      padding = { left = 0, right = 0 },
       color = BG_NONE,
     }
 
     local branch = {
       "branch",
       separator = { left = "", right = "" },
+    }
+
+    local padding = {
+      function()
+        return " "
+      end,
+      padding = { left = 1 },
+      color = BG_NONE,
     }
 
     local diagnostic_stats = {
@@ -181,7 +188,7 @@ local M = {
       },
       sections = {
         lualine_a = { worktree, branch },
-        lualine_b = { filetype, global_line_filename },
+        lualine_b = { padding, filetype, global_line_filename },
         lualine_c = {},
         lualine_x = { search_count, macro_recording, task_runner },
         lualine_y = { diagnostic_stats },
