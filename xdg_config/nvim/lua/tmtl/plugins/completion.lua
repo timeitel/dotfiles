@@ -57,6 +57,17 @@ local M = {
           end,
         }),
 
+        ["<C-M-l>"] = cmp.mapping({
+          c = function()
+            if cmp.visible() then
+              cmp.confirm({ select = true })
+              vim.api.nvim_input("<cr>")
+            else
+              vim.api.nvim_input("<cr>")
+            end
+          end,
+        }),
+
         ["<C-n>"] = cmp.mapping(function(fallback)
           fallback()
         end, { "i" }),
