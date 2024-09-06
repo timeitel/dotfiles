@@ -1,3 +1,4 @@
+" sym link to root of obsidian vault
 imap kj <Esc>
 
 nmap j gj
