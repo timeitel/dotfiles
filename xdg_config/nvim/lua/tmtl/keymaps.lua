@@ -151,9 +151,7 @@ map("n", "<leader>yf", function()
 end, { desc = "Copy filename to clipboard" })
 
 map("v", "<leader>y", '"+y', { desc = "Copy to clipboard" })
-
 map("v", "<leader>p", '"+p', { desc = "Paste from clipboard" })
-
 map("v", "<leader>d", '"_d', { desc = "Delete contents to black hole register" })
 
 map("i", "<c-t>", "TODO: <esc>gccA", { desc = "Insert - [T]ODO comment", remap = true })
@@ -232,7 +230,6 @@ map("n", "<leader>sc", function()
 end, { desc = "Toggle [S]earch [C]ount and hlsearch" })
 
 map("n", "+", "<cmd>vertical resize +2<cr>", { desc = "Window resize - increase horizontal" })
-
 map("n", "_", "<cmd>vertical resize -2<cr>", { desc = "Window resize - increase horizontal" })
 
 map("n", "gof", function()
@@ -241,18 +238,12 @@ map("n", "gof", function()
   vim.fn.feedkeys("gf")
 end, { desc = "[G]o to [F]ile in vertical split" })
 
-map("n", "<leader>hl", function()
-  local hl = vim.treesitter.get_captures_at_cursor(0)
-  vim.print(hl)
-end, { desc = "[H]igh[L]ight group under curor" })
-
--- add word under cursor to search without moving
 map("n", "<leader>*", function()
   local fn = vim.fn
   fn.setreg("/", [[\V\<]] .. fn.escape(fn.expand("<cword>"), [[/\]]) .. [[\>]])
   fn.histadd("/", fn.getreg("/"))
   vim.o.hlsearch = true
-end, { desc = "[H]igh[L]ight group under curor" })
+end, { desc = "Add word under cursor to search highlighting" })
 
 map("n", "<C-a>", function()
   local word = vim.fn.expand("<cword>")
