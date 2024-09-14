@@ -68,6 +68,9 @@ local M = {
       lspconfig.html.setup({
         on_attach = lsp_maps.attach,
         capabilities = html_caps,
+        init_options = {
+          provideFormatter = false,
+        },
       })
 
       lspconfig.templ.setup({ on_attach = lsp_maps.attach })
