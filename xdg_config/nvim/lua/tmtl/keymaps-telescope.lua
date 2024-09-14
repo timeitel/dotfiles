@@ -10,7 +10,6 @@ map("n", "<C-p>", function()
     initial_mode = "insert",
     cwd_only = true,
   })
-  -- ts.find_files({ hidden = true })
 end, { desc = "Find - files" })
 
 map("n", "<leader>fg", function()
@@ -50,14 +49,6 @@ end, { desc = "[F]ind [K]eymaps" })
 map("n", "<leader>fr", function()
   ts.resume({ initial_mode = "normal" })
 end, { desc = "[F]ind [R]esume: last picker" })
-
-map("n", "<leader><leader>fr", function()
-  ts.registers()
-end, { desc = "[F]ind [R]egisters" })
-
-map("n", "<leader>fm", function()
-  vim.cmd([[Telescope harpoon marks]])
-end, { desc = "[F]ind [M]arks: harpoon" })
 
 map("n", "<leader>fn", function()
   notify_ext.notify(themes.get_dropdown({}))
