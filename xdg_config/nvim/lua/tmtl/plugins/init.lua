@@ -50,7 +50,11 @@ local M = {
         view_options = {
           show_hidden = false,
           is_hidden_file = function(name, _)
-            return vim.endswith(name, "_templ.go") or vim.endswith(name, "_templ.txt") or vim.endswith(name, ".git")
+            return vim.endswith(name, "_templ.go")
+              or vim.endswith(name, "_templ.txt")
+              or vim.endswith(name, ".git")
+              or vim.endswith(name, "tmp")
+              or vim.endswith(name, "node_modules")
           end,
           is_always_hidden = function(name)
             return vim.startswith(name, ".DS_Store")
