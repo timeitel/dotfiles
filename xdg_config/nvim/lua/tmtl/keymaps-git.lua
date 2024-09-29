@@ -62,7 +62,6 @@ end, { desc = "[G]it Reset: discard ALL working changes" })
 map("n", "<leader><leader>gb", "<CMD>BlameToggle virtual<CR>", { desc = "[G]it [B]lame" })
 
 map("n", "<C-j>", "<CMD>Gitsigns next_hunk<CR>", { desc = "Git [H]unk - next" })
-
 map("n", "<C-k>", "<CMD>Gitsigns prev_hunk<CR>", { desc = "Git [H]unk - previous" })
 
 map({ "n", "v" }, "<leader>hp", "<CMD>Gitsigns preview_hunk<CR>", { desc = "Git [H]unk [P]review" })
