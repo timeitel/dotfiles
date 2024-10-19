@@ -77,11 +77,6 @@ local M = {
       color = BG_NONE,
     }
 
-    local branch = {
-      "branch",
-      separator = { left = "", right = "" },
-    }
-
     local padding = {
       function()
         return " "
@@ -167,6 +162,14 @@ local M = {
       separator = { left = "", right = "" },
     }
 
+    local git_prompt_string = {
+      "git_prompt_string",
+      separator = { left = "", right = "" },
+      prompt_config = {
+        color_disabled = true,
+      },
+    }
+
     lualine.setup({
       options = {
         theme = custom_theme,
@@ -187,7 +190,7 @@ local M = {
         },
       },
       sections = {
-        lualine_a = { cwd, branch, "git_prompt_string" },
+        lualine_a = { cwd, git_prompt_string },
         lualine_b = { padding, filetype, global_line_filename },
         lualine_c = {},
         lualine_x = { search_count, macro_recording, task_runner },
