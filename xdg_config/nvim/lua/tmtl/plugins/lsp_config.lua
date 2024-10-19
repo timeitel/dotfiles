@@ -93,7 +93,7 @@ local M = {
         },
       })
 
-      lspconfig.tsserver.setup({
+      lspconfig.ts_ls.setup({
         on_attach = function(client, bufnr)
           lsp_maps.attach(client, bufnr)
           client.server_capabilities.documentFormattingProvider = false -- done by prettierd
