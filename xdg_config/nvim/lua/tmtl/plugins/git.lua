@@ -1,5 +1,10 @@
 local M = {
   {
+    "mikesmithgh/git-prompt-string-lualine.nvim",
+    enabled = true,
+    lazy = true,
+  },
+  {
     "isakbm/gitgraph.nvim",
     opts = {
       symbols = {

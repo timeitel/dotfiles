@@ -187,7 +187,7 @@ local M = {
         },
       },
       sections = {
-        lualine_a = { cwd, branch },
+        lualine_a = { cwd, branch, "git_prompt_string" },
         lualine_b = { padding, filetype, global_line_filename },
         lualine_c = {},
         lualine_x = { search_count, macro_recording, task_runner },

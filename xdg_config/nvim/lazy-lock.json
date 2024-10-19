@@ -12,6 +12,7 @@
   "colorful-winsep.nvim": { "branch": "main", "commit": "4ac6a8cab5866ec3de3f5e3bc202e0c682d4d806" },
   "conform.nvim": { "branch": "master", "commit": "f5bd8419f8a29451e20bdb1061a54fe13d5c8de3" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
+  "git-prompt-string-lualine.nvim": { "branch": "main", "commit": "5426ce15462abe4faf5cd76db7476b2686120fe9" },
   "gitgraph.nvim": { "branch": "main", "commit": "01e466b32c346a165135dd47d42f1244eca06572" },
   "gitsigns.nvim": { "branch": "main", "commit": "863903631e676b33e8be2acb17512fdc1b80b4fb" },
   "harpoon": { "branch": "harpoon2", "commit": "e76cb03c420bb74a5900a5b3e1dde776156af45f" },
