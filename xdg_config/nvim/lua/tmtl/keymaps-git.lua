@@ -37,7 +37,9 @@ map("n", "<leader>gu", function()
   request_confirm({
     prompt = "undo last commit",
     on_confirm = function()
-      require("overseer").run_template({ name = "git:undo_last_commit" })
+      require("overseer").run_template({ name = "git:undo_last_commit" }, function()
+        vim.cmd([[doautocmd user FugitiveChanged]])
+      end)
     end,
   })
 end, { desc = "[G]it [U]ndo - last commit into working directory" })

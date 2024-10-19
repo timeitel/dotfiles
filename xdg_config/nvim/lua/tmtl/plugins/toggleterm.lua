@@ -28,6 +28,7 @@ local M = {
       notify("Pushing commits: " .. commits)
       -- TODO: sometimes not submiting - command left in terminal without <CR>
       vim.cmd([[ 10TermExec cmd="git push" name="Git Push" open=0 ]])
+      vim.cmd([[doautocmd user FugitiveChanged]])
     end, { desc = "[G]it [P]ush" })
   end,
 }
