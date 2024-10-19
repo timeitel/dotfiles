@@ -59,6 +59,7 @@ map("n", "<leader>gx", function()
   })
 end, { desc = "[G]it Reset: discard ALL working changes" })
 
+-- TODO: test
 map("n", "<leader><leader>gb", "<CMD>BlameToggle virtual<CR>", { desc = "[G]it [B]lame" })
 
 map("n", "<C-j>", "<CMD>Gitsigns next_hunk<CR>", { desc = "Git [H]unk - next" })
