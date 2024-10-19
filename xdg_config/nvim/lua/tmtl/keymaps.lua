@@ -179,7 +179,9 @@ map("n", "<leader>bn", "<cmd>enew<cr>", { desc = "[B]uffer [N]ew" })
 map("n", "<leader>bo", "<cmd>%bd|e#|bd#<cr>", { desc = "[B]uffer delete [O]thers" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "[B]uffer - next" })
 map("n", "[b", "<cmd>bprevious<cr>", { desc = "[B]uffer - previous" })
-map({ "n", "i" }, "<C-s>", "<cmd>update<cr>", { desc = "[B]uffer - save" })
+map({ "n", "i" }, "<C-s>", function()
+  vim.cmd([[silent w]])
+end, { desc = "[B]uffer - save" })
 
 -- Quickfix list
 local function goto_qf_item(opts)
