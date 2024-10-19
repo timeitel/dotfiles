@@ -69,7 +69,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- hack to trigger git-prompt-string refresh
 vim.api.nvim_create_autocmd("User", {
-  pattern = "NeogitCommitComplete",
+  pattern = { "NeogitCommitComplete", "NeogitPushComplete", "NeogitPullComplete" },
   callback = function()
     vim.cmd([[doautocmd user FugitiveChanged]])
   end,
