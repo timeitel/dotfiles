@@ -118,10 +118,10 @@ M.notify_command = function(command, cb)
       notify(output)
     end
     if #error_output > 0 then
-      notify(error_output, "error")
+      notify(error_output, vim.log.levels.INFO)
     end
     if #output == 0 and #error_output == 0 then
-      notify("No output of command, exit code: " .. code, "warn")
+      notify("No output of command, exit code: " .. code, vim.log.levels.WARN)
     end
 
     if cb and type(cb) == "function" then
