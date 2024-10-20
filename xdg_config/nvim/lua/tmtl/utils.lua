@@ -93,7 +93,10 @@ M.change_case = function()
   end
 end
 
-M.notify_command = function(command)
+-- @param command function A shell command to be called and output passed to notify.
+-- @param cb function|nil A callback function to be called after command.
+-- @return nil
+M.notify_command = function(command, cb)
   local stdin = vim.loop.new_pipe()
   local stdout = vim.loop.new_pipe()
   local stderr = vim.loop.new_pipe()
@@ -102,6 +105,7 @@ M.notify_command = function(command)
   local notify = function(msg, level)
     vim.notify(msg, level, { title = table.concat(command, " ") })
   end
+
   vim.loop.spawn(command[1], {
     stdio = { stdin, stdout, stderr },
     detached = true,
@@ -119,7 +123,12 @@ M.notify_command = function(command)
     if #output == 0 and #error_output == 0 then
       notify("No output of command, exit code: " .. code, "warn")
     end
+
+    if cb and type(cb) == "function" then
+      cb()
+    end
   end)
+
   stdout:read_start(function(err, data)
     if err then
       error_output = error_output .. (err or data)
