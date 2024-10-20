@@ -34,7 +34,7 @@ map("n", "<leader>gb", function()
 end, { desc = "[G]it [B]ranches" })
 
 map("n", "<leader>gp", function()
-  require("overseer").run_template({ name = "git:push" }, function()
+  require("tmtl.utils").notify_command({ "git", "push" }, function()
     vim.cmd([[doautocmd user FugitiveChanged]])
   end)
 end, { desc = "[G]it [P]ush" })
