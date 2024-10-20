@@ -17,8 +17,9 @@ local M = {
     end, { desc = "[R]un [W]atcher" })
 
     map("n", "<leader>gp", function()
-      require("tmtl.utils").notify_command({ "git", "push" })
-      vim.cmd([[doautocmd user FugitiveChanged]])
+      require("tmtl.utils").notify_command({ "git", "push" }, function()
+        vim.cmd([[doautocmd user FugitiveChanged]])
+      end)
     end, { desc = "[G]it [P]ush" })
   end,
 }
