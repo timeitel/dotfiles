@@ -125,7 +125,9 @@ M.notify_command = function(command, cb)
     end
 
     if cb and type(cb) == "function" then
-      cb()
+      vim.schedule(function()
+        cb()
+      end)
     end
   end)
 
