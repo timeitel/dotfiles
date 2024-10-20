@@ -78,7 +78,8 @@ local M = {
       local panel_maps = {
         ["<C-f>"] = actions.toggle_files,
         ["gf"] = actions.goto_file_edit,
-        ["m"] = actions.focus_entry,
+        ["M"] = actions.focus_entry,
+        ["m"] = actions.select_entry,
         ["<C-x>"] = request_restore_entry,
         ["C"] = function()
           require("neogit").open({ "commit" })
