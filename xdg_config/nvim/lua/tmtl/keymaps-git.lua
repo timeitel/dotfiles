@@ -33,6 +33,12 @@ map("n", "<leader>gb", function()
   ts.git_branches()
 end, { desc = "[G]it [B]ranches" })
 
+map("n", "<leader>gp", function()
+  require("overseer").run_template({ name = "git:push" }, function()
+    vim.cmd([[doautocmd user FugitiveChanged]])
+  end)
+end, { desc = "[G]it [P]ush" })
+
 map("n", "<leader>gu", function()
   request_confirm({
     prompt = "undo last commit",
