@@ -134,7 +134,7 @@ local M = {
           show_staged_diff = false,
         },
         disable_hint = true,
-        graph_style = "unicode",
+        graph_style = "kitty",
         integrations = {
           diffview = true,
         },
