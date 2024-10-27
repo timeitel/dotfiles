@@ -1,11 +1,6 @@
 local map = require("tmtl.utils").map
 local request_confirm = require("tmtl.utils").request_confirm
-local ts = require("telescope.builtin")
 local notify = require("notify")
-
-map("n", "<leader>gb", function()
-  ts.git_branches()
-end, { desc = "[G]it [B]ranches" })
 
 map("n", "<leader>gp", function()
   require("tmtl.utils").notify_command({ "git", "push" }, function()

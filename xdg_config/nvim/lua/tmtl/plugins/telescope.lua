@@ -18,6 +18,11 @@ local M = {
     },
     keys = {
       { "<leader><leader>gs", "<CMD>Telescope git_stash<CR>", desc = "[G]it [S]tash" },
+      {
+        "<leader>gb",
+        "<CMD>Telescope git_branches<CR>",
+        desc = "[G]it [B]ranches",
+      },
     },
     config = function()
       local telescope = require("telescope")
