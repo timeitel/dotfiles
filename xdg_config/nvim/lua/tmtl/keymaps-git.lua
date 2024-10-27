@@ -36,13 +36,6 @@ map("n", "<leader>gx", function()
   })
 end, { desc = "[G]it Reset: discard ALL working changes" })
 
-map({ "n", "v" }, "<leader>hp", "<CMD>Gitsigns preview_hunk<CR>", { desc = "Git [H]unk [P]review" })
-
-map({ "n", "v" }, "<leader>hs", function()
-  vim.cmd([[Gitsigns stage_hunk]])
-  notify("Staged hunk")
-end, { desc = "Git [H]unk [S]tage" })
-
 map("n", "<leader>hx", function()
   vim.cmd([[Gitsigns reset_hunk]])
   notify("Discarded hunk", vim.log.levels.WARN)
