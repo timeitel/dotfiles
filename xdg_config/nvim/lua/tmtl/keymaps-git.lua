@@ -21,13 +21,7 @@ map(
 )
 
 map("n", "<leader>gl", function()
-  vim.api.nvim_create_autocmd("WinEnter", {
-    once = true,
-    callback = function()
-      vim.fn.feedkeys("l")
-    end,
-  })
-
+  require("tmtl.utils").winenter_once("l")
   vim.cmd([[Neogit log]])
 end, { desc = "[G]it [L]og" })
 
