@@ -16,6 +16,8 @@ local M = {
   config = function()
     local overseer = require("overseer")
     local contains = require("tmtl.utils").contains
+    local request_confirm = require("tmtl.utils").request_confirm
+    local notify = require("notify")
 
     local function on_complete_subscribe(task)
       if task == nil then
@@ -86,6 +88,34 @@ local M = {
 
       vim.fn.feedkeys("ideploykj")
     end, { desc = "Task [R]unner - [D]eploy tasks" })
+
+    map("n", "<leader>gu", function()
+      request_confirm({
+        prompt = "undo last commit",
+        on_confirm = function()
+          require("overseer").run_template({ name = "git:undo_last_commit" }, function()
+            vim.cmd([[doautocmd user FugitiveChanged]])
+          end)
+        end,
+      })
+    end, { desc = "[G]it [U]ndo - last commit into working directory" })
+
+    map("n", "<leader>gx", function()
+      request_confirm({
+        prompt = "discard ALL working changes",
+        on_confirm = function()
+          require("overseer").run_template({ name = "git:discard_all" }, function(_, err)
+            if err == nil then
+              vim.defer_fn(function()
+                vim.cmd([[checktime]])
+              end, 100)
+            else
+              notify("Error discarding all changes", vim.log.levels.ERROR)
+            end
+          end)
+        end,
+      })
+    end, { desc = "[G]it Reset: discard ALL working changes" })
 
     overseer.setup({
       task_list = {
