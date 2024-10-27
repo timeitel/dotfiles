@@ -3,10 +3,6 @@ local request_confirm = require("tmtl.utils").request_confirm
 local ts = require("telescope.builtin")
 local notify = require("notify")
 
-map("n", "<leader>gh", "<CMD>DiffviewFileHistory<CR>", { desc = "[G]it [H]istory" })
-
-map("n", "<leader>gfh", "<CMD>DiffviewFileHistory %<CR>", { desc = "[G]it [F]ile [H]istory" })
-
 map("n", "<leader>gfx", function()
   vim.cmd([[Gitsigns reset_buffer]])
   notify("Discarded changes of current file", vim.log.levels.WARN)

@@ -9,6 +9,8 @@ local M = {
         "<CMD>DiffviewOpen HEAD..origin/main<CR>",
         desc = "[G]it [D]iff - HEAD against origin/main",
       },
+      { "<leader>gh", "<CMD>DiffviewFileHistory<CR>", desc = "[G]it [H]istory" },
+      { "<leader>gfh", "<CMD>DiffviewFileHistory %<CR>", desc = "[G]it [F]ile [H]istory" },
     },
     config = function()
       local actions = require("diffview.actions")
