@@ -24,6 +24,71 @@ local M = {
         end,
       })
     end,
+    keys = {
+      {
+        "<leader>a",
+        function()
+          require("harpoon"):list():add()
+        end,
+        desc = "[E]dit List - [A]dd",
+      },
+      {
+        "<leader>e",
+        function()
+          require("harpoon").ui:toggle_quick_menu(require("harpoon"):list(), { border = "rounded" })
+        end,
+        desc = "[E]dit [L]ist - toggle",
+      },
+      {
+        "]f",
+        function()
+          require("harpoon"):list():next()
+        end,
+        desc = "[E]dit List - next [F]ile",
+      },
+      {
+        "[f",
+        function()
+          require("harpoon"):list():prev()
+        end,
+        desc = "[E]dit List - previous [F]ile",
+      },
+      {
+        "<A-h>",
+        function()
+          require("harpoon"):list():select(1)
+        end,
+        desc = "[E]dit List - file 1",
+      },
+      {
+        "<A-j>",
+        function()
+          require("harpoon"):list():select(2)
+        end,
+        desc = "[E]dit List - file 2",
+      },
+      {
+        "<A-k>",
+        function()
+          require("harpoon"):list():select(3)
+        end,
+        desc = "[E]dit List - file 3",
+      },
+      {
+        "<A-l>",
+        function()
+          require("harpoon"):list():select(4)
+        end,
+        desc = "[E]dit List - file 4",
+      },
+      {
+        "<A-;>",
+        function()
+          require("harpoon"):list():select(5)
+        end,
+        desc = "[E]dit List - file 5",
+      },
+    },
   },
   "inkarkat/vim-ReplaceWithRegister",
   {
