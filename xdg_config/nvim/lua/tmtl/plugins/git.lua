@@ -4,15 +4,6 @@ local M = {
     lazy = true,
   },
   {
-    "FabijanZulj/blame.nvim",
-    config = function()
-      require("blame").setup()
-    end,
-    keys = {
-      { "<leader><leader>gb", "<CMD>BlameToggle virtual<CR>", desc = "[G]it [B]lame" },
-    },
-  },
-  {
     "sindrets/diffview.nvim",
     config = function()
       local actions = require("diffview.actions")
@@ -92,6 +83,10 @@ local M = {
         row = 0,
         col = 1,
       },
+    },
+    lazy = false,
+    keys = {
+      { "<leader><leader>gb", "<CMD>Gitsigns blame<CR>", desc = "[G]it [B]lame" },
     },
   },
   {
