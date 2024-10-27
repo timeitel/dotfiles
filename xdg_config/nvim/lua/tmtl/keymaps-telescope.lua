@@ -3,23 +3,6 @@ local fb = require("telescope").extensions.file_browser
 local themes = require("telescope.themes")
 local notify_ext = require("telescope").extensions.notify
 local map = require("tmtl.utils").map
-local get_visual_selection = require("tmtl.utils").get_visual_selection
-
-map("n", "<C-p>", function()
-  require("telescope").extensions.smart_open.smart_open({
-    initial_mode = "insert",
-    cwd_only = true,
-  })
-end, { desc = "Find - files" })
-
-map("n", "<leader>fg", function()
-  ts.live_grep({ initial_mode = "insert" })
-end, { desc = "[F]ind - live [G]rep" })
-
-map("v", "<leader>fg", function()
-  local text = get_visual_selection()
-  ts.grep_string({ search = text })
-end, { desc = "[F]ind - live [G]rep selection" })
 
 map("n", "<leader>fa", function()
   ts.find_files({ no_ignore = true, hidden = true })

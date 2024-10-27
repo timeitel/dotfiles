@@ -23,6 +23,32 @@ local M = {
         "<CMD>Telescope git_branches<CR>",
         desc = "[G]it [B]ranches",
       },
+      {
+        "<C-p>",
+        function()
+          require("telescope").extensions.smart_open.smart_open({
+            initial_mode = "insert",
+            cwd_only = true,
+          })
+        end,
+        desc = "Find - files",
+      },
+      {
+        "<leader>fg",
+        function()
+          require("telescope.builtin").live_grep({ initial_mode = "insert" })
+        end,
+        desc = "[F]ind - live [G]rep",
+      },
+      {
+        "<leader>fg",
+        function()
+          local text = require("tmtl.utils").get_visual_selection()
+          require("telescope.builtin").grep_string({ search = text })
+        end,
+        desc = "[F]ind - live [G]rep selection",
+        mode = "v",
+      },
     },
     config = function()
       local telescope = require("telescope")
