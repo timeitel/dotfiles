@@ -30,9 +30,7 @@ local M = {
         ["L"] = false,
         ["l"] = false,
         ["h"] = false,
-        ["q"] = function()
-          vim.cmd("DiffviewClose")
-        end,
+        ["q"] = "<CMD>DiffviewClose<CR>",
         ["[f"] = actions.focus_files,
         ["gf"] = actions.goto_file_edit,
         ["gl"] = actions.listing_style,
@@ -50,6 +48,11 @@ local M = {
         ["m"] = actions.select_entry,
         ["<C-x>"] = request_restore_entry,
         ["C"] = function()
+          require("tmtl.utils").winenter_once(function()
+            vim.fn.feedkeys("c")
+            require("tmtl.utils").winenter_once(vim.keycode("<C-w>J"))
+          end)
+
           require("neogit").open({ "commit" })
         end,
       }
@@ -58,8 +61,8 @@ local M = {
       file_panel_maps["s"] = actions.toggle_stage_entry
 
       local merge_tool_maps = spread_table({}, common_maps, panel_maps)
-      merge_tool_maps["<C-j>"] = actions.next_conflict
-      merge_tool_maps["<C-k>"] = actions.prev_conflict
+      merge_tool_maps["]c"] = actions.next_conflict
+      merge_tool_maps["[c"] = actions.prev_conflict
 
       require("diffview").setup({
         view = {

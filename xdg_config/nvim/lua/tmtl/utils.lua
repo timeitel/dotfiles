@@ -147,14 +147,16 @@ M.notify_command = function(command, cb)
   end)
 end
 
----Create one time autocmd for next WinEnter
----@param keys string Keys to feed on WinEnter
-M.winenter_once = function(keys)
+M.winenter_once = function(cb)
   vim.api.nvim_create_autocmd("WinEnter", {
     once = true,
     pattern = "*",
     callback = function()
-      vim.fn.feedkeys(keys)
+      if type(cb) == "function" then
+        cb()
+      else
+        vim.fn.feedkeys(cb)
+      end
     end,
   })
 end
