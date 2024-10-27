@@ -16,6 +16,9 @@ local M = {
       "nvim-telescope/telescope-file-browser.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
     },
+    keys = {
+      { "<leader><leader>gs", "<CMD>Telescope git_stash<CR>", desc = "[G]it [S]tash" },
+    },
     config = function()
       local telescope = require("telescope")
       local action_state = require("telescope.actions.state")
