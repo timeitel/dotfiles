@@ -149,19 +149,6 @@ local M = {
       status = { parser.STATUS.RUNNING },
     }
 
-    local dap = {
-      function()
-        local session = require("dap").session()
-        if session ~= nil then
-          return "● DEBUGGING"
-        else
-          return ""
-        end
-      end,
-      color = { bg = palette.winterRed, fg = palette.fujiWhite },
-      separator = { left = "", right = "" },
-    }
-
     local git_prompt_string = {
       "git_prompt_string",
       separator = { left = "", right = "" },
@@ -195,7 +182,7 @@ local M = {
         lualine_c = {},
         lualine_x = { search_count, macro_recording, task_runner },
         lualine_y = { diagnostic_stats },
-        lualine_z = { lsp, dap },
+        lualine_z = { lsp },
       },
       inactive_sections = {},
       tabline = {},

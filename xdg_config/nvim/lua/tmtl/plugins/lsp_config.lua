@@ -1,41 +1,4 @@
 local M = {
-  "mfussenegger/nvim-dap",
-  {
-    "theHamsta/nvim-dap-virtual-text",
-    config = function()
-      require("nvim-dap-virtual-text").setup({})
-    end,
-  },
-  {
-    "simrat39/rust-tools.nvim",
-    dependencies = "neovim/nvim-lspconfig",
-    config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-      local lsp_maps = require("tmtl.keymaps-lsp")
-      local rt = require("rust-tools")
-      local rust_maps = require("tmtl.keymaps-rust")
-      local extension_path = vim.env.HOME .. "/.vscode/extensions/vadimcn.vscode-lldb-1.9.2/"
-      local codelldb_path = extension_path .. "adapter/codelldb"
-      local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
-      local dap = require("dap")
-
-      dap.listeners.before["event_initialized"]["tmtl_handler"] = require("rust-tools").inlay_hints.disable
-      dap.listeners.before["event_terminated"]["tmtl_handler"] = require("rust-tools").inlay_hints.enable
-
-      rt.setup({
-        server = {
-          on_attach = function(_, bufnr)
-            lsp_maps.attach(bufnr)
-            rust_maps.attach(bufnr)
-          end,
-          capabilities = capabilities,
-        },
-        dap = {
-          adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
-        },
-      })
-    end,
-  },
   {
     "neovim/nvim-lspconfig",
     config = function()

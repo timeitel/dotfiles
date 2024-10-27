@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd("VimResized", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "help", "dap-float", "dap-repl", "notify", "qf", "toggleterm" },
+  pattern = { "help", "notify", "qf", "toggleterm" },
   callback = function()
     local map = require("tmtl.utils").map
     map("n", "q", function()

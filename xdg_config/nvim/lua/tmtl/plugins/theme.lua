@@ -34,7 +34,6 @@ local M = {
               fg = colors.palette.sumiInk2,
               bg = colors.palette.oldWhite,
             },
-            DapBreakpoint = { fg = colors.palette.peachRed },
           }
         end,
       })
