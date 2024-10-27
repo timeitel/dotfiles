@@ -3,11 +3,6 @@ local request_confirm = require("tmtl.utils").request_confirm
 local ts = require("telescope.builtin")
 local notify = require("notify")
 
-map("n", "<leader>gfx", function()
-  vim.cmd([[Gitsigns reset_buffer]])
-  notify("Discarded changes of current file", vim.log.levels.WARN)
-end, { desc = "[G]it [F]ile - discard changes" })
-
 map("n", "<leader>gb", function()
   ts.git_branches()
 end, { desc = "[G]it [B]ranches" })

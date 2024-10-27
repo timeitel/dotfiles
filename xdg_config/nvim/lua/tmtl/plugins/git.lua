@@ -94,6 +94,14 @@ local M = {
     lazy = false,
     keys = {
       { "<leader><leader>gb", "<CMD>Gitsigns blame<CR>", desc = "[G]it [B]lame" },
+      {
+        "<leader>gfx",
+        function()
+          vim.cmd([[Gitsigns reset_buffer]])
+          require("notify")("Discarded changes of current file", vim.log.levels.WARN)
+        end,
+        desc = "[G]it [F]ile - discard changes",
+      },
     },
   },
   {
