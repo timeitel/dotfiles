@@ -49,6 +49,98 @@ local M = {
         desc = "[F]ind - live [G]rep selection",
         mode = "v",
       },
+      {
+        "<leader>fa",
+        function()
+          require("telescope.builtin").find_files({ no_ignore = true, hidden = true })
+        end,
+        desc = "[F]ind [A]ll: incl hidden and gitignore",
+      },
+      {
+        "<leader>ft",
+        function()
+          require("telescope.builtin").grep_string({ search = "TODO" })
+        end,
+        desc = "[F]ind [T]ODOs",
+      },
+      {
+        "<leader>fb",
+        function()
+          require("telescope.builtin").buffers({ sort_mru = true, ignore_current_buffer = true })
+        end,
+        desc = "[F]ind [B]uffers",
+      },
+      {
+        "<leader>fs",
+        function()
+          require("telescope.builtin").lsp_document_symbols({ initial_mode = "insert" })
+        end,
+        desc = "[F]ind [S]ymbols",
+      },
+      {
+        "<leader>fw",
+        function()
+          require("telescope.builtin").lsp_dynamic_workspace_symbols({ initial_mode = "insert" })
+        end,
+        desc = "[F]ind [W]orkspace symbols",
+      },
+      {
+        "<leader>fk",
+        function()
+          require("telescope.builtin").keymaps({ initial_mode = "insert" })
+          vim.fn.feedkeys("<Space>")
+        end,
+        desc = "[F]ind [K]eymaps",
+      },
+      {
+        "<leader>fr",
+        function()
+          require("telescope.builtin").resume({ initial_mode = "normal" })
+        end,
+        desc = "[F]ind [R]esume: last picker",
+      },
+      {
+        "<leader>fn",
+        function()
+          require("telescope").extensions.notify.notify(require("telescope.themes").get_dropdown({}))
+        end,
+        desc = "[F]ind [N]otifications",
+      },
+      {
+        "<leader>fd",
+        function()
+          require("telescope.builtin").diagnostics(
+            require("telescope.themes").get_dropdown({ path_display = "hidden" })
+          )
+        end,
+        desc = "[F]ind [D]iagnostics for workspace",
+      },
+      {
+        "<leader>fu",
+        function()
+          require("telescope").extensions.undo.undo()
+        end,
+        desc = "[F]ind [U]ndo history",
+      },
+      {
+        "<leader>fc",
+        function()
+          require("telescope.builtin").commands({ initial_mode = "insert" })
+        end,
+        desc = "[F]ind [C]ommands",
+      },
+      {
+        "<leader>fh",
+        function()
+          require("telescope.builtin").help_tags()
+        end,
+        desc = "[F]ind [H]elp - docs",
+      },
+      {
+        "<leader>f;",
+        "<CMD>TermSelect<CR>",
+        desc = "[F]ind terminals",
+      },
     },
     config = function()
       local telescope = require("telescope")
