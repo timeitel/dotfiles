@@ -181,6 +181,11 @@ map("n", "]b", "<cmd>bnext<cr>", { desc = "[B]uffer - next" })
 map("n", "[b", "<cmd>bprevious<cr>", { desc = "[B]uffer - previous" })
 map({ "n", "i" }, "<C-s>", "<cmd>silent w<cr>", { desc = "[B]uffer - save" })
 
+-- Tabs
+map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "[T]ab [N]ew" })
+map("n", "]t", "<cmd>tabnext<cr>", { desc = "[T]ab - next" })
+map("n", "[t", "<cmd>tabprevious<cr>", { desc = "[T]ab - previous" })
+
 -- Quickfix list
 local function goto_qf_item(opts)
   opts = opts or {}
