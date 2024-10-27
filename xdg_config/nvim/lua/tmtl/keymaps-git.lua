@@ -20,6 +20,8 @@ map(
   { desc = "[G]it [D]iff - HEAD against origin/dev" }
 )
 
+map("n", "<leader>gl", "<CMD>Neogit log<CR>", { desc = "[G]it [L]og" })
+
 map("n", "<leader>gh", "<CMD>DiffviewFileHistory<CR>", { desc = "[G]it [H]istory" })
 
 map("n", "<leader>gfh", "<CMD>DiffviewFileHistory %<CR>", { desc = "[G]it [F]ile [H]istory" })
