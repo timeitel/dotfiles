@@ -3,11 +3,6 @@ local request_confirm = require("tmtl.utils").request_confirm
 local ts = require("telescope.builtin")
 local notify = require("notify")
 
-map("n", "<leader>gl", function()
-  require("tmtl.utils").winenter_once("l")
-  vim.cmd([[Neogit log]])
-end, { desc = "[G]it [L]og" })
-
 map("n", "<leader>gh", "<CMD>DiffviewFileHistory<CR>", { desc = "[G]it [H]istory" })
 
 map("n", "<leader>gfh", "<CMD>DiffviewFileHistory %<CR>", { desc = "[G]it [F]ile [H]istory" })

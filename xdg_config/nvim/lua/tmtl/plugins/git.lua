@@ -118,6 +118,14 @@ local M = {
     end,
     keys = {
       { "<leader>gs", "<CMD>Neogit<CR>", desc = "[G]it [S]tatus" },
+      {
+        "<leader>gl",
+        function()
+          require("tmtl.utils").winenter_once("l")
+          vim.cmd([[Neogit log]])
+        end,
+        desc = "[G]it [L]og",
+      },
     },
     dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "nvim-telescope/telescope.nvim" },
   },
