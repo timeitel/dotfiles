@@ -14,9 +14,10 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 
 require("lazy").setup("tmtl.plugins")
-require("tmtl.options")
-require("tmtl.autocmds")
 require("tmtl.maps")
+require("tmtl.maps.movement")
 require("tmtl.maps.terminal")
 require("tmtl.maps.scroll")
+require("tmtl.options")
+require("tmtl.autocmds")
 require("tmtl.snippets")
