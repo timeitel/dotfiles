@@ -1,8 +1,5 @@
 local M = {
-  {
-    "mikesmithgh/git-prompt-string-lualine.nvim",
-    lazy = true,
-  },
+  "mikesmithgh/git-prompt-string-lualine.nvim",
   {
     "sindrets/diffview.nvim",
     config = function()
@@ -111,6 +108,9 @@ local M = {
         },
       })
     end,
+    keys = {
+      { "<leader>gs", "<CMD>Neogit<CR>", desc = "[G]it [S]tatus" },
+    },
     dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "nvim-telescope/telescope.nvim" },
   },
 }

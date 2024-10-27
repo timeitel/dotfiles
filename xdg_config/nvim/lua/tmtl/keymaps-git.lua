@@ -3,10 +3,6 @@ local request_confirm = require("tmtl.utils").request_confirm
 local ts = require("telescope.builtin")
 local notify = require("notify")
 
-map("n", "<leader>gs", function()
-  require("neogit").open()
-end, { desc = "[G]it [S]tatus" })
-
 map("n", "<leader><leader>gs", function()
   ts.git_stash()
 end, { desc = "[G]it [S]tash" })
