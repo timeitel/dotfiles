@@ -102,6 +102,8 @@ local M = {
         end,
         desc = "[G]it [F]ile - discard changes",
       },
+      { "<C-j>", "<CMD>Gitsigns next_hunk<CR>", desc = "Next git hunk" },
+      { "<C-k>", "<CMD>Gitsigns prev_hunk<CR>", desc = "Previous git hunk" },
     },
   },
   {

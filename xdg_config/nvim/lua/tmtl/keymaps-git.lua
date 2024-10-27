@@ -36,13 +36,6 @@ map("n", "<leader>gx", function()
   })
 end, { desc = "[G]it Reset: discard ALL working changes" })
 
-map("n", "<C-j>", function()
-  require("gitsigns").next_hunk()
-end, { desc = "Git [H]unk - next" })
-map("n", "<C-k>", function()
-  require("gitsigns").prev_hunk()
-end, { desc = "Git [H]unk - previous" })
-
 map({ "n", "v" }, "<leader>hp", "<CMD>Gitsigns preview_hunk<CR>", { desc = "Git [H]unk [P]review" })
 
 map({ "n", "v" }, "<leader>hs", function()
