@@ -20,7 +20,16 @@ map(
   { desc = "[G]it [D]iff - HEAD against origin/dev" }
 )
 
-map("n", "<leader>gl", "<CMD>Neogit log<CR>", { desc = "[G]it [L]og" })
+map("n", "<leader>gl", function()
+  vim.api.nvim_create_autocmd("WinEnter", {
+    once = true,
+    callback = function()
+      vim.fn.feedkeys("l")
+    end,
+  })
+
+  vim.cmd([[Neogit log]])
+end, { desc = "[G]it [L]og" })
 
 map("n", "<leader>gh", "<CMD>DiffviewFileHistory<CR>", { desc = "[G]it [H]istory" })
 
