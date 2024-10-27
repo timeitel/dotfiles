@@ -1,7 +1,6 @@
 local M = {
   {
     "mikesmithgh/git-prompt-string-lualine.nvim",
-    enabled = true,
     lazy = true,
   },
   {
@@ -9,6 +8,9 @@ local M = {
     config = function()
       require("blame").setup()
     end,
+    keys = {
+      { "<leader><leader>gb", "<CMD>BlameToggle virtual<CR>", desc = "[G]it [B]lame" },
+    },
   },
   {
     "sindrets/diffview.nvim",
