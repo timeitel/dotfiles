@@ -74,3 +74,8 @@ vim.api.nvim_create_autocmd("User", {
     vim.cmd([[doautocmd user FugitiveChanged]])
   end,
 })
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = { "NeogitCommitComplete" },
+  command = "DiffviewClose",
+})
