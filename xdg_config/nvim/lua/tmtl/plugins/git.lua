@@ -106,6 +106,14 @@ local M = {
       { "<C-k>", "<CMD>Gitsigns prev_hunk<CR>", desc = "Previous git hunk" },
       { "<leader>hp", "<CMD>Gitsigns preview_hunk<CR>", desc = "Git [H]unk [P]review" },
       { "<leader>hs", "<CMD>Gitsigns stage_hunk<CR>", desc = "Git [H]unk [S]tage" },
+      {
+        "<leader>hx",
+        function()
+          vim.cmd([[Gitsigns reset_hunk]])
+          require("notify")("Discarded hunk", vim.log.levels.WARN)
+        end,
+        desc = "Git [H]unk - discard",
+      },
     },
   },
   {

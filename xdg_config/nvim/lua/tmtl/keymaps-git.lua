@@ -35,24 +35,3 @@ map("n", "<leader>gx", function()
     end,
   })
 end, { desc = "[G]it Reset: discard ALL working changes" })
-
-map("n", "<leader>hx", function()
-  vim.cmd([[Gitsigns reset_hunk]])
-  notify("Discarded hunk", vim.log.levels.WARN)
-end, { desc = "Git [H]unk - discard" })
-
-map("v", "<leader>hx", function()
-  vim.fn.feedkeys(":Gitsigns reset_hunk")
-  vim.api.nvim_input("<cr>")
-  notify("Discarded hunk range", vim.log.levels.WARN)
-end, { desc = "Git [H]unk - discard" })
-
-map("n", "<leader>hu", function()
-  vim.cmd([[Gitsigns undo_stage_hunk]])
-  notify("Unstaged the last staged hunk")
-end, { desc = "Git [H]unk [U]ndo - last staged hunk" })
-
-map("n", "<leader>gwc", function()
-  -- TODO: convert to cli command
-  -- create_worktree('../{folder}', '{branch}', 'origin')")
-end, { desc = "[G]it [W]orktree [C]reate" })
