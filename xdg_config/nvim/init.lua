@@ -16,7 +16,7 @@ vim.g.mapleader = " "
 require("lazy").setup("tmtl.plugins")
 require("tmtl.options")
 require("tmtl.autocmds")
-require("tmtl.keymaps")
+require("tmtl.maps")
 require("tmtl.maps.terminal")
 require("tmtl.maps.scroll")
 require("tmtl.snippets")
