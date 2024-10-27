@@ -2,6 +2,13 @@ local M = {
   "mikesmithgh/git-prompt-string-lualine.nvim",
   {
     "sindrets/diffview.nvim",
+    keys = {
+      {
+        "<leader><leader>gd",
+        "<CMD>DiffviewOpen HEAD..origin/main<CR>",
+        desc = "[G]it [D]iff - HEAD against origin/main",
+      },
+    },
     config = function()
       local actions = require("diffview.actions")
       local request_confirm = require("tmtl.utils").request_confirm

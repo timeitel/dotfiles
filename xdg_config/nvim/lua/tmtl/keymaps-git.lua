@@ -5,13 +5,6 @@ local notify = require("notify")
 
 map("n", "<leader>gd", "<CMD>DiffviewOpen<CR>", { desc = "[G]it [D]iff" })
 
-map(
-  "n",
-  "<leader><leader>gd",
-  "<CMD>DiffviewOpen origin/dev...HEAD<CR>",
-  { desc = "[G]it [D]iff - HEAD against origin/dev" }
-)
-
 map("n", "<leader>gl", function()
   require("tmtl.utils").winenter_once("l")
   vim.cmd([[Neogit log]])
