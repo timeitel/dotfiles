@@ -3,6 +3,7 @@ local M = {
   {
     "sindrets/diffview.nvim",
     keys = {
+      { "<leader>gd", "<CMD>DiffviewOpen<CR>", desc = "[G]it [D]iff" },
       {
         "<leader><leader>gd",
         "<CMD>DiffviewOpen HEAD..origin/main<CR>",
