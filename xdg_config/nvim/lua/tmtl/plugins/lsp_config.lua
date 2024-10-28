@@ -57,8 +57,8 @@ local M = {
       })
 
       lspconfig.ts_ls.setup({
-        on_attach = function(client, bufnr)
-          on_attach_lsp(client, bufnr)
+        on_attach = function(client)
+          on_attach_lsp()
           client.server_capabilities.documentFormattingProvider = false -- done by prettierd
         end,
         handlers = tsHandlers,
