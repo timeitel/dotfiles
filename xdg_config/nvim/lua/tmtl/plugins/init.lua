@@ -1,4 +1,5 @@
 local M = {
+  "inkarkat/vim-ReplaceWithRegister",
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -90,7 +91,6 @@ local M = {
       },
     },
   },
-  "inkarkat/vim-ReplaceWithRegister",
   {
     "stevearc/oil.nvim",
     config = function()
