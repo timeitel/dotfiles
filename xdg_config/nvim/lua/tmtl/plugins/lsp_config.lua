@@ -2,7 +2,7 @@ local M = {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lsp_maps = require("tmtl.keymaps-lsp")
+      local on_attach_lsp = require("tmtl.utils").on_attach_lsp
       local lspconfig = require("lspconfig")
 
       require("lspconfig.ui.windows").default_options.border = "rounded"
@@ -29,14 +29,14 @@ local M = {
       local html_caps = capabilities
       html_caps.textDocument.completion.completionItem.snippetSupport = true
       lspconfig.html.setup({
-        on_attach = lsp_maps.attach,
+        on_attach = on_attach_lsp,
         capabilities = html_caps,
         init_options = {
           provideFormatter = false,
         },
       })
 
-      lspconfig.templ.setup({ on_attach = lsp_maps.attach })
+      lspconfig.templ.setup({ on_attach = on_attach_lsp })
 
       lspconfig.tailwindcss.setup({
         capabilities = capabilities,
@@ -44,7 +44,7 @@ local M = {
       })
 
       lspconfig.gopls.setup({
-        on_attach = lsp_maps.attach,
+        on_attach = on_attach_lsp,
         settings = {
           gopls = {
             ["ui.inlayhint.hints"] = {
@@ -58,7 +58,7 @@ local M = {
 
       lspconfig.ts_ls.setup({
         on_attach = function(client, bufnr)
-          lsp_maps.attach(client, bufnr)
+          on_attach_lsp(client, bufnr)
           client.server_capabilities.documentFormattingProvider = false -- done by prettierd
         end,
         handlers = tsHandlers,
@@ -97,7 +97,7 @@ local M = {
       })
 
       lspconfig.lua_ls.setup({
-        on_attach = lsp_maps.attach,
+        on_attach = on_attach_lsp,
         settings = {
           Lua = {
             hint = {
