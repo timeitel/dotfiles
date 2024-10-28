@@ -1,5 +1,4 @@
-local map = require("tmtl.utils").map
-local notify = require("notify")
+local map = vim.keymap.set
 
 map({ "n", "v", "o" }, "H", "^", { desc = "First character on line" })
 map({ "n", "v", "o" }, "L", "$", { desc = "Last character on line" })
@@ -77,13 +76,13 @@ local function goto_qf_item(opts)
     local ok, _ = pcall(vim.cmd, "cprevious")
     if not ok then
       vim.cmd("cfirst")
-      notify("No previous qf items")
+      require("notify")("No previous qf items")
     end
   else
     local ok, _ = pcall(vim.cmd, "cnext")
     if not ok then
       vim.cmd("clast")
-      notify("No more qf items")
+      require("notify")("No more qf items")
     end
   end
 

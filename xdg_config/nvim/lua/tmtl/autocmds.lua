@@ -34,10 +34,9 @@ vim.api.nvim_create_autocmd("VimResized", {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "help", "notify", "qf", "toggleterm" },
   callback = function()
-    local map = require("tmtl.utils").map
-    map("n", "q", function()
+    vim.keymap.set("n", "q", function()
       vim.cmd([[close]])
-    end, { desc = "Close window", buffer = true })
+    end, { desc = "Close window", buffer = 0 })
   end,
   desc = "Close window",
   group = group,

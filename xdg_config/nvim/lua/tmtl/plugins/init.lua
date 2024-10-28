@@ -175,7 +175,7 @@ local M = {
   {
     "sQVe/sort.nvim",
     config = function()
-      local map = require("tmtl.utils").map
+      local map = vim.keymap.set
       map("v", "gos", "<Esc><Cmd>Sort<CR>", { desc = "[S]ort visual selection" })
       map("n", "gos", "vi{<Esc><Cmd>Sort<CR>", { desc = "[S]ort inside curly brace" })
       map("n", "go[", "vi[<Esc><Cmd>Sort<CR>", { desc = "[S]ort inside bracket `[`" })
@@ -225,12 +225,11 @@ local M = {
   {
     "bloznelis/before.nvim",
     config = function()
-      local map = require("tmtl.utils").map
       local before = require("before")
-      before.setup()
 
-      map("n", "[c", before.jump_to_last_edit, { desc = "Jump to last [C]hange" })
-      map("n", "]c", before.jump_to_next_edit, { desc = "Jump to next [C]hange" })
+      before.setup()
+      vim.keymap.set("n", "[c", before.jump_to_last_edit, { desc = "Jump to last [C]hange" })
+      vim.keymap.set("n", "]c", before.jump_to_next_edit, { desc = "Jump to next [C]hange" })
     end,
   },
 }

@@ -106,7 +106,7 @@ local M = {
   {
     "kiyoon/treesitter-indent-object.nvim",
     config = function()
-      local map = require("tmtl.utils").map
+      local map = vim.keymap.set
 
       map({ "x", "o" }, "aI", "<Cmd>lua require'treesitter_indent_object.textobj'.select_indent_outer()<CR>")
       -- ensure selecting entire line (or just use Vai)

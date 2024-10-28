@@ -1,12 +1,5 @@
 local M = {}
 
-M.map = function(m, k, v, options)
-  local opts = options or {}
-  opts.silent = true
-  opts.noremap = true
-  vim.keymap.set(m, k, v, opts)
-end
-
 M.get_visual_selection = function()
   vim.cmd('noau normal! "vy"')
   local text = vim.fn.getreg("v")

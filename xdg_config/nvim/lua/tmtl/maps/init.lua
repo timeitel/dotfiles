@@ -1,5 +1,4 @@
-local utils = require("tmtl.utils")
-local map = utils.map
+local map = vim.keymap.set
 
 map("v", ">", ">gv", { desc = "Re-highlight visual selection after bumping indent" })
 map("v", "<", "<gv", { desc = "Re-highlight visual selection after bumping indent" })
@@ -92,7 +91,7 @@ map("n", "<leader>/", function()
 end, { desc = "Find - exact match" })
 
 map("v", "<leader>/", function()
-  local text = utils.get_visual_selection()
+  local text = require("tmtl.utils").get_visual_selection()
   local search = string.format("/\\<%s\\>", text)
   vim.fn.feedkeys(search)
 end, { desc = "Find - exact match" })
