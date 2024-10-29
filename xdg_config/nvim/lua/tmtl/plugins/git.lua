@@ -144,6 +144,14 @@ local M = {
     keys = {
       { "<leader>gs", "<CMD>Neogit<CR>", desc = "[G]it [S]tatus" },
       {
+        "<leader>gp",
+        function()
+          require("tmtl.utils").winenter_once("p")
+          require("neogit").open({ "push" })
+        end,
+        desc = "[G]it [S]tatus",
+      },
+      {
         "<leader>gl",
         function()
           require("tmtl.utils").winenter_once("l")
