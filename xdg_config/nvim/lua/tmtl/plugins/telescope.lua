@@ -13,7 +13,6 @@ local M = {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "debugloop/telescope-undo.nvim",
-      "nvim-telescope/telescope-file-browser.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
     },
     keys = {
@@ -146,7 +145,6 @@ local M = {
       local telescope = require("telescope")
       local action_state = require("telescope.actions.state")
       local actions = require("telescope.actions")
-      local fb_actions = telescope.extensions.file_browser.actions
       local copy = require("tmtl.utils").shallow_copy
       local state = require("telescope.state")
 
@@ -223,37 +221,6 @@ local M = {
         require("notify")("Copied file path to clipboard")
       end
 
-      local file_browser_normal_mappings = {
-        ["n"] = fb_actions.create,
-        ["cd"] = fb_actions.change_cwd,
-        ["gf"] = function()
-          local entry = action_state.get_selected_entry()
-          local filename = entry.Path.filename
-          require("telescope.builtin").live_grep({
-            search_dirs = { filename },
-            results_title = filename,
-            initial_mode = "insert",
-          })
-        end,
-        ["gp"] = function()
-          local entry = action_state.get_selected_entry()
-          local filename = entry.Path.filename
-          require("telescope.builtin").find_files({
-            search_dirs = { filename },
-            results_title = filename,
-            initial_mode = "insert",
-          })
-        end,
-        ["<C-h>"] = fb_actions.goto_parent_dir,
-        ["H"] = fb_actions.goto_cwd,
-        ["o"] = fb_actions.open,
-        ["<C-x>"] = fb_actions.remove,
-        ["<C-o>"] = function()
-          vim.api.nvim_input("<Esc>")
-          vim.api.nvim_input("<C-o>")
-        end,
-      }
-
       telescope.setup({
         defaults = {
           initial_mode = "normal",
@@ -326,16 +293,6 @@ local M = {
         },
 
         extensions = {
-          file_browser = {
-            grouped = true,
-            hidden = true,
-            respect_gitignore = false,
-            display_stat = { date = true, size = true },
-            path_display = { truncate = 2 },
-            mappings = {
-              n = file_browser_normal_mappings,
-            },
-          },
           ["ui-select"] = {
             require("telescope.themes").get_cursor({}),
           },
@@ -345,7 +302,6 @@ local M = {
         },
       })
 
-      require("telescope").load_extension("file_browser")
       require("telescope").load_extension("ui-select")
       require("telescope").load_extension("notify")
       require("telescope").load_extension("undo")
