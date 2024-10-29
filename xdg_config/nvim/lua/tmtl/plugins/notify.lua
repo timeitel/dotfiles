@@ -3,6 +3,10 @@ local M = {
   version = "*",
   config = function()
     vim.notify = function(msg, level, opts)
+      if string.sub(msg, 1, #"Pushing to") == "Pushing to" then
+        return
+      end
+
       -- https://github.com/neovim/nvim-lspconfig/issues/1931
       for _, banned in ipairs({ "No information available" }) do
         if msg == banned then
