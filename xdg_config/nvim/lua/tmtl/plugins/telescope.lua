@@ -274,14 +274,6 @@ local M = {
 
           find_files = { initial_mode = "insert" },
 
-          registers = {
-            mappings = {
-              n = {
-                ["<leader>e"] = actions.edit_register,
-              },
-            },
-          },
-
           lsp_references = {
             layout_strategy = "vertical",
             layout_config = {
