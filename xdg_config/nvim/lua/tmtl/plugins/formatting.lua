@@ -15,6 +15,7 @@ local M = {
       sql = { "pg_format" },
     },
 
+    -- TODO: create buffer var for disabling formatting for a buffer
     format_after_save = {
       lsp_format = "fallback",
     },

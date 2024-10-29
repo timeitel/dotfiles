@@ -125,7 +125,7 @@ local M = {
       require("neogit").setup({
         console_timeout = 5000,
         commit_editor = {
-          kind = "split",
+          kind = "vsplit",
           show_staged_diff = false,
         },
         disable_hint = true,

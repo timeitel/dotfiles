@@ -4,25 +4,7 @@ local M = {
     config = function()
       local on_attach_lsp = require("tmtl.utils").on_attach_lsp
       local lspconfig = require("lspconfig")
-
       require("lspconfig.ui.windows").default_options.border = "rounded"
-      local protocol = require("vim.lsp.protocol")
-      local tsHandlers = {
-        ["textDocument/definition"] = function(_, result, params)
-          local util = require("vim.lsp.util")
-          if result == nil or vim.tbl_isempty(result) then
-            local _ = vim.lsp.log.info() and vim.lsp.log.info(params.method, "No location found")
-            return nil
-          end
-
-          if vim.islist(result) then
-            util.jump_to_location(result[1], "utf-8", true)
-          else
-            util.jump_to_location(result, "utf-8", true)
-          end
-        end,
-      }
-
       -- Set up completion using nvim_cmp with LSP source
       local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -61,7 +43,21 @@ local M = {
           on_attach_lsp()
           client.server_capabilities.documentFormattingProvider = false -- done by prettierd
         end,
-        handlers = tsHandlers,
+        handlers = {
+          ["textDocument/definition"] = function(_, result, params)
+            local util = require("vim.lsp.util")
+            if result == nil or vim.tbl_isempty(result) then
+              local _ = vim.lsp.log.info() and vim.lsp.log.info(params.method, "No location found")
+              return nil
+            end
+
+            if vim.islist(result) then
+              util.jump_to_location(result[1], "utf-8", true)
+            else
+              util.jump_to_location(result, "utf-8", true)
+            end
+          end,
+        },
         filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
         cmd = { "typescript-language-server", "--stdio" },
         settings = {
@@ -149,7 +145,7 @@ local M = {
         severity_sort = true,
       })
 
-      protocol.CompletionItemKind = {
+      vim.lsp.protocol.CompletionItemKind = {
         "", -- Text
         "", -- Method
         "", -- Function
