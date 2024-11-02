@@ -11,7 +11,12 @@ local M = {
   {
     "hrsh7th/nvim-cmp",
     config = function()
-      local cmp = require("cmp")
+      local ok, cmp = pcall(require, "cmp")
+      if not ok then
+        print("Failed to load:", cmp)
+        return
+      end
+
       local lspkind = require("lspkind")
       lspkind.init()
 
