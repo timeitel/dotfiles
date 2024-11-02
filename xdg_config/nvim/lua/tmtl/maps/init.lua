@@ -44,7 +44,7 @@ map({ "o", "x" }, "ir", set_motion_and_feed("i["), opts) -- [r]ectangular bracke
 map({ "o", "x" }, "ar", set_motion_and_feed("a["), opts)
 map({ "o", "x" }, "ic", set_motion_and_feed("i{"), opts) -- [c]urly brackets
 map({ "o", "x" }, "ac", set_motion_and_feed("a{"), opts)
-map("n", "ga", function()
+map("n", "gl", function()
   return "v" .. Last_Motion .. "P"
 end, { desc = "Replace with last motion", expr = true }) -- all wrapping is done for this shortcut map
 
