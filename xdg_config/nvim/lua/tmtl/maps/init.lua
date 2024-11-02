@@ -8,18 +8,9 @@ map("n", "X", "xi", { desc = "Replacement for vanilla 's'" })
 map("v", "p", "P", { desc = "Keep register on visual paste" })
 map("v", "P", "p", { desc = "Replace register on visual paste" })
 
-map({ "n", "v" }, "q", function()
-  if vim.b.overseer_task ~= nil or vim.api.nvim_win_get_config(0).relative ~= "" then
-    return "<cmd>close<cr>"
-  else
-    return "<esc>"
-  end
-end, { desc = "Return to normal mode", expr = true })
-map("s", "<C-q>", "<Esc>", { desc = "Return to normal mode" })
 map("n", "Q", "q", { desc = "Safer trigger for macro recording" })
 
 --- operator aliases
-
 Last_Motion = ""
 local opts = { desc = "Operator mode syntax aliases", expr = true }
 local function set_motion_and_feed(str)
@@ -29,7 +20,6 @@ local function set_motion_and_feed(str)
   end
 end
 
-map({ "o", "x" }, "<C-q>", "<Esc>", { desc = "Exit operator mode" })
 map({ "o", "x" }, "aW", set_motion_and_feed("aW"), opts) -- [q]uote
 map({ "o", "x" }, "iW", set_motion_and_feed("iW"), opts) -- [q]uote
 map({ "o", "x" }, "aw", set_motion_and_feed("aw"), opts) -- [q]uote
@@ -48,15 +38,13 @@ map("n", "gl", function()
   return "v" .. Last_Motion .. "P"
 end, { desc = "Replace with last motion", expr = true }) -- all wrapping is done for this shortcut map
 
---- / operator aliases
-
-map("c", "<C-q>", function()
-  vim.api.nvim_input("<Esc>")
-end, { desc = "Return to normal mode" })
-
+--- escape / close maps
+map({ "o", "x" }, "<C-c>", "<Esc>", { desc = "Return to normal mode" })
+map("n", "<C-c>", "<CMD>close<CR>", { desc = "Close floating or split", silent = true })
 map("i", "kj", "<Esc>", { desc = "Return to normal mode" })
 map("t", "kj", "<C-\\><C-n>", { desc = "Return to normal mode" })
 
+--- etc
 map("n", "<leader>o", "o<esc>o", { desc = "Insert new lines" })
 map("n", "<leader>O", "O<esc>O", { desc = "Insert new lines" })
 

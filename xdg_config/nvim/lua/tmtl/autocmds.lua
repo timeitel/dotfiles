@@ -32,11 +32,9 @@ vim.api.nvim_create_autocmd("VimResized", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "help", "notify", "qf", "toggleterm" },
+  pattern = { "TelescopePrompt" },
   callback = function()
-    vim.keymap.set("n", "q", function()
-      vim.cmd([[close]])
-    end, { desc = "Close window", buffer = 0 })
+    vim.keymap.set("i", "<C-c>", "<CMD>close!<CR>", { desc = "Close window", buffer = 0 })
   end,
   desc = "Close window",
   group = group,

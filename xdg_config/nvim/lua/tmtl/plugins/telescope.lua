@@ -167,7 +167,7 @@ local M = {
         ["<C-y>"] = function(bufnr)
           slow_scroll(bufnr, -1)
         end,
-        ["<C-q>"] = actions.close,
+        ["<C-c>"] = actions.close,
         ["<C-l>"] = actions.select_default + actions.center,
         ["<C-h>"] = function()
           vim.api.nvim_input("<BS>")

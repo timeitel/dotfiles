@@ -31,6 +31,7 @@ local M = {
         ["l"] = false,
         ["h"] = false,
         ["q"] = "<CMD>DiffviewClose<CR>",
+        ["<C-c>"] = "<CMD>DiffviewClose<CR>",
         ["[f"] = actions.focus_files,
         ["gf"] = actions.goto_file_edit,
         ["gl"] = actions.listing_style,
