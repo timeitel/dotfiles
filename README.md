@@ -17,5 +17,6 @@
   - home files to ~
     > `ln -s ~/absolute-path-to-this/home/a ~/`
 
-- `brew tap Homebrew/bundle` && `brew bundle`
+- `brew bundle --file=~/code/.dotfiles/Brewfile`
+- Import ./manual/RectangleConfig.json to rectangle
 - Set environment variables in ~/.zshenv: TMTL_CONFIG_PATH, TMTL_START_PATH

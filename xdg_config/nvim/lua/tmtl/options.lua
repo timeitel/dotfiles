@@ -31,7 +31,6 @@ o.showmode = false
 o.showtabline = 0
 o.signcolumn = "yes:1"
 o.smartcase = true
-o.splitbelow = true
 o.splitright = true
 o.swapfile = false
 o.termguicolors = true
