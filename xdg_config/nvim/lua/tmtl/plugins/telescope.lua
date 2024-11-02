@@ -35,7 +35,7 @@ local M = {
       {
         "<leader>fg",
         function()
-          require("telescope.builtin").live_grep({ initial_mode = "insert" })
+          require("telescope.builtin").live_grep({ initial_mode = "insert", additional_args = { "--hidden" } })
         end,
         desc = "[F]ind - live [G]rep",
       },
@@ -43,17 +43,10 @@ local M = {
         "<leader>fg",
         function()
           local text = require("tmtl.utils").get_visual_selection()
-          require("telescope.builtin").grep_string({ search = text })
+          require("telescope.builtin").grep_string({ search = text, additional_args = { "--hidden" } })
         end,
         desc = "[F]ind - live [G]rep selection",
         mode = "v",
-      },
-      {
-        "<leader>fa",
-        function()
-          require("telescope.builtin").find_files({ no_ignore = true, hidden = true })
-        end,
-        desc = "[F]ind [A]ll: incl hidden and gitignore",
       },
       {
         "<leader>ft",
