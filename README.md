@@ -19,4 +19,7 @@
 
 - `brew bundle --file=~/code/.dotfiles/Brewfile`
 - Import ./manual/RectangleConfig.json to rectangle
+- curl -o ~/.zsh/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+- curl -o ~/.zsh/_git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
 - Set environment variables in ~/.zshenv: TMTL_CONFIG_PATH, TMTL_START_PATH
+

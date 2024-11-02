@@ -9,11 +9,14 @@ HISTFILE=~/.zsh/history
 unsetopt BEEP
 zle_highlight=('paste:none')
 
+fpath=(~/.zsh $fpath)
+
 # basic auto/tab complete:
-autoload -U compinit
+autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 # auto complete with case insenstivity
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 
 source ~/.config/zsh/aliases
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
