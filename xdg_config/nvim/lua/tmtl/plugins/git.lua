@@ -150,7 +150,7 @@ local M = {
           require("tmtl.utils").winenter_once("p")
           require("neogit").open({ "push" })
         end,
-        desc = "[G]it [S]tatus",
+        desc = "[G]it [P]ush",
       },
       {
         "<leader>gl",
