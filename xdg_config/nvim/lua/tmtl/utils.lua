@@ -64,60 +64,6 @@ M.table_length = function(table)
   return count
 end
 
--- @param command function A shell command to be called and output passed to notify.
--- @param cb function|nil A callback function to be called after command.
--- @return nil
-M.notify_command = function(command, cb)
-  local stdin = vim.loop.new_pipe()
-  local stdout = vim.loop.new_pipe()
-  local stderr = vim.loop.new_pipe()
-  local output = ""
-  local error_output = ""
-  local notify = function(msg, level)
-    vim.notify(msg, level, { title = table.concat(command, " ") })
-  end
-
-  vim.loop.spawn(command[1], {
-    stdio = { stdin, stdout, stderr },
-    detached = true,
-    args = #command > 1 and vim.list_slice(command, 2, #command) or nil,
-  }, function(code, _)
-    stdin:close()
-    stdout:close()
-    stderr:close()
-    if #output > 0 then
-      notify(output)
-    end
-    if #error_output > 0 then
-      notify(error_output, vim.log.levels.INFO)
-    end
-    if #output == 0 and #error_output == 0 then
-      notify("No output of command, exit code: " .. code, vim.log.levels.WARN)
-    end
-
-    if cb and type(cb) == "function" then
-      vim.schedule(function()
-        cb()
-      end)
-    end
-  end)
-
-  stdout:read_start(function(err, data)
-    if err then
-      error_output = error_output .. (err or data)
-      return
-    end
-    if data then
-      output = output .. data
-    end
-  end)
-  stderr:read_start(function(err, data)
-    if err or data then
-      error_output = error_output .. (err or data)
-    end
-  end)
-end
-
 M.winenter_once = function(cb)
   vim.api.nvim_create_autocmd("WinEnter", {
     once = true,
@@ -234,16 +180,6 @@ M.on_attach_lsp = function()
   map("n", "R", function()
     require("telescope.builtin").lsp_references({ show_line = false, include_declaration = false })
   end, "Lsp [R]eferences")
-
-  map("n", "gt", function()
-    vim.lsp.buf.type_definition()
-    vim.fn.feedkeys("zz")
-  end, "Lsp [G]o to [T]ype definition")
-
-  map("n", "gI", function()
-    vim.lsp.buf.implementation()
-    vim.fn.feedkeys("zz")
-  end, "Lsp [G]o to [I]mplementation")
 end
 
 return M
