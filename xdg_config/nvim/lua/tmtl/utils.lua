@@ -145,9 +145,9 @@ local function goto_diagnostic(opts)
   end
 
   if float then
-    vim.defer_fn(function()
+    vim.schedule(function()
       vim.diagnostic.open_float({ severity_sort = true, border = "rounded" })
-    end, 50)
+    end)
   end
 
   local diagnostic_count = table_length(vim.diagnostic.get(0))
@@ -198,9 +198,13 @@ M.on_attach_lsp = function()
   end, "[L]SP [I]nfo")
 
   map("n", "<leader><leader>ls", function()
-    -- TODO: change to toggle with ls, check if needing to stop or start
-    vim.cmd([[LspStop]])
-  end, "[L]SP [S]top")
+    local lsp_attached = vim.lsp.get_clients({ bufnr = 0 })[1] ~= nil
+    if lsp_attached then
+      vim.cmd([[LspStop]])
+    else
+      vim.cmd([[LspStart]])
+    end
+  end, "[L]SP [S]tart / [S]top - toggle")
 
   map("n", "<leader><leader>lr", function()
     vim.cmd([[LspRestart]])
@@ -211,23 +215,20 @@ M.on_attach_lsp = function()
   end, "Lsp signature")
 
   map("n", "gd", function()
-    -- TODO: look into awaiting definition before centering
     vim.lsp.buf.definition()
-
-    vim.defer_fn(function()
+    vim.schedule(function()
       vim.fn.feedkeys("zz")
-    end, 100)
+    end)
   end, "Lsp [G]o to [D]efinition")
 
   map("n", "gov", function()
-    -- TODO: look into awaiting definition before centering
     vim.cmd([[only]])
     vim.cmd([[vs]])
     vim.lsp.buf.definition()
 
-    vim.defer_fn(function()
+    vim.schedule(function()
       vim.fn.feedkeys("zz")
-    end, 100)
+    end)
   end, "Lsp [G]o to [D]efinition in vertical split")
 
   map("n", "R", function()
