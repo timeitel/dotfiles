@@ -15,9 +15,20 @@ local M = {
       sql = { "pg_format" },
     },
 
-    -- TODO: create buffer var for disabling formatting for a buffer
-    format_after_save = {
-      lsp_format = "fallback",
+    format_after_save = function()
+      if vim.g.disable_autoformat then
+        return
+      end
+      return { lsp_format = "fallback" }
+    end,
+  },
+  keys = {
+    {
+      "<leader>lf",
+      function()
+        vim.g.disable_autoformat = not vim.g.disable_autoformat
+      end,
+      desc = "[L]SP [F]ormat on save - toggle",
     },
   },
 }

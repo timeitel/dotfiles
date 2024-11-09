@@ -157,6 +157,12 @@ local M = {
       },
     }
 
+    local formatter = {
+      function()
+        return vim.g.disable_autoformat and "󰉩" or ""
+      end,
+    }
+
     lualine.setup({
       options = {
         theme = custom_theme,
@@ -180,7 +186,12 @@ local M = {
         lualine_a = { cwd, git_prompt_string },
         lualine_b = { padding, filetype, global_line_filename },
         lualine_c = {},
-        lualine_x = { search_count, macro_recording, task_runner },
+        lualine_x = {
+          search_count,
+          macro_recording,
+          task_runner,
+          formatter,
+        },
         lualine_y = { diagnostic_stats },
         lualine_z = { lsp },
       },
