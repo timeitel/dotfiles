@@ -167,6 +167,13 @@ M.on_attach_lsp = function()
     end)
   end, "Lsp [G]o to [D]efinition")
 
+  map("n", "gI", function()
+    vim.lsp.buf.implementation()
+    vim.schedule(function()
+      vim.fn.feedkeys("zz")
+    end)
+  end, "Lsp [G]o to [I]mplementation")
+
   map("n", "gov", function()
     vim.cmd([[only]])
     vim.cmd([[vs]])
