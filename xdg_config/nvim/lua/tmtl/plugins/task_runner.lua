@@ -1,5 +1,3 @@
--- TODO: tsc <leader>rb not populating the correct file paths, results in file not found error
-
 local map = vim.keymap.set
 
 Task = nil
