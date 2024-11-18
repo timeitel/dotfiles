@@ -16,6 +16,7 @@ local M = {
     },
 
     format_after_save = function()
+      -- TODO: fix? not working on first load, have to turn off and on
       if vim.g.disable_autoformat then
         return
       end
