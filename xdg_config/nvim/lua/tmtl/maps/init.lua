@@ -125,12 +125,6 @@ map("v", "<leader>gr", function()
   vim.api.nvim_input("<left><left>")
 end, { desc = "[R]eplace in selection - word under cursor" })
 
--- TODO: find based on treesitter export node
--- map("n", "<leader>R", function()
--- vim.api.nvim_feedkeys("gg/export\nWW", "n", true)
--- vim.fn.feedkeys("<leader>r")
--- end, { desc = "Lsp - [G]o to file [R]eferences" })
-
 map("n", "<leader>ml", function()
   vim.cmd([[vnew]])
   vim.cmd([[:put =execute('messages')]])
