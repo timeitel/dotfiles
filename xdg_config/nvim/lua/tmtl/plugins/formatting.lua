@@ -6,6 +6,7 @@ local M = {
       javascriptreact = { "prettierd", "rustywind" },
       typescript = { "prettierd", "rustywind" },
       typescriptreact = { "prettierd", "rustywind" },
+      json = { "prettierd" },
 
       lua = { "stylua" },
       rust = { "rustfmt" },
@@ -16,18 +17,18 @@ local M = {
     },
 
     format_after_save = function()
-      -- TODO: fix? not working on first load, have to turn off and on
-      if vim.g.disable_autoformat then
+      if vim.b.disable_autoformat then
         return
       end
       return { lsp_format = "fallback" }
     end,
   },
+  lazy = false,
   keys = {
     {
       "<leader>lf",
       function()
-        vim.g.disable_autoformat = not vim.g.disable_autoformat
+        vim.b.disable_autoformat = not vim.b.disable_autoformat
       end,
       desc = "[L]SP [F]ormat on save - toggle",
     },

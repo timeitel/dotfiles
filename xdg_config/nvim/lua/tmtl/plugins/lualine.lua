@@ -159,7 +159,7 @@ local M = {
 
     local formatter = {
       function()
-        return vim.g.disable_autoformat and "󰉩" or ""
+        return vim.b.disable_autoformat and "󰉩" or ""
       end,
     }
 
