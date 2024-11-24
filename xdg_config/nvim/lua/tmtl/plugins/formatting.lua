@@ -12,7 +12,7 @@ local M = {
       rust = { "rustfmt" },
       go = { "goimports", "gofmt" },
       html = { "djlint", "rustywind" },
-      yaml = { "yamlfix" },
+      yaml = { "yamlfmt" },
       sql = { "pg_format" },
     },
 
