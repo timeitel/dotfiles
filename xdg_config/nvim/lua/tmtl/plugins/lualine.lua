@@ -161,6 +161,7 @@ local M = {
       function()
         return vim.b.disable_autoformat and "󰉩" or ""
       end,
+      color = BG_NONE,
     }
 
     lualine.setup({

@@ -62,21 +62,6 @@ vim.api.nvim_create_autocmd("FileType", {
       vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
     end)
   end,
-    group = group,
-})
-
--- hack to trigger git-prompt-string refresh
-vim.api.nvim_create_autocmd("User", {
-  pattern = { "NeogitCommitComplete", "NeogitPushComplete", "NeogitPullComplete" },
-  callback = function()
-    vim.cmd([[doautocmd user FugitiveChanged]])
-  end,
-  group = group,
-})
-
-vim.api.nvim_create_autocmd("User", {
-  pattern = { "NeogitCommitComplete" },
-  command = "DiffviewClose",
   group = group,
 })
 

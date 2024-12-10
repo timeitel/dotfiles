@@ -7,7 +7,6 @@ o.belloff = "all"
 o.breakindent = true
 o.cmdheight = 0
 o.completeopt = { "menu", "menuone", "noinsert" }
-o.conceallevel = 0
 o.cursorline = true
 o.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal", "vertical" }
 o.fillchars = { eob = "~", diff = "╱" }

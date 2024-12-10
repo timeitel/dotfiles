@@ -32,6 +32,13 @@ local M = {
       end,
       desc = "[L]SP [F]ormat on save - toggle",
     },
+    {
+      "<leader>ls",
+      function()
+        vim.opt.spell = not (vim.opt.spell:get())
+      end,
+      desc = "[L]SP [S]pell check - toggle",
+    },
   },
 }
 

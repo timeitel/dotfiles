@@ -1,16 +1,57 @@
 local M = {
   "mikesmithgh/git-prompt-string-lualine.nvim",
   {
+    "isakbm/gitgraph.nvim",
+    opts = {
+      symbols = {
+        merge_commit = "M",
+        commit = "*",
+      },
+      format = {
+        timestamp = "%H:%M:%S %d-%m-%Y",
+        fields = { "hash", "timestamp", "author", "branch_name", "tag" },
+      },
+      hooks = {
+        on_select_commit = function(commit)
+          print("selected commit:", commit.hash)
+        end,
+        on_select_range_commit = function(from, to)
+          print("selected range:", from.hash, to.hash)
+        end,
+      },
+    },
+    keys = {
+      {
+        "<leader>gl",
+        function()
+          require("gitgraph").draw({}, { all = true, max_count = 5000 })
+        end,
+        desc = "[G]it [L]og graph",
+      },
+    },
+  },
+  {
+    "tpope/vim-fugitive",
+    config = function()
+      local map = vim.keymap.set
+
+      map("n", "<leader>cs", "<CMD>Git commit <bar> wincmd J<CR>", { desc = "[C]ommit [S]taged" })
+      map("n", "<leader>ca", "<CMD>Git commit --amend<CR>", { desc = "[C]ommit [A]mend" })
+      map("n", "<leader>gp", "<CMD>Git push<CR>", { desc = "[G]it [P]ush" })
+    end,
+  },
+  {
     "sindrets/diffview.nvim",
     keys = {
       { "<leader>gd", "<CMD>DiffviewOpen<CR>", desc = "[G]it [D]iff" },
       {
         "<leader><leader>gd",
-        "<CMD>DiffviewOpen HEAD..origin/main<CR>",
+        ":DiffviewOpen HEAD..origin/main",
         desc = "[G]it [D]iff - HEAD against origin/main",
       },
       { "<leader>gh", "<CMD>DiffviewFileHistory<CR>", desc = "[G]it [H]istory" },
       { "<leader>gfh", "<CMD>DiffviewFileHistory %<CR>", desc = "[G]it [F]ile [H]istory" },
+      { "<leader><leader>gs", "<CMD>DiffviewFileHistory -g --range=stash<CR>", desc = "[G]it [S]tashes" },
     },
     config = function()
       local actions = require("diffview.actions")
@@ -48,14 +89,7 @@ local M = {
         ["M"] = actions.focus_entry,
         ["m"] = actions.select_entry,
         ["<C-x>"] = request_restore_entry,
-        ["C"] = function()
-          require("tmtl.utils").winenter_once(function()
-            vim.fn.feedkeys("c")
-            require("tmtl.utils").winenter_once(vim.keycode("<C-w>J"))
-          end)
-
-          require("neogit").open({ "commit" })
-        end,
+        ["C"] = "<CMD>silent Git commit <bar> wincmd J<CR>",
       }
 
       local file_panel_maps = spread_table({}, common_maps, panel_maps)
@@ -74,6 +108,7 @@ local M = {
         file_panel = {
           listing_style = "tree",
         },
+        show_help_hints = false,
         keymaps = {
           view = common_maps,
           file_history_panel = file_panel_maps,
@@ -119,50 +154,6 @@ local M = {
         desc = "Git [H]unk - discard",
       },
     },
-  },
-  {
-    "NeogitOrg/neogit",
-    config = function()
-      require("neogit").setup({
-        console_timeout = 5000,
-        process_spinner = false,
-        commit_editor = {
-          kind = "vsplit",
-          show_staged_diff = false,
-        },
-        disable_hint = true,
-        graph_style = "kitty",
-        integrations = {
-          diffview = true,
-        },
-        sections = {
-          recent = {
-            folded = false,
-            hidden = false,
-          },
-        },
-      })
-    end,
-    keys = {
-      { "<leader>gs", "<CMD>Neogit<CR>", desc = "[G]it [S]tatus" },
-      {
-        "<leader>gp",
-        function()
-          require("tmtl.utils").winenter_once("p")
-          require("neogit").open({ "push" })
-        end,
-        desc = "[G]it [P]ush",
-      },
-      {
-        "<leader>gl",
-        function()
-          require("tmtl.utils").winenter_once("l")
-          vim.cmd([[Neogit log]])
-        end,
-        desc = "[G]it [L]og",
-      },
-    },
-    dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim", "nvim-telescope/telescope.nvim" },
   },
 }
 
