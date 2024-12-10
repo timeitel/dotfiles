@@ -110,6 +110,9 @@ local M = {
           listing_style = "tree",
         },
         show_help_hints = false,
+        default_args = {
+          DiffviewOpen = { "--imply-local" },
+        },
         keymaps = {
           view = common_maps,
           file_history_panel = file_panel_maps,
