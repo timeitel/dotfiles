@@ -37,7 +37,7 @@ local M = {
 
       map("n", "<leader>cs", "<CMD>Git commit <bar> wincmd J<CR>", { desc = "[C]ommit [S]taged" })
       map("n", "<leader>ca", "<CMD>Git commit --amend<CR>", { desc = "[C]ommit [A]mend" })
-      map("n", "<leader>gs", "<CMD>Git status<CR>", { desc = "[G]it [S]tatus" })
+      map("n", "<leader>gs", "<CMD>G<CR>", { desc = "[G]it [S]tatus" })
       map("n", "<leader>gp", "<CMD>Git push<CR>", { desc = "[G]it [P]ush" })
     end,
   },
