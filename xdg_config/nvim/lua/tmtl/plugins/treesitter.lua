@@ -62,9 +62,8 @@ local M = {
               ["ia"] = { query = "@parameter.inner", desc = "Select parameter inner" },
             },
             selection_modes = {
-              ["@parameter.outer"] = "v", -- charwise
-              ["@function.outer"] = "V", -- linewise
-              ["@class.outer"] = "<c-v>", -- blockwise
+              ["@parameter.outer"] = "v",
+              ["@function.outer"] = "v",
             },
             include_surrounding_whitespace = true,
           },
