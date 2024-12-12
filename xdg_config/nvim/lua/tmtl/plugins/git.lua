@@ -35,7 +35,7 @@ local M = {
     config = function()
       local map = vim.keymap.set
 
-      map("n", "<leader>cs", "<CMD>Git commit <bar> wincmd J<CR>", { desc = "[C]ommit [S]taged" })
+      map("n", "<leader>cs", "<CMD>Git commit --quiet<bar> wincmd J<CR>", { desc = "[C]ommit [S]taged" })
       map("n", "<leader>ca", "<CMD>Git commit --amend<CR>", { desc = "[C]ommit [A]mend" })
       map("n", "<leader>gs", "<CMD>G<CR>", { desc = "[G]it [S]tatus" })
       map("n", "<leader>gp", "<CMD>Git push<CR>", { desc = "[G]it [P]ush" })
@@ -90,7 +90,7 @@ local M = {
         ["M"] = actions.focus_entry,
         ["m"] = actions.select_entry,
         ["<C-x>"] = request_restore_entry,
-        ["C"] = "<CMD>silent Git commit <bar> wincmd J<CR>",
+        ["C"] = "<CMD>Git commit --quiet<bar> wincmd J<CR>",
       }
 
       local file_panel_maps = spread_table({}, common_maps, panel_maps)
