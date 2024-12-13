@@ -16,7 +16,6 @@ local M = {
       "nvim-telescope/telescope-ui-select.nvim",
     },
     keys = {
-      { "<leader><leader>gs", "<CMD>Telescope git_stash<CR>", desc = "[G]it [S]tash" },
       {
         "<leader>gb",
         "<CMD>Telescope git_branches<CR>",
