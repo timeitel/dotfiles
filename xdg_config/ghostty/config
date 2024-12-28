@@ -1,2 +1,19 @@
-font-family = "FiraCode Nerd Font Mono"
-background = "#181616"
+cursor-style-blink = false
+cursor-style = bar
+shell-integration-features = no-cursor
+
+font-family = FiraCode Nerd Font Mono
+background = 181616
+
+keybind = global:super+shift+;=toggle_quick_terminal
+keybind = super+shift+l=goto_split:right
+keybind = super+shift+h=goto_split:left
+keybind = super+shift+j=goto_split:bottom
+keybind = super+shift+k=goto_split:top
+keybind = super+shift+v=new_split:right
+keybind = super+shift+s=new_split:down
+keybind = super+shift+e=scroll_page_lines:2
+keybind = super+shift+y=scroll_page_lines:-2
+keybind = super+shift+u=scroll_page_up
+keybind = super+shift+d=scroll_page_down
+keybind = super+shift+c=close_surface
