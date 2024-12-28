@@ -5,6 +5,9 @@ shell-integration-features = no-cursor
 font-family = FiraCode Nerd Font Mono
 background = 181616
 
+title = " "
+macos-titlebar-proxy-icon = hidden
+
 keybind = global:super+shift+;=toggle_quick_terminal
 keybind = super+shift+l=goto_split:right
 keybind = super+shift+h=goto_split:left
