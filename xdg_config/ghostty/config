@@ -1,12 +1,13 @@
+font-family = FiraCode Nerd Font Mono
+background = 181616
+
 cursor-style-blink = false
 cursor-style = bar
 shell-integration-features = no-cursor
 
-font-family = FiraCode Nerd Font Mono
-background = 181616
-
 title = " "
 macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true
 
 keybind = global:super+shift+;=toggle_quick_terminal
 keybind = super+shift+l=goto_split:right
