@@ -20,10 +20,10 @@ local function set_motion_and_feed(str)
   end
 end
 
-map({ "o", "x" }, "aW", set_motion_and_feed("aW"), opts) -- [q]uote
-map({ "o", "x" }, "iW", set_motion_and_feed("iW"), opts) -- [q]uote
-map({ "o", "x" }, "aw", set_motion_and_feed("aw"), opts) -- [q]uote
-map({ "o", "x" }, "iw", set_motion_and_feed("iw"), opts) -- [q]uote
+map({ "o", "x" }, "aW", set_motion_and_feed("aW"), opts)
+map({ "o", "x" }, "iW", set_motion_and_feed("iW"), opts)
+map({ "o", "x" }, "aw", set_motion_and_feed("aw"), opts)
+map({ "o", "x" }, "iw", set_motion_and_feed("iw"), opts)
 map({ "o", "x" }, "iq", set_motion_and_feed('i"'), opts) -- [q]uote
 map({ "o", "x" }, "aq", set_motion_and_feed('a"'), opts)
 map({ "o", "x" }, "is", set_motion_and_feed("i'"), opts) -- [s]ingle quote
