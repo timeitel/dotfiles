@@ -1,5 +1,5 @@
 font-family = FiraCode Nerd Font Mono
-background = 181616
+theme = kanagawa dragon
 
 macos-titlebar-style = hidden
 window-padding-y = 6,2
