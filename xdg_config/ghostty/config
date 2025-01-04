@@ -1,16 +1,13 @@
 font-family = FiraCode Nerd Font Mono
 theme = kanagawa dragon
 
-macos-titlebar-style = hidden
-window-padding-y = 0
-window-padding-x = 0
-
 cursor-style-blink = false
 cursor-style = bar
 shell-integration-features = no-cursor
 
 confirm-close-surface = false
 macos-option-as-alt = true
+macos-titlebar-style = hidden
 
 keybind = global:super+shift+;=toggle_quick_terminal
 keybind = super+shift+l=goto_split:right
