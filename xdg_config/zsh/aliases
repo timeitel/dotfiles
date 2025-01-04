@@ -27,3 +27,5 @@ alias gps='git push'
 alias gs='git status'
 alias gw='git worktree'
 alias gr='git rebase'
+
+alias ta='tmux attach'
