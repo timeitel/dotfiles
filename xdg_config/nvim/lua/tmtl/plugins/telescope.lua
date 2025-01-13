@@ -7,6 +7,54 @@ local function filename_first(_, path)
   return string.format("%s\t\t%s", tail, parent)
 end
 
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local make_entry = require("telescope.make_entry")
+local conf = require("telescope.config").values
+
+local live_multigrep = function(opts)
+  opts = opts or {}
+  opts.cwd = opts.cwd or vim.uv.cwd()
+
+  local finder = finders.new_async_job({
+    command_generator = function(prompt)
+      if not prompt or prompt == "" then
+        return nil
+      end
+
+      local pieces = vim.split(prompt, "  ")
+      local args = { "rg" }
+      if pieces[1] then
+        table.insert(args, "-e")
+        table.insert(args, pieces[1])
+      end
+
+      if pieces[2] then
+        table.insert(args, "-g")
+        table.insert(args, pieces[2])
+      end
+
+      ---@diagnostic disable-next-line: deprecated
+      return vim.tbl_flatten({
+        args,
+        { "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" },
+      })
+    end,
+    entry_maker = make_entry.gen_from_vimgrep(opts),
+    cwd = opts.cwd,
+  })
+
+  pickers
+    .new(opts, {
+      debounce = 100,
+      prompt_title = "Live Grep with File Filter",
+      finder = finder,
+      previewer = conf.grep_previewer(opts),
+      sort = require("telescope.sorters").empty(),
+    })
+    :find()
+end
+
 local M = {
   {
     "nvim-telescope/telescope.nvim",
@@ -25,7 +73,6 @@ local M = {
         "<C-p>",
         function()
           require("telescope").extensions.smart_open.smart_open({
-            initial_mode = "insert",
             cwd_only = true,
           })
         end,
@@ -33,8 +80,8 @@ local M = {
       },
       {
         "<leader>fg",
-        function()
-          require("telescope.builtin").live_grep({ initial_mode = "insert", additional_args = { "--hidden" } })
+        function(opts)
+          live_multigrep(opts)
         end,
         desc = "[F]ind - live [G]rep",
       },
@@ -64,21 +111,21 @@ local M = {
       {
         "<leader>fs",
         function()
-          require("telescope.builtin").lsp_document_symbols({ initial_mode = "insert" })
+          require("telescope.builtin").lsp_document_symbols()
         end,
         desc = "[F]ind [S]ymbols",
       },
       {
         "<leader>fw",
         function()
-          require("telescope.builtin").lsp_dynamic_workspace_symbols({ initial_mode = "insert" })
+          require("telescope.builtin").lsp_dynamic_workspace_symbols()
         end,
         desc = "[F]ind [W]orkspace symbols",
       },
       {
         "<leader>fk",
         function()
-          require("telescope.builtin").keymaps({ initial_mode = "insert" })
+          require("telescope.builtin").keymaps()
           vim.fn.feedkeys("<Space>")
         end,
         desc = "[F]ind [K]eymaps",
@@ -116,7 +163,7 @@ local M = {
       {
         "<leader>fc",
         function()
-          require("telescope.builtin").commands({ initial_mode = "insert" })
+          require("telescope.builtin").commands()
         end,
         desc = "[F]ind [C]ommands",
       },
@@ -215,7 +262,7 @@ local M = {
 
       telescope.setup({
         defaults = {
-          initial_mode = "normal",
+          initial_mode = "insert",
           file_ignore_patterns = { "%.DS_Store", "%.git/" },
           multi_icon = "<>",
           sorting_strategy = "ascending",
@@ -264,7 +311,7 @@ local M = {
             },
           },
 
-          find_files = { initial_mode = "insert" },
+          find_files = {},
 
           lsp_references = {
             layout_strategy = "vertical",
