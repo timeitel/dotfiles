@@ -36,7 +36,7 @@ local M = {
       local map = vim.keymap.set
 
       map("n", "<leader>cs", "<CMD>Git commit --quiet<bar> wincmd J<CR>", { desc = "[C]ommit [S]taged" })
-      map("n", "<leader>ca", "<CMD>Git commit --amend<CR>", { desc = "[C]ommit [A]mend" })
+      map("n", "<leader>ca", "<CMD>Git commit --amend<bar> wincmd J<CR>", { desc = "[C]ommit [A]mend" })
       map("n", "<leader>gs", "<CMD>G<CR>", { desc = "[G]it [S]tatus" })
       map("n", "<leader>gp", "<CMD>Git push<CR>", { desc = "[G]it [P]ush" })
     end,
@@ -56,16 +56,6 @@ local M = {
     },
     config = function()
       local actions = require("diffview.actions")
-      local request_confirm = require("tmtl.utils").request_confirm
-      local function request_restore_entry()
-        request_confirm({
-          prompt = "discard changes",
-          on_confirm = function()
-            actions.restore_entry()
-            vim.cmd([[checktime]])
-          end,
-        })
-      end
       local spread_table = require("tmtl.utils").spread_table
 
       local common_maps = {
@@ -86,10 +76,10 @@ local M = {
 
       local panel_maps = {
         ["<C-f>"] = actions.toggle_files,
+        ["<C-x>"] = actions.restore_entry,
         ["gf"] = actions.goto_file_edit,
         ["M"] = actions.focus_entry,
         ["m"] = actions.select_entry,
-        ["<C-x>"] = request_restore_entry,
         ["C"] = "<CMD>Git commit --quiet<bar> wincmd J<CR>",
       }
 
