@@ -281,11 +281,13 @@ local M = {
             require("telescope.themes").get_cursor({}),
           },
           smart_open = {
-            match_algorithm = "fzy",
+            match_algorithm = "fzf",
           },
+          fzf = {},
         },
       })
 
+      require("telescope").load_extension("fzf")
       require("telescope").load_extension("ui-select")
       require("telescope").load_extension("notify")
       require("telescope").load_extension("undo")

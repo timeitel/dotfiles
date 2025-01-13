@@ -156,7 +156,7 @@ local M = {
     end,
     dependencies = {
       "kkharji/sqlite.lua",
-      { "nvim-telescope/telescope-fzy-native.nvim" },
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
   },
   {
