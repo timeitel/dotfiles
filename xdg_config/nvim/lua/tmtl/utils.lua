@@ -85,9 +85,9 @@ local function goto_diagnostic(opts)
   local float = opts.float or false
 
   if prev then
-    vim.diagnostic.goto_prev({ float = false, severity = opts.severity })
+    vim.diagnostic.jump({ count = -1, severity = opts.severity })
   else
-    vim.diagnostic.goto_next({ float = false, severity = opts.severity })
+    vim.diagnostic.jump({ count = 1, severity = opts.severity })
   end
 
   if float then

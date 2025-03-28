@@ -52,9 +52,9 @@ local M = {
             end
 
             if vim.islist(result) then
-              util.jump_to_location(result[1], "utf-8", true)
+              util.show_document(result[1], "utf-8", { focus = true })
             else
-              util.jump_to_location(result, "utf-8", true)
+              util.show_document(result, "utf-8", { focus = true })
             end
           end,
         },
@@ -69,10 +69,10 @@ local M = {
         commands = {
           OrganizeImports = {
             function()
-              vim.lsp.buf.execute_command({
+              local c = vim.lsp.get_clients({ name = "ts_ls", bufnr = 0 })
+              c[1]:exec_cmd({
                 command = "_typescript.organizeImports",
                 arguments = { vim.api.nvim_buf_get_name(0) },
-                title = "",
               })
             end,
             description = "Organize Imports",
@@ -104,6 +104,9 @@ local M = {
             },
             diagnostics = {
               globals = { "vim", "hs", "require" },
+            },
+            runtime = {
+              version = "Lua 5.1",
             },
             workspace = {
               -- Make the server aware of Neovim runtime files
