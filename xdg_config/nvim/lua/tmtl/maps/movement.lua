@@ -68,31 +68,7 @@ map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "[T]ab [N]ew" })
 map("n", "]t", "<cmd>tabnext<cr>", { desc = "[T]ab - next" })
 map("n", "[t", "<cmd>tabprevious<cr>", { desc = "[T]ab - previous" })
 
-local function goto_qf_item(opts)
-  opts = opts or {}
-  local prev = opts.prev or false
-
-  if prev then
-    local ok, _ = pcall(vim.cmd, "cprevious")
-    if not ok then
-      vim.cmd("cfirst")
-      require("notify")("No previous qf items")
-    end
-  else
-    local ok, _ = pcall(vim.cmd, "cnext")
-    if not ok then
-      vim.cmd("clast")
-      require("notify")("No more qf items")
-    end
-  end
-
-  vim.fn.feedkeys("zz")
-end
 map("n", "<leader>ql", "<cmd>copen<cr>", { desc = "[Q]uickfix [L]ist - show" })
-map("n", "]q", goto_qf_item, { desc = "[Q]uickfix List - next" })
-map("n", "[q", function()
-  goto_qf_item({ prev = true })
-end, { desc = "[Q]uickfix List - previous" })
 map("n", "<leader>qq", "<cmd>cclose<cr>", { desc = "[Q]uickfix List - [Q]uit" })
 
 map("n", "gof", function()
