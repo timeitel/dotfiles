@@ -78,45 +78,21 @@ M.winenter_once = function(cb)
   })
 end
 
-local function goto_diagnostic(opts)
-  local table_length = require("tmtl.utils").table_length
-  opts = opts or {}
-  local prev = opts.prev or false
-  local float = opts.float or false
-
-  if prev then
-    vim.diagnostic.jump({ count = -1, severity = opts.severity })
-  else
-    vim.diagnostic.jump({ count = 1, severity = opts.severity })
-  end
-
-  if float then
-    vim.schedule(function()
-      vim.diagnostic.open_float({ severity_sort = true, border = "rounded" })
-    end)
-  end
-
-  local diagnostic_count = table_length(vim.diagnostic.get(0))
-  if diagnostic_count == 0 then
-    require("notify")("No more diagnostics")
-  end
-end
-
 M.on_attach_lsp = function()
   local function map(m, k, v, d)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = 0, desc = d })
   end
 
   map("n", "]e", function()
-    goto_diagnostic({ severity = vim.diagnostic.severity.ERROR })
+    vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR })
   end, "Next [E]rror")
 
   map("n", "[e", function()
-    goto_diagnostic({ prev = true, severity = vim.diagnostic.severity.ERROR })
+    vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR })
   end, "Previous [E]rror")
 
   map("n", "<C-n>", function()
-    goto_diagnostic({ float = true, severity = { min = vim.diagnostic.severity.HINT } })
+    vim.diagnostic.jump({ count = 1, float = true })
   end, "[N]ext diagnostic")
 
   map("n", "<leader>la", function()
@@ -151,10 +127,6 @@ M.on_attach_lsp = function()
       vim.cmd([[LspStart]])
     end
   end, "[L]SP [S]tart / [S]top - toggle")
-
-  map("n", "<leader><leader>lr", function()
-    vim.cmd([[LspRestart]])
-  end, "[L]SP [R]estart")
 
   map({ "i", "n" }, "<C-S-Space>", function()
     vim.lsp.buf.signature_help()

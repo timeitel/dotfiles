@@ -79,12 +79,6 @@ local M = {
           move = {
             enable = true,
             set_jumps = true,
-            goto_next_start = {
-              ["]a"] = "@parameter.inner",
-            },
-            goto_previous_start = {
-              ["[a"] = "@parameter.inner",
-            },
           },
           lsp_interop = {
             enable = false,
