@@ -10,8 +10,10 @@ vim.lsp.enable({ "lua_ls", "html", "tailwindcss", "gopls", "ts_ls" })
 vim.diagnostic.config({
   virtual_text = {
     prefix = "●",
+    virt_text_pos = "right_align",
   },
   update_in_insert = true,
+  underline = false,
 })
 
 vim.lsp.protocol.CompletionItemKind = {
