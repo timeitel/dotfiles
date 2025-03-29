@@ -56,28 +56,6 @@ M.contains = function(table, value)
   return false
 end
 
-M.table_length = function(table)
-  local count = 0
-  for _ in pairs(table) do
-    count = count + 1
-  end
-  return count
-end
-
-M.winenter_once = function(cb)
-  vim.api.nvim_create_autocmd("WinEnter", {
-    once = true,
-    pattern = "*",
-    callback = function()
-      if type(cb) == "function" then
-        cb()
-      else
-        vim.fn.feedkeys(cb)
-      end
-    end,
-  })
-end
-
 M.on_attach_lsp = function()
   local function map(m, k, v, d)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = 0, desc = d })

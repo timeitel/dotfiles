@@ -1,5 +1,10 @@
 local M = {
-  "inkarkat/vim-ReplaceWithRegister",
+  {
+    "inkarkat/vim-ReplaceWithRegister",
+    config = function()
+      vim.keymap.del("n", "gri") -- replace plugin conflicting with default map
+    end,
+  },
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
