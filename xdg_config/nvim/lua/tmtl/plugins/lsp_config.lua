@@ -92,32 +92,6 @@ local M = {
         },
       })
 
-      lspconfig.lua_ls.setup({
-        on_attach = on_attach_lsp,
-        settings = {
-          Lua = {
-            hint = {
-              enable = true,
-            },
-            completion = {
-              callSnippet = "Replace",
-            },
-            diagnostics = {
-              globals = { "vim", "hs", "require" },
-            },
-            runtime = {
-              version = "Lua 5.1",
-            },
-            workspace = {
-              -- Make the server aware of Neovim runtime files
-              library = vim.api.nvim_get_runtime_file("", true),
-              checkThirdParty = false,
-            },
-          },
-        },
-        capabilities = capabilities,
-      })
-
       local diagnostic_column_signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
       for type, icon in pairs(diagnostic_column_signs) do
         local hl = "DiagnosticSign" .. type
