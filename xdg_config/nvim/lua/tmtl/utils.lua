@@ -106,7 +106,7 @@ M.on_attach_lsp = function()
     end
   end, "[L]SP [S]tart / [S]top - toggle")
 
-  map({ "i", "n" }, "<C-S-Space>", function()
+  map({ "i", "n" }, "<C-,>", function()
     vim.lsp.buf.signature_help()
   end, "Lsp signature")
 
