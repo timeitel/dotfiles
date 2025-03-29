@@ -9,6 +9,10 @@ local M = {
       },
       autochdir = true,
     })
+
+    vim.keymap.set("n", "<leader>;v", function()
+      vim.cmd([[ ToggleTerm size=70 direction=vertical ]])
+    end, { desc = "New vertical terminal" })
   end,
 }
 

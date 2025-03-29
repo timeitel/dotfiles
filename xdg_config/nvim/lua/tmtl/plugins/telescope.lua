@@ -314,6 +314,7 @@ local M = {
           find_files = {},
 
           lsp_references = {
+            initial_mode = "normal",
             layout_strategy = "vertical",
             layout_config = {
               width = 0.9,
