@@ -1,6 +1,14 @@
 return {
   on_attach = function(client)
     client.server_capabilities.documentFormattingProvider = false -- done by prettierd
+
+    vim.keymap.set("n", "<leader>li", function()
+      local c = vim.lsp.get_clients({ name = "ts_ls", bufnr = 0 })
+      c[1]:exec_cmd({
+        command = "_typescript.organizeImports",
+        arguments = { vim.api.nvim_buf_get_name(0) },
+      })
+    end, { desc = "[L]SP organize [I]mports", buffer = 0 })
   end,
   handlers = {
     ["textDocument/definition"] = function(_, result, params)
@@ -22,18 +30,6 @@ return {
   settings = {
     completions = {
       completeFunctionCalls = true,
-    },
-  },
-  commands = {
-    OrganizeImports = {
-      function()
-        local c = vim.lsp.get_clients({ name = "ts_ls", bufnr = 0 })
-        c[1]:exec_cmd({
-          command = "_typescript.organizeImports",
-          arguments = { vim.api.nvim_buf_get_name(0) },
-        })
-      end,
-      description = "Organize Imports",
     },
   },
   init_options = {

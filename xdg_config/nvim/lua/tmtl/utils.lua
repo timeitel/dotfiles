@@ -75,10 +75,6 @@ M.on_attach_lsp = function()
     vim.lsp.buf.rename()
   end, "[L]SP [R]ename")
 
-  map("n", "<leader>li", function()
-    vim.cmd([[OrganizeImports]])
-  end, "[L]SP organize [I]mports")
-
   map("n", "<leader><leader>lr", function()
     local clients = vim.lsp.get_clients({ bufnr = 0 })
 
