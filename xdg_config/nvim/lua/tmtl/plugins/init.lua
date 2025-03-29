@@ -3,6 +3,7 @@ local M = {
     "inkarkat/vim-ReplaceWithRegister",
     config = function()
       vim.keymap.del("n", "gri") -- replace plugin conflicting with default map
+      vim.keymap.del("n", "gra")
     end,
   },
   {
