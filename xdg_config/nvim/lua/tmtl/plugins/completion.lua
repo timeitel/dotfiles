@@ -30,15 +30,15 @@ local M = {
             cmp.complete()
           end
         end, { "i", "c" }),
-        ["<C-k>"] = cmp.mapping(function()
+        ["<C-k>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
           else
-            cmp.complete()
+            fallback()
           end
         end, { "i", "c" }),
         ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-q>"] = cmp.mapping(function(fallback)
+        ["<C-c>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.abort()
           else
@@ -56,17 +56,6 @@ local M = {
           c = function()
             if cmp.visible() then
               cmp.confirm({ select = true })
-            else
-              vim.api.nvim_input("<cr>")
-            end
-          end,
-        }),
-
-        ["<C-M-l>"] = cmp.mapping({
-          c = function()
-            if cmp.visible() then
-              cmp.confirm({ select = true })
-              vim.api.nvim_input("<cr>")
             else
               vim.api.nvim_input("<cr>")
             end
