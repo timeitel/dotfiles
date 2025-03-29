@@ -80,21 +80,19 @@ M.on_attach_lsp = function()
   end, "[L]SP organize [I]mports")
 
   map("n", "<leader><leader>lr", function()
-    vim.cmd([[LspRestart]])
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
+
+    for _, client in ipairs(clients) do
+      local id = client.id
+      vim.lsp.stop_client(id)
+      vim.lsp.start_client(client.config)
+      print("Restarted lsp client: " .. client.name)
+    end
   end, "[L]SP [R]estart")
 
   map("n", "<leader><leader>li", function()
-    vim.cmd([[LspInfo]])
+    vim.cmd([[ checkhealth lsp ]])
   end, "[L]SP [I]nfo")
-
-  map("n", "<leader><leader>ls", function()
-    local lsp_attached = vim.lsp.get_clients({ bufnr = 0 })[1] ~= nil
-    if lsp_attached then
-      vim.cmd([[LspStop]])
-    else
-      vim.cmd([[LspStart]])
-    end
-  end, "[L]SP [S]tart / [S]top - toggle")
 
   map({ "i", "n" }, "<C-k>", function()
     vim.lsp.buf.signature_help()
