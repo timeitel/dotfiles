@@ -13,7 +13,6 @@ local M = {
   opts = {},
   config = function()
     local overseer = require("overseer")
-    local contains = require("tmtl.utils").contains
     local request_confirm = require("tmtl.utils").request_confirm
     local notify = require("notify")
 
@@ -33,10 +32,10 @@ local M = {
     end
 
     local function get_ft()
-      local currentBufnr = vim.api.nvim_get_current_buf()
-      local ft = vim.bo[currentBufnr].filetype
+      local ft = vim.bo.filetype
+      local ts_files = { "typescript", "typescriptreact", "javascript", "json" }
 
-      if contains({ "typescript", "typescriptreact", "javascript", "json" }, ft) then
+      if ts_files[ft] then
         return "ts"
       end
       return ft

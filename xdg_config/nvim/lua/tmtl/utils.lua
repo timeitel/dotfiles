@@ -46,16 +46,6 @@ M.spread_table = function(target_table, source_table, source_table_2)
   return target_table
 end
 
-M.contains = function(table, value)
-  for _, table_value in ipairs(table) do
-    if table_value == value then
-      return true
-    end
-  end
-
-  return false
-end
-
 M.on_attach_lsp = function()
   local function map(m, k, v, d)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = 0, desc = d })
