@@ -62,8 +62,7 @@ vim.lsp.protocol.CompletionItemKind = {
   "", -- TypeParameter
 }
 
-local diagnostic_signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(diagnostic_signs) do
+for type, icon in pairs({ Error = " ", Warn = " ", Hint = " ", Info = " " }) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
