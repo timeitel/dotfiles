@@ -37,6 +37,7 @@ o.termguicolors = true
 o.undofile = true
 o.whichwrap:append("<,>,h,l")
 o.wildignore:append({ "__pycache__", "*.o", "*.pyc", "*pycache*", "*~", "Cargo.lock" })
+o.winborder = "rounded"
 o.wrap = false
 
 -- Tabs
@@ -62,9 +63,15 @@ o.foldmethod = "expr"
 -- list chars
 o.list = true
 o.listchars = ""
+---@diagnostic disable-next-line: undefined-field
 o.listchars:append({ extends = "»" })
+---@diagnostic disable-next-line: undefined-field
 o.listchars:append({ leadmultispace = "┊ " })
+---@diagnostic disable-next-line: undefined-field
 o.listchars:append({ lead = "·" })
+---@diagnostic disable-next-line: undefined-field
 o.listchars:append({ nbsp = "⣿" })
+---@diagnostic disable-next-line: undefined-field
 o.listchars:append({ precedes = "«" })
+---@diagnostic disable-next-line: undefined-field
 o.listchars:append({ tab = "│ " })
