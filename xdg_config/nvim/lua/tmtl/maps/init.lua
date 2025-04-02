@@ -8,8 +8,6 @@ map("n", "X", "xi", { desc = "Replacement for vanilla 's'" })
 map("v", "p", "P", { desc = "Keep register on visual paste" })
 map("v", "P", "p", { desc = "Replace register on visual paste" })
 
-map("n", "Q", "q", { desc = "Safer trigger for macro recording" })
-
 --- operator aliases
 Last_Motion = ""
 local opts = { desc = "Operator mode syntax aliases", expr = true }
@@ -81,7 +79,7 @@ map("n", "<leader>yf", function()
 end, { desc = "Copy filename to clipboard" })
 
 map("v", "<leader>y", '"+y', { desc = "Copy to clipboard" })
-map("v", "<leader>p", '"+p', { desc = "Paste from clipboard" })
+map({ "v", "n" }, "<leader>p", '"+p', { desc = "Paste from clipboard" })
 map("v", "<leader>d", '"_d', { desc = "Delete contents to black hole register" })
 
 map("i", "<c-t>", "TODO: <esc>gccA", { desc = "Insert - [T]ODO comment", remap = true })
