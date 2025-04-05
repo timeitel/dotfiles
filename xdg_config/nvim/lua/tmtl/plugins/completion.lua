@@ -1,172 +1,50 @@
 local M = {
-  "L3MON4D3/LuaSnip",
-  "hrsh7th/cmp-buffer",
-  "hrsh7th/cmp-path",
-  "hrsh7th/cmp-nvim-lua",
-  "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-nvim-lsp-document-symbol",
-  "hrsh7th/cmp-cmdline",
-  "saadparwaiz1/cmp_luasnip",
-  "onsails/lspkind-nvim",
   {
-    "hrsh7th/nvim-cmp",
-    config = function()
-      local ok, cmp = pcall(require, "cmp")
-      if not ok then
-        print("Failed to load:", cmp)
-        return
-      end
+    "saghen/blink.cmp",
+    dependencies = { "L3MON4D3/LuaSnip" },
+    version = "1.*",
+    opts = {
 
-      local lspkind = require("lspkind")
-      lspkind.init()
+      completion = { ghost_text = { enabled = true } },
 
-      local mapping = cmp.mapping.preset.insert({
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-u>"] = cmp.mapping.scroll_docs(4),
-        ["<C-j>"] = cmp.mapping(function()
-          if cmp.visible() then
-            cmp.select_next_item()
-          else
-            cmp.complete()
-          end
-        end, { "i", "c" }),
-        ["<C-k>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          else
-            fallback()
-          end
-        end, { "i", "c" }),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-c>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.abort()
-          else
-            fallback()
-          end
-        end, { "i", "c" }),
-        ["<C-l>"] = cmp.mapping({
-          i = function()
-            if cmp.visible() then
-              cmp.confirm({ select = true })
-            else
-              cmp.complete()
-            end
-          end,
-          c = function()
-            if cmp.visible() then
-              cmp.confirm({ select = true })
-            else
-              vim.api.nvim_input("<cr>")
-            end
-          end,
-        }),
+      keymap = {
+        preset = "none",
+        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-c>"] = { "cancel", "fallback" },
+        ["<C-l>"] = { "select_and_accept" },
 
-        ["<C-n>"] = cmp.mapping(function(fallback)
-          fallback()
-        end, { "i" }),
-        ["<C-p>"] = cmp.mapping(function(fallback)
-          fallback()
-        end, { "i" }),
-      })
+        ["<Up>"] = { "select_prev", "fallback" },
+        ["<Down>"] = { "select_next", "fallback" },
+        ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
+        ["<C-j>"] = { "select_next", "fallback_to_mappings" },
 
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-      local ts_utils = require("nvim-treesitter.ts_utils")
-      cmp.event:on("confirm_done", function(evt)
-        local node = ts_utils.get_node_at_cursor()
-        if node == nil then
-          cmp_autopairs.on_confirm_done()(evt)
-          return
-        end
+        ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-f>"] = { "scroll_documentation_down", "fallback" },
 
-        if node:type() == "named_imports" or node:type() == "jsx_self_closing_element" then
-          return
-        end
+        ["<C-n>"] = { "snippet_forward", "fallback" },
+        ["<C-p>"] = { "snippet_backward", "fallback" },
 
-        cmp_autopairs.on_confirm_done()(evt)
-      end)
+        ["<C-y>"] = { "show_signature", "hide_signature", "fallback" },
+      },
 
-      cmp.setup({
-        window = {
-          completion = cmp.config.window.bordered({
-            winhighlight = "Normal:transparentBG,FloatBorder:transparentBG,Search:None",
-          }),
-          documentation = cmp.config.window.bordered(),
+      cmdline = {
+        keymap = {
+          ["<C-space>"] = { "show" },
+          ["<C-c>"] = { "cancel", "fallback" },
+          ["<C-l>"] = { "select_and_accept" },
+
+          ["<Up>"] = { "select_prev", "fallback" },
+          ["<Down>"] = { "select_next", "fallback" },
+          ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
+          ["<C-j>"] = { "select_next", "fallback_to_mappings" },
         },
+      },
 
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
-        },
-
-        mapping = mapping,
-
-        sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "nvim_lua" },
-          { name = "path" },
-          { name = "luasnip" },
-          { name = "buffer", keyword_length = 5, max_item_count = 5 },
-        }),
-
-        sorting = {
-          comparators = {
-            cmp.config.compare.sort_text,
-            cmp.config.compare.offset,
-            cmp.config.compare.exact,
-            cmp.config.compare.score,
-
-            function(entry1, entry2)
-              local _, entry1_under = entry1.completion_item.label:find("^_+")
-              local _, entry2_under = entry2.completion_item.label:find("^_+")
-              entry1_under = entry1_under or 0
-              entry2_under = entry2_under or 0
-              if entry1_under > entry2_under then
-                return false
-              elseif entry1_under < entry2_under then
-                return true
-              end
-            end,
-
-            cmp.config.compare.kind,
-            cmp.config.compare.sort_text,
-            cmp.config.compare.length,
-            cmp.config.compare.order,
-          },
-        },
-
-        formatting = {
-          format = lspkind.cmp_format({
-            with_text = true,
-            menu = {
-              buffer = "[BUF]",
-              nvim_lsp = "[LSP]",
-              nvim_lua = "[API]",
-              path = "[PATH]",
-              luasnip = "[SNIP]",
-            },
-          }),
-        },
-      })
-
-      cmp.setup.cmdline(":", {
-        mapping = mapping,
-        sources = {
-          { name = "cmdline", keyword_length = 2, max_item_count = 10 },
-          { name = "nvim_lua", keyword_length = 2, max_item_count = 10 },
-        },
-      })
-
-      cmp.setup.cmdline({ "/", "?" }, {
-        mapping = mapping,
-        sources = {
-          { name = "buffer", keyword_length = 3 },
-        },
-      })
-
-      vim.cmd([[ highlight! default link CmpItemKind CmpItemMenuDefault ]])
-    end,
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+    },
+    opts_extend = { "sources.default" },
   },
 }
 
