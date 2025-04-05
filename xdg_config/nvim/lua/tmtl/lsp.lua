@@ -1,7 +1,7 @@
 local diag_opts = {
   virtual_text = {
     prefix = "●",
-    virt_text_pos = "right_align",
+    virt_text_pos = "eol_right_align",
   },
   update_in_insert = true,
   underline = false,
@@ -18,7 +18,7 @@ vim.lsp.config("*", {
       if diag_opts.virtual_text == false then
         diag_opts.virtual_text = {
           prefix = "●",
-          virt_text_pos = "right_align",
+          virt_text_pos = "eol_right_align",
         }
         diag_opts.virtual_lines = false
       else
