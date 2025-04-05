@@ -5,18 +5,33 @@ local M = {
     version = "1.*",
     opts = {
 
-      completion = { ghost_text = { enabled = true } },
+      completion = {
+        ghost_text = { enabled = true },
+        menu = {
+          auto_show = false,
+        },
+      },
 
       keymap = {
         preset = "none",
-        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-space>"] = { "show_documentation", "hide_documentation" },
         ["<C-c>"] = { "cancel", "fallback" },
         ["<C-l>"] = { "select_and_accept" },
 
         ["<Up>"] = { "select_prev", "fallback" },
         ["<Down>"] = { "select_next", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
-        ["<C-j>"] = { "select_next", "fallback_to_mappings" },
+        ["<C-j>"] = {
+          function(cmp)
+            if cmp.is_active() then
+              return cmp.select_next()
+            else
+              return cmp.show()
+            end
+          end,
+          "show",
+          "fallback_to_mappings",
+        },
 
         ["<C-b>"] = { "scroll_documentation_up", "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
@@ -29,14 +44,23 @@ local M = {
 
       cmdline = {
         keymap = {
-          ["<C-space>"] = { "show" },
           ["<C-c>"] = { "cancel", "fallback" },
-          ["<C-l>"] = { "select_and_accept" },
+          ["<M-l>"] = { "select_and_accept" },
+          ["<C-l>"] = { "select_accept_and_enter" },
 
           ["<Up>"] = { "select_prev", "fallback" },
           ["<Down>"] = { "select_next", "fallback" },
           ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
-          ["<C-j>"] = { "select_next", "fallback_to_mappings" },
+          ["<C-j>"] = {
+            function(cmp)
+              if cmp.is_active() then
+                return cmp.select_next()
+              else
+                return cmp.show()
+              end
+            end,
+            "show",
+          },
         },
       },
 
