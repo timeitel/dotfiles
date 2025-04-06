@@ -13,14 +13,6 @@ M.get_visual_selection = function()
   end
 end
 
-M.shallow_copy = function(t)
-  local t2 = {}
-  for k, v in pairs(t) do
-    t2[k] = v
-  end
-  return t2
-end
-
 M.request_confirm = function(options)
   local opts = options or {}
   local on_confirm = opts.on_confirm

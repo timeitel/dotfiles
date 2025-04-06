@@ -180,11 +180,11 @@ local M = {
         desc = "[F]ind terminals",
       },
     },
+    lazy = false,
     config = function()
       local telescope = require("telescope")
       local action_state = require("telescope.actions.state")
       local actions = require("telescope.actions")
-      local copy = require("tmtl.utils").shallow_copy
       local state = require("telescope.state")
 
       local slow_scroll = function(prompt_bufnr, direction)
@@ -229,36 +229,36 @@ local M = {
         ["<M-p>"] = actions.cycle_history_prev,
       }
 
-      local normal_mappings = copy(insert_mappings)
-      normal_mappings["<M-h>"] = close_and_harpoon("<M-h>")
-      normal_mappings["<M-j>"] = close_and_harpoon("<M-j>")
-      normal_mappings["<M-k>"] = close_and_harpoon("<M-k>")
-      normal_mappings["<M-l>"] = close_and_harpoon("<M-l>")
-
-      normal_mappings["<leader>qf"] = function(bfnr)
-        actions.smart_send_to_qflist(bfnr)
-        vim.cmd([[copen]])
-      end
-      normal_mappings["g"] = false
-      normal_mappings["c"] = false
-      normal_mappings["q"] = actions.close
-      normal_mappings["<C-u>"] = actions.preview_scrolling_up
-      normal_mappings["m"] = actions.select_default + actions.center
-      normal_mappings["<leader>gd"] = function(bfnr)
-        actions.close(bfnr)
-        vim.cmd([[DiffviewOpen]])
-      end
-      normal_mappings["<leader>gh"] = function(bfnr)
-        actions.close(bfnr)
-        vim.cmd([[DiffviewFileHistory]])
-      end
-      normal_mappings["<leader>yp"] = function()
-        local entry = action_state.get_selected_entry()
-        local filename = entry.Path.filename
-        local copy_cmd = string.format(':let @+="%s"', filename)
-        vim.cmd(copy_cmd)
-        require("notify")("Copied file path to clipboard")
-      end
+      local normal_mappings = vim.tbl_extend("force", insert_mappings, {
+        ["<M-h>"] = close_and_harpoon("<M-h>"),
+        ["<M-j>"] = close_and_harpoon("<M-j>"),
+        ["<M-k>"] = close_and_harpoon("<M-k>"),
+        ["<M-l>"] = close_and_harpoon("<M-l>"),
+        ["<leader>qf"] = function(bfnr)
+          actions.smart_send_to_qflist(bfnr)
+          vim.cmd([[copen]])
+        end,
+        ["g"] = false,
+        ["c"] = false,
+        ["q"] = actions.close,
+        ["<C-u>"] = actions.preview_scrolling_up,
+        ["m"] = actions.select_default + actions.center,
+        ["<leader>gd"] = function(bfnr)
+          actions.close(bfnr)
+          vim.cmd([[DiffviewOpen]])
+        end,
+        ["<leader>gh"] = function(bfnr)
+          actions.close(bfnr)
+          vim.cmd([[DiffviewFileHistory]])
+        end,
+        ["<leader>yp"] = function()
+          local entry = action_state.get_selected_entry()
+          local filename = entry.Path.filename
+          local copy_cmd = string.format(':let @+="%s"', filename)
+          vim.cmd(copy_cmd)
+          require("notify")("Copied file path to clipboard")
+        end,
+      })
 
       telescope.setup({
         defaults = {
