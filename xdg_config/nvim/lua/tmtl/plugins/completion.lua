@@ -34,8 +34,8 @@ local M = {
         ["<C-b>"] = { "scroll_documentation_up", "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
 
-        ["<C-n>"] = { "snippet_forward", "fallback" },
-        ["<C-p>"] = { "snippet_backward", "fallback" },
+        ["<C-n>"] = { "snippet_forward", "fallback_to_mappings" },
+        ["<C-p>"] = { "snippet_backward", "fallback_to_mappings" },
 
         ["<C-y>"] = { "show_signature", "hide_signature", "fallback" },
       },
