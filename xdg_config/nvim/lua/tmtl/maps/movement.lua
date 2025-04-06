@@ -9,8 +9,6 @@ map("n", "}", "]}", { desc = "Jump to end of enclosing function" })
 
 map("n", "'", "`", { desc = "Jump to mark - always go to column instead of just first non-blank" })
 
-map("n", "'i", "'.", { desc = "Jump to line of last edit - alias" })
-
 map("c", "<C-a>", function()
   vim.api.nvim_input("<C-b>")
   vim.cmd("redraw")

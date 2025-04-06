@@ -137,8 +137,8 @@ local M = {
         end,
         desc = "[G]it [F]ile - discard changes",
       },
-      { "<C-]>", "<CMD>Gitsigns next_hunk<CR>", desc = "Next git hunk" },
-      { "<C-[>", "<CMD>Gitsigns prev_hunk<CR>", desc = "Previous git hunk" },
+      { "<C-]>", "<CMD>Gitsigns next_hunk<CR>zz", desc = "Next git hunk" },
+      { "<C-[>", "<CMD>Gitsigns prev_hunk<CR>zz", desc = "Previous git hunk" },
       { "<leader>hp", "<CMD>Gitsigns preview_hunk<CR>", desc = "Git [H]unk [P]review" },
       { "<leader>hs", "<CMD>Gitsigns stage_hunk<CR>", desc = "Git [H]unk [S]tage", mode = { "n", "v" } },
       {
