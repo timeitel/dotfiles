@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+local k = vim.keycode
 
 map({ "n", "v", "o" }, "H", "^", { desc = "First character on line" })
 map({ "n", "v", "o" }, "L", "$", { desc = "Last character on line" })
@@ -15,24 +16,23 @@ map("c", "<C-a>", function()
   vim.cmd("redraw")
 end, { desc = "Linux navigation - start of line" })
 map("c", "<M-b>", function()
-  local k = vim.keycode
   vim.fn.feedkeys(k("<S-Left>"))
   vim.cmd("redraws")
 end)
 map("c", "<M-f>", function()
-  local k = vim.keycode
   vim.fn.feedkeys(k("<S-Right>"))
   vim.cmd("redraws")
 end)
 map("c", "<M-h>", function()
-  local k = vim.keycode
   vim.fn.feedkeys(k("<Left>"))
   vim.cmd("redraws")
 end)
 map("c", "<M-l>", function()
-  local k = vim.keycode
   vim.fn.feedkeys(k("<Right>"))
   vim.cmd("redraws")
+end)
+map("c", "<C-l>", function()
+  vim.fn.feedkeys(k("<Enter>"))
 end)
 
 map("i", "<Tab>", "<Right>", { desc = "Cursor right" })
