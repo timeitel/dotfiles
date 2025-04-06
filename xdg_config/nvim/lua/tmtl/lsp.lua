@@ -4,7 +4,6 @@ local diag_opts = {
     virt_text_pos = "eol_right_align",
   },
   update_in_insert = true,
-  underline = false,
   virtual_lines = false,
 }
 
