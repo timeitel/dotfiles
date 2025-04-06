@@ -34,34 +34,6 @@ vim.lsp.config("*", {
 
 vim.lsp.enable({ "lua_ls", "html", "tailwindcss", "gopls", "ts_ls" })
 
-vim.lsp.protocol.CompletionItemKind = {
-  "", -- Text
-  "", -- Method
-  "", -- Function
-  "", -- Constructor
-  "", -- Field
-  "", -- Variable
-  "", -- Class
-  "ﰮ", -- Interface
-  "", -- Module
-  "", -- Property
-  "", -- Unit
-  "", -- Value
-  "", -- Enum
-  "", -- Keyword
-  "﬌", -- Snippet
-  "", -- Color
-  "", -- File
-  "", -- Reference
-  "", -- Folder
-  "", -- EnumMember
-  "", -- Constant
-  "", -- Struct
-  "", -- Event
-  "ﬦ", -- Operator
-  "", -- TypeParameter
-}
-
 for type, icon in pairs({ Error = " ", Warn = " ", Hint = " ", Info = " " }) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
