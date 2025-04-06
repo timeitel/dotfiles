@@ -7,10 +7,7 @@ local M = {
 
       completion = {
         ghost_text = { enabled = true },
-        menu = {
-          auto_show = false,
-        },
-        accept = { auto_brackets = { enabled = true } },
+        menu = { auto_show = false },
       },
 
       keymap = {
@@ -64,12 +61,7 @@ local M = {
           },
         },
       },
-
-      sources = {
-        default = { "lsp", "path", "snippets", "buffer" },
-      },
     },
-    opts_extend = { "sources.default" },
   },
 }
 
