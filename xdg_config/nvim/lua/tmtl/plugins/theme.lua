@@ -23,11 +23,12 @@ local M = {
         overrides = function(colors)
           local theme = colors.theme
           return {
-            Pmenu = { fg = theme.ui.shade0, bg = "NONE" },
-            PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+            Pmenu = { bg = "NONE" },
+            PmenuSel = { bg = theme.ui.bg_p2 },
             PmenuSbar = { bg = theme.ui.bg_m1 },
             PmenuThumb = { bg = theme.ui.bg_p2 },
             BlinkCmpMenuBorder = { bg = "NONE", fg = theme.ui.float.fg_border },
+            BlinkCmpLabel = { fg = theme.ui.fg },
             DiffChange = { bg = "#383739" },
             DiagnosticError = { fg = colors.palette.peachRed },
             DiagnosticSignError = { fg = colors.palette.peachRed },
