@@ -54,9 +54,9 @@ local M = {
       { "<leader>gfh", "<CMD>DiffviewFileHistory %<CR>", desc = "[G]it [F]ile [H]istory" },
       { "<leader><leader>gs", "<CMD>DiffviewFileHistory -g --range=stash<CR>", desc = "[G]it [S]tashes" },
     },
+    lazy = false,
     config = function()
       local actions = require("diffview.actions")
-      local spread_table = require("tmtl.utils").spread_table
 
       local common_maps = {
         ["L"] = false,
@@ -83,12 +83,14 @@ local M = {
         ["C"] = "<CMD>Git commit --quiet<bar> wincmd J<CR>",
       }
 
-      local file_panel_maps = spread_table({}, common_maps, panel_maps)
-      file_panel_maps["s"] = actions.toggle_stage_entry
+      local file_panel_maps = vim.tbl_extend("force", common_maps, panel_maps, {
+        ["s"] = actions.toggle_stage_entry,
+      })
 
-      local merge_tool_maps = spread_table({}, common_maps, panel_maps)
-      merge_tool_maps["]c"] = actions.next_conflict
-      merge_tool_maps["[c"] = actions.prev_conflict
+      local merge_tool_maps = vim.tbl_extend("force", common_maps, panel_maps, {
+        ["]c"] = actions.next_conflict,
+        ["[c"] = actions.prev_conflict,
+      })
 
       require("diffview").setup({
         view = {

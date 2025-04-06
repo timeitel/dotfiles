@@ -34,18 +34,6 @@ M.request_confirm = function(options)
   end
 end
 
-M.spread_table = function(target_table, source_table, source_table_2)
-  local source_2 = source_table_2 or {}
-  for k, v in pairs(source_table) do
-    target_table[k] = v
-  end
-
-  for k, v in pairs(source_2) do
-    target_table[k] = v
-  end
-  return target_table
-end
-
 M.on_attach_lsp = function()
   local function map(m, k, v, d)
     vim.keymap.set(m, k, v, { noremap = true, silent = true, buffer = 0, desc = d })

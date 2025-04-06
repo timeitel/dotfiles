@@ -6,7 +6,6 @@ local M = {
     local theme_colors = kanagawa_colors.theme
     local palette = kanagawa_colors.palette
     local lualine = require("lualine")
-    local spread_table = require("tmtl.utils").spread_table
     local custom_theme = require("lualine.themes.auto")
 
     custom_theme.insert.a.bg = palette.dragonBlue
@@ -66,8 +65,9 @@ local M = {
       path = 1,
     }
 
-    local winbar_inactive_filename = spread_table({}, winbar_filename)
-    winbar_inactive_filename.color = { bg = "NONE", fg = theme_colors.syn.comment }
+    local winbar_inactive_filename = vim.tbl_extend("force", winbar_filename, {
+      color = { bg = "NONE", fg = theme_colors.syn.comment },
+    })
 
     local filetype = {
       "filetype",
