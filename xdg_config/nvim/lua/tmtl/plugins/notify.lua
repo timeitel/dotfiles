@@ -17,9 +17,9 @@ local M = {
     end
 
     require("notify").setup({
-      timeout = 400,
+      timeout = 200,
       stages = "fade",
-      max_width = math.floor(vim.o.columns * 0.5),
+      max_width = math.floor(vim.o.columns * 0.3),
     })
   end,
   event = "VeryLazy",

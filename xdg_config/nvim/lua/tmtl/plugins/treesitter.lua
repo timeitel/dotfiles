@@ -11,8 +11,7 @@ local M = {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-      local ts = require("nvim-treesitter.configs")
-      ts.setup({
+      require("nvim-treesitter.configs").setup({
         highlight = {
           enable = true,
           disable = {},

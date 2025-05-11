@@ -54,17 +54,6 @@ vim.api.nvim_create_autocmd("CmdWinEnter", {
   group = "_cmd_win",
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "TelescopeResults",
-  callback = function(ctx)
-    vim.api.nvim_buf_call(ctx.buf, function()
-      vim.fn.matchadd("TelescopeParent", "\t\t.*$")
-      vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
-    end)
-  end,
-  group = group,
-})
-
 vim.api.nvim_create_autocmd("BufWinEnter", {
   pattern = { "*.txt" },
   callback = function()

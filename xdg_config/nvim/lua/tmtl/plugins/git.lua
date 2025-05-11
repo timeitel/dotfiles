@@ -148,6 +148,7 @@ local M = {
           require("notify")("Discarded hunk", vim.log.levels.WARN)
         end,
         desc = "Git [H]unk - discard",
+        mode = { "n", "v" },
       },
     },
   },

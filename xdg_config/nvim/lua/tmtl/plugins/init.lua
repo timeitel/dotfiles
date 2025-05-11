@@ -1,15 +1,7 @@
 local M = {
   {
-    "inkarkat/vim-ReplaceWithRegister",
-    config = function()
-      vim.keymap.del("n", "gri") -- replace plugin conflicting with default map
-      vim.keymap.del("n", "gra")
-    end,
-  },
-  {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
-    commit = "e76cb03",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       local harpoon = require("harpoon")
@@ -117,6 +109,18 @@ local M = {
           ["gx"] = "actions.open_external",
           ["gh"] = "actions.toggle_hidden",
           ["gd"] = "actions.cd",
+          ["gdf"] = {
+            function()
+              require("fzf-lua").files({ cwd = require("oil").get_current_dir() })
+            end,
+            desc = "Find files in current dir",
+          },
+          ["gdg"] = {
+            function()
+              require("fzf-lua").live_grep({ cwd = require("oil").get_current_dir() })
+            end,
+            desc = "Grep in current dir",
+          },
         },
         use_default_keymaps = false,
         view_options = {
@@ -156,7 +160,7 @@ local M = {
   },
   {
     "danielfalk/smart-open.nvim",
-    branch = "0.1.x",
+    branch = "0.2.x",
     config = function()
       require("telescope").load_extension("smart_open")
     end,
@@ -179,32 +183,16 @@ local M = {
     },
   },
   {
-    "sQVe/sort.nvim",
+    "echasnovski/mini.operators",
+    version = "*",
     config = function()
-      local map = vim.keymap.set
-      map("v", "gos", "<Esc><Cmd>Sort<CR>", { desc = "[S]ort visual selection" })
-      map("n", "gos", "vi{<Esc><Cmd>Sort<CR>", { desc = "[S]ort inside curly brace" })
-      map("n", "go[", "vi[<Esc><Cmd>Sort<CR>", { desc = "[S]ort inside bracket `[`" })
-      map("n", 'go"', 'vi"<Esc><Cmd>Sort<CR>', { desc = '[S]ort inside quotes `"`' })
-      map("n", "go'", "vi'<Esc><Cmd>Sort<CR>", { desc = "[S]ort inside single quotes `'`" })
-
-      require("sort").setup({
-        delimiters = {
-          ",",
-          "|",
-          ";",
-          -- ':', -- used for tailwind psuedo classes
-          "s", -- Space
-          "t", -- Tab
-        },
-      })
+      require("mini.operators").setup({ exchange = { prefix = "gX" }, evaluate = { prefix = "" } })
     end,
   },
   {
     "windwp/nvim-autopairs",
-    opts = {
-      disable_filetype = { "TelescopePrompt", "vim" },
-    },
+    event = "InsertEnter",
+    config = true,
   },
   {
     "ggandor/leap.nvim",
@@ -236,6 +224,26 @@ local M = {
       before.setup()
       vim.keymap.set("n", "[c", before.jump_to_last_edit, { desc = "Jump to last [C]hange" })
       vim.keymap.set("n", "]c", before.jump_to_next_edit, { desc = "Jump to next [C]hange" })
+    end,
+  },
+  {
+    "jake-stewart/nomrla-cmdline.nvim",
+    event = "CmdlineEnter",
+    config = function()
+      local cmd = require("normal-cmdline")
+      cmd.setup({
+        key = "kj",
+        hl = "Normal",
+        mappings = {
+          ["k"] = cmd.history.prev,
+          ["j"] = cmd.history.next,
+          ["<cr>"] = cmd.accept,
+          ["<c-l>"] = cmd.accept,
+          ["<esc>"] = cmd.cancel,
+          ["<c-c>"] = cmd.cancel,
+          [":"] = cmd.reset,
+        },
+      })
     end,
   },
 }

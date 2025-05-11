@@ -1,5 +1,4 @@
 local map = vim.keymap.set
-local k = vim.keycode
 
 map({ "n", "v", "o" }, "H", "^", { desc = "First character on line" })
 map({ "n", "v", "o" }, "L", "$", { desc = "Last character on line" })
@@ -9,28 +8,8 @@ map("n", "}", "]}", { desc = "Jump to end of enclosing function" })
 
 map("n", "'", "`", { desc = "Jump to mark - always go to column instead of just first non-blank" })
 
-map("c", "<C-a>", function()
-  vim.api.nvim_input("<C-b>")
-  vim.cmd("redraw")
-end, { desc = "Linux navigation - start of line" })
-map("c", "<M-b>", function()
-  vim.fn.feedkeys(k("<S-Left>"))
-  vim.cmd("redraws")
-end)
-map("c", "<M-f>", function()
-  vim.fn.feedkeys(k("<S-Right>"))
-  vim.cmd("redraws")
-end)
-map("c", "<M-h>", function()
-  vim.fn.feedkeys(k("<Left>"))
-  vim.cmd("redraws")
-end)
-map("c", "<M-l>", function()
-  vim.fn.feedkeys(k("<Right>"))
-  vim.cmd("redraws")
-end)
 map("c", "<C-l>", function()
-  vim.fn.feedkeys(k("<Enter>"))
+  vim.fn.feedkeys(vim.keycode("<Enter>"))
 end)
 
 map("i", "<Tab>", "<Right>", { desc = "Cursor right" })

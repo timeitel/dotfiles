@@ -1,10 +1,12 @@
 return {
   on_attach = function(client)
     client.server_capabilities.documentFormattingProvider = false -- done by prettierd
+    require("tmtl.utils").on_attach_lsp()
 
     vim.keymap.set("n", "<leader>li", function()
       local c = vim.lsp.get_clients({ name = "ts_ls", bufnr = 0 })
       c[1]:exec_cmd({
+        title = "Organize imports",
         command = "_typescript.organizeImports",
         arguments = { vim.api.nvim_buf_get_name(0) },
       })

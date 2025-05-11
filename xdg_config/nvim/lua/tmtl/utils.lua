@@ -59,8 +59,7 @@ M.on_attach_lsp = function()
     local clients = vim.lsp.get_clients({ bufnr = 0 })
 
     for _, client in ipairs(clients) do
-      local id = client.id
-      vim.lsp.stop_client(id)
+      vim.lsp.stop_client(client.id)
       vim.lsp.start_client(client.config)
       print("Restarted lsp client: " .. client.name)
     end
@@ -74,28 +73,22 @@ M.on_attach_lsp = function()
     vim.lsp.buf.signature_help()
   end, "Lsp signature")
 
-  map("n", "gd", function()
-    vim.lsp.buf.definition()
-    vim.schedule(function()
-      vim.fn.feedkeys("zz")
-    end)
-  end, "Lsp [G]o to [D]efinition")
-
   map("n", "gI", function()
     vim.lsp.buf.implementation()
-    vim.schedule(function()
-      vim.fn.feedkeys("zz")
-    end)
   end, "Lsp [G]o to [I]mplementation")
+
+  map("n", "gd", function()
+    vim.lsp.buf.definition()
+  end, "Lsp [G]o to [D]efinition")
+
+  map("n", "gt", function()
+    vim.lsp.buf.type_definition()
+  end, "Lsp [G]o to [T]ype")
 
   map("n", "gov", function()
     vim.cmd([[only]])
     vim.cmd([[vs]])
     vim.lsp.buf.definition()
-
-    vim.schedule(function()
-      vim.fn.feedkeys("zz")
-    end)
   end, "Lsp [G]o to [D]efinition in vertical split")
 
   map("n", "R", function()

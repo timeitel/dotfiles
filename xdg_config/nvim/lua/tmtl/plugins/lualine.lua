@@ -91,26 +91,6 @@ local M = {
       color = BG_NONE,
     }
 
-    local lsp = {
-      function()
-        local msg = "No LSP"
-        local buf_ft = vim.api.nvim_get_option_value("filetype", { scope = "local" })
-        local clients = vim.lsp.get_clients()
-        if next(clients) == nil then
-          return msg
-        end
-        for _, client in ipairs(clients) do
-          ---@diagnostic disable-next-line: undefined-field
-          local filetypes = client.config.filetypes
-          if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-            return " " .. client.name
-          end
-        end
-        return " " .. msg
-      end,
-      separator = { left = "", right = "" },
-    }
-
     local search_count = {
       function()
         -- searchcount can fail e.g. if unbalanced braces in search pattern
@@ -165,6 +145,11 @@ local M = {
       color = BG_NONE,
     }
 
+    local lsp_status = {
+      "lsp_status",
+      separator = { left = "", right = "" },
+    }
+
     lualine.setup({
       options = {
         theme = custom_theme,
@@ -195,7 +180,7 @@ local M = {
           formatter,
         },
         lualine_y = { diagnostic_stats },
-        lualine_z = { lsp },
+        lualine_z = { lsp_status },
       },
       inactive_sections = {},
       tabline = {},

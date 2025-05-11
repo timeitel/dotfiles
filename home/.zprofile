@@ -18,3 +18,5 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --no-require-git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --exclude node_modules --exclude .git -td -H"
+
+export BAT_THEME="gruvbox-dark"
