@@ -68,15 +68,6 @@ local M = {
         desc = "[F]ind [N]otifications",
       },
       {
-        "<leader>fd",
-        function()
-          require("telescope.builtin").diagnostics(
-            require("telescope.themes").get_dropdown({ path_display = "hidden" })
-          )
-        end,
-        desc = "[F]ind [D]iagnostics for workspace",
-      },
-      {
         "<leader>fu",
         function()
           require("telescope").extensions.undo.undo()
@@ -121,9 +112,9 @@ local M = {
           multi_icon = "<>",
           sorting_strategy = "ascending",
           path_display = function(_, path)
-            local tail = vim.fn.basename(path)
-            local parent = vim.fn.dirname(path)
-            if parent == "," then
+            local tail = vim.fs.basename(path)
+            local parent = vim.fs.dirname(path)
+            if parent == "." then
               return tail
             end
             return string.format("%s\t\t%s", tail, parent)
