@@ -227,7 +227,7 @@ local M = {
     end,
   },
   {
-    "jake-stewart/nomrla-cmdline.nvim",
+    "jake-stewart/normal-cmdline.nvim",
     event = "CmdlineEnter",
     config = function()
       local cmd = require("normal-cmdline")

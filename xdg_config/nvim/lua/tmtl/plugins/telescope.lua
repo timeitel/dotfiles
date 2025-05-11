@@ -27,7 +27,7 @@ local M = {
       { "<leader>fz", "<cmd>FzfLua<cr>", desc = "[F]ind - picker options" },
       { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "[F]ind - [F]iles" },
       { "<leader>fg", "<cmd>FzfLua live_grep<cr>", desc = "[F]ind - [G]rep" },
-      { "<leader>fg", "<cmd>FzfLua live_grep<cr>", desc = "[F]ind - [G]rep", mode = "v" },
+      { "<leader>fg", "<cmd>FzfLua grep_visual<cr>", desc = "[F]ind - [G]rep", mode = "v" },
       { "<leader>ft", "<cmd>FzfLua grep search=TODO<cr>", desc = "[F]ind - [G]rep [T]ODOs" },
       { "<leader>fw", "<cmd>FzfLua grep_cword<cr>", desc = "[F]ind - [G]rep [W]ord" },
       { "<leader>fs", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "[F]ind - [S]ymbols" },
